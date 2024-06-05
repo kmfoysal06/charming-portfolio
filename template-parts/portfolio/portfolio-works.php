@@ -15,7 +15,7 @@ if( ! defined( 'ABSPATH' ) ) {
       <tbody>
         <pre>
         <?php if(is_array($args) && array_key_exists('works', $args)): 
-        $flattern_works = simplecharm_portfolio_load_works($args['works']); ?>
+        $flattern_works = simplecharm_portfolio_plugin_load_works($args['works']); ?>
         <?php foreach( $flattern_works as $key => $work ):
             $key = $key + 1;
         if(empty($work['title'])) continue; ?>

@@ -79,7 +79,7 @@ if( ! defined( 'ABSPATH' ) ) {
 			<p>
 			<?php
 				ob_start(); // Start output buffering
-				simplecharm_portfolio_link_social($args['social_links']); // Call the function that echoes social links
+				simplecharm_portfolio_plugin_link_social($args['social_links']); // Call the function that echoes social links
 				$social_links_output = ob_get_clean(); // Capture the echoed output
 				_e("Social Links:- ", "simplecharm-portfolio");
 				echo wp_kses($social_links_output,[
@@ -102,7 +102,7 @@ if( ! defined( 'ABSPATH' ) ) {
 				<?php
 				printf(
 				    __( 'Experiences: %s.', 'simplecharm-portfolio' ),
-				    esc_html(implode(', ',simplecharm_portfolio_experience_admin($args['experiences'])))
+				    esc_html(implode(', ',simplecharm_portfolio_plugin_experience_admin($args['experiences'])))
 				);
 				?>
 			</p>
@@ -110,7 +110,7 @@ if( ! defined( 'ABSPATH' ) ) {
 				<?php
 				printf(
 				    __( 'Works: %s.', 'simplecharm-portfolio' ),
-				    esc_html(implode(', ',simplecharm_portfolio_works_admin($args['works'])))
+				    esc_html(implode(', ',simplecharm_portfolio_plugin_works_admin($args['works'])))
 				);
 				?>
 			</p>

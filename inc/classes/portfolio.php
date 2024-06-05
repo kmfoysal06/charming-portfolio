@@ -87,7 +87,7 @@ class Portfolio
         ?>
         <div class="admin-portfolio-page__container">
             <div class="admin-portfolio-page">
-                <?php get_template_part("template-parts/portfolio/portfolio", "preview", $saved_values);?>
+                <?php simplecharm_portfolio_plugin_get_template_part('template-parts/portfolio/portfolio','preview', $saved_values); ?>
             </div>
         </div>
         <?php
@@ -107,15 +107,15 @@ class Portfolio
                 </div>
                 <form class="page-contents" method="POST">
                         <!-- basic settings -->
-                        <?php get_template_part("template-parts/portfolio/portfolio", "basic", $portfolio_saved_data);?>
+                        <?php simplecharm_portfolio_plugin_get_template_part('template-parts/portfolio/portfolio','basic', $portfolio_saved_data); ?>
                         <!-- About Me  -->
-                        <?php get_template_part("template-parts/portfolio/portfolio", "aboutme", $portfolio_saved_data);?>
+                        <?php simplecharm_portfolio_plugin_get_template_part("template-parts/portfolio/portfolio", "aboutme", $portfolio_saved_data);?>
                         <!-- Contact Options -->
-                        <?php get_template_part("template-parts/portfolio/portfolio", "contact", $portfolio_saved_data);?>
+                        <?php simplecharm_portfolio_plugin_get_template_part("template-parts/portfolio/portfolio", "contact", $portfolio_saved_data);?>
                         <!-- social links -->
-                        <?php get_template_part("template-parts/portfolio/portfolio", "social-links", $portfolio_saved_data);?>
+                        <?php simplecharm_portfolio_plugin_get_template_part("template-parts/portfolio/portfolio", "social-links", $portfolio_saved_data);?>
 
-                        <input type="hidden" name="simplecharm-portfolio__nonce" value="<?php echo wp_create_nonce("simplecharm_portfolio_plugin_modify_page__nonce") ?>">
+                        <input type="hidden" name="simplecharm-portfolio-plugin__nonce" value="<?php echo wp_create_nonce("simplecharm_portfolio_plugin_modify_page__nonce") ?>">
                         <input type="submit" name="update_portfolio_data" value="UPDATE" class="btn">
 
                 </form>
@@ -135,10 +135,10 @@ class Portfolio
                 <h2><?php _e("Customize Your Additional Informations Here:","simplecharm-portfolio"); ?></h2>
             </div>
             <form class="page-contents" method="POST">
-                <?php get_template_part("template-parts/portfolio/portfolio", 'skills', $this->display_saved_value());?>
-                <?php get_template_part("template-parts/portfolio/portfolio", 'experience', $this->display_saved_value());?>
-                <?php get_template_part("template-parts/portfolio/portfolio", 'works', $this->display_saved_value());?>
-                <input type="hidden" name="simplecharm-portfolio__nonce" value="<?php echo wp_create_nonce("simplecharm_portfolio_plugin_modify_additionals__nonce") ?>">
+                <?php simplecharm_portfolio_plugin_get_template_part("template-parts/portfolio/portfolio", 'skills', $this->display_saved_value());?>
+                <?php simplecharm_portfolio_plugin_get_template_part("template-parts/portfolio/portfolio", 'experience', $this->display_saved_value());?>
+                <?php simplecharm_portfolio_plugin_get_template_part("template-parts/portfolio/portfolio", 'works', $this->display_saved_value());?>
+                <input type="hidden" name="simplecharm-portfolio-plugin__nonce" value="<?php echo wp_create_nonce("simplecharm_portfolio_plugin_modify_additionals__nonce") ?>">
                 <input type="submit" name="update_portfolio_data" value="UPDATE" class="btn">
 
             </form>
@@ -155,7 +155,7 @@ class Portfolio
         // validations
         if (isset($_POST['update_portfolio_data'])) {
             $modified_data = $_POST['simplecharm_portfolio_plugin'];
-            if (!isset($_POST['simplecharm-portfolio__nonce']) || !wp_verify_nonce($_POST['simplecharm-portfolio__nonce'], 'simplecharm_portfolio_plugin_modify_page__nonce')) {
+            if (!isset($_POST['simplecharm-portfolio-plugin__nonce']) || !wp_verify_nonce($_POST['simplecharm-portfolio-plugin__nonce'], 'simplecharm_portfolio_plugin_modify_page__nonce')) {
                 return;
             }
             if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
@@ -260,7 +260,7 @@ class Portfolio
         if (isset($_POST['update_portfolio_data'])) {
             $modified_data = $_POST['simplecharm_portfolio_plugin'];
             //validations
-            if (!isset($_POST['simplecharm-portfolio__nonce']) || !wp_verify_nonce($_POST['simplecharm-portfolio__nonce'], 'simplecharm_portfolio_plugin_modify_additionals__nonce')) {
+            if (!isset($_POST['simplecharm-portfolio-plugin__nonce']) || !wp_verify_nonce($_POST['simplecharm-portfolio-plugin__nonce'], 'simplecharm_portfolio_plugin_modify_additionals__nonce')) {
                 return;
             }
             if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {

@@ -15,12 +15,12 @@ if( ! defined( 'ABSPATH' ) ) {
       <tbody>
   <?php
   // echo '<pre>';
-  // echo var_dump(simplecharm_portfolio_load_experience($args['experiences']));
+  // echo var_dump(simplecharm_portfolio_plugin_load_experience($args['experiences']));
   // die();
 if (is_array($args) && array_key_exists("experiences", $args)):
     foreach ($args['experiences'] as $key => $experience):
         $key = $key + 1;
-      $flattern_experience = simplecharm_portfolio_flattern_array($experience);
+      $flattern_experience = simplecharm_portfolio_plugin_flattern_array($experience);
         if(!is_array($flattern_experience) || empty($flattern_experience)) continue;
         $working_now = (array_key_exists('working',$flattern_experience)) ? $flattern_experience['working'] : 'off';
     ?>
@@ -60,7 +60,7 @@ endif;
 ?>
 
     <!-- empty hidden one for jQuery -->
-    <tr class="simplecharm_portfolio_empty-row__experience screen-reader-text flex flex-col simplecharm-basic-border simplecharm-basic-padding">
+    <tr class="simplecharm_portfolio_plugin_empty-row__experience screen-reader-text flex flex-col simplecharm-basic-border simplecharm-basic-padding">
     <td>
         <label for="experience-institution"><?php _e("institution",'simplecharm-portfolio'); ?></label>
         <input type="text" class="institution" placeholder="<?php _e("Experience institution",'simplecharm-portfolio'); ?>" name="simplecharm_portfolio[experiences][0][institution]" value="" id="experience-institution" data-queue="0">

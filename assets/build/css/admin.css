@@ -1,0 +1,64 @@
+/*!**************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/admin/admin.scss ***!
+  \**************************************************************************************************************************************************************/
+/**
+ * Admin Styles
+ */
+.portfolio-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 10px 20px;
+  gap: 10px;
+  width: 80%;
+  border: 1px solid #ddd;
+}
+
+.portfolio-section-toggle {
+  cursor: pointer;
+}
+
+.portfolio-section-toggle::before {
+  content: "";
+  height: 5px;
+  width: 5px;
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+  display: inline-block;
+  transform: rotate(45deg);
+  margin-right: 5px;
+  margin-bottom: 2px;
+}
+
+.portfolio-section-content .responsibility {
+  margin-left: 15px;
+}
+
+.flex {
+  display: flex !important;
+}
+
+.flex-col {
+  flex-direction: column !important;
+}
+
+.button-disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.simplecharm-basic-border {
+  border: 1px solid #004004;
+}
+
+.simplecharm-basic-padding {
+  padding: 10px;
+}
+
+@media screen and (max-width: 500px) {
+  .admin-portfolio-modify .portfolio-intro {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/*# sourceMappingURL=admin.css.map*/
