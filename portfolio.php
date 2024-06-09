@@ -1,11 +1,21 @@
 <?php
 /**
+ * @package SimpleCharm Portfolio
+ * @since 1.0
  * Plugin Name: SimpleCharm Portfolio
  * Description: A simple portfolio plugin for WordPress.
  * Version: 1.0
  * Author: Kazi Mohammad Foysal
  * Author URI: https://profile.wordpress.org/kmfoysal06
+ * Tags: simplecharm-portfolio-plugin, portfolio-plugin, simple-portfolio
+ * Requires at least: 5.0
+ * Tested up to: 6.5
+ * Stable tag: 1.0
+ * Requires PHP: 7.0
+ * License: GPLv2
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
+
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
