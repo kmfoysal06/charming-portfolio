@@ -113,7 +113,7 @@ if (!function_exists("simplecharm_portfolio_plugin_load_skills")) {
     function simplecharm_portfolio_plugin_load_skills($all_skills) {
         $skillsArray = [];
         if (is_array($all_skills) && !empty($all_skills)) {
-            foreach ($skills as $skills) {
+            foreach ($all_skills as $skills) {
                 if (is_array($skills) && !empty($skills)) {
                     foreach ($skills as $skill_data) {
                         $skill_data = implode('', $skill_data);

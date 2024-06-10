@@ -11,9 +11,9 @@ if( ! defined( 'ABSPATH' ) ) {
 	<h3 class="portfolio-section-toggle"><?php _e("Contact Informations",'simplecharm-portfolio'); ?></h3>
 <div class="portfolio-section portfolio-contact portfolio-section-content">
 	<label for="email"><?php _e("Email",'simplecharm-portfolio'); ?></label>
-	<input type="email" id="email" class="email" name="simplecharm_portfolio[email]" value="<?php echo esc_attr($args["email"]);  ?>" autocomplete="false">
+	<input type="email" id="email" class="email" name="simplecharm_portfolio_plugin[email]" value="<?php echo esc_attr($args["email"]);  ?>" autocomplete="false">
 
 	<label for="phone"><?php _e("Mobile","simplecharm-portfolio"); ?></label>
-	<input type="tel" id="phone" class="phone" name="simplecharm_portfolio[phone]" value="<?php echo esc_attr($args["phone"]);  ?>" autocomplete="false">
+	<input type="tel" id="phone" class="phone" name="simplecharm_portfolio_plugin[phone]" value="<?php echo esc_attr($args["phone"]);  ?>" autocomplete="false">
 </div>
 </div>

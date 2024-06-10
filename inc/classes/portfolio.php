@@ -271,7 +271,7 @@ class Portfolio
                 return;
             }
             //validations
-            if (is_array($modified_data['skills'])) {
+            if (isset($modified_data['skills']) && is_array($modified_data['skills'])) {
                 foreach ($modified_data['skills'] as $skill) {
                     foreach ($skill as $single_skill) {
                         if (empty($single_skill['name'])) {
@@ -287,7 +287,7 @@ class Portfolio
                     }
                 }
             }
-            if (is_array($modified_data['experiences'])) {
+            if (isset($modified_data['experiences']) &&is_array($modified_data['experiences'])) {
                 foreach ($modified_data['experiences'] as $experience) {
                     foreach ($experience as $single_experience) {
                         if (isset($single_experience['institution'])) {
@@ -339,7 +339,7 @@ class Portfolio
                     }
                 }
             }
-            if (is_array($modified_data['works'])) {
+            if (isset($modified_data['works']) && is_array($modified_data['works'])) {
                 foreach ($modified_data['works'] as $work) {
                         if (empty($work['title'])) {
                             continue;
