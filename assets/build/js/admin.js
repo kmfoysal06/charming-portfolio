@@ -116,7 +116,7 @@
           $(this).attr('data-queue', queue);
           let name = $(this).attr('name');
           let inputType = $(this)[0].className;
-          $(this).attr('name', `simplecharm_portfolio[${dataName}][${queue}][][${inputType}]`);
+          $(this).attr('name', `simplecharm_portfolio_plugin[${dataName}][${queue}][][${inputType}]`);
           let inputId = $(this).attr("id");
           let LabelFor = $(this).siblings('label').attr('for');
           $(this).attr("id", `${inputId}-${queue}`);
