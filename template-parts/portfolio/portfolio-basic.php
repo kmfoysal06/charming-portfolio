@@ -1,7 +1,7 @@
 <?php
 /**
  * Basic Settings Template For Portfolio Customization Option
- * @package SimpleCharm Portfolio
+ * @package SimpleCharm Portfolio Plugin
  */
 if( ! defined( 'ABSPATH' ) ) {
 	exit;
