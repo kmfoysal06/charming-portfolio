@@ -43,5 +43,8 @@
   },
   "browserslist": [
     "defaults"
-  ]
+  ],
+  "dependencies": {
+    "postcss-nested": "^6.0.1"
+  }
 }

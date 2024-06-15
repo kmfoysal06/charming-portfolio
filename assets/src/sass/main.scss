@@ -7,3 +7,39 @@
 @forward "./components/bottom-alert";
 @forward "./components/projects";
 @forward "./components/animations";
+
+/**
+ * Basic Styling
+ */
+
+ /* css colors variables*/
+:root {
+   --primary-color: #111827;
+   --primary-color-dark: #F9FAFB;
+   --secondary-color: #4B5563;
+   --secondary-color-dark: #D1D5DB;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+p,span,cite{
+	color: var(--secondary-color-dark);
+}
+h1,h2,h3,h4,h5,h6{
+	color: var(--primary-color-dark);
+}
+section{
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+}
+foorer{
+	h1,h2,h3,h4,h5,h6{
+		color: #F9FAFB;
+	}
+}
+
+// TODO: I have to make the stylsheet only available on frontpage
