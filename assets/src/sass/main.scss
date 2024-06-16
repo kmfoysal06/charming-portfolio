@@ -7,34 +7,34 @@
 @forward "./components/bottom-alert";
 @forward "./components/projects";
 @forward "./components/animations";
+@forward "./components/buttons";
+@use './utils/variables' as *;
 
 /**
  * Basic Styling
  */
 
- /* css colors variables*/
-:root {
-   --primary-color: #111827;
-   --primary-color-dark: #F9FAFB;
-   --secondary-color: #4B5563;
-   --secondary-color-dark: #D1D5DB;
-}
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
+.simplecharm-portfolio-plugin-inner{
+	background-color: $background-color;
+}
 p,span,cite{
-	color: var(--secondary-color-dark);
+	color: $secondary-color;
 }
 h1,h2,h3,h4,h5,h6{
-	color: var(--primary-color-dark);
+	color: $primary-color;
 }
 section{
 	min-height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;	
+	margin: auto;
 }
 foorer{
 	h1,h2,h3,h4,h5,h6{

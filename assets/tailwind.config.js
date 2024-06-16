@@ -1,16 +1,21 @@
 module.exports = {
-  content: [
-    // Paths to your templates...
-    "../**.php",
-    "../**/**.php",
-    "./src/js/**.js"
-  ],
-  darkMode: 'media', // or 'media' or 'class'
-  theme: {
-    extend: {},
-  },
-  variants: {
-    extend: {},
-  },
-  plugins: [require("daisyui")],
+    content: [
+        // Paths to your templates...
+        "../**.php", "../**/**.php",
+    ],
+    darkMode: 'class', // Enable dark mode based on 'dark' class
+    theme: {
+        extend: {
+            colors: {
+                dark: {
+                    DEFAULT: '#333333',
+                    text: '#ffffff',
+                },
+            },
+        },
+    },
+    variants: {
+        extend: {},
+    },
+    plugins: [require("daisyui")],
 }

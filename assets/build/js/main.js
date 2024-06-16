@@ -53,6 +53,52 @@
 
 /***/ }),
 
+/***/ "./src/js/components/tailwindcss-loader.js":
+/*!*************************************************!*\
+  !*** ./src/js/components/tailwindcss-loader.js ***!
+  \*************************************************/
+/***/ (function() {
+
+(function ($) {
+  class Portfolio_Container extends HTMLElement {
+    constructor() {
+      super();
+      const shadow = this.attachShadow({
+        mode: 'open'
+      });
+
+      // Create a container element
+      const container = document.createElement('div');
+      container.innerHTML = this.innerHTML;
+
+      // Function to fetch and apply CSS
+      const applyCSS = url => {
+        return fetch(url).then(response => response.text()).then(css => {
+          const style = document.createElement('style');
+          style.textContent = css;
+          shadow.appendChild(style);
+        }).catch(err => console.error('Failed to load CSS:', err));
+      };
+
+      // Get CSS URLs from attributes
+      const tailwindCssUrl = this.getAttribute('data-tailwind-css-url');
+      const dashiconsCssUrl = this.getAttribute('data-dashicons-css-url');
+
+      // Apply CSS files
+      if (tailwindCssUrl) applyCSS(tailwindCssUrl);
+      if (dashiconsCssUrl) applyCSS(dashiconsCssUrl);
+
+      // Append container after styles are applied
+      shadow.appendChild(container);
+    }
+  }
+
+  // Define the new element
+  customElements.define('simplecahrm-portfolio-plugin', Portfolio_Container);
+})(jQuery);
+
+/***/ }),
+
 /***/ "./src/sass/main.scss":
 /*!****************************!*\
   !*** ./src/sass/main.scss ***!
@@ -145,7 +191,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sass_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../sass/main.scss */ "./src/sass/main.scss");
 /* harmony import */ var _components_copybtn_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/copybtn.js */ "./src/js/components/copybtn.js");
 /* harmony import */ var _components_copybtn_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_components_copybtn_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_tailwindcss_loader_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/tailwindcss-loader.js */ "./src/js/components/tailwindcss-loader.js");
+/* harmony import */ var _components_tailwindcss_loader_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_components_tailwindcss_loader_js__WEBPACK_IMPORTED_MODULE_2__);
 //import sass
+
 
 
 }();

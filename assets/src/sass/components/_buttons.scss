@@ -1,0 +1,17 @@
+// mixins
+@mixin simplecharm-portfolio-button{
+    background: rgba(0,0,0,0.0);
+    padding: 5px;
+    display: inline-grid;
+    place-items: center;
+    transition: 0.2s;
+    border: 1px solid #d7d7d7;
+    border-radius: 5px;
+}
+
+.simplecharm-portfolio-button-hover,.form-submit input {
+    @include simplecharm-portfolio-button;
+}
+.simplecharm-portfolio-button-hover:is(:hover,:focus){
+	background: rgba(0,0,0,0.1);
+}

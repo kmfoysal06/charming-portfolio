@@ -1659,29 +1659,39 @@ html {
     transform: rotate(-15deg);
   }
 }
+.simplecharm-portfolio-button-hover, .form-submit input {
+  background: rgba(0, 0, 0, 0);
+  padding: 5px;
+  display: inline-grid;
+  place-items: center;
+  transition: 0.2s;
+  border: 1px solid #d7d7d7;
+  border-radius: 5px;
+}
+
+.simplecharm-portfolio-button-hover:is(:hover, :focus) {
+  background: rgba(0, 0, 0, 0.1);
+}
+
 /**
  * Basic Styling
  */
-/* css colors variables*/
-:root {
-  --primary-color: #111827;
-  --primary-color-dark: #F9FAFB;
-  --secondary-color: #4B5563;
-  --secondary-color-dark: #D1D5DB;
-}
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+.simplecharm-portfolio-plugin-inner {
+  background-color: #D3D3D3;
+}
+
 p, span, cite {
-  color: var(--secondary-color-dark);
+  color: #4B5563;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: var(--primary-color-dark);
+  color: #111827;
 }
 
 section {
@@ -1689,6 +1699,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: auto;
 }
 
 foorer h1, foorer h2, foorer h3, foorer h4, foorer h5, foorer h6 {
