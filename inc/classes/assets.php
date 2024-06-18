@@ -30,15 +30,19 @@ class Assets
         wp_register_script("SIMPLECHARM_PORTFOLIO_PLUGIN_main", SIMPLECHARM_PORTFOLIO_PLUGIN_DIR_URI . '/assets/build/js/main.js', ['jquery'], filemtime(SIMPLECHARM_PORTFOLIO_PLUGIN_DIR_PATH . '/assets/build/js/main.js'), true);
 
         // enqueue scripts
-        wp_enqueue_script('SIMPLECHARM_PORTFOLIO_PLUGIN_main');
+        if(is_front_page()){
+            wp_enqueue_script('SIMPLECHARM_PORTFOLIO_PLUGIN_main');
+        }
     }
     public function enqueue_styles()
     {
-        wp_register_style('SIMPLECHARM_PORTFOLIO_PLUGIN_tailwindcss', SIMPLECHARM_PORTFOLIO_PLUGIN_DIR_URI . '/assets/build/css/main.css', [], filemtime(SIMPLECHARM_PORTFOLIO_PLUGIN_DIR_PATH . '/assets/build/css/main.css'), 'all');
+        wp_register_style('SIMPLECHARM_PORTFOLIO_PLUGIN_tailwindcss', SIMPLECHARM_PORTFOLIO_PLUGIN_DIR_URI . '/assets/build/css/main.css', filemtime(SIMPLECHARM_PORTFOLIO_PLUGIN_DIR_PATH . '/assets/build/css/main.css'), 'all');
 
-        // enqueue styles
-        wp_enqueue_style('SIMPLECHARM_PORTFOLIO_PLUGIN_tailwindcss');
-        wp_enqueue_style('dashicons');
+        // enqueue styles if its frontpage
+        if(is_front_page()){
+            // wp_enqueue_style('SIMPLECHARM_PORTFOLIO_PLUGIN_tailwindcss');
+            wp_enqueue_style('dashicons');
+        }
     }
     public function admin_enqueue_styles()
     {

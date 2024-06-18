@@ -13,7 +13,7 @@ if( ! defined( 'ABSPATH' ) ) {
     <h3 class="text-xl"><?php _e("Curious about me? Here you have it:","simplecharm-portfolio"); ?></h3>
   </div>
   <div class="hero-content flex-col sm:flex-col md:flex-row lg:flex-row justify-center sm:justify-between md:justify-between lg:justify-between">
-        <img src="<?php echo esc_url($args["user_image2"]) ?>" class="sm:w-full md:w-2/4 lg:w-2/4" />
+        <img src="<?php echo esc_url($args["user_image2"]) ?>" class="sm:w-full md:w-2/4 lg:w-2/4 rounded-lg shadow-2xl" />
     <div>
       <p class="py-6">
         <?php echo esc_html($args["description"]); ?>
