@@ -1,7 +1,7 @@
 <?php
 /**
  * Class File Autoloader
- * @package Aquila
+ * @package SimpleCharm Portfolio Plugin
  */
 spl_autoload_register('simplecharm_portfolio_plugin_autoloader');
 function simplecharm_portfolio_plugin_autoloader($class) {

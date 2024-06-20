@@ -1,3 +1,2 @@
--fixing media dialog problem
--replacing all simplecharm-portfolio textdomain
+-replacing all simplecharm-portfolio textdomain with simplecharm-portfolio-feature
 -check can theme names are reusable as plugin

@@ -1,7 +1,7 @@
 <?php
 /**
  * Main Index Template
- * @package SimpleCharm Portfolio
+ * @package SimpleCharm Portfolio Plugin
  */
 if( ! defined( 'ABSPATH' ) ) {
 	exit;

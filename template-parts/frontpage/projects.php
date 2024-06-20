@@ -1,7 +1,7 @@
 <?php
 /**
  * Project List Template For Frontpage
- * @package SimpleCharm Portfolio
+ * @package Simplecharm Portfolio Plugin
  */
 if( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -13,8 +13,8 @@ if (is_array($args) && array_key_exists("works", $args) && !empty($args['works']
 
 ?>
 	<div class="project-title my-3 flex flex-col items-center">
-		<div class="badge badge-neutral"><?php _e("Work","simplecharm-portfolio"); ?></div>
-		<p><?php _e("Some of the noteworthy projects I have built:","simplecharm-portfolio"); ?></p>
+		<div class="badge badge-neutral"><?php _e("Work","simplecharm-portfolio-plugin"); ?></div>
+		<p><?php _e("Some of the noteworthy projects I have built:","simplecharm-portfolio-plugin"); ?></p>
 	</div>
 	<div class="single-work-info grid lg:grid-cols-2 md:grid-cols-2 gap-x-4 my-3">
 	<?php 

@@ -1,7 +1,7 @@
 <?php
 /**
  * Basic Info Template For Frontpage
- * @package SimpleCharm Portfolio
+ * @package Simplecharm Portfolio Plugin
  */
 if( ! defined( 'ABSPATH' ) ) {
   exit;

@@ -1,7 +1,7 @@
 <?php
 /**
  * Trait Singleton Template
- * @package Simplecharm Portfolio
+ * @package Simplecharm Portfolio Plugin
  */
 
  namespace SIMPLECHARM_PORTFOLIO_PLUGIN\Inc\Traits;

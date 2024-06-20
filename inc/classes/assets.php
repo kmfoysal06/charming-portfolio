@@ -1,7 +1,7 @@
 <?php
 /**
  * Enqueue All Assets
- * @package Simplecharm_Portfolio
+ * @package Simplecharm Portfolio Plugin
  */
 namespace SIMPLECHARM_PORTFOLIO_PLUGIN\Inc\Classes;
 

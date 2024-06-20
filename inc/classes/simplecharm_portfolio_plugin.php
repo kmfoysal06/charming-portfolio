@@ -1,7 +1,7 @@
 <?php
 /**
  * Main Class
- * @package Simplecharm_Portfolio
+ * @package Simplecharm Portfolio Plugin
  */
 namespace SIMPLECHARM_PORTFOLIO_PLUGIN\Inc\Classes;
 use SIMPLECHARM_PORTFOLIO_PLUGIN\Inc\Traits\Singleton;
