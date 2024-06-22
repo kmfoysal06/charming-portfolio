@@ -3,9 +3,9 @@
  * Main Class
  * @package Simplecharm Portfolio Plugin
  */
-namespace SIMPLECHARM_PORTFOLIO_PLUGIN\Inc\Classes;
-use SIMPLECHARM_PORTFOLIO_PLUGIN\Inc\Traits\Singleton;
-class Simplecharm_Portfolio_Plugin{
+namespace CHARMING_PORTFOLIO\Inc\Classes;
+use CHARMING_PORTFOLIO\Inc\Traits\Singleton;
+class CHARMING_PORTFOLIO{
     use Singleton;
     
 	public function __construct()

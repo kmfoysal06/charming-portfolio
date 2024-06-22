@@ -12,8 +12,8 @@ if (!defined('ABSPATH')) {
 /**
  * Get Template Part For Plugin
  */
-if (!function_exists('simplecharm_portfolio_plugin_get_template_part')) {
-    function simplecharm_portfolio_plugin_get_template_part($slug, $name = null, $args = []) {
+if (!function_exists('CHARMING_PORTFOLIO_get_template_part')) {
+    function CHARMING_PORTFOLIO_get_template_part($slug, $name = null, $args = []) {
         // Define the template path
         $template_path = plugin_dir_path(__FILE__);
         $plugin_root_path = dirname(dirname($template_path)) . '/';
@@ -40,8 +40,8 @@ if (!function_exists('simplecharm_portfolio_plugin_get_template_part')) {
  * @param array $social_links
  * @return array
  */
-if (!function_exists("simplecharm_portfolio_plugin_load_social")) {
-    function simplecharm_portfolio_plugin_load_social($social_links) {
+if (!function_exists("CHARMING_PORTFOLIO_load_social")) {
+    function CHARMING_PORTFOLIO_load_social($social_links) {
         if (isset($social_links) && is_array($social_links) && !empty($social_links)) {
             $social_links_array = [];
             foreach ($social_links as $link) {
@@ -74,8 +74,8 @@ if (!function_exists("simplecharm_portfolio_plugin_load_social")) {
  * @param array $social_links
  * @return void
  */
-if (!function_exists("simplecharm_portfolio_plugin_link_social")) {
-    function simplecharm_portfolio_plugin_link_social($social_links) {
+if (!function_exists("CHARMING_PORTFOLIO_link_social")) {
+    function CHARMING_PORTFOLIO_link_social($social_links) {
         foreach ($social_links as $social_link) {
             echo '<a href="' . esc_attr(is_array($social_link['url']) ? implode('', $social_link['url']) : $social_link['url']) . '">' . esc_attr(is_array($social_link['name']) ? implode('', $social_link['name']) : $social_link['name']) . '</a> ';
         }
@@ -87,8 +87,8 @@ if (!function_exists("simplecharm_portfolio_plugin_link_social")) {
  * @param array $social_links
  * @return void
  */
-if (!function_exists("simplecharm_portfolio_plugin_link_social_frontend")) {
-    function simplecharm_portfolio_plugin_link_social_frontend($social_links) {
+if (!function_exists("CHARMING_PORTFOLIO_link_social_frontend")) {
+    function CHARMING_PORTFOLIO_link_social_frontend($social_links) {
         $allowed_icons = array(
             'twitter', 'facebook', 'instagram', 'youtube', 'linkedin', 'pinterest', 'podio', 'google', 'reddit', 'wordpress', 'rss', 'whatsapp', 'xing', 'twitch',
         );
@@ -109,8 +109,8 @@ if (!function_exists("simplecharm_portfolio_plugin_link_social_frontend")) {
  * @param array $all_skills
  * @return array
  */
-if (!function_exists("simplecharm_portfolio_plugin_load_skills")) {
-    function simplecharm_portfolio_plugin_load_skills($all_skills) {
+if (!function_exists("CHARMING_PORTFOLIO_load_skills")) {
+    function CHARMING_PORTFOLIO_load_skills($all_skills) {
         $skillsArray = [];
         if (is_array($all_skills) && !empty($all_skills)) {
             foreach ($all_skills as $skills) {
@@ -133,8 +133,8 @@ if (!function_exists("simplecharm_portfolio_plugin_load_skills")) {
  * @param array $experiences
  * @return array
  */
-if (!function_exists("simplecharm_portfolio_plugin_load_experience")) {
-    function simplecharm_portfolio_plugin_load_experience($experiences) {
+if (!function_exists("CHARMING_PORTFOLIO_load_experience")) {
+    function CHARMING_PORTFOLIO_load_experience($experiences) {
         $sanitized_experiences = [];
         foreach ($experiences as $experience) {
             $temp_experience = [];
@@ -154,8 +154,8 @@ if (!function_exists("simplecharm_portfolio_plugin_load_experience")) {
  * @param array $arr
  * @return array
  */
-if (!function_exists("simplecharm_portfolio_plugin_flattern_array")) {
-    function simplecharm_portfolio_plugin_flattern_array($arr) {
+if (!function_exists("CHARMING_PORTFOLIO_flattern_array")) {
+    function CHARMING_PORTFOLIO_flattern_array($arr) {
         return array_merge(...$arr);
     }
 }
@@ -165,11 +165,11 @@ if (!function_exists("simplecharm_portfolio_plugin_flattern_array")) {
  * @param array $experiences
  * @return array
  */
-if (!function_exists("simplecharm_portfolio_plugin_experience_admin")) {
-    function simplecharm_portfolio_plugin_experience_admin($experiences) {
+if (!function_exists("CHARMING_PORTFOLIO_experience_admin")) {
+    function CHARMING_PORTFOLIO_experience_admin($experiences) {
         $experience_institutions = [];
         foreach ($experiences as $experience) {
-            $flattern_experience = simplecharm_portfolio_plugin_flattern_array($experience);
+            $flattern_experience = CHARMING_PORTFOLIO_flattern_array($experience);
             if (!is_array($flattern_experience) || empty($flattern_experience)) continue;
             if (!array_key_exists('institution', $flattern_experience)) continue;
             $experience_institutions[] = $flattern_experience['institution'];
@@ -183,8 +183,8 @@ if (!function_exists("simplecharm_portfolio_plugin_experience_admin")) {
  * @param string $responsibilities
  * @return string
  */
-if (!function_exists("simplecharm_portfolio_plugin_experience_responsibility_list")) {
-    function simplecharm_portfolio_plugin_experience_responsibility_list($responsibilities) {
+if (!function_exists("CHARMING_PORTFOLIO_experience_responsibility_list")) {
+    function CHARMING_PORTFOLIO_experience_responsibility_list($responsibilities) {
         $html = '';
         $responsibility_array = explode('---', $responsibilities);
         $html .= '<ul class="list-disc">';
@@ -202,8 +202,8 @@ if (!function_exists("simplecharm_portfolio_plugin_experience_responsibility_lis
  * @param string $tags
  * @return string
  */
-if (!function_exists("simplecharm_portfolio_plugin_split_tags")) {
-    function simplecharm_portfolio_plugin_split_tags($tags) {
+if (!function_exists("CHARMING_PORTFOLIO_split_tags")) {
+    function CHARMING_PORTFOLIO_split_tags($tags) {
         $html = '';
         $tags_array = (!empty($tags) && strpos(", ", $tags) && explode(', ', $tags) !== null) ? explode(', ', $tags) : [];
         $html .= '<div class="work-tags grid lg:grid-cols-4  md:grid-cols-3 sm:grid-cols-2 gap-3">';
@@ -222,8 +222,8 @@ if (!function_exists("simplecharm_portfolio_plugin_split_tags")) {
  * @param array $works
  * @return array
  */
-if (!function_exists("simplecharm_portfolio_plugin_load_works")) {
-    function simplecharm_portfolio_plugin_load_works($works) {
+if (!function_exists("CHARMING_PORTFOLIO_load_works")) {
+    function CHARMING_PORTFOLIO_load_works($works) {
         foreach ($works as $work_index => &$work) {
             foreach ($work as $work_data_index => $work_data) {
                 if (!is_array($work_data) || empty($work_data)) continue;
@@ -242,8 +242,8 @@ if (!function_exists("simplecharm_portfolio_plugin_load_works")) {
  * @param array $works
  * @return array
  */
-if (!function_exists("simplecharm_portfolio_plugin_works_admin")) {
-    function simplecharm_portfolio_plugin_works_admin($works) {
+if (!function_exists("CHARMING_PORTFOLIO_works_admin")) {
+    function CHARMING_PORTFOLIO_works_admin($works) {
         $works_array = [];
         foreach ($works as $work) {
             $works_array[] = $work['title'];
@@ -257,8 +257,8 @@ if (!function_exists("simplecharm_portfolio_plugin_works_admin")) {
  * @param array $works
  * @return bool
  */
-if (!function_exists("simplecharm_portfolio_plugin_works_blank")) {
-    function simplecharm_portfolio_plugin_works_blank($works) {
+if (!function_exists("CHARMING_PORTFOLIO_works_blank")) {
+    function CHARMING_PORTFOLIO_works_blank($works) {
         $projects_count = 0;
         foreach ($works as $work_index => $work) {
             if (is_array($work) && !empty($work)) {

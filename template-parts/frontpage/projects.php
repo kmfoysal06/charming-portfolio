@@ -9,7 +9,7 @@ if( ! defined( 'ABSPATH' ) ) {
 
 
 
-if (is_array($args) && array_key_exists("works", $args) && !empty($args['works']) && !empty(array_merge(...$args['works'])) && !simplecharm_portfolio_plugin_works_blank($args['works'])):
+if (is_array($args) && array_key_exists("works", $args) && !empty($args['works']) && !empty(array_merge(...$args['works'])) && !CHARMING_PORTFOLIO_works_blank($args['works'])):
 
 ?>
 	<div class="project-title my-3 flex flex-col items-center">
@@ -32,7 +32,7 @@ if (is_array($args) && array_key_exists("works", $args) && !empty($args['works']
 			</p>
 			<?php printf(
 				wp_kses(
-					simplecharm_portfolio_plugin_split_tags(isset($work['tags']) ? $work['tags'] : ''),
+					CHARMING_PORTFOLIO_split_tags(isset($work['tags']) ? $work['tags'] : ''),
 					[
 						'div' => [
 							'class' => []

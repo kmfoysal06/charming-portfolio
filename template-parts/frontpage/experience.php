@@ -17,7 +17,7 @@ if (is_array($args) && array_key_exists("experiences", $args) && !empty($args['e
 		
 		$experiences = $args['experiences'];
 		foreach($experiences as $single_experience):
-		$flattern_experience = simplecharm_portfolio_plugin_flattern_array($single_experience);
+		$flattern_experience = CHARMING_PORTFOLIO_flattern_array($single_experience);
 		if(empty($flattern_experience)) continue;
 		$start_date = array_key_exists('start_date',$flattern_experience) && !empty($flattern_experience['start_date']) ? date('M o',strtotime($flattern_experience['start_date'])) : '';
 		$working_now = array_key_exists('working',$flattern_experience) ? $flattern_experience['working'] : 'off';
@@ -33,7 +33,7 @@ if (is_array($args) && array_key_exists("experiences", $args) && !empty($args['e
 			<div class="experience-info experience-name flex flex-col justify-center p-4 gap-4">
 				<h3 class="text-2xl lg:text-left md:text-left sm:text-center"><?php echo esc_html($flattern_experience['post-title']); ?></h3>
 				<?php
-				echo simplecharm_portfolio_plugin_experience_responsibility_list($flattern_experience['responsibility']);
+				echo CHARMING_PORTFOLIO_experience_responsibility_list($flattern_experience['responsibility']);
 				?>
 			</div>
 			<div class="experience-date experience-name flex justify-center items-center lg:col-auto md:col-span-2">

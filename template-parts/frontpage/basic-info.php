@@ -19,7 +19,7 @@ if( ! defined( 'ABSPATH' ) ) {
       <p><span class="mr-3"><i class="<?php echo esc_attr($args['available'] == 'True' ? 'simplecharm-portfolio-available' : 'simplecharm-portfolio-available-false') ; ?>"></i></span> <?php echo esc_html($args['available'] == 'True' ? 'Available for New Projects' : 'Currently Not Available for New Projects') ; ?></p>
       <br>
       <?php 
-        $social_links = simplecharm_portfolio_plugin_link_social_frontend($args['social_links'],5);
+        $social_links = CHARMING_PORTFOLIO_link_social_frontend($args['social_links'],5);
         $social_links;
        ?>
     </div>

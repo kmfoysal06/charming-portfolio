@@ -3,9 +3,9 @@
  * Class File Autoloader
  * @package SimpleCharm Portfolio Plugin
  */
-spl_autoload_register('simplecharm_portfolio_plugin_autoloader');
-function simplecharm_portfolio_plugin_autoloader($class) {
-	$namespace = 'SIMPLECHARM_PORTFOLIO_PLUGIN';
+spl_autoload_register('CHARMING_PORTFOLIO_autoloader');
+function CHARMING_PORTFOLIO_autoloader($class) {
+	$namespace = 'CHARMING_PORTFOLIO';
  
 	if (strpos($class, $namespace) !== 0) {
 		return;
@@ -14,7 +14,7 @@ function simplecharm_portfolio_plugin_autoloader($class) {
 	$class = str_replace($namespace, '', $class);
 	$class = str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
  
-	$directory = SIMPLECHARM_PORTFOLIO_PLUGIN_DIR_PATH;
+	$directory = CHARMING_PORTFOLIO_DIR_PATH;
 	$path = strtolower($directory . $class);
 
  

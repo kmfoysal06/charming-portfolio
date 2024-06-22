@@ -20,7 +20,7 @@ if (is_array($args) && array_key_exists("skills", $args)):
         <tr class="flex">
           <td>
             <label for="<?php echo esc_attr("skill-name-" . $key); ?>"></label>
-            <input type="text" class="name" data-queue="<?php echo esc_attr($key); ?>" placeholder="<?php _e("Skill Name","simplecharm-portfolio-plugin"); ?>" name="simplecharm_portfolio_plugin[skills][<?php echo esc_attr($key); ?>][][name]" value="<?php echo esc_attr($skill); ?>" id="<?php echo esc_attr("skill-name-" . $key); ?>" /></td>
+            <input type="text" class="name" data-queue="<?php echo esc_attr($key); ?>" placeholder="<?php _e("Skill Name","simplecharm-portfolio-plugin"); ?>" name="CHARMING_PORTFOLIO[skills][<?php echo esc_attr($key); ?>][][name]" value="<?php echo esc_attr($skill); ?>" id="<?php echo esc_attr("skill-name-" . $key); ?>" /></td>
           <td><a class="button simplecharm_skills_remove" href="#1"><?php _e("Remove","simplecharm-portfolio-plugin"); ?></a></td>
         </tr>
     <?php
@@ -32,7 +32,7 @@ endforeach;
     <tr class="simplecharm_portfolio_empty-row__skills_link screen-reader-text flex">
 	    <td>
         <label for="skill-name"></label>
-	    <input type="text" class="name" data-queue="0" placeholder="<?php _e("Skill Name","simplecharm-portfolio-plugin"); ?>" name="simplecharm_portfolio_plugin[skills][0][][name]" value="" id="skill-name" />
+	    <input type="text" class="name" data-queue="0" placeholder="<?php _e("Skill Name","simplecharm-portfolio-plugin"); ?>" name="CHARMING_PORTFOLIO[skills][0][][name]" value="" id="skill-name" />
 	    </td>
 	    <td><a class="button simplecharm_skills_remove" href="#1"><?php _e("Remove","simplecharm-portfolio-plugin"); ?></a></td>
     </tr>

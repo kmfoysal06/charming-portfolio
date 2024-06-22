@@ -12,7 +12,7 @@
  * Tested up to: 6.5
  * Stable tag: 1.0
  * Requires PHP: 7.0
- * Text Domain: simplecharm-portfolio-feature
+ * Text Domain: charming-portfolio
  * License: GPLv2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -20,20 +20,20 @@
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
-if (!defined("SIMPLECHARM_PORTFOLIO_PLUGIN_DIR_PATH")) {
-    define("SIMPLECHARM_PORTFOLIO_PLUGIN_DIR_PATH", untrailingslashit(plugin_dir_path(__FILE__)));
+if (!defined("CHARMING_PORTFOLIO_DIR_PATH")) {
+    define("CHARMING_PORTFOLIO_DIR_PATH", untrailingslashit(plugin_dir_path(__FILE__)));
 }
-if (!defined("SIMPLECHARM_PORTFOLIO_PLUGIN_DIR_URI")) {
-    define("SIMPLECHARM_PORTFOLIO_PLUGIN_DIR_URI", untrailingslashit(plugin_dir_url(__FILE__)));
+if (!defined("CHARMING_PORTFOLIO_DIR_URI")) {
+    define("CHARMING_PORTFOLIO_DIR_URI", untrailingslashit(plugin_dir_url(__FILE__)));
 }
 
-require_once SIMPLECHARM_PORTFOLIO_PLUGIN_DIR_PATH.'/inc/helpers/autoload.php';
-require_once SIMPLECHARM_PORTFOLIO_PLUGIN_DIR_PATH.'/inc/helpers/template-tags.php';
+require_once CHARMING_PORTFOLIO_DIR_PATH.'/inc/helpers/autoload.php';
+require_once CHARMING_PORTFOLIO_DIR_PATH.'/inc/helpers/template-tags.php';
 
-function simplecharm_portfolio_plugin_get_instance(){
-    return \SIMPLECHARM_PORTFOLIO_PLUGIN\Inc\Classes\Simplecharm_Portfolio_Plugin::get_instance();
+function CHARMING_PORTFOLIO_get_instance(){
+    return \CHARMING_PORTFOLIO\Inc\Classes\CHARMING_PORTFOLIO::get_instance();
 }
-simplecharm_portfolio_plugin_get_instance();
+CHARMING_PORTFOLIO_get_instance();
 
 require plugin_dir_path(__FILE__) . 'inc/helpers/template-tags.php';
 add_filter('template_include', 'template_override');

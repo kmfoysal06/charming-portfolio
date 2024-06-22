@@ -29,7 +29,7 @@ if( ! defined( 'ABSPATH' ) ) {
 			<div class="footer-social-links">
 				<p><?php _e("You may also find me on these platforms!","simplecharm-portfolio-plugin"); ?></p>
 				<div class="social-link flex gap-3 my-2 justify-center">
-				    <?php simplecharm_portfolio_plugin_link_social_frontend($args['social_links'],10); ?>
+				    <?php CHARMING_PORTFOLIO_link_social_frontend($args['social_links'],10); ?>
 				</div>
 			</div>
 		</div>

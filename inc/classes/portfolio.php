@@ -2,9 +2,9 @@
 /** Customizations of The Front Portfolio Page
  *  @package SimpleCharm Portfolio Plugin
  */
-namespace SIMPLECHARM_PORTFOLIO_PLUGIN\Inc\Classes;
+namespace CHARMING_PORTFOLIO\Inc\Classes;
 
-use SIMPLECHARM_PORTFOLIO_PLUGIN\Inc\Traits\Singleton;
+use CHARMING_PORTFOLIO\Inc\Traits\Singleton;
 
 class Portfolio
 {
@@ -30,7 +30,7 @@ class Portfolio
             'Portfolio Page',
             "Portfolio",
             "manage_options",
-            "simplecharm_portfolio_plugin_page",
+            "CHARMING_PORTFOLIO_page",
             [$this, "portfolio_html"],
             "dashicons-portfolio"
         );
@@ -48,20 +48,20 @@ class Portfolio
         // Add the custom menu item under the "Site Name" node
         $wp_admin_bar->add_node(array(
             'parent' => 'site-name', // Add this under the "Site Name" node
-            'id'     => 'simplecharm_portfolio_plugin', // Unique ID for the menu item
+            'id'     => 'CHARMING_PORTFOLIO', // Unique ID for the menu item
             'title'  => 'Portfolio', // Title of the menu item
-            'href'   => admin_url('admin.php?page=simplecharm_portfolio_plugin_page'), // URL when the menu item is clicked
+            'href'   => admin_url('admin.php?page=CHARMING_PORTFOLIO_page'), // URL when the menu item is clicked
             'meta'   => array('class' => 'simplecharm-portfolio-plugin') // Additional properties (optional)
         ));
     }
     public function add_submenu()
     {
         add_submenu_page(
-            "simplecharm_portfolio_plugin_page",
+            "CHARMING_PORTFOLIO_page",
             "Customize Portfolio",
             "Customize Portfolio",
             "manage_options",
-            "simplecharm_portfolio_plugin_menu",
+            "CHARMING_PORTFOLIO_menu",
             [$this, "portfolio_submenu_html"]
         );
     }
@@ -69,7 +69,7 @@ class Portfolio
     public function add_additional_submenu()
     {
         add_submenu_page(
-            "simplecharm_portfolio_plugin_page",
+            "CHARMING_PORTFOLIO_page",
             "Additional Info",
             "Additional Info",
             "manage_options",
@@ -87,7 +87,7 @@ class Portfolio
         ?>
         <div class="admin-portfolio-page__container">
             <div class="admin-portfolio-page">
-                <?php simplecharm_portfolio_plugin_get_template_part('template-parts/portfolio/portfolio','preview', $saved_values); ?>
+                <?php CHARMING_PORTFOLIO_get_template_part('template-parts/portfolio/portfolio','preview', $saved_values); ?>
             </div>
         </div>
         <?php
@@ -98,7 +98,7 @@ class Portfolio
     public function portfolio_submenu_html()
     {
         $portfolio_saved_data = $this->display_saved_value();
-        $field                = get_option('simplecharm_portfolio_plugin_data');
+        $field                = get_option('CHARMING_PORTFOLIO_data');
         ?>
         <div class="admin-portfolio-modify__container">
             <div class="admin-portfolio-modify">
@@ -107,15 +107,15 @@ class Portfolio
                 </div>
                 <form class="page-contents" method="POST">
                         <!-- basic settings -->
-                        <?php simplecharm_portfolio_plugin_get_template_part('template-parts/portfolio/portfolio','basic', $portfolio_saved_data); ?>
+                        <?php CHARMING_PORTFOLIO_get_template_part('template-parts/portfolio/portfolio','basic', $portfolio_saved_data); ?>
                         <!-- About Me  -->
-                        <?php simplecharm_portfolio_plugin_get_template_part("template-parts/portfolio/portfolio", "aboutme", $portfolio_saved_data);?>
+                        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "aboutme", $portfolio_saved_data);?>
                         <!-- Contact Options -->
-                        <?php simplecharm_portfolio_plugin_get_template_part("template-parts/portfolio/portfolio", "contact", $portfolio_saved_data);?>
+                        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "contact", $portfolio_saved_data);?>
                         <!-- social links -->
-                        <?php simplecharm_portfolio_plugin_get_template_part("template-parts/portfolio/portfolio", "social-links", $portfolio_saved_data);?>
+                        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "social-links", $portfolio_saved_data);?>
 
-                        <input type="hidden" name="simplecharm-portfolio-plugin__nonce" value="<?php echo wp_create_nonce("simplecharm_portfolio_plugin_modify_page__nonce") ?>">
+                        <input type="hidden" name="simplecharm-portfolio-plugin__nonce" value="<?php echo wp_create_nonce("CHARMING_PORTFOLIO_modify_page__nonce") ?>">
                         <input type="submit" name="update_portfolio_data" value="UPDATE" class="btn">
 
                 </form>
@@ -135,10 +135,10 @@ class Portfolio
                 <h2><?php _e("Customize Your Additional Informations Here:","simplecharm-portfolio-plugin"); ?></h2>
             </div>
             <form class="page-contents" method="POST">
-                <?php simplecharm_portfolio_plugin_get_template_part("template-parts/portfolio/portfolio", 'skills', $this->display_saved_value());?>
-                <?php simplecharm_portfolio_plugin_get_template_part("template-parts/portfolio/portfolio", 'experience', $this->display_saved_value());?>
-                <?php simplecharm_portfolio_plugin_get_template_part("template-parts/portfolio/portfolio", 'works', $this->display_saved_value());?>
-                <input type="hidden" name="simplecharm-portfolio-plugin__nonce" value="<?php echo wp_create_nonce("simplecharm_portfolio_plugin_modify_additionals__nonce") ?>">
+                <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'skills', $this->display_saved_value());?>
+                <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'experience', $this->display_saved_value());?>
+                <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'works', $this->display_saved_value());?>
+                <input type="hidden" name="simplecharm-portfolio-plugin__nonce" value="<?php echo wp_create_nonce("CHARMING_PORTFOLIO_modify_additionals__nonce") ?>">
                 <input type="submit" name="update_portfolio_data" value="UPDATE" class="btn">
 
             </form>
@@ -154,8 +154,8 @@ class Portfolio
     {
         // validations
         if (isset($_POST['update_portfolio_data'])) {
-            $modified_data = $_POST['simplecharm_portfolio_plugin'];
-            if (!isset($_POST['simplecharm-portfolio-plugin__nonce']) || !wp_verify_nonce($_POST['simplecharm-portfolio-plugin__nonce'], 'simplecharm_portfolio_plugin_modify_page__nonce')) {
+            $modified_data = $_POST['CHARMING_PORTFOLIO'];
+            if (!isset($_POST['simplecharm-portfolio-plugin__nonce']) || !wp_verify_nonce($_POST['simplecharm-portfolio-plugin__nonce'], 'CHARMING_PORTFOLIO_modify_page__nonce')) {
                 return;
             }
             if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
@@ -243,7 +243,7 @@ class Portfolio
             // sanitization
             $modified_data = $this->sanitize_array($modified_data);
 
-            if (update_option('simplecharm_portfolio_plugin_data', $modified_data)) {
+            if (update_option('CHARMING_PORTFOLIO_data', $modified_data)) {
                 // Display success message
                 add_action('admin_notices', function () {
                     echo '<div class="notice notice-success is-dismissible"><p>'.__('Data saved successfully!','simplecharm-portfolio-plugin').'</p></div>';
@@ -258,9 +258,9 @@ class Portfolio
     public function save_additional_data()
     {
         if (isset($_POST['update_portfolio_data'])) {
-            $modified_data = $_POST['simplecharm_portfolio_plugin'];
+            $modified_data = $_POST['CHARMING_PORTFOLIO'];
             //validations
-            if (!isset($_POST['simplecharm-portfolio-plugin__nonce']) || !wp_verify_nonce($_POST['simplecharm-portfolio-plugin__nonce'], 'simplecharm_portfolio_plugin_modify_additionals__nonce')) {
+            if (!isset($_POST['simplecharm-portfolio-plugin__nonce']) || !wp_verify_nonce($_POST['simplecharm-portfolio-plugin__nonce'], 'CHARMING_PORTFOLIO_modify_additionals__nonce')) {
                 return;
             }
             if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
@@ -376,7 +376,7 @@ class Portfolio
 
             //sanitization
             $modified_data = $this->sanitize_array($modified_data);
-            if (update_option('simplecharm_portfolio_plugin_additional_data', $modified_data)) {
+            if (update_option('CHARMING_PORTFOLIO_additional_data', $modified_data)) {
                 // Display success message
                 add_action('admin_notices', function () {
                     echo '<div class="notice notice-success is-dismissible"><p>'.__("Data saved successfully!","simplecharm-portfolio-plugin").'</p></div>';
@@ -392,7 +392,7 @@ class Portfolio
      */
     public function saved_value($type = 'text', $data_key = '')
     {
-        $option_value = get_option("simplecharm_portfolio_plugin_data");
+        $option_value = get_option("CHARMING_PORTFOLIO_data");
 
         if (is_array($option_value) && array_key_exists($data_key, $option_value)) {
             return $option_value[$data_key];
@@ -406,12 +406,12 @@ class Portfolio
      */
     public function display_saved_value()
     {
-        $option_value            = get_option("simplecharm_portfolio_plugin_data");
-        $additional_option_value = get_option("simplecharm_portfolio_plugin_additional_data");
+        $option_value            = get_option("CHARMING_PORTFOLIO_data");
+        $additional_option_value = get_option("CHARMING_PORTFOLIO_additional_data");
         $saved_values            = [
             'name'              => 'Charm',
-            'user_image'        => SIMPLECHARM_PORTFOLIO_PLUGIN_DIR_URI . "/assets/build/img/simplecharm-default-avater.jpg",
-            'user_image2'       => SIMPLECHARM_PORTFOLIO_PLUGIN_DIR_URI . "/assets/build/img/simplecharm-default-avater.jpg",
+            'user_image'        => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/simplecharm-default-avater.jpg",
+            'user_image2'       => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/simplecharm-default-avater.jpg",
             'email'             => 'abc@gmail.com',
             'phone'             => '1234567890',
             'short_description' => "Hi, This Is Default Lorem Ipsum Description For You Lorem ipsum dolor sit amet, consectetur adipisicing elit!",
@@ -423,15 +423,15 @@ class Portfolio
         ];
         if (is_array($option_value)) {
             $name              = array_key_exists("name", $option_value) ? $option_value["name"] : "";
-            $image             = (array_key_exists("image", $option_value) && !empty($option_value['image'])) ? $option_value["image"] : SIMPLECHARM_PORTFOLIO_PLUGIN_DIR_URI . "/assets/build/img/simplecharm-default-avater.jpg";
-            $image2            = (array_key_exists("image_2", $option_value) && !empty($option_value['image_2'])) ? $option_value["image_2"] : SIMPLECHARM_PORTFOLIO_PLUGIN_DIR_URI . "/assets/build/img/simplecharm-default-avater.jpg";
+            $image             = (array_key_exists("image", $option_value) && !empty($option_value['image'])) ? $option_value["image"] : CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/simplecharm-default-avater.jpg";
+            $image2            = (array_key_exists("image_2", $option_value) && !empty($option_value['image_2'])) ? $option_value["image_2"] : CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/simplecharm-default-avater.jpg";
             $email             = array_key_exists("email", $option_value) ? $option_value["email"] : "abc@gmail.com";
             $phone             = array_key_exists("phone", $option_value) ? $option_value["phone"] : "1234567890";
             $short_description = array_key_exists("short_description", $option_value) ? $option_value["short_description"] : "";
             $description       = array_key_exists("description", $option_value) ? $option_value["description"] : "";
             $address           = array_key_exists("address", $option_value) ? $option_value["address"] : "";
             $available         = (array_key_exists("available", $option_value) && $option_value['available'] === 'on') ? 'True' : "False";
-            $social_links      = array_key_exists("social_link", $option_value) ? simplecharm_portfolio_plugin_load_social($option_value['social_link']) : [];
+            $social_links      = array_key_exists("social_link", $option_value) ? CHARMING_PORTFOLIO_load_social($option_value['social_link']) : [];
             $saved_values      = [
                 'name'              => $name,
                 'user_image'        => $image,
@@ -450,9 +450,9 @@ class Portfolio
         }
 
         if (is_array($additional_option_value)) {
-            $skills      = array_key_exists("skills", $additional_option_value) ? simplecharm_portfolio_plugin_load_skills($additional_option_value["skills"]) : [];
-            $experiences = array_key_exists("experiences", $additional_option_value) ? simplecharm_portfolio_plugin_load_experience($additional_option_value["experiences"]) : [];
-            $works       = array_key_exists("works", $additional_option_value) ? simplecharm_portfolio_plugin_load_works($additional_option_value["works"]) : [];
+            $skills      = array_key_exists("skills", $additional_option_value) ? CHARMING_PORTFOLIO_load_skills($additional_option_value["skills"]) : [];
+            $experiences = array_key_exists("experiences", $additional_option_value) ? CHARMING_PORTFOLIO_load_experience($additional_option_value["experiences"]) : [];
+            $works       = array_key_exists("works", $additional_option_value) ? CHARMING_PORTFOLIO_load_works($additional_option_value["works"]) : [];
         } else {
             $skills      = [];
             $experiences = [];

@@ -4,7 +4,7 @@
  * @package Simplecharm Portfolio Plugin
  */
 
- namespace SIMPLECHARM_PORTFOLIO_PLUGIN\Inc\Traits;
+ namespace CHARMING_PORTFOLIO\Inc\Traits;
     trait Singleton{
         public function __construct(){}
     public function __clone(){}
