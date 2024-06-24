@@ -7,8 +7,8 @@
             this.init();
         }
         init() {
-            this.mediaUploader('simplecharm-portfolio-user-image', "simplecharm_portfolio_plugin_user_image","Upload Image");
-            this.mediaUploader('simplecharm-portfolio-user-image2', "simplecharm_portfolio_plugin_user_image2", "Upload Another Image");
+            this.mediaUploader('simplecharm-portfolio-user-image', "CHARMING_PORTFOLIO_user_image","Upload Image");
+            this.mediaUploader('simplecharm-portfolio-user-image2', "CHARMING_PORTFOLIO_user_image2", "Upload Another Image");
         }
         mediaUploader(picked_image, hidden_field,custom_text = 'Upload Image') {
             let image = null;
