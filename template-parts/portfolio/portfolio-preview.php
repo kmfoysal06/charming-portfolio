@@ -8,30 +8,30 @@ if( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div class="portfolio-section-wrapper">
-	<h2 class="portfolio-section-toggle"><?php _e("Your Informations are Here:-","simplecharm-portfolio-plugin"); ?></h2>
+	<h2 class="portfolio-section-toggle"><?php _e("Your Informations are Here:-","charming-portfolio"); ?></h2>
 	<div class="page-contents portfolio-section-content">
 		<div class="portfolio-intro">
 			<p><?php
 				printf(
-				    __( 'Name: %s.', 'simplecharm-portfolio-plugin' ),
+				    __( 'Name: %s.', 'charming-portfolio' ),
 				    esc_html($args['name'])
 				);
 				?>
 			</p>
 			<p>
 				<?php
-				printf(wp_kses(__('Image:- <img src="%s" width="100px">','simplecharm-portfolio-plugin'),['img'=>['src'=>[],'width'=>array()]]),esc_url($args['user_image']));
+				printf(wp_kses(__('Image:- <img src="%s" width="100px">','charming-portfolio'),['img'=>['src'=>[],'width'=>array()]]),esc_url($args['user_image']));
 				?>
 			</p>
 			<p>
 				<?php
-				printf(wp_kses(__('2nd Image:- <img src="%s" width="100px">','simplecharm-portfolio-plugin'),['img'=>['src'=>[],'width'=>array()]]),esc_url($args['user_image2']));
+				printf(wp_kses(__('2nd Image:- <img src="%s" width="100px">','charming-portfolio'),['img'=>['src'=>[],'width'=>array()]]),esc_url($args['user_image2']));
 				?>
 			</p>
 			<p>
 				<?php
 				printf(
-				    __( 'Mail: %s.', 'simplecharm-portfolio-plugin' ),
+				    __( 'Mail: %s.', 'charming-portfolio' ),
 				    esc_html($args['email'])
 				);
 				?>
@@ -39,7 +39,7 @@ if( ! defined( 'ABSPATH' ) ) {
 			<p>
 				<?php
 				printf(
-				    __( 'Phone: %s.', 'simplecharm-portfolio-plugin' ),
+				    __( 'Phone: %s.', 'charming-portfolio' ),
 				    esc_html($args['phone'])
 				);
 				?>
@@ -47,7 +47,7 @@ if( ! defined( 'ABSPATH' ) ) {
 			<p>
 				<?php
 				printf(
-				    __( 'Short Description: %s.', 'simplecharm-portfolio-plugin' ),
+				    __( 'Short Description: %s.', 'charming-portfolio' ),
 				    esc_html($args['short_description'])
 				);
 				?>
@@ -55,7 +55,7 @@ if( ! defined( 'ABSPATH' ) ) {
 			<p>
 				<?php
 				printf(
-				    __( 'Description: %s.', 'simplecharm-portfolio-plugin' ),
+				    __( 'Description: %s.', 'charming-portfolio' ),
 				    esc_html($args['description'])
 				);
 				?>
@@ -63,7 +63,7 @@ if( ! defined( 'ABSPATH' ) ) {
 			<p>
 				<?php
 				printf(
-				    __( 'Address: %s.', 'simplecharm-portfolio-plugin' ),
+				    __( 'Address: %s.', 'charming-portfolio' ),
 				    esc_html($args['address'])
 				);
 				?>
@@ -71,7 +71,7 @@ if( ! defined( 'ABSPATH' ) ) {
 			<p>
 				<?php
 				printf(
-				    __( 'Available: %s.', 'simplecharm-portfolio-plugin' ),
+				    __( 'Available: %s.', 'charming-portfolio' ),
 				    esc_html($args['available'])
 				);
 				?>
@@ -81,7 +81,7 @@ if( ! defined( 'ABSPATH' ) ) {
 				ob_start(); // Start output buffering
 				CHARMING_PORTFOLIO_link_social($args['social_links']); // Call the function that echoes social links
 				$social_links_output = ob_get_clean(); // Capture the echoed output
-				_e("Social Links:- ", "simplecharm-portfolio-plugin");
+				_e("Social Links:- ", "charming-portfolio");
 				echo wp_kses($social_links_output,[
 					'a' => [
 						'href' => []
@@ -93,7 +93,7 @@ if( ! defined( 'ABSPATH' ) ) {
 			<p>
 				<?php
 				printf(
-				    __( 'Skills: %s.', 'simplecharm-portfolio-plugin' ),
+				    __( 'Skills: %s.', 'charming-portfolio' ),
 				    esc_html(implode(', ',$args['skills']))
 				);
 				?>
@@ -101,7 +101,7 @@ if( ! defined( 'ABSPATH' ) ) {
 			<p>
 				<?php
 				printf(
-				    __( 'Experiences: %s.', 'simplecharm-portfolio-plugin' ),
+				    __( 'Experiences: %s.', 'charming-portfolio' ),
 				    esc_html(implode(', ',CHARMING_PORTFOLIO_experience_admin($args['experiences'])))
 				);
 				?>
@@ -109,7 +109,7 @@ if( ! defined( 'ABSPATH' ) ) {
 			<p>
 				<?php
 				printf(
-				    __( 'Works: %s.', 'simplecharm-portfolio-plugin' ),
+				    __( 'Works: %s.', 'charming-portfolio' ),
 				    esc_html(implode(', ',CHARMING_PORTFOLIO_works_admin($args['works'])))
 				);
 				?>

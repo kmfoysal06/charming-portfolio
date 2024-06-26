@@ -9,8 +9,8 @@ if( ! defined( 'ABSPATH' ) ) {
 if (is_array($args) && array_key_exists("experiences", $args) && !empty($args['experiences']) && !empty(array_merge(...$args['experiences']))):
 ?>
 <div class="experience-title my-3 flex flex-col items-center">
-		<div class="badge badge-neutral"><?php _e("Experience","simplecharm-portfolio-plugin"); ?></div>
-		<p><?php _e("Here is a quick summary of my most recent experiences:","simplecharm-portfolio-plugin"); ?></p>
+		<div class="badge badge-neutral"><?php _e("Experience","charming-portfolio"); ?></div>
+		<p><?php _e("Here is a quick summary of my most recent experiences:","charming-portfolio"); ?></p>
 	</div>
 	<div class="experience-content">
 		<?php
@@ -22,7 +22,7 @@ if (is_array($args) && array_key_exists("experiences", $args) && !empty($args['e
 		$start_date = array_key_exists('start_date',$flattern_experience) && !empty($flattern_experience['start_date']) ? date('M o',strtotime($flattern_experience['start_date'])) : '';
 		$working_now = array_key_exists('working',$flattern_experience) ? $flattern_experience['working'] : 'off';
 		$end_date = array_key_exists('end_date',$flattern_experience) && !empty($flattern_experience['end_date']) ? date('M o',strtotime($flattern_experience['end_date'])) : '';
-		$end_date_status = strtolower($working_now) === 'on' ? __("Present","simplecharm-portfolio-plugin") : $end_date;
+		$end_date_status = strtolower($working_now) === 'on' ? __("Present","charming-portfolio") : $end_date;
 		?>
 
 		<!-- TODO: The Design Is Broken. -->

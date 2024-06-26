@@ -9,8 +9,8 @@ if( ! defined( 'ABSPATH' ) ) {
 if(is_array($args['skills']) && !empty($args['skills'])){
 		?>
 		<div class="skills-title my-3 flex flex-col items-center">
-			<div class="badge badge-neutral"><?php _e("Skills","simplecharm-portfolio-plugin"); ?></div>
-			<p><?php _e("The skills, tools and technologies I am really good at:","simplecharm-portfolio-plugin"); ?></p>
+			<div class="badge badge-neutral"><?php _e("Skills","charming-portfolio"); ?></div>
+			<p><?php _e("The skills, tools and technologies I am really good at:","charming-portfolio"); ?></p>
 			</div>
 		<div class="skills-container justify-center items-center gap-1 grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2">
 			<?php
