@@ -1,7 +1,7 @@
 <?php
 /**
  * Customize  Social Links Template For Portfolio Customization Option
- * @package SimpleCharm Portfolio Plugin
+ * @package Charming Portfolio
  */
 if( ! defined( 'ABSPATH' ) ) {
   exit;

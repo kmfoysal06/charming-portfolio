@@ -1,6 +1,7 @@
 <?php
-/** Customizations of The Front Portfolio Page
- *  @package SimpleCharm Portfolio Plugin
+/**
+ * Customizing Front Page Functionality
+ * @package Charming Portfolio
  */
 namespace CHARMING_PORTFOLIO\Inc\Classes;
 
@@ -73,7 +74,7 @@ class Portfolio
             "Additional Info",
             "Additional Info",
             "manage_options",
-            "simplecharm_additional_menu",
+            "charming_portfolio_additional_menu",
             [$this, "portfolio_additional_submenu_html"]
         );
     }
@@ -410,8 +411,8 @@ class Portfolio
         $additional_option_value = get_option("CHARMING_PORTFOLIO_additional_data");
         $saved_values            = [
             'name'              => 'Charm',
-            'user_image'        => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/simplecharm-default-avater.jpg",
-            'user_image2'       => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/simplecharm-default-avater.jpg",
+            'user_image'        => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg",
+            'user_image2'       => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg",
             'email'             => 'abc@gmail.com',
             'phone'             => '1234567890',
             'short_description' => "Hi, This Is Default Lorem Ipsum Description For You Lorem ipsum dolor sit amet, consectetur adipisicing elit!",
@@ -423,8 +424,8 @@ class Portfolio
         ];
         if (is_array($option_value)) {
             $name              = array_key_exists("name", $option_value) ? $option_value["name"] : "";
-            $image             = (array_key_exists("image", $option_value) && !empty($option_value['image'])) ? $option_value["image"] : CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/simplecharm-default-avater.jpg";
-            $image2            = (array_key_exists("image_2", $option_value) && !empty($option_value['image_2'])) ? $option_value["image_2"] : CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/simplecharm-default-avater.jpg";
+            $image             = (array_key_exists("image", $option_value) && !empty($option_value['image'])) ? $option_value["image"] : CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg";
+            $image2            = (array_key_exists("image_2", $option_value) && !empty($option_value['image_2'])) ? $option_value["image_2"] : CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg";
             $email             = array_key_exists("email", $option_value) ? $option_value["email"] : "abc@gmail.com";
             $phone             = array_key_exists("phone", $option_value) ? $option_value["phone"] : "1234567890";
             $short_description = array_key_exists("short_description", $option_value) ? $option_value["short_description"] : "";

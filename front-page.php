@@ -1,7 +1,7 @@
 <?php
 /**
  * Main Index Template
- * @package SimpleCharm Portfolio Plugin
+ * @package Charming Portfolio
  */
 if( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -12,9 +12,10 @@ $CHARMING_PORTFOLIO_css_url = plugins_url('assets/build/css/main.css', __FILE__)
 $CHARMING_PORTFOLIO_dashicons_css_url = includes_url('css/dashicons.min.css');
 ?>
 <!-- Header -->
-<?php get_header();?>
-<simplecahrm-portfolio-plugin data-tailwind-css-url="<?php echo esc_url($CHARMING_PORTFOLIO_css_url); ?>" data-dashicons-css-url="<?php echo esc_url($CHARMING_PORTFOLIO_dashicons_css_url); ?>" class="simplecahrm-portfolio-plugin">
-<div class="simplecharm-portfolio-plugin-inner">
+<?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/header");
+?>
+<!-- <charming_portfolio-plugin data-tailwind-css-url="<?php //echo esc_url($CHARMING_PORTFOLIO_css_url); ?>" data-dashicons-css-url="<?php //echo esc_url($CHARMING_PORTFOLIO_dashicons_css_url); ?>" class="charming_portfolio-plugin"> -->
+<div class="charming_portfolio-plugin-inner">
 	<!-- hero section -->
 <section class="min-h-screen bg-base-200 min-h-lvh my-2 grid items-center">
   <?php
@@ -49,5 +50,5 @@ CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/aboutme", "", $po
 	<?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/footer", "", $portfolio_saved_value);?>
 </section>
 </div>
-</simplecahrm-portfolio-plugin>
+<!-- </charming_portfolio-plugin> -->
 <?php get_footer();?>

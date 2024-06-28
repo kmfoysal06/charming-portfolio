@@ -1,7 +1,7 @@
 <?php
 /**
  * About Me Template For Frontpage
- * @package Simplecharm Portfolio Plugin
+ * @package Charming Portfolio
  */
 if( ! defined( 'ABSPATH' ) ) {
   exit;

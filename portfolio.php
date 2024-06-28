@@ -31,7 +31,7 @@ require_once CHARMING_PORTFOLIO_DIR_PATH.'/inc/helpers/autoload.php';
 require_once CHARMING_PORTFOLIO_DIR_PATH.'/inc/helpers/template-tags.php';
 
 function CHARMING_PORTFOLIO_get_instance(){
-    return \CHARMING_PORTFOLIO\Inc\Classes\CHARMING_PORTFOLIO::get_instance();
+    return \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO_PLUGIN::get_instance();
 }
 CHARMING_PORTFOLIO_get_instance();
 

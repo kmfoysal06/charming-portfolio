@@ -1,7 +1,7 @@
 <?php
 /**
  * Preview All Update About Portfolio in a Basic Template
- * @package Simplecharm Portfolio Plugin
+ * @package Charming Portfolio
  */
 if( ! defined( 'ABSPATH' ) ) {
 	exit;

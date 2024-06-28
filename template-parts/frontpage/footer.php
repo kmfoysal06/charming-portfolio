@@ -1,13 +1,13 @@
 <?php
 /**
  * Footer Template For Front Page
- * @package Simplecharm Portfolio Plugin
+ * @package Charming Portfolio
  */
 if( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<div class="footer-inner flex flex-col justify-center gap-3">
+<footer role="contentinfo" class="footer-inner flex flex-col justify-center gap-3">
 			<div class="badge badge-neutral p-2 self-center"><?php _e("Get in Touch","charming-portfolio"); ?></div>
 			<div class="footer-text">
 				<p>
@@ -32,5 +32,10 @@ if( ! defined( 'ABSPATH' ) ) {
 				    <?php CHARMING_PORTFOLIO_link_social_frontend($args['social_links'],10); ?>
 				</div>
 			</div>
-		</div>
+		</footer>
 		<div class="simplecharm-portfolio-bottom-alert" id="simplecharm-portfolio-bottom-alert"></div>
+
+	</main>
+	<?php wp_footer();?>
+</body>
+</html>

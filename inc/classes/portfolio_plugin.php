@@ -1,11 +1,11 @@
 <?php
 /**
  * Main Class
- * @package Simplecharm Portfolio Plugin
+ * @package Charming Portfolio
  */
 namespace CHARMING_PORTFOLIO\Inc\Classes;
 use CHARMING_PORTFOLIO\Inc\Traits\Singleton;
-class CHARMING_PORTFOLIO{
+class PORTFOLIO_PLUGIN{
     use Singleton;
     
 	public function __construct()

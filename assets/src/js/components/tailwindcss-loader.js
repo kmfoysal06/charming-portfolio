@@ -27,6 +27,7 @@
     // Apply CSS files
     if (tailwindCssUrl) applyCSS(tailwindCssUrl);
     if (dashiconsCssUrl) applyCSS(dashiconsCssUrl);
+    console.log(tailwindCssUrl)
 
     // Append container after styles are applied
     shadow.appendChild(container);
@@ -34,6 +35,6 @@
 }
 
 // Define the new element
-customElements.define('simplecahrm-portfolio-plugin', Portfolio_Container);
+customElements.define('charming_portfolio-plugin', Portfolio_Container);
 
 })(jQuery)

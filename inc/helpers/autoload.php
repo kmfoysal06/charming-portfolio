@@ -1,7 +1,7 @@
 <?php
 /**
  * Class File Autoloader
- * @package SimpleCharm Portfolio Plugin
+ * @package Charming Portfolio
  */
 spl_autoload_register('CHARMING_PORTFOLIO_autoloader');
 function CHARMING_PORTFOLIO_autoloader($class) {

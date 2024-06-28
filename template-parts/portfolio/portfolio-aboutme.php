@@ -1,7 +1,7 @@
 <?php
 /**
  * About Me Template For Portfolio Customization Option
- * @package SimpleCharm Portfolio Plugin
+ * @package Charming Portfolio
  */
 if( ! defined( 'ABSPATH' ) ) {
 	exit;

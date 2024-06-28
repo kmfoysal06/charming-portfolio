@@ -46,8 +46,8 @@
       this.init();
     }
     init() {
-      this.mediaUploader('simplecharm-portfolio-user-image', "simplecharm_portfolio_plugin_user_image", "Upload Image");
-      this.mediaUploader('simplecharm-portfolio-user-image2', "simplecharm_portfolio_plugin_user_image2", "Upload Another Image");
+      this.mediaUploader('simplecharm-portfolio-user-image', "CHARMING_PORTFOLIO_user_image", "Upload Image");
+      this.mediaUploader('simplecharm-portfolio-user-image2', "CHARMING_PORTFOLIO_user_image2", "Upload Another Image");
     }
     mediaUploader(picked_image, hidden_field, custom_text = 'Upload Image') {
       let image = null;
@@ -112,10 +112,10 @@
       this.init();
     }
     init() {
-      this.handleRepeater("simplecharm_social_link_add", ['simplecharm_portfolio_empty-row__social_link', 'screen-reader-text'], '#repeatable-fieldset-one tbody>tr', 'simplecharm_social_link_remove', 'social_link');
-      this.handleRepeater("simplecharm_skill_link_add", ['simplecharm_portfolio_empty-row__skills_link', 'screen-reader-text'], '#repeatable-fieldset-one tbody>tr', 'simplecharm_skills_remove', 'skills');
-      this.handleRepeater("simplecharm_experience_add", ['simplecharm_portfolio_empty-row__experience', 'screen-reader-text'], '#repeatable-fieldset-two tbody>tr', 'simplecharm_experience_remove', 'experiences');
-      this.handleRepeater("simplecharm_work_add", ['simplecharm_portfolio_empty-row__works', 'screen-reader-text'], '#repeatable-fieldset-three tbody>tr', 'simplecharm_project_remove', 'works');
+      this.handleRepeater("simplecharm_social_link_add", ['CHARMING_PORFOLIO_empty-row__social_link', 'screen-reader-text'], '#repeatable-fieldset-one tbody>tr', 'simplecharm_social_link_remove', 'social_link');
+      this.handleRepeater("simplecharm_skill_link_add", ['CHARMING_PORFOLIO_empty-row__skills_link', 'screen-reader-text'], '#repeatable-fieldset-one tbody>tr', 'simplecharm_skills_remove', 'skills');
+      this.handleRepeater("simplecharm_experience_add", ['CHARMING_PORFOLIO_empty-row__experience', 'screen-reader-text'], '#repeatable-fieldset-two tbody>tr', 'simplecharm_experience_remove', 'experiences');
+      this.handleRepeater("simplecharm_work_add", ['CHARMING_PORFOLIO_empty-row__works', 'screen-reader-text'], '#repeatable-fieldset-three tbody>tr', 'simplecharm_project_remove', 'works');
     }
     handleRepeater(addBtn, hiddenFields, insertBefore, removeBtn, dataName) {
       let queue = $(`${insertBefore}:nth-last-child(2) input`).data("queue");
@@ -128,7 +128,7 @@
           $(this).attr('data-queue', queue);
           let name = $(this).attr('name');
           let inputType = $(this)[0].className;
-          $(this).attr('name', `simplecharm_portfolio_plugin[${dataName}][${queue}][][${inputType}]`);
+          $(this).attr('name', `CHARMING_PORFOLIO[${dataName}][${queue}][][${inputType}]`);
           let inputId = $(this).attr("id");
           let LabelFor = $(this).siblings('label').attr('for');
           $(this).attr("id", `${inputId}-${queue}`);

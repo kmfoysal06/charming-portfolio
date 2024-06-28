@@ -1,7 +1,7 @@
 <?php
 /**
  * Enqueue All Assets
- * @package Simplecharm Portfolio Plugin
+ * @package Charming Portfolio
  */
 namespace CHARMING_PORTFOLIO\Inc\Classes;
 
@@ -40,7 +40,7 @@ class Assets
 
         // enqueue styles if its frontpage
         if(is_front_page()){
-            // wp_enqueue_style('CHARMING_PORTFOLIO_tailwindcss');
+            wp_enqueue_style('CHARMING_PORTFOLIO_tailwindcss');
             wp_enqueue_style('dashicons');
         }
     }

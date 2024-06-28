@@ -1,7 +1,7 @@
 <?php
 /**
  * All functions for plugin functionality
- * @package SimpleCharm Portfolio
+ * @package Charming Portfolio
  */
 
 // Exit if accessed directly
