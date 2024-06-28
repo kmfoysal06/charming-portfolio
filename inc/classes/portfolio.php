@@ -156,6 +156,9 @@ class Portfolio
         // validations
         if (isset($_POST['update_portfolio_data'])) {
             $modified_data = $_POST['CHARMING_PORTFOLIO'];
+            echo '<pre>';
+            echo var_dump($modified_data);
+            die();
             if (!isset($_POST['charming-portfolio__nonce']) || !wp_verify_nonce($_POST['charming-portfolio__nonce'], 'CHARMING_PORTFOLIO_modify_page__nonce')) {
                 return;
             }

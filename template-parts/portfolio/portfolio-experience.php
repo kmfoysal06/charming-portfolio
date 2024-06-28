@@ -10,7 +10,7 @@ if( ! defined( 'ABSPATH' ) ) {
 <!-- experience setting -->
 <div class="portfolio-section-wrapper">
   <h3 class="portfolio-section-toggle"><?php _e("Experience Customization","charming-portfolio"); ?></h3>
-<div class="portfolio-section-content simplecharm-portfolio-experience">
+<div class="portfolio-section-content charming-portfolio-experience">
     <table id="repeatable-fieldset-two" width="100%">
       <tbody>
   <?php
@@ -50,7 +50,7 @@ if (is_array($args) && array_key_exists("experiences", $args)):
         <input type="checkbox" id="<?php echo esc_attr("working-now-" . $key); ?>" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][working]" class="working" data-queue="<?php echo esc_attr($key); ?>" <?php checked($working_now,'on'); ?>>
     </td>
     <td>
-        <a class="button simplecharm_experience_remove" href="#1"><?php _e('Remove','charming-portfolio'); ?></a>
+        <a class="button charming_portfolio_experience_remove" href="#1"><?php _e('Remove','charming-portfolio'); ?></a>
     </td>
 </tr>
 
@@ -60,37 +60,37 @@ endif;
 ?>
 
     <!-- empty hidden one for jQuery -->
-    <tr class="CHARMING_PORTFOLIO_empty-row__experience screen-reader-text flex flex-col simplecharm-basic-border simplecharm-basic-padding">
+    <tr class="charming_portfolio_empty-row__experience screen-reader-text flex flex-col simplecharm-basic-border simplecharm-basic-padding">
     <td>
         <label for="experience-institution"><?php _e("institution",'charming-portfolio'); ?></label>
-        <input type="text" class="institution" placeholder="<?php _e("Experience institution",'charming-portfolio'); ?>" name="simplecharm_portfolio[experiences][0][institution]" value="" id="experience-institution" data-queue="0">
+        <input type="text" class="institution" placeholder="<?php _e("Experience institution",'charming-portfolio'); ?>" name="charming_portfolio[experiences][0][institution]" value="" id="experience-institution" data-queue="0">
     </td>
     <td>
         <label for="experience-post-title" title="<?php _e('enter your job post title eg:- Sr. Laravel Developer etc.','charming-portfolio'); ?>"><?php _e("Post Title",'charming-portfolio'); ?></label>
-        <input type="text" class="post-title" placeholder="<?php _e("Post Title",'charming-portfolio'); ?>" name="simplecharm_portfolio[experiences][0][post-title]" value="" id="experience-post-title" data-queue="0">
+        <input type="text" class="post-title" placeholder="<?php _e("Post Title",'charming-portfolio'); ?>" name="charming_portfolio[experiences][0][post-title]" value="" id="experience-post-title" data-queue="0">
     </td>
     <td class="responsibilities" id="repeatable-fieldset-three">
         <label for="responsibilities" title="<?php _e('enter list separated by three dash (---) eg:- ---first responsibility --- second responsibility ---third responsibility etc.','charming-portfolio'); ?>"><?php _e("Responsibilities",'charming-portfolio'); ?></label>
-        <textarea name="simplecharm_portfolio[experiences][0][responsibility]" id="responsibilities" cols="50" rows="5" class="responsibility" data-queue="0"></textarea>
+        <textarea name="charming_portfolio[experiences][0][responsibility]" id="responsibilities" cols="50" rows="5" class="responsibility" data-queue="0"></textarea>
     </td>
     <td>
         <label for="start-date"><?php _e('Start Date','charming-portfolio'); ?></label>
-        <input type="date" class="start_date" name="simplecharm_portfolio[experiences][0][start_date]" placeholder="<?php _e('Start Date','charming-portfolio'); ?>" id="start-date" data-queue="0">
+        <input type="date" class="start_date" name="charming_portfolio[experiences][0][start_date]" placeholder="<?php _e('Start Date','charming-portfolio'); ?>" id="start-date" data-queue="0">
     </td>
     <td>
         <label for="end-date"><?php _e('End Date','charming-portfolio'); ?></label>
-        <input type="date" class="end_date" name="simplecharm_portfolio[experiences][0][end_date]" placeholder="<?php _e('End Date','charming-portfolio'); ?>" id="end-date" data-queue="0">
+        <input type="date" class="end_date" name="charming_portfolio[experiences][0][end_date]" placeholder="<?php _e('End Date','charming-portfolio'); ?>" id="end-date" data-queue="0">
     </td>
     <td>
         <label for="working-now" title="?<?php _e('Are You Still Working Here','charming-portfolio'); ?>"><?php _e('Still Working?','charming-portfolio'); ?></label>
-        <input type="checkbox" id="working-now" name="simplecharm_portfolio[experiences][0][working]" class="working" data-queue="0">
+        <input type="checkbox" id="working-now" name="charming_portfolio[experiences][0][working]" class="working" data-queue="0">
     </td>
     <td>
-        <a class="button simplecharm_experience_remove" href="#1"><?php _e('Remove','charming-portfolio'); ?></a>
+        <a class="button charming_portfolio_experience_remove" href="#1"><?php _e('Remove','charming-portfolio'); ?></a>
     </td>
     </tr>
   </tbody>
 </table>
-<p><a id="simplecharm_experience_add" class="button" href="#"><?php _e('Add Another','charming-portfolio'); ?></a></p>
+<p><a id="charming_portfolio_experience_add" class="button" href="#"><?php _e('Add Another','charming-portfolio'); ?></a></p>
 </div>
 </div>

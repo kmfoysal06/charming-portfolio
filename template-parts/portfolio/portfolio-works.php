@@ -37,13 +37,13 @@ if( ! defined( 'ABSPATH' ) ) {
             <input type="text" class="link" placeholder="<?php _e("Project Live Link","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][link]" value="<?php echo esc_url($work['link']); ?>" id="<?php echo esc_attr("project-link-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>">
         </td>
         <td>
-            <a class="button simplecharm_project_remove" href="#1"><?php _e("Remove","charming-portfolio"); ?></a>
+            <a class="button charming_portfolio_project_remove" href="#1"><?php _e("Remove","charming-portfolio"); ?></a>
         </td>
         </tr>
         <?php endforeach; ?>
         <?php endif?>
     <!-- empty hidden one for jQuery -->
-    <tr class="simplecharm_portfolio_empty-row__works screen-reader-text flex simplecharm-basic-border simplecharm-basic-padding flex flex-col">
+    <tr class="charming_portfolio_empty-row__works screen-reader-text flex simplecharm-basic-border simplecharm-basic-padding flex flex-col">
     <td>
         <label for="project-title"><?php _e("Title","charming-portfolio"); ?></label>
         <input type="text" class="title" placeholder="<?php _e("Project Title","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][0][title]" value="" id="project-title" data-queue="0">
@@ -61,11 +61,11 @@ if( ! defined( 'ABSPATH' ) ) {
         <input type="text" class="link" placeholder="<?php _e("Project Live Link","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][0][link]" value="" id="project-link" data-queue="0">
     </td>
     <td>
-        <a class="button simplecharm_project_remove" href="#1"><?php _e("Remove","charming-portfolio"); ?></a>
+        <a class="button charming_portfolio_project_remove" href="#1"><?php _e("Remove","charming-portfolio"); ?></a>
     </td>
     </tr>
   </tbody>
 </table>
-<p><a id="simplecharm_work_add" class="button" href="#"><?php _e("Add Another","charming-portfolio"); ?></a></p>
+<p><a id="charming_portfolio_work_add" class="button" href="#"><?php _e("Add Another","charming-portfolio"); ?></a></p>
 </div>
 </div>

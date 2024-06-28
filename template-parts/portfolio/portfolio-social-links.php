@@ -24,7 +24,7 @@ if (is_array($args) && array_key_exists("social_links", $args)):
                   <label for="<?php echo esc_attr("social_link_url_" . $key); ?>"></label>
                   <input type="text" class="url" data-queue="0" placeholder="social link" name="CHARMING_PORTFOLIO[social_link][<?php echo esc_attr($key); ?>][][url]" value="<?php echo is_array($social['url']) ? esc_url(implode('', $social['url'])) : esc_url($social['url']); ?>" id="<?php echo esc_attr("social_link_url_" . $key); ?>" />
                 </td>
-                <td><a class="button simplecharm_social_link_remove" href="#1"><?php _e("Remove","charming-portfolio"); ?></a></td>
+                <td><a class="button charming_portfolio_social_link_remove" href="#1"><?php _e("Remove","charming-portfolio"); ?></a></td>
               </tr>
               <?php
     endforeach;
@@ -32,16 +32,16 @@ if (is_array($args) && array_key_exists("social_links", $args)):
         ?>
 
     <!-- empty hidden one for jQuery -->
-    <tr class="simplecharm_portfolio_empty-row__social_link screen-reader-text flex">
+    <tr class="charming_portfolio_empty-row__social_link screen-reader-text flex">
            <td>
             <input type="text" class="name" data-queue="0" placeholder="social link name" name="CHARMING_PORTFOLIO[social_link][0][][name]" value="" id="social_link_name" /></td>
           <td>
             <input type="text" class="url" data-queue="0" placeholder="social link" name="CHARMING_PORTFOLIO[social_link][0][][url]" value="" id="social_link_url" />
           </td>
-          <td><a class="button simplecharm_social_link_remove" href="#"><?php _e("Remove","charming-portfolio"); ?></a></td>
+          <td><a class="button charming_portfolio_social_link_remove" href="#"><?php _e("Remove","charming-portfolio"); ?></a></td>
         </tr>
   </tbody>
 </table>
-<p><a id="simplecharm_social_link_add" class="button" href="#"><?php _e("Add Another","charming-portfolio"); ?></a></p>
+<p><a id="charming_portfolio_social_link_add" class="button" href="#"><?php _e("Add Another","charming-portfolio"); ?></a></p>
 </div>
 </div>

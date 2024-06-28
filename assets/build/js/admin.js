@@ -112,10 +112,10 @@
       this.init();
     }
     init() {
-      this.handleRepeater("simplecharm_social_link_add", ['CHARMING_PORFOLIO_empty-row__social_link', 'screen-reader-text'], '#repeatable-fieldset-one tbody>tr', 'simplecharm_social_link_remove', 'social_link');
-      this.handleRepeater("simplecharm_skill_link_add", ['CHARMING_PORFOLIO_empty-row__skills_link', 'screen-reader-text'], '#repeatable-fieldset-one tbody>tr', 'simplecharm_skills_remove', 'skills');
-      this.handleRepeater("simplecharm_experience_add", ['CHARMING_PORFOLIO_empty-row__experience', 'screen-reader-text'], '#repeatable-fieldset-two tbody>tr', 'simplecharm_experience_remove', 'experiences');
-      this.handleRepeater("simplecharm_work_add", ['CHARMING_PORFOLIO_empty-row__works', 'screen-reader-text'], '#repeatable-fieldset-three tbody>tr', 'simplecharm_project_remove', 'works');
+      this.handleRepeater("charming_portfolio_social_link_add", ['charming_portfolio_empty-row__social_link', 'screen-reader-text'], '#repeatable-fieldset-one tbody>tr', 'charming_portfolio_social_link_remove', 'social_link');
+      this.handleRepeater("charming_portfolio_skill_link_add", ['charming_portfolio_empty-row__skills_link', 'screen-reader-text'], '#repeatable-fieldset-one tbody>tr', 'charming_portfolio_skills_remove', 'skills');
+      this.handleRepeater("charming_portfolio_experience_add", ['charming_portfolio_empty-row__experience', 'screen-reader-text'], '#repeatable-fieldset-two tbody>tr', 'charming_portfolio_experience_remove', 'experiences');
+      this.handleRepeater("charming_portfolio_work_add", ['charming_portfolio_empty-row__works', 'screen-reader-text'], '#repeatable-fieldset-three tbody>tr', 'charming_portfolio_project_remove', 'works');
     }
     handleRepeater(addBtn, hiddenFields, insertBefore, removeBtn, dataName) {
       let queue = $(`${insertBefore}:nth-last-child(2) input`).data("queue");
@@ -124,6 +124,7 @@
         queue = isNaN(queue) ? 1 : queue;
         let row = $(`.${hiddenFields.join(".")}`).clone(true).removeClass(hiddenFields.join(" "));
         let newInputs = row.find('input, textarea');
+        console.log(`.${hiddenFields.join(".")}`);
         newInputs.each(function () {
           $(this).attr('data-queue', queue);
           let name = $(this).attr('name');
