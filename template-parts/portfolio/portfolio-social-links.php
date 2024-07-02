@@ -8,7 +8,7 @@ if( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div class="portfolio-section-wrapper">
-    <h3 class="portfolio-section-toggle"><?php _e("Social Links","charming-portfolio"); ?></h3>
+    <h3 class="portfolio-section-toggle"><?php esc_html_e("Social Links","charming-portfolio"); ?></h3>
 <div class="portfolio-section-content">
 <table id="repeatable-fieldset-one" width="100%">
   <tbody>
@@ -24,7 +24,7 @@ if (is_array($args) && array_key_exists("social_links", $args)):
                   <label for="<?php echo esc_attr("social_link_url_" . $key); ?>"></label>
                   <input type="text" class="url" data-queue="0" placeholder="social link" name="CHARMING_PORTFOLIO[social_link][<?php echo esc_attr($key); ?>][][url]" value="<?php echo is_array($social['url']) ? esc_url(implode('', $social['url'])) : esc_url($social['url']); ?>" id="<?php echo esc_attr("social_link_url_" . $key); ?>" />
                 </td>
-                <td><a class="button charming_portfolio_social_link_remove" href="#1"><?php _e("Remove","charming-portfolio"); ?></a></td>
+                <td><a class="button charming_portfolio_social_link_remove" href="#1"><?php esc_html_e("Remove","charming-portfolio"); ?></a></td>
               </tr>
               <?php
     endforeach;
@@ -38,10 +38,10 @@ if (is_array($args) && array_key_exists("social_links", $args)):
           <td>
             <input type="text" class="url" data-queue="0" placeholder="social link" name="CHARMING_PORTFOLIO[social_link][0][][url]" value="" id="social_link_url" />
           </td>
-          <td><a class="button charming_portfolio_social_link_remove" href="#"><?php _e("Remove","charming-portfolio"); ?></a></td>
+          <td><a class="button charming_portfolio_social_link_remove" href="#"><?php esc_html_e("Remove","charming-portfolio"); ?></a></td>
         </tr>
   </tbody>
 </table>
-<p><a id="charming_portfolio_social_link_add" class="button" href="#"><?php _e("Add Another","charming-portfolio"); ?></a></p>
+<p><a id="charming_portfolio_social_link_add" class="button" href="#"><?php esc_html_e("Add Another","charming-portfolio"); ?></a></p>
 </div>
 </div>

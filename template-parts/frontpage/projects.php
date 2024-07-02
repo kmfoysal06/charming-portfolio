@@ -13,8 +13,8 @@ if (is_array($args) && array_key_exists("works", $args) && !empty($args['works']
 
 ?>
 	<div class="project-title my-3 flex flex-col items-center">
-		<div class="badge badge-neutral"><?php _e("Work","charming-portfolio"); ?></div>
-		<p><?php _e("Some of the noteworthy projects I have built:","charming-portfolio"); ?></p>
+		<div class="badge badge-neutral"><?php esc_html_e("Work","charming-portfolio"); ?></div>
+		<p><?php esc_html_e("Some of the noteworthy projects I have built:","charming-portfolio"); ?></p>
 	</div>
 	<div class="single-work-info grid lg:grid-cols-2 md:grid-cols-2 gap-x-4 my-3">
 	<?php 

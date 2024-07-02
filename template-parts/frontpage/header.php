@@ -21,5 +21,5 @@ if( ! defined( 'ABSPATH' ) ) {
 		}
 	?>
 	<a class="skip-link screen-reader-text" href="#CHARMING_PORTFOLIO-content">
-        <?php _e( 'Skip to content', 'charming-portfolio' ); ?></a>
+        <?php esc_html_e( 'Skip to content', 'charming-portfolio' ); ?></a>
 	<main id="CHARMING_PORTFOLIO-content" tabindex="-1">

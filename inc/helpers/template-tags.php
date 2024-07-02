@@ -95,7 +95,7 @@ if (!function_exists("CHARMING_PORTFOLIO_link_social_frontend")) {
         foreach ($social_links as $social_link) {
             $icon = strtolower(is_array($social_link['name']) ? implode('', $social_link['name']) : $social_link['name']);
             if (in_array($icon, $allowed_icons)) {
-                echo '<a class="simplecharm-portfolio-button-hover" href="' . esc_attr(is_array($social_link['url']) ? implode('', $social_link['url']) : $social_link['url']) . '"><span class="dashicons dashicons-' . $icon . '"></span></a> ';
+                echo '<a class="simplecharm-portfolio-button-hover" href="' . esc_attr(is_array($social_link['url']) ? implode('', $social_link['url']) : $social_link['url']) . '"><span class="' . esc_attr('dashicons dashicons-' . $icon) . '"></span></a> ';
             } else {
                 echo '<a class="simplecharm-portfolio-button-hover" href="' . esc_attr(is_array($social_link['url']) ? implode('', $social_link['url']) : $social_link['url']) . '"><span class="dashicons dashicons-admin-links"></span></a> ';
             }

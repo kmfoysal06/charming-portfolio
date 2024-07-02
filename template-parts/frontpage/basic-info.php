@@ -14,7 +14,7 @@ if( ! defined( 'ABSPATH' ) ) {
       <p class="py-4"><?php echo esc_html($args['short_description']); ?></p>
       <br>
       <?php if(isset($args['address'])): ?>
-      <p><span class="dashicons dashicons-location-alt mr-3"></span><?php echo $args['address']; ?></p>
+      <p><span class="dashicons dashicons-location-alt mr-3"></span><?php echo esc_html($args['address']); ?></p>
       <?php endif;?>
       <p><span class="mr-3"><i class="<?php echo esc_attr($args['available'] == 'True' ? 'simplecharm-portfolio-available' : 'simplecharm-portfolio-available-false') ; ?>"></i></span> <?php echo esc_html($args['available'] == 'True' ? 'Available for New Projects' : 'Currently Not Available for New Projects') ; ?></p>
       <br>
