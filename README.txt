@@ -12,7 +12,7 @@ Text Domain: charming-portfolio
 Charming Portfolio is a simple plugin that update the frontpage as portfolio landing page with user provided information.
 
 === Description ==
-Charming Portfolio is a simple plugin that update the frontpage as portfolio landing page with user provided information. This plugin is very easy to use and user friendly. 
+Charming Portfolio is a simple plugin that update the frontpage as portfolio landing page with user provided information. This plugin is very easy to use and user friendly.
 
 
 === Installation ===

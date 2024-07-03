@@ -1,2 +1,3 @@
--fix dark theme issue.
--fix template part function escape problem
+-fix the font loading issue
+-use theme 2024 theme font
+-fix footer text alignment

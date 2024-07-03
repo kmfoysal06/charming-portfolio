@@ -24,7 +24,7 @@ if( ! defined( 'ABSPATH' ) ) {
 				printf(
 					wp_kses(
 					// translators: Image URL
-						esc_html__('Image:- <img src="%s" width="100px">','charming-portfolio'),['img'=>['src'=>[],'width'=>array()]]),esc_url($args['user_image']
+						__('Image:- <img src="%s" width="100px">','charming-portfolio'),['img'=>['src'=>[],'width'=>array()]]),esc_url($args['user_image']
 					)
 				);
 				?>
@@ -34,7 +34,7 @@ if( ! defined( 'ABSPATH' ) ) {
 				printf(
 					wp_kses(
 						// translators: Image URL
-						esc_html__('2nd Image:- <img src="%s" width="100px">','charming-portfolio'),['img'=>['src'=>[],'width'=>array()]]),esc_url($args['user_image2']
+						__('2nd Image:- <img src="%s" width="100px">','charming-portfolio'),['img'=>['src'=>[],'width'=>array()]]),esc_url($args['user_image2']
 					)
 				);
 				?>

@@ -28,8 +28,6 @@ if (!function_exists('CHARMING_PORTFOLIO_get_template_part')) {
         // Load the template file if it exists
         if (file_exists($template)) {
             load_template($template, false, $args);
-        } else {
-            echo $template;
         }
     }
 }

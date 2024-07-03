@@ -17,14 +17,14 @@ $CHARMING_PORTFOLIO_dashicons_css_url = includes_url('css/dashicons.min.css');
 <!-- <charming_portfolio-plugin data-tailwind-css-url="<?php //echo esc_url($CHARMING_PORTFOLIO_css_url); ?>" data-dashicons-css-url="<?php //echo esc_url($CHARMING_PORTFOLIO_dashicons_css_url); ?>" class="charming_portfolio-plugin"> -->
 <div class="charming_portfolio-plugin-inner">
 	<!-- hero section -->
-<section class="min-h-screen bg-base-200 min-h-lvh my-2 grid items-center">
+<section class="min-h-screen min-h-lvh my-2 grid items-center">
   <?php
 CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/basic-info", "", $portfolio_saved_value);
 ?>
 </section>
 
 <!-- about me section -->
-<section class="about-me min-h-screen bg-base-200 min-h-max my-2 flex justify-center">
+<section class="about-me min-h-screen min-h-max my-2 flex justify-center">
  <?php
 CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/aboutme", "", $portfolio_saved_value);
 ?>

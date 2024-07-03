@@ -24,10 +24,10 @@
 	background-color: $background-color;
 }
 p,span,cite{
-	color: $secondary-color-dark;
+	color: $secondary-color;
 }
 h1,h2,h3,h4,h5,h6{
-	color: $primary-color-dark;
+	color: $primary-color;
 }
 section{
 	min-height: 100vh;
@@ -38,6 +38,6 @@ section{
 }
 foorer{
 	h1,h2,h3,h4,h5,h6{
-		color: #F9FAFB;
+		// color: #F9FAFB;
 	}
 }
