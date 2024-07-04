@@ -45,10 +45,5 @@ CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/aboutme", "", $po
 	<?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/projects", "", $portfolio_saved_value); ?>
 </section>
 
-<!-- Contact Section -->
-<section class="home-footer w-full bg-gray-400 text-white py-3 text-center shadow-2xl my-2">
-	<?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/footer", "", $portfolio_saved_value);?>
-</section>
-</div>
-<!-- </charming_portfolio-plugin> -->
-<?php get_footer();?>
+<!-- Contact and Footer -->
+<?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/footer", "", $portfolio_saved_value);?>

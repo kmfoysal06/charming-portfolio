@@ -7,6 +7,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 ?>
+<section class="home-footer w-full bg-gray-400 text-white py-3 text-center shadow-2xl my-2">
 <footer role="contentinfo" class="footer-inner flex flex-col justify-center gap-3">
 			<div class="badge badge-neutral p-2 self-center"><?php esc_html_e("Get in Touch", "charming-portfolio");?></div>
 			<div class="footer-text">
@@ -41,6 +42,8 @@ if (!defined('ABSPATH')) {
 				</div>
 			</div>
 		</footer>
+	</section>
+</div>
 		<div class="simplecharm-portfolio-bottom-alert" id="simplecharm-portfolio-bottom-alert"></div>
 
 	</main>
