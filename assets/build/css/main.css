@@ -1601,16 +1601,12 @@ html {
 }
 /* inter-regular - latin */
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: "Cardo";
+  font-display: swap;
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
-  src: url(../3024975fa45fb5ca9167.woff2) format("woff2");
+  src: url(../1a1f25f5446ea9c56bf9.ttf) format("ttf"), url(../c12e1e7349c6ded0bb92.woff) format("woff"), url(../6ebe870d82a7f9702f06.svg) format("svg"), url(../d571c0fd389815f3089a.woff2) format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-#CHARMING_PORTFOLIO-content {
-  font-family: "Cardo", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
-}
-
 .simplecharm-skill-card {
   --col-1: rgb(216 78 39);
   --col-2: rgb(29 78 216);
@@ -1704,6 +1700,10 @@ html {
 /**
  * Basic Styling
  */
+main#CHARMING_PORTFOLIO-content {
+  font-family: "Inter", serif, sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
