@@ -34,7 +34,7 @@ if (is_array($args) && array_key_exists("experiences", $args)):
         <input type="text" class="post-title" placeholder="<?php esc_html_e('Post Title','charming-portfolio'); ?>" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][post-title]" value="<?php echo (array_key_exists("post-title",$flattern_experience)) ? esc_attr($flattern_experience['post-title']) : '' ;?>" id="<?php echo esc_attr("experience-post-title-" . $key,'charming-portfolio'); ?>" data-queue="<?php echo esc_attr($key); ?>">
     </td>
     <td class="responsibilities" id="repeatable-fieldset-three">
-        <label for="<?php echo esc_attr("responsibilities-" . $key); ?>" title="<?php esc_attr_e('enter list separated by three dash (---) eg:- ---first responsibility --- second responsibility ---third responsibility etc.','charming-portfolio'); ?>"><?php esc_html_e('Responsibilities','charming-portfolio'); ?></label>
+        <label for="<?php echo esc_attr("responsibilities-" . $key); ?>" title="<?php esc_attr_e('You Can Not Use Quotation ("" and \'\') so You Can Use [quote], [squote] and [bold][/bold] for Adding Double and Single Quotation and Make Any Text Bold.','charming-portfolio'); ?>"><?php esc_html_e('Responsibilities','charming-portfolio'); ?></label>
         <textarea name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key,'charming-portfolio'); ?>][][responsibility]" id="<?php echo esc_attr("responsibilities-" . $key); ?>" cols="50" rows="5" class="responsibility" data-queue="<?php echo esc_attr($key); ?>"><?php echo esc_textarea((array_key_exists("responsibility",$flattern_experience)) ? $flattern_experience['responsibility'] : '') ;?></textarea>
     </td>
     <td>

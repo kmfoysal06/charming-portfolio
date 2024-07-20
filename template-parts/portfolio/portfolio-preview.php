@@ -6,7 +6,6 @@
 if( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-die();
 ?>
 <div class="portfolio-section-wrapper">
 	<h2 class="portfolio-section-toggle"><?php esc_html_e("Your Informations are Here:-","charming-portfolio"); ?></h2>
@@ -138,3 +137,10 @@ die();
 		</div>
 	</div>
 </div>
+<?php
+	$a =  <<<END
+		aabs
+			b
+				c
+END;
+echo $a;

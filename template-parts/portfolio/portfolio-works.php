@@ -11,9 +11,11 @@ if( ! defined( 'ABSPATH' ) ) {
 <div class="portfolio-section-wrapper">
   <h3 class="portfolio-section-toggle"><?php esc_html_e("Project Customization",'charming-portfolio'); ?></h3>
 <div class="portfolio-section-content simplecharm-portfolio-projects">
+    <p><?php
+    esc_html_e("You Can Not Use Quotation (\"\" and '') so You Can Use [quote], [squote] and [bold][/bold] for Adding Double and Single Quotation and Make Any Text Bold.","charming-portfolio") ?>
+    </p>
     <table id="repeatable-fieldset-three" width="100%">
       <tbody>
-        <pre>
         <?php if(is_array($args) && array_key_exists('works', $args)): 
         $flattern_works = CHARMING_PORTFOLIO_load_works($args['works']); ?>
         <?php foreach( $flattern_works as $key => $work ):

@@ -28,7 +28,13 @@ if (is_array($args) && array_key_exists("works", $args) && !empty($args['works']
 				<?php echo esc_html(isset($work['title']) ? $work['title'] : ''); ?>
 			</h2>
 			<p class="overflow-y-auto">
-				<?php echo esc_html(isset($work['description']) ? $work['description'] : ''); ?>
+				<?php 
+					printf(wp_kses(
+						isset($work['description']) ? CHARMING_PORTFOLIO_special_tag($work['description']) : ''
+						,
+						['b' => []]
+					))
+				 ?>
 			</p>
 			<?php printf(
 				wp_kses(
@@ -39,7 +45,11 @@ if (is_array($args) && array_key_exists("works", $args) && !empty($args['works']
 						]
 					]
 				)
-			) ?>
+			);
+			// $tags_array = (!empty($tags) && strpos(", ", $tags) && explode(', ', $tags) !== null) ? explode(', ', $tags) : [];
+			// echo var_dump(explode(', ', $work['tags']) );
+			?>
+
 		<?php if(array_key_exists('link',$work) && !empty($work['link'])): ?>
 			<div class="work-live-link">
 			<a href="<?php echo esc_url(isset($work['link']) ? $work['link'] : ''); ?>"><span class="dashicons dashicons-external"></span></i></a>

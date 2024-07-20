@@ -1,2 +1,6 @@
 == v1.0 ==
--Initial Release
+-Initial Release.
+== v1.1 ==
+-Added Special Tags for Textareas.
+-Fixed Font Issues.
+-Imoroved Responsibility

@@ -127,7 +127,7 @@ if (!function_exists("CHARMING_PORTFOLIO_load_skills")) {
 
 /**
  * Returns An Array Of Experience In Easy To Iterate Format.
- * For Using The Complex Experience Array That Stored In Database In A Complex Array Format.
+ * For Using The Complex Experience Array That Stored In Database In A Simple Array Format.
  * @param array $experiences
  * @return array
  */
@@ -180,6 +180,8 @@ if (!function_exists("CHARMING_PORTFOLIO_experience_admin")) {
  * Load The Responsibility Field as List if Responsibilities are Separated with Three Hyphens (---).
  * @param string $responsibilities
  * @return string
+ * 
+ * TODO: Make this function more easy to use.
  */
 if (!function_exists("CHARMING_PORTFOLIO_experience_responsibility_list")) {
     function CHARMING_PORTFOLIO_experience_responsibility_list($responsibilities) {
@@ -203,11 +205,11 @@ if (!function_exists("CHARMING_PORTFOLIO_experience_responsibility_list")) {
 if (!function_exists("CHARMING_PORTFOLIO_split_tags")) {
     function CHARMING_PORTFOLIO_split_tags($tags) {
         $html = '';
-        $tags_array = (!empty($tags) && strpos(", ", $tags) && explode(', ', $tags) !== null) ? explode(', ', $tags) : [];
-        $html .= '<div class="work-tags grid lg:grid-cols-4  md:grid-cols-3 sm:grid-cols-2 gap-3">';
+        $tags_array = (!empty($tags) && explode(', ', $tags) !== null) ? explode(', ',$tags) : [];
+        $html .= '<div class="work-tags">';
         foreach ($tags_array as $single_tag) {
             if (empty($single_tag)) continue;
-            $html .= '<div class="w-full badge badge-neutral p-4" tabindex="0">' . $single_tag . '</div>';
+            $html .= '<div class="min-w-max badge badge-neutral p-4 mx-2 my-2" tabindex="0">' . $single_tag . '</div>';
         }
         $html .= '</div>';
         return $html;
@@ -247,6 +249,29 @@ if (!function_exists("CHARMING_PORTFOLIO_works_admin")) {
             $works_array[] = $work['title'];
         }
         return $works_array;
+    }
+}
+
+/**
+ * 1.make the word or phrase bold that between [bold][/bold]
+ * 2.add [quote] instead of quotation
+ * 3.add [squote] instead of single quote.
+ * @param string $textarea_value
+ * @return string
+ * 
+ * USAGE:
+ * [bold] bold text [/bold]
+ * [quote] quoted text [quote] quotation
+ * [squote] single quoted text [/quote]
+ */
+if (!function_exists("CHARMING_PORTFOLIO_special_tag")) {
+    function CHARMING_PORTFOLIO_special_tag($textarea_value) {
+        if(empty($textarea_value)) return ;
+        $bold_text = str_replace("[bold]", "<b>",$textarea_value);
+        $bold_text_end = str_replace("[/bold]", "</b>",$bold_text);
+        $quote_text = str_replace("[quote]", "\"", $bold_text_end);
+        $single_quote_text = str_replace("[squote]", "'", $quote_text);
+        return $single_quote_text;
     }
 }
 

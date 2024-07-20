@@ -32,9 +32,19 @@ if (is_array($args) && array_key_exists("experiences", $args) && !empty($args['e
 			</div>
 			<div class="experience-info experience-name flex flex-col justify-center p-4 gap-4">
 				<h3 class="text-2xl lg:text-left md:text-left sm:text-center"><?php echo esc_html($flattern_experience['post-title']); ?></h3>
+				<p>
 				<?php
-				echo esc_html(CHARMING_PORTFOLIO_experience_responsibility_list($flattern_experience['responsibility']));
+				
+
+					printf(wp_kses(
+		            isset($flattern_experience['responsibility']) ? CHARMING_PORTFOLIO_special_tag($flattern_experience['responsibility']) : '',
+		            ['b' => [],
+					  'ul' => [
+					  	'li' => []
+					  	]]
+		          ))
 				?>
+				</p>
 			</div>
 			<div class="experience-date experience-name flex justify-center items-center lg:col-auto md:col-span-2">
 				<?php

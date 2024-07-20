@@ -16,7 +16,13 @@ if( ! defined( 'ABSPATH' ) ) {
         <img src="<?php echo esc_url($args["user_image2"]) ?>" class="sm:w-full md:w-2/4 lg:w-2/4 rounded-lg shadow-2xl" />
     <div>
       <p class="py-6">
-        <?php echo esc_html($args["description"]); ?>
+        <?php
+          printf(wp_kses(
+            isset($args['description']) ? CHARMING_PORTFOLIO_special_tag($args['description']) : ''
+            ,
+            ['b' => []]
+          ))
+         ?>
       </p>
     </div>
   </div>
