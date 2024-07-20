@@ -75,8 +75,8 @@ const rules = [
       options: {
         name: '[path][name].[ext]',
         outputPath: 'fonts/',
-        publicPath:  '../'
-        // publicPath: 'production' === process.env.NODE_ENV ? '../' : '../../'
+        // publicPath:  '../'
+        publicPath: 'production' === process.env.NODE_ENV ? '../' : '../../'
       }
     }
   }

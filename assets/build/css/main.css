@@ -852,6 +852,10 @@
 .w-full {
   width: 100%;
 }
+.min-w-max {
+  min-width: -moz-max-content;
+  min-width: max-content;
+}
 .cursor-pointer {
   cursor: pointer;
 }
@@ -901,10 +905,6 @@
 }
 .rounded-lg {
   border-radius: 0.5rem;
-}
-.bg-blue-700 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(29 78 216 / var(--tw-bg-opacity));
 }
 .bg-gray-400 {
   --tw-bg-opacity: 1;
@@ -1605,18 +1605,20 @@ html {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
-  src: url(../1a1f25f5446ea9c56bf9.ttf) format("ttf"), url(../c12e1e7349c6ded0bb92.woff) format("woff"), url(../6ebe870d82a7f9702f06.svg) format("svg"), url(../d571c0fd389815f3089a.woff2) format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url(../acf618d5f558ef97d3de.ttf) format("ttf"), url(../2b20d080ff75965ede84.woff) format("woff"), url(../d961bd7ce1cfd072b4a1.svg) format("svg"), url(../89f0e1b672b383a26401.woff2) format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
+/* Cardo */
 .simplecharm-skill-card {
   --col-1: rgb(216 78 39);
   --col-2: rgb(29 78 216);
-  border: 5px solid var(--col-1);
-  background: var(--col-2);
+  border: 1px solid var(--col-1);
+  text-shadow: 2px 2px 2px #a0e;
+  height: 100%;
 }
 
 .simplecharm-skill-card:is(:hover, :focus) {
-  background: var(--col-1);
   border-color: var(--col-2);
+  text-shadow: 2px 2px 2px #e0a;
 }
 
 #simplecharm-portfolio-bottom-alert {
@@ -1704,6 +1706,10 @@ main#CHARMING_PORTFOLIO-content {
   font-family: "Inter", serif, sans-serif;
 }
 
+.CHARMING_PORTFOLIO-welcome-emoji {
+  display: contents;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -1739,9 +1745,6 @@ section {
   }
   .sm\:grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
-  }
-  .sm\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .sm\:flex-col {
     flex-direction: column;
@@ -1797,9 +1800,6 @@ section {
   }
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .lg\:grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
   .lg\:grid-cols-5 {
     grid-template-columns: repeat(5, minmax(0, 1fr));
