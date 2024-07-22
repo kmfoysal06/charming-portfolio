@@ -137,10 +137,3 @@ if( ! defined( 'ABSPATH' ) ) {
 		</div>
 	</div>
 </div>
-<?php
-	$a =  <<<END
-		aabs
-			b
-				c
-END;
-echo $a;

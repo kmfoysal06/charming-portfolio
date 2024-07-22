@@ -1661,9 +1661,9 @@ html {
   border-radius: 100%;
 }
 
-.simplecharm-portfolio-welcome-emoji {
+.CHARMING_PORTFOLIO-welcome-emoji {
   position: absolute;
-  animation: simplecharm-portfolio-welcome-emoji 1.5s linear infinite;
+  animation: CHARMING_PORTFOLIO-welcome-emoji 1.5s linear infinite;
 }
 
 @keyframes simplecharm-portfolio-available {
@@ -1674,7 +1674,7 @@ html {
     box-shadow: 0px 0px 20px 1px #01FEF6, 0px 0px 24px 2px #001222;
   }
 }
-@keyframes simplecharm-portfolio-welcome-emoji {
+@keyframes CHARMING_PORTFOLIO-welcome-emoji {
   0% {
     transform: rotate(-15deg);
   }
