@@ -3,6 +3,7 @@
  * Class File Autoloader
  * @package Charming Portfolio
  */
+if ( ! defined( 'ABSPATH' ) ) exit;
 spl_autoload_register('CHARMING_PORTFOLIO_autoloader');
 function CHARMING_PORTFOLIO_autoloader($class) {
 	$namespace = 'CHARMING_PORTFOLIO';

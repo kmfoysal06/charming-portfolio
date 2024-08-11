@@ -9,7 +9,6 @@ const CopyPlugin              = require('copy-webpack-plugin')
 // JS Directory path.
 const JS_DIR    = path.resolve(__dirname, 'src/js')
 const IMG_DIR   = path.resolve(__dirname, 'src/img')
-const FONT_DIR  = path.resolve(__dirname, 'src/fonts')
 const BUILD_DIR = path.resolve(__dirname, 'build')
 
 const entry = {
@@ -32,10 +31,6 @@ const plugins = (argv) => [
         from: path.join(IMG_DIR, '/'),
         to: path.join(BUILD_DIR, 'img')
       },
-      {
-        from: path.join(FONT_DIR, '/'),
-        to: path.join(BUILD_DIR, 'fonts')
-      }
     ]
   })
 ]
@@ -67,19 +62,6 @@ const rules = [
       }
     }
   },
-  {
-    test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-    exclude: [IMG_DIR, /node_modules/],
-    use: {
-      loader: 'file-loader',
-      options: {
-        name: '[path][name].[ext]',
-        outputPath: 'fonts/',
-        // publicPath:  '../'
-        publicPath: 'production' === process.env.NODE_ENV ? '../' : '../../'
-      }
-    }
-  }
 ]
 
 /**

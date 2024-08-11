@@ -6,8 +6,13 @@
 	}
 	img:nth-child(2){
 	    position: absolute;
-	    top: -10%;
-	    left: 5%;
+	    top: -10px;
+	    left: 35px;
 	    filter: blur(5px);
+	    @media (max-width: 768px){
+			display: none;
+		}
+		display: block;
 	}
+
 }

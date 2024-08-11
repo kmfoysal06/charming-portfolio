@@ -5,6 +5,8 @@
  */
 namespace CHARMING_PORTFOLIO\Inc\Classes;
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 use CHARMING_PORTFOLIO\Inc\Traits\Singleton;
 
 class Portfolio
@@ -155,7 +157,7 @@ class Portfolio
     {
         // validations
         if (isset($_POST['update_portfolio_data'])) {
-            if (!isset($_POST['charming-portfolio__nonce']) || !wp_verify_nonce($_POST['charming-portfolio__nonce'], 'CHARMING_PORTFOLIO_modify_page__nonce')) {
+            if (!isset($_POST['charming-portfolio__nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['charming-portfolio__nonce'])), 'CHARMING_PORTFOLIO_modify_page__nonce')) {
                 return;
             }
             if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
@@ -166,7 +168,7 @@ class Portfolio
                 return;
             }
 
-            $modified_data = $_POST['CHARMING_PORTFOLIO'];
+            $modified_data = $this->sanitize_array($_POST['CHARMING_PORTFOLIO']);
 
             // check for name is valid and it should between 2 to 20 words
             if (!preg_match("/^[a-zA-Z\s]{2,20}$/", $modified_data['name'])) {
@@ -243,9 +245,6 @@ class Portfolio
                 return;
             }
 
-            // sanitization
-            $modified_data = $this->sanitize_array($modified_data);
-
             if (update_option('CHARMING_PORTFOLIO_data', $modified_data)) {
                 // Display success message
                 add_action('admin_notices', function () {
@@ -262,7 +261,7 @@ class Portfolio
     {
         if (isset($_POST['update_portfolio_data'])) {
             //validations
-            if (!isset($_POST['charming-portfolio__nonce']) || !wp_verify_nonce($_POST['charming-portfolio__nonce'], 'CHARMING_PORTFOLIO_modify_additionals__nonce')) {
+            if (!isset($_POST['charming-portfolio__nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['charming-portfolio__nonce'])), 'CHARMING_PORTFOLIO_modify_additionals__nonce')) {
                 return;
             }
             if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
@@ -273,7 +272,7 @@ class Portfolio
                 return;
             }
 
-            $modified_data = $_POST['CHARMING_PORTFOLIO'];
+            $modified_data = $this->sanitize_array($_POST['CHARMING_PORTFOLIO']);
             
             //validations
             if (isset($modified_data['skills']) && is_array($modified_data['skills'])) {
@@ -378,9 +377,6 @@ class Portfolio
                 }
             }
 
-
-            //sanitization
-            $modified_data = $this->sanitize_array($modified_data);
             if (update_option('CHARMING_PORTFOLIO_additional_data', $modified_data)) {
                 // Display success message
                 add_action('admin_notices', function () {

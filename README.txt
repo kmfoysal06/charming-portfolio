@@ -3,7 +3,7 @@ Contributors: kmfoysal06
 Tags: charming-portfolio, simplecharm-portfolio, portfolio-plugin, simple-portfolio
 Requires at least: 5.0
 Tested up to: 6.5
-Stable tag: 1.1
+Stable tag: 1.2
 Requires PHP: 7.0
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -22,12 +22,6 @@ simplecharm-default-avater.jpg - https://www.flickr.com/photos/132795455@N08/243
 Front Page Design
 License: MIT License (Excluding Images)
 The design for front-page, excluding images, is licensed under the MIT License.
-
-== Fonts == 
-This Theme uses google fonts locally
-Inter:- 
-1.
-2.
 
 design github: https://github.com/shahsagarm/sagarshah.dev
 design figma: https://www.figma.com/community/file/1262992249991763120/Personal-Portfolio-Website-Template-%7C-Mobile-%26-Desktop

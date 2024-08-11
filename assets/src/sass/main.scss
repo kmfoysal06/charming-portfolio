@@ -2,7 +2,6 @@
  * Import TailwindCss
  */
 @forward "./tailwindcss/tailwindcss";
-@forward "./components/fonts";
 @forward "./components/skills";
 @forward "./components/bottom-alert";
 @forward "./components/projects";
@@ -15,9 +14,6 @@
  * Basic Styling
  */
 
-main#CHARMING_PORTFOLIO-content {
-	font-family: "Inter",serif, sans-serif ;
-}
 .CHARMING_PORTFOLIO-welcome-emoji{
 	display: contents;
 }

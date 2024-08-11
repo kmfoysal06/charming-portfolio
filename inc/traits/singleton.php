@@ -5,6 +5,9 @@
  */
 
  namespace CHARMING_PORTFOLIO\Inc\Traits;
+
+ if ( ! defined( 'ABSPATH' ) ) exit;
+ 
     trait Singleton{
         public function __construct(){}
     public function __clone(){}

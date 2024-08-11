@@ -46,8 +46,6 @@ if (is_array($args) && array_key_exists("works", $args) && !empty($args['works']
 					]
 				)
 			);
-			// $tags_array = (!empty($tags) && strpos(", ", $tags) && explode(', ', $tags) !== null) ? explode(', ', $tags) : [];
-			// echo var_dump(explode(', ', $work['tags']) );
 			?>
 
 		<?php if(array_key_exists('link',$work) && !empty($work['link'])): ?>
