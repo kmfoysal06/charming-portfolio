@@ -4,3 +4,9 @@
 -Added Special Tags for Textareas.
 -Fixed Font Issues.
 -Imoroved Responsibility
+== v1.2.4 ==
+-Fixed Some Layout Issue
+-Improved Design
+==v1.2.5==
+-Validating Form in The Client Perfectly.
+-Improved Design

@@ -20,7 +20,7 @@ if (is_array($args) && array_key_exists("skills", $args)):
         <tr class="flex">
           <td>
             <label for="<?php echo esc_attr("skill-name-" . $key); ?>"></label>
-            <input type="text" class="name" data-queue="<?php echo esc_attr($key); ?>" placeholder="<?php esc_attr_e("Skill Name","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[skills][<?php echo esc_attr($key); ?>][][name]" value="<?php echo esc_attr($skill); ?>" id="<?php echo esc_attr("skill-name-" . $key); ?>" /></td>
+            <input type="text" class="name" data-queue="<?php echo esc_attr($key); ?>" placeholder="<?php esc_attr_e("Skill Name","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[skills][<?php echo esc_attr($key); ?>][][name]" value="<?php echo esc_attr($skill); ?>" id="<?php echo esc_attr("skill-name-" . $key); ?>" maxlength="25" /></td>
           <td><a class="button charming_portfolio_skills_remove" href="#1"><?php esc_html_e("Remove","charming-portfolio"); ?></a></td>
         </tr>
     <?php

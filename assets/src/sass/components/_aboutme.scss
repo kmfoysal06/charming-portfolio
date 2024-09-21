@@ -1,0 +1,9 @@
+.aboutme{
+  display: flex;
+}
+
+@media (max-width: 768px){
+  .aboutme{
+    display: unset;
+  }
+}

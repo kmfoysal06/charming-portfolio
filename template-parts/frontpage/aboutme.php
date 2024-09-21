@@ -12,7 +12,7 @@ if( ! defined( 'ABSPATH' ) ) {
     <div class="badge badge-neutral"><?php esc_html_e("About Me","charming-portfolio"); ?></div>
     <h3 class="text-xl"><?php esc_html_e("Curious about me? Here you have it:","charming-portfolio"); ?></h3>
   </div>
-  <div class="hero-content sm:flex-col md:flex-row lg:flex-row  sm:justify-between md:justify-between lg:justify-between">
+  <div class="aboutme hero-content sm:flex-col md:flex-row lg:flex-row  sm:justify-between md:justify-between lg:justify-between">
         <img src="<?php echo esc_url($args["user_image2"]) ?>" class="sm:w-full md:w-2/4 lg:w-2/4 rounded-lg shadow-2xl" />
     <div>
       <p class="py-6">

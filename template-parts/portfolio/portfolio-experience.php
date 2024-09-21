@@ -14,9 +14,6 @@ if( ! defined( 'ABSPATH' ) ) {
     <table id="repeatable-fieldset-two" width="100%">
       <tbody>
   <?php
-  // echo '<pre>';
-  // echo var_dump(CHARMING_PORTFOLIO_load_experience($args['experiences']));
-  // die();
 if (is_array($args) && array_key_exists("experiences", $args)):
     foreach ($args['experiences'] as $key => $experience):
         $key = $key + 1;
@@ -27,15 +24,15 @@ if (is_array($args) && array_key_exists("experiences", $args)):
  <tr class="flex flex-col simplecharm-basic-border simplecharm-basic-padding">
     <td>
         <label for="<?php echo esc_attr("experience-institution-" . $key,'charming-portfolio'); ?>"><?php esc_html_e("Institution",'charming-portfolio'); ?></label>
-        <input type="text" class="institution" placeholder="Experience Institution" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][institution]" value="<?php echo (array_key_exists("institution",$flattern_experience)) ? esc_attr($flattern_experience['institution']) : "" ;?>" id="experience-institution-<?php echo esc_attr($key); ?>"  data-queue="<?php echo esc_attr($key); ?>">
+        <input type="text" class="institution" placeholder="Experience Institution" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][institution]" value="<?php echo (array_key_exists("institution",$flattern_experience)) ? esc_attr($flattern_experience['institution']) : "" ;?>" id="experience-institution-<?php echo esc_attr($key); ?>"  data-queue="<?php echo esc_attr($key); ?>" maxlength="30">
     </td>
     <td>
         <label for="<?php echo esc_attr("experience-post-title-" . $key); ?>" title="<?php esc_attr_e("enter your job post title eg:- Sr. Laravel Developer etc.","charming-portfolio"); ?>"><?php esc_html_e("Post Title","charming-portfolio"); ?></label>
-        <input type="text" class="post-title" placeholder="<?php esc_html_e('Post Title','charming-portfolio'); ?>" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][post-title]" value="<?php echo (array_key_exists("post-title",$flattern_experience)) ? esc_attr($flattern_experience['post-title']) : '' ;?>" id="<?php echo esc_attr("experience-post-title-" . $key,'charming-portfolio'); ?>" data-queue="<?php echo esc_attr($key); ?>">
+        <input type="text" class="post-title" placeholder="<?php esc_html_e('Post Title','charming-portfolio'); ?>" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][post-title]" value="<?php echo (array_key_exists("post-title",$flattern_experience)) ? esc_attr($flattern_experience['post-title']) : '' ;?>" id="<?php echo esc_attr("experience-post-title-" . $key,'charming-portfolio'); ?>" data-queue="<?php echo esc_attr($key); ?>" maxlength="30">
     </td>
     <td class="responsibilities" id="repeatable-fieldset-three">
         <label for="<?php echo esc_attr("responsibilities-" . $key); ?>" title="<?php esc_attr_e('You Can Not Use Quotation ("" and \'\') so You Can Use [quote], [squote] and [bold][/bold] for Adding Double and Single Quotation and Make Any Text Bold.','charming-portfolio'); ?>"><?php esc_html_e('Responsibilities','charming-portfolio'); ?></label>
-        <textarea name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key,'charming-portfolio'); ?>][][responsibility]" id="<?php echo esc_attr("responsibilities-" . $key); ?>" cols="50" rows="5" class="responsibility" data-queue="<?php echo esc_attr($key); ?>"><?php echo esc_textarea((array_key_exists("responsibility",$flattern_experience)) ? $flattern_experience['responsibility'] : '') ;?></textarea>
+        <textarea name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key,'charming-portfolio'); ?>][][responsibility]" id="<?php echo esc_attr("responsibilities-" . $key); ?>" cols="50" rows="5" class="responsibility" data-queue="<?php echo esc_attr($key); ?>" maxlength="800"><?php echo esc_textarea((array_key_exists("responsibility",$flattern_experience)) ? $flattern_experience['responsibility'] : '') ;?></textarea>
     </td>
     <td>
         <label for="<?php echo esc_attr("start-date-" . $key); ?>"><?php esc_html_e("Start Date",'charming-portfolio'); ?></label>

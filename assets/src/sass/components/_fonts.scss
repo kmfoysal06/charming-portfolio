@@ -1,0 +1,25 @@
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/inter-v13-latin-regular.woff2) format("woff2"), 
+  url(../fonts/inter-v13-latin-regular.woff) format("woff"), 
+}
+
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/Jost-Regular.woff2) format("woff2"), 
+  url(../fonts/Jost-Regular.woff) format("woff"), 
+}
+
+
+* {
+  font-family: "Jost", sans-serif;
+}
+.skill-name{
+	font-family: 'serif';
+}

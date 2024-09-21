@@ -16,8 +16,8 @@ if(is_array($args['skills']) && !empty($args['skills'])){
 			<?php
 			foreach($args['skills'] as $skill){
 				?>
-			<div class="simplecharm-skill-card gap-3 cursor-pointer p-5 flex justify-center items-center transition-all" tabindex="0">
-				<h4 class="skill-name text-center text-3xl"><?php echo esc_html($skill); ?></h4>
+			<div class="simplecharm-skill-card cursor-pointer p-2 flex justify-center items-center transition-all" tabindex="0">
+				<h4 class="skill-name text-center lg:text-2xl md:text-2xl sm:text-xl"><?php echo esc_html($skill); ?></h4>
 				<div class="simplecharm-skill-card-blank"></div>
 			</div>
 		<?php

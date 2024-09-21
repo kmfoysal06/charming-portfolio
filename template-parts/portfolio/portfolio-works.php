@@ -24,15 +24,15 @@ if( ! defined( 'ABSPATH' ) ) {
     <tr class="flex simplecharm-basic-border simplecharm-basic-padding flex flex-col">
         <td>
             <label for="<?php echo esc_attr("project-title-" . $key); ?>"><?php esc_html_e("Title","charming-portfolio"); ?></label>
-            <input type="text" class="title" placeholder="<?php esc_attr_e("Project Title","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][title]" value="<?php echo esc_attr($work['title']); ?>" id="<?php echo esc_attr("project-title-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>">
+            <input type="text" class="title" placeholder="<?php esc_attr_e("Project Title","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][title]" value="<?php echo esc_attr($work['title']); ?>" id="<?php echo esc_attr("project-title-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" maxlength="30">
         </td>
         <td>
             <label for="<?php echo esc_attr("project-description-" . $key); ?>"><?php esc_html_e("Description","charming-portfolio"); ?></label>
-            <textarea class="description" placeholder="<?php esc_attr_e("Project Description","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][description]" id="<?php echo esc_attr("project-description-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" cols="50" rows="5"><?php echo esc_textarea($work['description']); ?></textarea>
+            <textarea class="description" placeholder="<?php esc_attr_e("Project Description","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][description]" id="<?php echo esc_attr("project-description-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" cols="50" rows="5" maxlength='800'><?php echo esc_textarea($work['description']); ?></textarea>
         </td>
         <td>
             <label for="<?php echo esc_attr("project-tags-" . $key); ?>"><?php esc_html_e("Tags","charming-portfolio"); ?></label>
-            <textarea class="tags" placeholder="<?php esc_attr_e("Project Tags","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][tags]" id="<?php echo esc_attr("project-tags-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" cols="50" rows="5"><?php echo esc_textarea($work['tags']); ?></textarea>
+            <textarea class="tags" placeholder="<?php esc_attr_e("Project Tags","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][tags]" id="<?php echo esc_attr("project-tags-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" cols="50" rows="5" maxlength="200"><?php echo esc_textarea($work['tags']); ?></textarea>
         </td>
          <td>
             <label for="<?php echo esc_attr("project-link-" . $key); ?>"><?php esc_html_e("Live Link","charming-portfolio"); ?></label>

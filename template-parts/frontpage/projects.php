@@ -24,7 +24,7 @@ if (is_array($args) && array_key_exists("works", $args) && !empty($args['works']
 	?>
 		<div class="line-break-anywhere" tabindex="0">
 			<div class="flex flex-col my-4 gap-y-7 p-6 shadow-2xl">
-			<h2 class="text-5xl">
+			<h2 class="text-3xl">
 				<?php echo esc_html(isset($work['title']) ? $work['title'] : ''); ?>
 			</h2>
 			<p class="overflow-y-auto">

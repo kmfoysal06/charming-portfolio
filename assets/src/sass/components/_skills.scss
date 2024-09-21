@@ -1,11 +1,17 @@
 .simplecharm-skill-card{
-	--col-1 : rgb(216 78 39);
-	--col-2 : rgb(29 78 216);
-	border: 1px solid var(--col-1);
-	text-shadow: 2px 2px 2px #a0e;
+	--col-1 : rgb(0 0 0);
+	--col-2 : rgb(255 255 255);
+	border: 5px solid var(--col-1);
 	height: 100%;
+	h4{
+		color: #000;
+	}
 }
 .simplecharm-skill-card:is(:hover,:focus){
 	border-color:var(--col-2);
-	text-shadow: 2px 2px 2px #e0a;
+	color:var(--col-2);
+	background: var(--col-1);
+	h4{
+		color: #fff;
+	}
 }

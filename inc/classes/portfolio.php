@@ -171,7 +171,7 @@ class Portfolio
             $modified_data = $this->sanitize_array($_POST['CHARMING_PORTFOLIO']);
 
             // check for name is valid and it should between 2 to 20 words
-            if (!preg_match("/^[a-zA-Z\s]{2,20}$/", $modified_data['name'])) {
+            if (!preg_match("/^[a-zA-Z\s]{2,30}$/", $modified_data['name'])) {
                 add_action('admin_notices', function () {
                     echo '<div class="notice notice-error is-dismissible"><p>'.esc_html_e("Name is not valid! It should be between 2 to 20 words","charming-portfolio").'</p></div>';
                 });
@@ -184,10 +184,10 @@ class Portfolio
                 });
                 return;
             }
-            // phone should be in 2 to 15 digits
-            if (!preg_match("/^\+?[0-9]{7,15}$/", $modified_data['phone'])) {
+            // phone should be in 11 to 18 digits
+            if (!preg_match("/^\+?[0-9]{11,18}$/", $modified_data['phone'])) {
                 add_action('admin_notices', function () {
-                    echo '<div class="notice notice-error is-dismissible"><p>'.esc_html_e("Phone is not valid! It should be between 7 to 15 digits","charming-portfolio").'</p></div>';
+                    echo '<div class="notice notice-error is-dismissible"><p>'.esc_html_e("Phone is not valid! It should be between 11 to 18 digits","charming-portfolio").'</p></div>';
                 });
                 return;
             }
@@ -282,9 +282,9 @@ class Portfolio
                             continue;
                         }
 
-                        if (strlen($single_skill['name']) > 20) {
+                        if (strlen($single_skill['name']) > 25) {
                             add_action('admin_notices', function () {
-                                echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__('Skill Name is too long! It should be less than 20 words','charming-portfolio').'</p></div>';
+                                echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__('Skill Name is too long! It should be less than 25 words','charming-portfolio').'</p></div>';
                             });
                             return;
                         }
@@ -299,9 +299,9 @@ class Portfolio
                                 continue;
                             }
 
-                            if (strlen($single_experience['institution']) > 20) {
+                            if (strlen($single_experience['institution']) > 30) {
                                 add_action('admin_notices', function () {
-                                    echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__('Institution Name is too long! It should be less than 20 words','charming-portfolio').'</p></div>';
+                                    echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__('Institution Name is too long! It should be less than 30 words','charming-portfolio').'</p></div>';
                                 });
                                 return;
                             }
@@ -348,10 +348,10 @@ class Portfolio
                         if (empty($work['title'])) {
                             continue;
                         }
-                        //title na thakle to baki shov sanitiziation continue hoy jabe.etha fix korte hove
-                        if (strlen($work['title']) > 20) {
+
+                        if (strlen($work['title']) > 30) {
                             add_action('admin_notices', function () {
-                                echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__('Project Title is too long! It should be less than 20 words','charming-portfolio').'</p></div>';
+                                echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__('Project Title is too long! It should be less than 30 words','charming-portfolio').'</p></div>';
                             });
                             return;
                         }

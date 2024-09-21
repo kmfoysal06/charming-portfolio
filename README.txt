@@ -2,8 +2,8 @@
 Contributors: kmfoysal06
 Tags: charming-portfolio, simplecharm-portfolio, portfolio-plugin, simple-portfolio
 Requires at least: 5.0
-Tested up to: 6.5
-Stable tag: 1.2
+Tested up to: 6.6
+Stable tag: 1.2.5
 Requires PHP: 7.0
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -40,3 +40,19 @@ TailwindCss
 1. Upload the `charming-portfolio` Folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 2. Visit CPR from Admin Dashboard and add post types via creating new posts.
+
+== Screenshots ==
+1. Basic Information Setting
+2. About Me Setting
+3. Contact and Social Media Setting
+4. Skill Customization
+5. Experience Customization
+6. Projects Customization
+7. Information Preview
+8. Portfolio Settings In Admin
+9. Portfolio Frontpage Basic Information
+10. Portfolio Frontpage About Me
+11. Exoerience Section
+12. Project Section
+13. Porfolio Footer
+
