@@ -27,8 +27,9 @@
 .simplecharm-portfolio-plugin-inner{
 	background-color: $background-color;
 }
-p,span,cite{
+p,span,cite,svg{
 	color: $secondary-color;
+	fill: $secondary-color;
 }
 h1,h2,h3,h4,h5,h6{
 	color: $primary-color;

@@ -33,6 +33,18 @@ if (!function_exists('CHARMING_PORTFOLIO_get_template_part')) {
 }
 
 /**
+ * Return Template Part For Plugin
+ */
+if (!function_exists('CHARMING_PORTFOLIO_return_template_part')) {
+    function CHARMING_PORTFOLIO_return_template_part($slug, $name = null, $args = []) {
+        ob_start();
+        charming_portfolio_get_template_part($slug, $name, $args);
+        $output = ob_get_clean();
+        return $output;
+    }
+}
+
+/**
  * Returns An Array Of Social Links In Easy To Iterate Format.
  * For Returning The Complex Social Links Array That Stored In Database In A Complex Array Format.
  * @param array $social_links
@@ -90,10 +102,15 @@ if (!function_exists("CHARMING_PORTFOLIO_link_social_frontend")) {
         $allowed_icons = array(
             'twitter', 'facebook', 'instagram', 'youtube', 'linkedin', 'pinterest', 'podio', 'google', 'reddit', 'wordpress', 'rss', 'whatsapp', 'xing', 'twitch',
         );
+        $svgs = array(
+            'github'
+        );
         foreach ($social_links as $social_link) {
             $icon = strtolower(is_array($social_link['name']) ? implode('', $social_link['name']) : $social_link['name']);
             if (in_array($icon, $allowed_icons)) {
                 echo '<a class="simplecharm-portfolio-button-hover" href="' . esc_attr(is_array($social_link['url']) ? implode('', $social_link['url']) : $social_link['url']) . '"><span class="' . esc_attr('dashicons dashicons-' . $icon) . '"></span></a> ';
+            }elseif(in_array($icon, $svgs)){
+                echo CHARMING_PORTFOLIO_return_template_part("template-parts/svgs/".$icon, null, ['url' => $social_link['url']]);
             } else {
                 echo '<a class="simplecharm-portfolio-button-hover" href="' . esc_attr(is_array($social_link['url']) ? implode('', $social_link['url']) : $social_link['url']) . '"><span class="dashicons dashicons-admin-links"></span></a> ';
             }

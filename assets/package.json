@@ -6,7 +6,8 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --mode production --progress",
     "dev": "cross-env NODE_ENV=development webpack --watch --mode development --progress",
-    "clean": "rm -rf build/*"
+    "clean": "rm -rf build/*",
+    "commit": "cz"
   },
   "keywords": [
     "portfolio",
@@ -27,15 +28,12 @@
     "cross-env": "^7.0.3",
     "css-loader": "^7.1.1",
     "daisyui": "^4.10.1",
-    "dart-sass": "^1.25.0",
     "file-loader": "^6.2.0",
     "lodash": "^4.17.21",
     "mini-css-extract-plugin": "^2.8.1",
     "postcss-loader": "^8.1.1",
-    "saas": "^1.0.0",
-    "sass": "^1.75.0",
-    "sass-loader": "^14.2.0",
-    "sass-mq": "^6.0.0",
+    "sass": "^1.79.3",
+    "sass-loader": "^16.0.2",
     "style-loader": "^4.0.0",
     "tailwindcss": "^3.4.3",
     "webpack": "^5.91.0",

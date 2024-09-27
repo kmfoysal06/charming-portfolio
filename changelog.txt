@@ -10,3 +10,5 @@
 ==v1.2.5==
 -Validating Form in The Client Perfectly.
 -Improved Design
+==v1.2.7==
+-Added New Icons for Social Links

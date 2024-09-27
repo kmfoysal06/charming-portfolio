@@ -9,10 +9,10 @@
 	    top: -10px;
 	    left: 35px;
 	    filter: blur(5px);
+	    display: block;
 	    @media (max-width: 768px){
 			display: none;
 		}
-		display: block;
 	}
 
 }
