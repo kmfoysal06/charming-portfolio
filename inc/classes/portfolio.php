@@ -219,7 +219,7 @@ class Portfolio
                 });
                 return;
             }
-            if (isset($modified_data['short_description']) && strlen($modified_data['description']) > 800) {
+            if (isset($modified_data['description']) && strlen($modified_data['description']) > 800) {
                 add_action('admin_notices', function () {
                     echo '<div class="notice notice-error is-dismissible"><p>'.esc_html_e('Description is too long! It should be less than 800 words','charming-portfolio').'</p></div>';
                 });
