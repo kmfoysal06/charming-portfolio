@@ -4,8 +4,11 @@
  * @package Charming Portfolio
  */
 namespace CHARMING_PORTFOLIO\Inc\Classes;
+
 if ( ! defined( 'ABSPATH' ) ) exit;
+//using singleton for all of the classes so they only instantiate once
 use CHARMING_PORTFOLIO\Inc\Traits\Singleton;
+
 class PORTFOLIO_PLUGIN{
     use Singleton;
     

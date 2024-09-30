@@ -4,17 +4,17 @@
  * @since 1.0
  * Plugin Name: Charming Portfolio
  * Description: A simple portfolio plugin for WordPress.
- * Version: 1.2.9
+ * Version: 1.2.10
  * Author: kmfoysal06
- * Author URI: https://profile.wordpress.org/kmfoysal06
+ * Author URI: https://profiles.wordpress.org/kmfoysal06
  * Tags: charming-portfolio, portfolio-plugin, simple-portfolio
  * Requires at least: 5.0
  * Tested up to: 6.6
- * Stable tag: 1.2.9
+ * Stable tag: 1.2.10
  * Requires PHP: 7.0
  * Text Domain: charming-portfolio
- * License: GPLv2
- * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * License: GPLv3
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
 
 if (!defined('ABSPATH')) {
@@ -48,7 +48,6 @@ if (!function_exists('CHARMING_PORTFOLIO_template_override')) {
                 return $new_template;
             }
         }
-        // default wordpress behavior
         return $template;
     }
 }

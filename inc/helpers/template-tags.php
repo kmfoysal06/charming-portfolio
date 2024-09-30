@@ -87,7 +87,7 @@ if (!function_exists("CHARMING_PORTFOLIO_load_social")) {
 if (!function_exists("CHARMING_PORTFOLIO_link_social")) {
     function CHARMING_PORTFOLIO_link_social($social_links) {
         foreach ($social_links as $social_link) {
-            echo '<a href="' . esc_attr(is_array($social_link['url']) ? implode('', $social_link['url']) : $social_link['url']) . '">' . esc_attr(is_array($social_link['name']) ? implode('', $social_link['name']) : $social_link['name']) . '</a> ';
+            echo '<a href="' . esc_attr(is_array($social_link['url']) ? implode('', $social_link['url']) : $social_link['url']) . '" target="_blank">' . esc_attr(is_array($social_link['name']) ? implode('', $social_link['name']) : $social_link['name']) . '</a> ';
         }
     }
 }
@@ -99,6 +99,11 @@ if (!function_exists("CHARMING_PORTFOLIO_link_social")) {
  */
 if (!function_exists("CHARMING_PORTFOLIO_link_social_frontend")) {
     function CHARMING_PORTFOLIO_link_social_frontend($social_links) {
+        /**
+         * The $allowed_icons array contains the list of icons that available on dashicons.
+         * The $svgs array contains the list of icons that available on svgs folder.
+         */
+
         $allowed_icons = array(
             'twitter', 'facebook', 'instagram', 'youtube', 'linkedin', 'pinterest', 'podio', 'google', 'reddit', 'wordpress', 'rss', 'whatsapp', 'xing', 'twitch',
         );
@@ -108,11 +113,11 @@ if (!function_exists("CHARMING_PORTFOLIO_link_social_frontend")) {
         foreach ($social_links as $social_link) {
             $icon = strtolower(is_array($social_link['name']) ? implode('', $social_link['name']) : $social_link['name']);
             if (in_array($icon, $allowed_icons)) {
-                echo '<a class="simplecharm-portfolio-button-hover" href="' . esc_attr(is_array($social_link['url']) ? implode('', $social_link['url']) : $social_link['url']) . '"><span class="' . esc_attr('dashicons dashicons-' . $icon) . '"></span></a> ';
+                echo '<a class="simplecharm-portfolio-button-hover" href="' . esc_attr(is_array($social_link['url']) ? implode('', $social_link['url']) : $social_link['url']) . '" target="_blank"><span class="' . esc_attr('dashicons dashicons-' . $icon) . '"></span></a> ';
             }elseif(in_array($icon, $svgs)){
                 echo CHARMING_PORTFOLIO_return_template_part("template-parts/svgs/".$icon, null, ['url' => $social_link['url']]);
             } else {
-                echo '<a class="simplecharm-portfolio-button-hover" href="' . esc_attr(is_array($social_link['url']) ? implode('', $social_link['url']) : $social_link['url']) . '"><span class="dashicons dashicons-admin-links"></span></a> ';
+                echo '<a class="simplecharm-portfolio-button-hover" href="' . esc_attr(is_array($social_link['url']) ? implode('', $social_link['url']) : $social_link['url']) . '" target="_blank"><span class="dashicons dashicons-admin-links"></span></a> ';
             }
         }
     }

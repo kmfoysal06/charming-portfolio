@@ -101,7 +101,8 @@ if( ! defined( 'ABSPATH' ) ) {
 				esc_html_e("Social Links:- ", "charming-portfolio");
 				echo wp_kses($social_links_output,[
 					'a' => [
-						'href' => []
+						'href' => [],
+						'target' => []
 					]
 				]);
 			?>

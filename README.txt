@@ -3,10 +3,11 @@ Contributors: kmfoysal06
 Tags: charming-portfolio, simplecharm-portfolio, portfolio-plugin, simple-portfolio
 Requires at least: 5.0
 Tested up to: 6.6
-Stable tag: 1.2.9
+Stable tag: 1.2.10
 Requires PHP: 7.0
-License: GPLv2
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+License: GPLv3
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+
 Text Domain: charming-portfolio
 
 Charming Portfolio is a simple plugin that update the frontpage as portfolio landing page with user provided information.
@@ -28,18 +29,30 @@ design figma: https://www.figma.com/community/file/1262992249991763120/Personal-
 
 
 == Icons ==
-All Icons Used From Dashicons.
+Most of The Icons Used From Dashicons.
 https://developer.wordpress.org/resource/dashicons/
 
+There Are Also Some Icons Used From Fontawesome Free
+-License: CC BY 4.0 License
+-License URI: https://fontawesome.com/license/free
+
 == Library and Frameworks ==
-Licnse:
-TailwindCss
+TailwindCSS
+-License: MIT License
+-License URI: https://github.com/tailwindlabs/tailwindcss/blob/master/LICENSE
+
 
 
 === Installation ===
 1. Upload the `charming-portfolio` Folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 2. Visit CPR from Admin Dashboard and add post types via creating new posts.
+
+== Usage ==
+1. Go to the Admin Dashboard.
+2. You WIll Find A Option of Portfolio in the Sidebar.
+3. With That You Can Configure Your Basic Information (name,social,contact,aboutme etc.) and Additional (skills,experience,project showcase etc.)
+4. After Filling Up The Information You Can See Your Portfolio in Frontpage With Your Informations.
 
 == Screenshots ==
 1. Basic Information Setting
@@ -55,4 +68,3 @@ TailwindCss
 11. Exoerience Section
 12. Project Section
 13. Porfolio Footer
-
