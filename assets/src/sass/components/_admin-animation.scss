@@ -1,0 +1,25 @@
+.btn-wrapper {
+    position: relative;
+}
+.btn-wrapper.loading span {
+    width: 25px;
+    height: 25px;
+    display: block;
+    position: absolute;
+    border: 2px solid transparent;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    border-radius: 50%;
+    border-top-color: black;
+    border-bottom-color: black;
+    animation:spin 400ms linear infinite;
+}
+@keyframes spin{
+    0%{
+        transform: translate(-50%,-50%) rotate(0deg);
+    }
+    100%{
+        transform: translate(-50%,-50%) rotate(360deg);
+    }
+}

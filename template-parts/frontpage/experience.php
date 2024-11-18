@@ -39,6 +39,7 @@ if (is_array($args) && array_key_exists("experiences", $args) && !empty($args['e
 					printf(wp_kses(
 		            isset($flattern_experience['responsibility']) ? CHARMING_PORTFOLIO_special_tag($flattern_experience['responsibility']) : '',
 		            ['b' => [],
+		             'br' => [],
 					  'ul' => [
 					  	'li' => []
 					  	]]

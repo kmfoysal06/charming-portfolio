@@ -7,7 +7,7 @@
             this.handleWorking();
         }
         handleWorking() {
-            const experience_section = $(".simplecharm-portfolio-experience"),
+            const experience_section = $(".charming-portfolio-experience"),
                 end_date = experience_section.find('.end_date'),
  	           	still_working = experience_section.find('.working');
     	        still_working.each(function(index, element) {

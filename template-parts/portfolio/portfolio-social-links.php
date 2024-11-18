@@ -9,7 +9,7 @@ if( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="portfolio-section-wrapper">
     <h3 class="portfolio-section-toggle"><?php esc_html_e("Social Links","charming-portfolio"); ?></h3>
-<div class="portfolio-section-content">
+<div class="portfolio-section-content charming-portfolio-social">
 <table id="repeatable-fieldset-one" width="100%">
   <tbody>
   <?php

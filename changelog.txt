@@ -14,3 +14,7 @@
 -Added New Icons for Social Links
 ==v1.2.9==
 -Fixed The Description Updating Related Bug
+==v1.3==
+-New Line on Textarea Issue Fixed
+-UI Improved for Admin
+-Skills Section UI Improved

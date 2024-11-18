@@ -1,3 +1,4 @@
+@forward "../components/admin-animation";
 /**
  * Admin Styles
  */
@@ -23,8 +24,31 @@
     transform: rotate(45deg);
     margin-right: 5px;
     margin-bottom: 2px;
-
 }
+.portfolio-section-wrapper td {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+//remove grid from skills customization section
+.charming-portfolio-skills td, .charming-portfolio-social td{
+    grid-template-columns: 1fr;
+}
+.portfolio-section-wrapper td textarea {
+    width: 100%;
+    margin: 0!important;
+}
+
+.portfolio-section-wrapper td a {
+    width: fit-content;
+}
+.portfolio-section-wrapper td a.button{
+    display: flex;
+    align-items: center;
+}
+.portfolio-section-wrapper td input{
+    padding: 10px 20px;
+} 
+
 .portfolio-intro {
     // Additional styles specific to elements with class 'portfolio-intro'
 }
@@ -35,6 +59,38 @@
     .responsibility{
         margin-left: 15px;
     }
+}
+//Switch Button
+.switch-btn {
+    width: 42px;
+    height: 20px;
+    background: #f00;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.switch-btn span {
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 1px;
+    transform: translate(0,-50%);
+    transition: transform 200ms;
+}
+.switch-btn-wrapper.on span{
+    transform: translate(calc(100% + 3px),-50%);
+}
+.switch-btn-wrapper input[type=checkbox]{
+    opacity: 0;
+    pointer-events: none;
+}
+.switch-btn-wrapper.on .switch-btn{
+    background: #00f;
 }
 //Utilities
 .flex{
@@ -53,6 +109,26 @@
 }
 .simplecharm-basic-padding{
     padding: 10px;
+}
+.btn {
+    padding: 10px 20px;
+    cursor: pointer;
+    background: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    outline: none;
+    border: 1px solid #000;
+    display: block;
+    margin: 10px auto;
+    transition: 200ms;
+}
+.btn-fullwidth{
+    padding: 10px 0;
+    width: 100%;
+}
+.btn:hover {
+    border: 1px solid #0000fa;
+    color: #0000fa;
 }
 // Define styles for other elements and classes as needed
 @media screen and (max-width: 500px) {

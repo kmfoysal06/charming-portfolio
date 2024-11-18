@@ -21,6 +21,11 @@ if( ! defined( 'ABSPATH' ) ) {
 	<label for="address"><?php esc_html_e("Address:",'charming-portfolio'); ?></label>
 	<input type="text" id="address" class="user-address" name="CHARMING_PORTFOLIO[address]" value="<?php echo esc_html($args["address"])  ?>" autocomplete="false">
 	<label for="available"><?php esc_html_e("Available:",'charming-portfolio'); ?></label>
-	<input type="checkbox" id="available" class="user-available" name="CHARMING_PORTFOLIO[available]" <?php echo esc_html(checked($args["available"], 'True'));  ?>>
+	<div class="switch-btn-wrapper">
+		<input type="checkbox" id="available" class="user-available" name="CHARMING_PORTFOLIO[available]" <?php echo esc_html(checked($args["available"], 'True'));  ?>>
+		<div class="switch-btn">
+            <span></span>
+		</div>
+	</div>
 </div>
 </div>

@@ -2,15 +2,15 @@
 Contributors: kmfoysal06
 Tags: charming-portfolio, simplecharm-portfolio, portfolio-plugin, simple-portfolio
 Requires at least: 5.0
-Tested up to: 6.6
-Stable tag: 1.2.10
+Tested up to: 6.7
+Stable tag: 1.3.1
 Requires PHP: 7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Text Domain: charming-portfolio
 
-Charming Portfolio is a simple plugin that update the frontpage as portfolio landing page with user provided information.
+A plugin to turn your frontpage into a portfolio landing page.
 
 === Description ==
 Charming Portfolio is a simple plugin that update the frontpage as portfolio landing page with user provided information. This plugin is very easy to use and user friendly.

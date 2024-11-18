@@ -19,7 +19,6 @@
                 queue = isNaN(queue) ? 1 : queue ;
                 let row = $(`.${hiddenFields.join(".")}`).clone(true).removeClass(hiddenFields.join(" "));
                 let newInputs = row.find('input, textarea');
-                console.log(`.${hiddenFields.join(".")}`)
                 newInputs.each(function() {
                     $(this).attr('data-queue', queue);
                     let name = $(this).attr('name');

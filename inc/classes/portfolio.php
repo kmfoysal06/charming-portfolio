@@ -107,7 +107,7 @@ class Portfolio
         <div class="admin-portfolio-modify__container">
             <div class="admin-portfolio-modify">
                 <div class="page-title">
-                    <h2><?php esc_html_e("Modify Your Informations Here:-","charming-portfolio"); ?></h2>
+                    <h2><?php esc_html__("Modify Your Informations Here:-","charming-portfolio"); ?></h2>
                 </div>
                 <form class="page-contents" method="POST">
                         <!-- basic settings -->
@@ -120,7 +120,10 @@ class Portfolio
                         <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "social-links", $portfolio_saved_data);?>
 
                         <input type="hidden" name="charming-portfolio__nonce" value="<?php echo esc_attr(wp_create_nonce("CHARMING_PORTFOLIO_modify_page__nonce")) ?>">
-                        <input type="submit" name="update_portfolio_data" value="UPDATE" class="btn">
+                        <div class="btn-wrapper">
+                            <input type="submit" name="update_portfolio_data" value="UPDATE" class="btn btn-fullwidth">
+                            <span></span>
+                        </div>
 
                 </form>
             </div>
@@ -136,14 +139,17 @@ class Portfolio
     <div class="admin-portfolio-additionals__container">
         <div class="admin-portfolio-additionals">
             <div class="page-title">
-                <h2><?php esc_html_e("Customize Your Additional Informations Here:","charming-portfolio"); ?></h2>
+                <h2><?php esc_html__("Customize Your Additional Informations Here:","charming-portfolio"); ?></h2>
             </div>
             <form class="page-contents" method="POST">
                 <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'skills', $this->display_saved_value());?>
                 <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'experience', $this->display_saved_value());?>
                 <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'works', $this->display_saved_value());?>
                 <input type="hidden" name="charming-portfolio__nonce" value="<?php echo esc_attr(wp_create_nonce("CHARMING_PORTFOLIO_modify_additionals__nonce")) ?>">
-                <input type="submit" name="update_portfolio_data" value="UPDATE" class="btn">
+                <div class="btn-wrapper">
+                    <input type="submit" name="update_portfolio_data" value="UPDATE" class="btn btn-fullwidth">
+                    <span></span>
+                </div>
 
             </form>
         </div>
@@ -158,7 +164,11 @@ class Portfolio
     {
         // validations
         if (isset($_POST['update_portfolio_data'])) {
-            if (!isset($_POST['charming-portfolio__nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['charming-portfolio__nonce'])), 'CHARMING_PORTFOLIO_modify_page__nonce')) {
+            if(!isset($_POST['charming-portfolio__nonce']) || empty($_POST['charming-portfolio__nonce'])){
+                return;
+            }
+            $data_input_nonce = sanitize_text_field(wp_unslash($_POST['charming-portfolio__nonce']));
+            if (!isset($_POST['charming-portfolio__nonce']) || !wp_verify_nonce($data_input_nonce, 'CHARMING_PORTFOLIO_modify_page__nonce')) {
                 return;
             }
             if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
@@ -169,26 +179,30 @@ class Portfolio
                 return;
             }
 
-            $modified_data = $this->sanitize_array($_POST['CHARMING_PORTFOLIO']);
+            if(!isset($_POST['CHARMING_PORTFOLIO']) || empty($_POST['CHARMING_PORTFOLIO'])){
+                return;
+            }
+
+            $modified_data = $this->sanitize_array(wp_unslash($_POST['CHARMING_PORTFOLIO']));
 
             // check for name is valid and it should between 2 to 20 words
             if (!preg_match("/^[a-zA-Z\s]{2,30}$/", $modified_data['name'])) {
                 add_action('admin_notices', function () {
-                    echo '<div class="notice notice-error is-dismissible"><p>'.esc_html_e("Name is not valid! It should be between 2 to 20 words","charming-portfolio").'</p></div>';
+                    echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__("Name is not valid! It should be between 2 to 20 words","charming-portfolio").'</p></div>';
                 });
                 return;
             }
             // validation for email and phone
             if (!filter_var($modified_data['email'], FILTER_VALIDATE_EMAIL)) {
                 add_action('admin_notices', function () {
-                    echo '<div class="notice notice-error is-dismissible"><p>'.esc_html_e("Email is not valid!","charming-portfolio").'</p></div>';
+                    echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__("Email is not valid!","charming-portfolio").'</p></div>';
                 });
                 return;
             }
             // phone should be in 11 to 18 digits
             if (!preg_match("/^\+?[0-9]{11,18}$/", $modified_data['phone'])) {
                 add_action('admin_notices', function () {
-                    echo '<div class="notice notice-error is-dismissible"><p>'.esc_html_e("Phone is not valid! It should be between 11 to 18 digits","charming-portfolio").'</p></div>';
+                    echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__("Phone is not valid! It should be between 11 to 18 digits","charming-portfolio").'</p></div>';
                 });
                 return;
             }
@@ -207,7 +221,7 @@ class Portfolio
 
                         if (isset($single_social_link['url']) && !filter_var($single_social_link['url'], FILTER_VALIDATE_URL)) {
                             add_action('admin_notices', function () {
-                                echo '<div class="notice notice-error is-dismissible"><p>'.esc_html_e("Invalid Social Link!","charming-portfolio").'</p></div>';
+                                echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__("Invalid Social Link!","charming-portfolio").'</p></div>';
                             });
                             return;
                         }
@@ -222,7 +236,7 @@ class Portfolio
             }
             if (isset($modified_data['description']) && strlen($modified_data['description']) > 800) {
                 add_action('admin_notices', function () {
-                    echo '<div class="notice notice-error is-dismissible"><p>'.esc_html_e('Description is too long! It should be less than 800 words','charming-portfolio').'</p></div>';
+                    echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__('Description is too long! It should be less than 800 words','charming-portfolio').'</p></div>';
                 });
                 return;
             }
@@ -273,7 +287,11 @@ class Portfolio
                 return;
             }
 
-            $modified_data = $this->sanitize_array($_POST['CHARMING_PORTFOLIO']);
+            if(!isset($_POST['CHARMING_PORTFOLIO']) || empty($_POST['CHARMING_PORTFOLIO'])){
+                return;
+            }
+            
+            $modified_data = $this->sanitize_array(wp_unslash($_POST['CHARMING_PORTFOLIO']));
             
             //validations
             if (isset($modified_data['skills']) && is_array($modified_data['skills'])) {
@@ -318,7 +336,7 @@ class Portfolio
                             if(empty($single_experience['responsibility'])) continue;
                             if(strlen($single_experience['responsibility']) > 800){
                                 add_action('admin_notices', function () {
-                                    echo '<div class="notice notice-error is-dismissible"><p>'.esc_html_e("Responsibility is too long! It should be less than 200 words","charming-portfolio").'</p></div>';
+                                    echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__("Responsibility is too long! It should be less than 200 words","charming-portfolio").'</p></div>';
                                 });
                                 return;
                             }
@@ -358,19 +376,19 @@ class Portfolio
                         }
                         if (strlen($work['description']) > 800) {
                             add_action('admin_notices', function () {
-                                echo '<div class="notice notice-error is-dismissible"><p>'.esc_html_e("Project Description is too long! It should be less than 800 words","charming-portfolio").'</p></div>';
+                                echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__("Project Description is too long! It should be less than 800 words","charming-portfolio").'</p></div>';
                             });
                             return;
                         }
                         if (strlen($work['tags']) > 200) {
                             add_action('admin_notices', function () {
-                                echo '<div class="notice notice-error is-dismissible"><p>'.esc_html_e("Project Tags is too long! It should be less than 200 words","charming-portfolio").'</p></div>';
+                                echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__("Project Tags is too long! It should be less than 200 words","charming-portfolio").'</p></div>';
                             });
                             return;
                         }
                         if (!filter_var($work['link'], FILTER_VALIDATE_URL)) {
                             add_action('admin_notices', function () {
-                                echo '<div class="notice notice-error is-dismissible"><p>'.esc_html_e("Invalid URL!Try to add http:// or https://","charming-portfolio").'</p></div>';
+                                echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__("Invalid URL!Try to add http:// or https://","charming-portfolio").'</p></div>';
                             });
                             return;
                         }
@@ -381,7 +399,7 @@ class Portfolio
             if (update_option('CHARMING_PORTFOLIO_additional_data', $modified_data)) {
                 // Display success message
                 add_action('admin_notices', function () {
-                    echo '<div class="notice notice-success is-dismissible"><p>'.esc_html_e("Data saved successfully!","charming-portfolio").'</p></div>';
+                    echo '<div class="notice notice-success is-dismissible"><p>'.esc_html__("Data saved successfully!","charming-portfolio").'</p></div>';
                 });
             }
         }
@@ -415,7 +433,7 @@ class Portfolio
             'user_image'        => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg",
             'user_image2'       => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg",
             'email'             => 'abc@gmail.com',
-            'phone'             => '1234567890',
+            'phone'             => '12345678902',
             'short_description' => "Hi, This Is Default Lorem Ipsum Description For You Lorem ipsum dolor sit amet, consectetur adipisicing elit!",
             'address'           => "Earth",
             'description'       => "Hi, This Is Default Lorem Ipsum Description For You Lorem ipsum dolor sit amet, consectetur adipisicing elit!Hi, This Is Default Lorem Ipsum Description For You Lorem ipsum dolor sit amet, consectetur adipisicing elit!Hi, This Is Default Lorem Ipsum Description For You Lorem ipsum dolor sit amet, consectetur adipisicing elit!",

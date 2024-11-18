@@ -115,13 +115,58 @@ if (!function_exists("CHARMING_PORTFOLIO_link_social_frontend")) {
             if (in_array($icon, $allowed_icons)) {
                 echo '<a class="simplecharm-portfolio-button-hover" href="' . esc_attr(is_array($social_link['url']) ? implode('', $social_link['url']) : $social_link['url']) . '" target="_blank"><span class="' . esc_attr('dashicons dashicons-' . $icon) . '"></span></a> ';
             }elseif(in_array($icon, $svgs)){
-                echo CHARMING_PORTFOLIO_return_template_part("template-parts/svgs/".$icon, null, ['url' => $social_link['url']]);
+                echo svg_escape(
+                        CHARMING_PORTFOLIO_return_template_part(
+                            "template-parts/svgs/" . sanitize_file_name( $icon ),
+                            null,
+                            ['url' => esc_url( $social_link['url'] )]
+                        ),
+                    );
+
             } else {
                 echo '<a class="simplecharm-portfolio-button-hover" href="' . esc_attr(is_array($social_link['url']) ? implode('', $social_link['url']) : $social_link['url']) . '" target="_blank"><span class="dashicons dashicons-admin-links"></span></a> ';
             }
         }
     }
 }
+
+/**
+ * Sanitize Svg Content for Malicious Scripts and Escape Things
+ * For Using on SVG to Escape it
+ * @param string $svg_content
+ * @return string
+ */
+if(!function_exists("svg_escape")){
+    function svg_escape( $svg_content ) {
+        // Load SVG as an XML document.
+        $dom = new DOMDocument();
+        libxml_use_internal_errors( true ); // Suppress XML errors for invalid SVG.
+
+        $dom->loadXML( $svg_content, LIBXML_NOENT | LIBXML_DTDLOAD | LIBXML_NOERROR | LIBXML_NOWARNING );
+        libxml_clear_errors();
+
+        // Basic security: Remove script tags and on* attributes.
+        $xpath = new DOMXPath( $dom );
+
+        // Remove <script> tags.
+        foreach ( $xpath->query( '//script' ) as $script ) {
+            $script->parentNode->removeChild( $script );
+        }
+
+        // Remove attributes that start with "on" (e.g., onmouseover).
+        foreach ( $xpath->query( '//*[@*[starts-with(name(), "on")]]' ) as $el ) {
+            foreach ( iterator_to_array( $el->attributes ) as $attr ) {
+                if ( stripos( $attr->nodeName, 'on' ) === 0 ) {
+                    $el->removeAttribute( $attr->nodeName );
+                }
+            }
+        }
+
+        // Return the sanitized SVG as a string.
+        return $dom->saveXML();
+    }
+}
+
 
 /**
  * Returns An Array Of Skills In Easy To Iterate Format.
@@ -278,6 +323,7 @@ if (!function_exists("CHARMING_PORTFOLIO_works_admin")) {
  * 1.make the word or phrase bold that between [bold][/bold]
  * 2.add [quote] instead of quotation
  * 3.add [squote] instead of single quote.
+ * 4.add [break] instead of pressing enter.
  * @param string $textarea_value
  * @return string
  * 
@@ -285,6 +331,7 @@ if (!function_exists("CHARMING_PORTFOLIO_works_admin")) {
  * [bold] bold text [/bold]
  * [quote] quoted text [quote] quotation
  * [squote] single quoted text [/quote]
+ * [break] for line break
  */
 if (!function_exists("CHARMING_PORTFOLIO_special_tag")) {
     function CHARMING_PORTFOLIO_special_tag($textarea_value) {
@@ -293,7 +340,8 @@ if (!function_exists("CHARMING_PORTFOLIO_special_tag")) {
         $bold_text_end = str_replace("[/bold]", "</b>",$bold_text);
         $quote_text = str_replace("[quote]", "\"", $bold_text_end);
         $single_quote_text = str_replace("[squote]", "'", $quote_text);
-        return $single_quote_text;
+        $line_break_text = str_replace("[break]", "<br />", $single_quote_text);
+        return $line_break_text;
     }
 }
 
