@@ -175,19 +175,15 @@ if(!function_exists("svg_escape")){
  * @return array
  */
 if (!function_exists("CHARMING_PORTFOLIO_load_skills")) {
-    function CHARMING_PORTFOLIO_load_skills($all_skills) {
-        $skillsArray = [];
-        if (is_array($all_skills) && !empty($all_skills)) {
-            foreach ($all_skills as $skills) {
-                if (is_array($skills) && !empty($skills)) {
-                    foreach ($skills as $skill_data) {
-                        $skill_data = implode('', $skill_data);
-                        if (empty($skill_data)) { continue; }
-                        array_push($skillsArray, $skill_data);
-                    }
-                }
+	function CHARMING_PORTFOLIO_load_skills($all_skills) {
+          $skillsArray = [];
+          foreach($all_skills as $key => $single_skill) {
+            foreach($single_skill as $single_data) {
+              foreach($single_data as $index => $value){
+                $skillsArray[$key][$index] = $value;
+              }
             }
-        }
+		}
         return $skillsArray;
     }
 }

@@ -904,8 +904,8 @@
   -moz-column-gap: 1rem;
        column-gap: 1rem;
 }
-.gap-y-7 {
-  row-gap: 1.75rem;
+.gap-y-3 {
+  row-gap: 0.75rem;
 }
 .self-center {
   align-self: center;
@@ -929,9 +929,9 @@
 .p-6 {
   padding: 1.5rem;
 }
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 .py-2 {
   padding-top: 0.5rem;
@@ -949,9 +949,8 @@
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
+.pb-3 {
+  padding-bottom: 0.75rem;
 }
 .text-center {
   text-align: center;
@@ -1543,6 +1542,17 @@ html {
 
 .line-break-anywhere {
   line-break: anywhere;
+}
+
+.work-live-link .dashicons {
+  --icon-size: 1.5rem;
+  font-size: var(--icon-size);
+  width: var(--icon-size);
+  height: var(--icon-size);
+}
+
+.work-live-link .dashicons:hover {
+  color: #551A8B;
 }
 
 .simplecharm-portfolio-available {

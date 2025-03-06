@@ -81,7 +81,7 @@
 }
 
 .portfolio-section-wrapper td input {
-  padding: 10px 20px;
+  padding: 0 20px;
 }
 
 .portfolio-section-content .responsibility {
@@ -130,26 +130,24 @@
 
 .still-working-wrapper.checkbox-wrapper span {
   position: absolute;
-  height: 30px;
-  width: 30px;
-  border: 1px solid #00f;
+  height: 1.05rem;
+  width: 1.05rem;
+  border: 1px solid #000;
   background: #fff;
   top: 0;
   left: 0;
-  border-radius: 5px;
 }
 
 .still-working-wrapper.checkbox-wrapper span::after {
   content: "";
-  height: 18px;
-  width: 18px;
-  background: #00f;
+  height: 0.75rem;
+  width: 0.75rem;
+  background: #000;
   position: absolute;
   top: 50%;
   left: 50%;
   translate: -50% -50%;
   scale: 0;
-  border-radius: 0.125rem;
 }
 
 .still-working-wrapper.checkbox-wrapper input:checked ~ span::after {

@@ -1,23 +1,26 @@
 /**
- * Media Uploader
+ * Special Media Uploader For Skills
  */
 (function($) {
-    class SimpleCharm_portfolio_Media {
+    class SimpleCharm_portfolio_Media_Skill {
         constructor() {
             this.init();
         }
         init() {
-            this.mediaUploader('simplecharm-portfolio-user-image', "CHARMING_PORTFOLIO_user_image","Upload Image");
-            this.mediaUploader('simplecharm-portfolio-user-image2', "CHARMING_PORTFOLIO_user_image2", "Upload Another Image");
+//picked_image.on('keyup', function(e) {
+//if ($(e.keyCode)[0] !== 13) return;
+//e.target.click();
+//})
+	$(document).on("click", ".charming-portfolio-skills.admin img", function(e) {
+				let custom_text = "Upload Image for Logo of The Skill";
+				const skillImage = $(this);
+				const hiddenField = $(this).siblings("input[type=hidden]");
+				const queue = hiddenField.data("queue")
+				console.log(queue)
 
-        }
-        mediaUploader(picked_image, hidden_field,custom_text = 'Upload Image') {
-            let image = null;
-            $(`.${picked_image}`).on('keyup', function(e) {
-                if ($(e.keyCode)[0] !== 13) return;
-                e.target.click();
-            })
-            $(`.${picked_image}`).off('click').on('click', function(e) {
+      let image = null;
+            
+            skillImage.off('click').on('click', function(e) {
                 e.preventDefault();
                  if(wp.media){
                     wp.media.view.Modal.prototype.on('close',function(){
@@ -38,20 +41,14 @@
                         // Convert uploaded_image to a JSON object to make accessing it easier
                         let image_url = uploaded_image.toJSON().url;
                         // Assign the url value to the image and hidden input field
-                        $(`.${picked_image}`).attr("src", image_url);
-                        $(`.${hidden_field}`).val(image_url);
+                        skillImage.attr("src", image_url);
+                        hiddenField.val(image_url);
                     });
                 image.open();
-                //  if (wp.media) {
-                //     wp.media.view.Modal.prototype.on('open', function(data) {
-                //         if(wp.media.frame.modal.clickedOpenerEl){
-                //          jQuery( '.media-modal' ).remove();
-                //         }
-                //     });
-                // }
                 }
             });
+	})
         }
-    }
-    new SimpleCharm_portfolio_Media();
+           }
+    new SimpleCharm_portfolio_Media_Skill();
 })(jQuery);

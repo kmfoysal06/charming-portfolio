@@ -16,8 +16,11 @@ A plugin to turn your frontpage into a portfolio landing page.
 Charming Portfolio is a simple plugin that update the frontpage as portfolio landing page with user provided information. This plugin is very easy to use and user friendly.
 
 === Images ===
-License: CCO https://creativecommons.org/publicdomain/zero/1.0/
 simplecharm-default-avater.jpg - https://www.flickr.com/photos/132795455@N08/24308979032
+License: CCO https://creativecommons.org/publicdomain/zero/1.0/
+
+coding placeholder icon: https://www.freepik.com/free-vector/gradient-data-logo-template_21252009.htm
+License: https://www.freepik.com/legal/terms-of-use#nav-freepik-license
 
 === Design ===
 Front Page Design

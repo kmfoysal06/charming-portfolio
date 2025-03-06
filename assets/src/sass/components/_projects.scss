@@ -1,3 +1,12 @@
 .line-break-anywhere{
 	line-break: anywhere;
 }
+.work-live-link .dashicons {
+  --icon-size: 1.5rem;
+  font-size: var(--icon-size);
+  width: var(--icon-size);
+  height: var(--icon-size);
+}
+.work-live-link .dashicons:hover{
+  color: #551A8B;
+} 

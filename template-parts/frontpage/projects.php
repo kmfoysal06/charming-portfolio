@@ -23,7 +23,7 @@ if (is_array($args) && array_key_exists("works", $args) && !empty($args['works']
 		if(array_key_exists('title', $work) && empty($work['title'])) continue;
 	?>
 		<div class="line-break-anywhere" tabindex="0">
-			<div class="flex flex-col my-4 gap-y-7 p-6 shadow-2xl">
+			<div class="flex flex-col my-4 gap-y-3 p-6 pb-3 charming_portfolio_shadow_thin">
 			<h2 class="text-3xl">
 				<?php echo esc_html(isset($work['title']) ? $work['title'] : ''); ?>
 			</h2>
