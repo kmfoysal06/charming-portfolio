@@ -362,3 +362,18 @@ if (!function_exists("CHARMING_PORTFOLIO_works_blank")) {
         return $projects_count === 0;
     }
 }
+
+/**
+ * Check if Portfolio is Enabled
+ * @return bool
+ */
+if(!function_exists("CHARMING_PORTFOLIO_enabled")) {
+	function CHARMING_PORTFOLIO_enabled():bool {
+		$portfolio_data = \CHARMING_PORTFOLIO\Inc\Classes\Portfolio::get_instance()->display_saved_value();
+		if($portfolio_data){
+			$portfolio_enabled = $portfolio_data['enabled'] ?? false;
+			return $portfolio_enabled;
+		}
+		return false;
+	}
+}

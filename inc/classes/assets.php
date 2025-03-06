@@ -33,8 +33,10 @@ class Assets
         wp_register_script("CHARMING_PORTFOLIO_main", CHARMING_PORTFOLIO_DIR_URI . '/assets/build/js/main.js', ['jquery'], filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/js/main.js'), true);
 
         // enqueue scripts
-        if(is_front_page()){
-            wp_enqueue_script('CHARMING_PORTFOLIO_main');
+		if(is_front_page()){
+			if(CHARMING_PORTFOLIO_enabled()){
+				wp_enqueue_script('CHARMING_PORTFOLIO_main');
+			}
         }
     }
     public function enqueue_styles()
@@ -42,9 +44,11 @@ class Assets
         wp_register_style('CHARMING_PORTFOLIO_tailwindcss', CHARMING_PORTFOLIO_DIR_URI . '/assets/build/css/main.css', filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/css/main.css'), 'all');
 
         // enqueue styles if its frontpage
-        if(is_front_page()){
+		if(is_front_page()){
+			if(CHARMING_PORTFOLIO_enabled()){
             wp_enqueue_style('CHARMING_PORTFOLIO_tailwindcss');
-            wp_enqueue_style('dashicons');
+				wp_enqueue_style('dashicons');
+			}
         }
     }
     public function admin_enqueue_styles()

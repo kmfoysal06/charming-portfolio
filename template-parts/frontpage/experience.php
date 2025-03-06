@@ -25,13 +25,12 @@ if (is_array($args) && array_key_exists("experiences", $args) && !empty($args['e
 		$end_date_status = strtolower($working_now) === 'on' ? __("Present","charming-portfolio") : $end_date;
 		?>
 
-		<!-- TODO: The Design Is Broken. -->
-		<div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 p-2 my-2 shadow-2xl" tabindex="0">
+		<div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 py-2 px-4 my-2 charming_portfolio_shadow_thin" tabindex="0">
 			<div class="experience-name flex justify-center items-center">
-				<h2 class="text-5xl"><?php echo esc_html($flattern_experience['institution']); ?></h2>
+				<h2 class="text-3xl"><?php echo esc_html($flattern_experience['institution']); ?></h2>
 			</div>
 			<div class="experience-info experience-name flex flex-col justify-center p-4 gap-4">
-				<h3 class="text-2xl lg:text-left md:text-left sm:text-center"><?php echo esc_html($flattern_experience['post-title']); ?></h3>
+				<h3 class="text-xl lg:text-left md:text-left sm:text-center"><?php echo esc_html($flattern_experience['post-title']); ?></h3>
 				<p>
 				<?php
 				

@@ -18,3 +18,7 @@
 -New Line on Textarea Issue Fixed
 -UI Improved for Admin
 -Skills Section UI Improved
+==v1.3.2==
+-Improved UI of Experience Section in Admin
+==v1.3.3==
+

@@ -11,6 +11,7 @@ $portfolio_saved_value = $portfolio->display_saved_value();
 $CHARMING_PORTFOLIO_css_url = plugins_url('assets/build/css/main.css', __FILE__);
 $CHARMING_PORTFOLIO_dashicons_css_url = includes_url('css/dashicons.min.css');
 ?>
+
 <!-- Header -->
 <?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/header");
 ?>

@@ -44,11 +44,9 @@ if (is_array($args) && array_key_exists("experiences", $args)):
     </td>
     <td>
         <label for="<?php echo esc_attr("working-now-" . $key,'charming-portfolio'); ?>" title="<?php esc_attr_e("Are You Still Working Here?",'charming-portfolio'); ?>"><?php esc_html_e("Still Working?",'charming-portfolio'); ?></label>
-       <div class="still-working-wrapper switch-btn-wrapper">
+       <div class="still-working-wrapper checkbox-wrapper">
             <input type="checkbox" id="<?php echo esc_attr("working-now-" . $key); ?>" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][working]" class="working" data-queue="<?php echo esc_attr($key); ?>" <?php checked($working_now,'on'); ?>>
-            <div class="switch-btn">
-                <span></span>
-            </div>
+            <span></span>
        </div>
     </td>
     <td>
@@ -85,7 +83,10 @@ endif;
     </td>
     <td>
         <label for="working-now" title="<?php esc_attr_e('Are You Still Working Here','charming-portfolio'); ?>"><?php esc_html_e('Still Working?','charming-portfolio'); ?></label>
-        <input type="checkbox" id="working-now" name="charming_portfolio[experiences][0][working]" class="working" data-queue="0">
+        <div class="still-working-wrapper checkbox-wrapper">
+            <input type="checkbox" id="working-now" name="charming_portfolio[experiences][0][working]" class="working" data-queue="0">
+            <span></span>
+        </div>
     </td>
     <td>
         <a class="button charming_portfolio_experience_remove" href="#1"><?php esc_html_e('Remove','charming-portfolio'); ?></a>

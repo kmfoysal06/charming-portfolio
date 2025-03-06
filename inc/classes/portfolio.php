@@ -428,7 +428,8 @@ class Portfolio
     {
         $option_value            = get_option("CHARMING_PORTFOLIO_data");
         $additional_option_value = get_option("CHARMING_PORTFOLIO_additional_data");
-        $saved_values            = [
+		$saved_values            = [
+	    'enabled'  		=> false,
             'name'              => 'Charm',
             'user_image'        => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg",
             'user_image2'       => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg",
@@ -441,7 +442,8 @@ class Portfolio
             'social_links'      => [],
             'skills'            => [],
         ];
-        if (is_array($option_value)) {
+		if (is_array($option_value)) {
+	    $enabled 	       = array_key_exists("enabled", $option_value) ? $option_value["enabled"] : false;
             $name              = array_key_exists("name", $option_value) ? $option_value["name"] : "";
             $image             = (array_key_exists("image", $option_value) && !empty($option_value['image'])) ? $option_value["image"] : CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg";
             $image2            = (array_key_exists("image_2", $option_value) && !empty($option_value['image_2'])) ? $option_value["image_2"] : CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg";
@@ -452,7 +454,8 @@ class Portfolio
             $address           = array_key_exists("address", $option_value) ? $option_value["address"] : "";
             $available         = (array_key_exists("available", $option_value) && $option_value['available'] === 'on') ? 'True' : "False";
             $social_links      = array_key_exists("social_link", $option_value) ? CHARMING_PORTFOLIO_load_social($option_value['social_link']) : [];
-            $saved_values      = [
+	$saved_values      = [
+		'enabled' => $enabled,
                 'name'              => $name,
                 'user_image'        => $image,
                 'user_image2'       => $image2,

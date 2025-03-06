@@ -4,13 +4,12 @@
  * @since 1.0
  * Plugin Name: Charming Portfolio
  * Description: A simple portfolio plugin for WordPress.
- * Version: 1.3.1
+ * Version: 1.3.3
  * Author: kmfoysal06
  * Author URI: https://profiles.wordpress.org/kmfoysal06
  * Tags: charming-portfolio, portfolio-plugin, simple-portfolio
  * Requires at least: 5.0
  * Tested up to: 6.7
- * Stable tag: 1.3.1
  * Requires PHP: 7.0
  * Text Domain: charming-portfolio
  * License: GPLv3
@@ -37,7 +36,9 @@ function CHARMING_PORTFOLIO_get_instance()
 CHARMING_PORTFOLIO_get_instance();
 
 require plugin_dir_path(__FILE__) . 'inc/helpers/template-tags.php';
-add_filter('template_include', 'CHARMING_PORTFOLIO_template_override');
+if(CHARMING_PORTFOLIO_enabled()){
+    add_filter('template_include', 'CHARMING_PORTFOLIO_template_override');
+}
 
 if (!function_exists('CHARMING_PORTFOLIO_template_override')) {
     function CHARMING_PORTFOLIO_template_override($template)
@@ -51,3 +52,4 @@ if (!function_exists('CHARMING_PORTFOLIO_template_override')) {
         return $template;
     }
 }
+
