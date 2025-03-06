@@ -52,6 +52,7 @@ TailwindCSS
 1. Go to the Admin Dashboard.
 2. You WIll Find A Option of Portfolio in the Sidebar.
 3. With That You Can Configure Your Basic Information (name,social,contact,aboutme etc.) and Additional (skills,experience,project showcase etc.)
+4. First You Have to Switch Enable to Enable The Portfolio in Your Site HomePage From Portfolio->Customize Portfolio.
 4. After Filling Up The Information You Can See Your Portfolio in Frontpage With Your Informations.
 
 == Screenshots ==
