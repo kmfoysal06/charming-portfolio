@@ -25,12 +25,12 @@ if (is_array($args) && array_key_exists("experiences", $args) && !empty($args['e
 		$end_date_status = strtolower($working_now) === 'on' ? __("Present","charming-portfolio") : $end_date;
 		?>
 
-		<div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 py-2 px-4 my-2 charming_portfolio_shadow_thin" tabindex="0">
+		<div class="charming_portfolio_shadow_thin gap-y-3" tabindex="0">
 			<div class="experience-name flex justify-center items-center">
 				<h2 class="text-3xl"><?php echo esc_html($flattern_experience['institution']); ?></h2>
 			</div>
-			<div class="experience-info experience-name flex flex-col justify-center p-4 gap-4">
-				<h3 class="text-xl lg:text-left md:text-left sm:text-center"><?php echo esc_html($flattern_experience['post-title']); ?></h3>
+			<div class="experience-info experience-name flex flex-col justify-center gap-y-1">
+				<h3 class="text-xl text-left"><?php echo esc_html($flattern_experience['post-title']); ?></h3>
 				<p>
 				<?php
 				
@@ -44,14 +44,13 @@ if (is_array($args) && array_key_exists("experiences", $args) && !empty($args['e
 					  	]]
 		          ))
 				?>
-				</p>
-			</div>
-			<div class="experience-date experience-name flex justify-center items-center lg:col-auto md:col-span-2">
-				<?php
+      </p>
+      <?php
 				if(!empty($start_date)):
-				?>
-				<h4><?php echo esc_html($start_date.' - '.$end_date_status); ?></h4>
+			?>
+			<h4 class="experience-time"><?php echo esc_html($start_date.' - '.$end_date_status); ?></h4>
 			<?php endif; ?>
+
 			</div>
 		</div>
 		<?php endforeach;?>

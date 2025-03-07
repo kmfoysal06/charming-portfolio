@@ -15,7 +15,6 @@ $CHARMING_PORTFOLIO_dashicons_css_url = includes_url('css/dashicons.min.css');
 <!-- Header -->
 <?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/header");
 ?>
-<!-- <charming_portfolio-plugin data-tailwind-css-url="<?php //echo esc_url($CHARMING_PORTFOLIO_css_url); ?>" data-dashicons-css-url="<?php //echo esc_url($CHARMING_PORTFOLIO_dashicons_css_url); ?>" class="charming_portfolio-plugin"> -->
 <div class="charming_portfolio-plugin-inner">
 	<!-- hero section -->
 <section class="min-h-screen min-h-lvh my-2 grid items-center">

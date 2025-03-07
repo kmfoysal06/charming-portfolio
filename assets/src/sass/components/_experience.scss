@@ -1,6 +1,23 @@
 .experience-content > div {
   width:100%;
-  max-width: 1000px;
-  margin-inline: 1rem;
-  background-color: #fff;
+  max-width: 900px;
+  padding:1rem;
+  margin: 0.5rem 1rem;
+  background-color: #e9e5e5;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  font-family: "Inter";
+  border-radius: 4px;
+
+  .experience-time {
+    font-size: 14px;
+    font-weight: 600;
+    color: #484444;
+  }
+
+  .experience-info {
+    width: 100%;
+    max-width:450px;
+  }
 }

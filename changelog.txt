@@ -21,4 +21,9 @@
 ==v1.3.2==
 -Improved UI of Experience Section in Admin
 ==v1.3.3==
-
+-Added Image Uploading For Skills
+-Improved UI of The Portfolio
+-Several Bugs Fixed
+-Enable and Disable Portfolio
+==v1.3.3==
+-Improved UI

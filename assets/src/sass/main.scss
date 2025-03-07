@@ -11,12 +11,17 @@
 @forward "./components/aboutme";
 @forward "./components/fonts";
 @forward "./components/utilities";
+@forward "./components/experience";
 @use './utils/variables' as *;
 
 /**
  * Basic Styling
  */
 
+#CHARMING_PORTFOLIO-content {
+  font-family: "Inter";
+  background-color: $background-color;
+}
 .CHARMING_PORTFOLIO-welcome-emoji{
 	display: contents;
 }
@@ -25,12 +30,7 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-body {
-  background-color: #4B5563;
-}
-.simplecharm-portfolio-plugin-inner{
-	background-color: $background-color;
-}
+
 p,span,cite,svg{
 	color: $secondary-color;
 	fill: $secondary-color;

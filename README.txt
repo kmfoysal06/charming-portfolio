@@ -3,7 +3,7 @@ Contributors: kmfoysal06
 Tags: charming-portfolio, simplecharm-portfolio, portfolio-plugin, simple-portfolio
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 Requires PHP: 7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -69,6 +69,7 @@ TailwindCSS
 8. Portfolio Settings In Admin
 9. Portfolio Frontpage Basic Information
 10. Portfolio Frontpage About Me
-11. Exoerience Section
-12. Project Section
-13. Porfolio Footer
+11. Portfolio Frontpage Skills Section
+12. Exoerience Section
+13. Project Section
+14. Porfolio Footer
