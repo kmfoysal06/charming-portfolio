@@ -1,8 +1,24 @@
-.simplecharm-skill-card{
-	--col-1 : rgb(0 0 0);
-	--col-2 : rgb(255 255 255);
-	height: 100%;
-	h4{
-		color: #000;
-	}
+.simplecharm-skill-card {
+  width: fit-content;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Inter";
+  line-height: 28px;
+  font-weight: 400;
+  font-size: 18px;
+  color: #4B5563;
+}
+.skills-container {
+  display:flex;
+  flex-flow: row wrap;
+  column-gap: 36px;
+  row-gap: 48px;
+  align-items: center;
+  justify-content: space-between;
+}
+.skills-title {
+  margin-block: 12px 48px;
+  row-gap: 1rem;
 }
