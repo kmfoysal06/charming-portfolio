@@ -47,3 +47,5 @@ CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/aboutme", "", $po
 
 <!-- Contact and Footer -->
 <?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/footer", "", $portfolio_saved_value);?>
+
+
