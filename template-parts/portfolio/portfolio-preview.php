@@ -113,7 +113,11 @@ if( ! defined( 'ABSPATH' ) ) {
 				printf(
 					// translators: List of Skills
 				    esc_html__( 'Skills: %s.', 'charming-portfolio' ),
-				    esc_html(implode(', ',$args['skills']))
+		            esc_html(
+		              implode(", ", array_map(function($skill){
+		                return $skill['name'];
+		              }, $args['skills']))
+		            )
 				);
 				?>
 			</p>

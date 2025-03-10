@@ -29,3 +29,5 @@
 -Improved UI
 ==v1.3.5==
 -Improved UI and Accessibility
+==v1.3.6==
+-Fixed Error in Portfolio Preview
