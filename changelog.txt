@@ -27,3 +27,5 @@
 -Enable and Disable Portfolio
 ==v1.3.3==
 -Improved UI
+==v1.3.5==
+-Improved UI and Accessibility
