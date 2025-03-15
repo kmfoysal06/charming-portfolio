@@ -31,3 +31,5 @@
 -Improved UI and Accessibility
 ==v1.3.6==
 -Fixed Error in Portfolio Preview
+==v1.3.7==
+-Added Scroll Revealing Animations
