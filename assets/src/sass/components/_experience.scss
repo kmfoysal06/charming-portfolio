@@ -1,12 +1,12 @@
-.experience-content > div {
+.experience-content{
   width:100%;
-  max-width: 900px;
+  max-width: 1200px;
   padding:1.5rem 1rem;
   margin: 0.5rem 1rem;
   background-color: #fff;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   font-family: "Inter";
   border-radius: 4px;
 
@@ -19,5 +19,11 @@
   .experience-info {
     width: 100%;
     max-width:450px;
+  }
+}
+
+@media screen and (min-width: 360px) and (max-width: 768px) {
+  .experience-content {
+    justify-content: start;
   }
 }

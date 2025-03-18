@@ -9,7 +9,7 @@ if( ! defined( 'ABSPATH' ) ) {
 ?>
  <div class="flex flex-col" tabindex="0">
   <div class="aboutme-title my-3 flex flex-col items-center">
-    <div class="badge badge-neutral"><?php esc_html_e("About Me","charming-portfolio"); ?></div>
+    <div class="badge badge-neutral py-3 px-4"><?php esc_html_e("About Me","charming-portfolio"); ?></div>
     <h3 class="text-xl"><?php esc_html_e("Curious about me? Here you have it:","charming-portfolio"); ?></h3>
   </div>
   <div class="aboutme hero-content sm:flex-col md:flex-row lg:flex-row  sm:justify-between md:justify-between lg:justify-between">

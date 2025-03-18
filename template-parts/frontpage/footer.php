@@ -7,9 +7,9 @@ if (!defined('ABSPATH')) {
     exit;
 }
 ?>
-<section class="home-footer w-full bg-gray-400 text-white py-3 text-center shadow-2xl my-2">
+<section class="home-footer w-full bg-gray-400 text-white py-3 text-center shadow-2xl mt-2">
 <footer role="contentinfo" class="charming-portfolio-footer footer-inner flex flex-col justify-center gap-3">
-			<div class="badge badge-neutral p-2 self-center"><?php esc_html_e("Get in Touch", "charming-portfolio");?></div>
+			<div class="badge badge-neutral self-center py-3 px-4 mb-6"><?php esc_html_e("Get in Touch", "charming-portfolio");?></div>
 			<div class="footer-text">
 				<p>
 					<?php

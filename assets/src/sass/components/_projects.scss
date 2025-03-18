@@ -1,15 +1,26 @@
 .line-break-anywhere{
 	line-break: anywhere;
 }
-.work-live-link .dashicons {
-  --icon-size: 1.5rem;
-  font-size: var(--icon-size);
-  width: var(--icon-size);
-  height: var(--icon-size);
+.work-live-link {
+  a {
+      display: block;
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-content: center;
+      &:hover .dashicons {
+        color: #000000;
+      } 
+     .dashicons {
+        --icon-size: 1.5rem;
+        font-size: var(--icon-size);
+        width: var(--icon-size);
+        height: var(--icon-size); 
+      }
+  }
+ 
+
 }
-.work-live-link .dashicons:hover{
-  color: #551A8B;
-} 
 .portfolio-project-bg {
   background-color: #fff;
   border-radius: 4px;

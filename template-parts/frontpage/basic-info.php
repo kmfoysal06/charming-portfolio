@@ -7,13 +7,13 @@ if( ! defined( 'ABSPATH' ) ) {
   exit;
 }
 ?>
-<div class="grid grid-cols-1 text-center lg:text-justify lg:grid-cols-2 lg:grid-flow-col-reverse p-4 intro" tabindex="0">
+<div class="grid grid-cols-1 text-center lg:text-justify lg:grid-cols-2 lg:grid-flow-col-reverse p-4 intro mt-5" tabindex="0">
     <div class="CHARMING_PORTFOLIO_primary-image-container">
       <img src="<?php echo esc_url($args["user_image"]); ?>" class="lg:max-w-sm rounded-lg shadow-2xl block m-auto sm:w-4/5" />
       <img src="<?php echo esc_url($args["user_image"]); ?>" class="lg:max-w-sm rounded-lg shadow-2xl m-auto sm:w-4/5 " />
     </div>
     <div class="intro-primary-info">
-      <h3 class="text-3xl font-bold mt-4"><?php echo esc_html("Hi, I'm ".$args['name'])." <span class='d-contents CHARMING_PORTFOLIO-welcome-emoji'>👋</span>"; ?></h3>
+      <h3 class="text-3xl font-bold mt-6 lg:mt-0"><?php echo esc_html("Hi, I'm ".$args['name'])." <span class='d-contents CHARMING_PORTFOLIO-welcome-emoji'>👋</span>"; ?></h3>
       <p class="py-4"><?php 
         printf(wp_kses(
             isset($args['short_description']) ? CHARMING_PORTFOLIO_special_tag($args['short_description']) : ''

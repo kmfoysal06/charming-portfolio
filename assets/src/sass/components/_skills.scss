@@ -1,12 +1,3 @@
-.simplecharm-skill-card {
-  font-family: "Inter";
-  line-height: 28px;
-  font-weight: 400;
-  font-size: 18px;
-  color: #4B5563;
-  display: grid;
-  place-items: center;
-}
 .skills-container {
   column-gap: 36px;
  row-gap: 48px;
@@ -15,6 +6,21 @@
   grid-template-columns: repeat(auto-fit, minmax(min(var(--skill-box-width), 100%), 1fr));
   width: 100%;
   align-items: center;
+  .charming-portfolio-skill-card {
+      font-family: "Inter";
+      line-height: 28px;
+      font-weight: 400;
+      font-size: 16px;
+      color: #4B5563;
+      display: grid;
+      place-items: center;
+      aspect-ratio: 1;
+      grid-template-rows: 1fr 36px;
+      border-radius: 4px;
+      .skill-name {
+        color: #000;
+      }
+  }
 }
 .skills-title {
   margin-block: 12px 48px;

@@ -13,7 +13,7 @@ if (is_array($args) && array_key_exists("works", $args) && !empty($args['works']
 
 ?>
 	<div class="project-title my-3 flex flex-col items-center">
-		<div class="badge badge-neutral"><?php esc_html_e("Work","charming-portfolio"); ?></div>
+		<div class="badge badge-neutral py-3 px-4"><?php esc_html_e("Work","charming-portfolio"); ?></div>
 		<p><?php esc_html_e("Some of the noteworthy projects I have built:","charming-portfolio"); ?></p>
 	</div>
 	<div class="single-work-info grid lg:grid-cols-2 md:grid-cols-2 gap-x-4 my-3">
@@ -50,7 +50,7 @@ if (is_array($args) && array_key_exists("works", $args) && !empty($args['works']
 
 		<?php if(array_key_exists('link',$work) && !empty($work['link'])): ?>
 			<div class="work-live-link">
-			<a href="<?php echo esc_url(isset($work['link']) ? $work['link'] : ''); ?>" target="_blank"><span class="dashicons dashicons-external"></span></i></a>
+			<a href="<?php echo esc_url(isset($work['link']) ? $work['link'] : ''); ?>" target="_blank" class="charming_portfolio_shadow_thin"><span class="dashicons dashicons-external"></span></i></a>
 		</div>
 	<?php endif; ?>
 		</div>

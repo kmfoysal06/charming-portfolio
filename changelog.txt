@@ -33,3 +33,6 @@
 -Fixed Error in Portfolio Preview
 ==v1.3.7==
 -Added Scroll Revealing Animations
+-Improved UI and Optimized CSS
+==v1.3.8==
+-Improved UI
