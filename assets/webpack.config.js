@@ -13,6 +13,7 @@ const BUILD_DIR = path.resolve(__dirname, 'build')
 
 const entry = {
   main: JS_DIR + '/main.js',
+  react: JS_DIR + '/react-int.js',
   admin: JS_DIR + '/admin.js',
 }
 
