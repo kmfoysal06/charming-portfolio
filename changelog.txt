@@ -36,3 +36,5 @@
 -Improved UI and Optimized CSS
 ==v1.3.8==
 -Improved UI
+==v1.3.9==
+-Moved Front Page (Portfolio Page) to React

@@ -25,13 +25,11 @@ $CHARMING_PORTFOLIO_dashicons_css_url = includes_url('css/dashicons.min.css');
 <!-- skills section -->
 
 <!-- Experience Section -->
-<section class="experience min-h-max p-6 my-2 flex flex-col">
 	<?php //CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/experience", "", $portfolio_saved_value); ?>
-</section>
 
 <!-- Project Section -->
 <section class="projects min-h-max p-6 my-2 flex flex-col">
-	<?php //CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/projects", "", $portfolio_saved_value); ?>
+	<?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/projects", "", $portfolio_saved_value); ?>
 </section>
 
 <!-- Contact and Footer -->

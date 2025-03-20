@@ -37240,7 +37240,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
-const About = () => {
+const About = _ref => {
+  let {
+    specialTag
+  } = _ref;
+  const description = specialTag(portfolio_data.description);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("section", {
       className: "about-me min-h-screen min-h-max my-2 flex justify-center",
@@ -37262,9 +37266,11 @@ const About = () => {
             src: portfolio_data.user_image2,
             className: "sm:w-full md:w-2/4 lg:w-2/4 rounded-lg shadow-2xl"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            children: description && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
               className: "py-6",
-              children: portfolio_data.description
+              dangerouslySetInnerHTML: {
+                __html: description
+              }
             })
           })]
         })]
@@ -37273,6 +37279,104 @@ const About = () => {
   });
 };
 /* harmony default export */ __webpack_exports__["default"] = (About);
+
+/***/ }),
+
+/***/ "./src/js/react-components/experience.js":
+/*!***********************************************!*\
+  !*** ./src/js/react-components/experience.js ***!
+  \***********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+const Experience = _ref => {
+  let {
+    specialTag
+  } = _ref;
+  /**
+   * Make the array to easy to use
+   */
+  const flattenArray = arr => {
+    if (!Array.isArray(arr) || arr.length === 0) return {};
+    if (Array.isArray(arr[0])) {
+      return Object.assign({}, ...arr);
+    } else if (typeof arr[0] === 'object') {
+      return Object.assign({}, ...arr);
+    }
+    return arr;
+  };
+
+  // Check if experiences exist and are not empty
+  const hasExperiences = portfolio_data && portfolio_data.experiences && Array.isArray(portfolio_data.experiences) && portfolio_data.experiences.length > 0;
+  const formatDate = dateString => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    const month = date.toLocaleString('en-US', {
+      month: 'short'
+    });
+    const year = date.getFullYear();
+    return `${month} ${year}`;
+  };
+  if (!hasExperiences) {
+    return null;
+  }
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("section", {
+    className: "experience min-h-max p-6 my-2 flex flex-col",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      className: "experience-title my-3 flex flex-col items-center",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "badge badge-neutral py-3 px-4",
+        children: "Experience"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+        children: "Here is a quick summary of my most recent experiences:"
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "experience-content charming_portfolio_shadow_thin gap-y-3",
+      tabIndex: "0",
+      children: portfolio_data.experiences.map((singleExperience, index) => {
+        const flattenedExperience = flattenArray(singleExperience);
+
+        // Skip if empty after flattening
+        if (!flattenedExperience || Object.keys(flattenedExperience).length === 0) {
+          return null;
+        }
+        const startDate = flattenedExperience.start_date ? formatDate(flattenedExperience.start_date) : '';
+        const workingNow = flattenedExperience.working || 'off';
+        const endDate = flattenedExperience.end_date ? formatDate(flattenedExperience.end_date) : '';
+        const endDateStatus = workingNow.toLowerCase() === 'on' ? 'Present' : endDate;
+
+        // Process the responsibility field with special tags
+        const responsibility = flattenedExperience.responsibility ? specialTag(flattenedExperience.responsibility) : '';
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "experience-name flex justify-center items-center",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
+              className: "text-3xl",
+              children: flattenedExperience.institution
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "experience-info experience-name flex flex-col justify-center gap-y-1",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
+              className: "text-xl text-left",
+              children: flattenedExperience['post-title']
+            }), responsibility && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+              dangerouslySetInnerHTML: {
+                __html: responsibility
+              }
+            }), startDate && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", {
+              className: "experience-time",
+              children: `${startDate} - ${endDateStatus}`
+            })]
+          })]
+        }, index);
+      })
+    })]
+  });
+};
+/* harmony default export */ __webpack_exports__["default"] = (Experience);
 
 /***/ }),
 
@@ -37286,7 +37390,11 @@ const About = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
-const Intro = () => {
+const Intro = _ref => {
+  let {
+    specialTag
+  } = _ref;
+  const short_description = specialTag(portfolio_data.short_description);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("section", {
       className: "min-h-screen min-h-lvh grid items-center mb-2",
@@ -37310,9 +37418,11 @@ const Intro = () => {
               className: "d-contents CHARMING_PORTFOLIO-welcome-emoji",
               children: "\uD83D\uDC4B"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+          }), short_description && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
             className: "py-4",
-            children: portfolio_data.short_description
+            dangerouslySetInnerHTML: {
+              __html: short_description
+            }
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
               className: "dashicons dashicons-location-alt mr-3"
@@ -37474,12 +37584,14 @@ var __webpack_exports__ = {};
   !*** ./src/js/react-int.js ***!
   \*****************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/element */ "./node_modules/react-dom/client.js");
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/dom-ready */ "./node_modules/@wordpress/dom-ready/build-module/index.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "./node_modules/react-dom/client.js");
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/dom-ready */ "./node_modules/@wordpress/dom-ready/build-module/index.js");
 /* harmony import */ var _react_components_intro_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./react-components/intro.js */ "./src/js/react-components/intro.js");
 /* harmony import */ var _react_components_about_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./react-components/about.js */ "./src/js/react-components/about.js");
 /* harmony import */ var _react_components_skills_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./react-components/skills.js */ "./src/js/react-components/skills.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _react_components_experience_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./react-components/experience.js */ "./src/js/react-components/experience.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -37487,13 +37599,29 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const Portfolio = () => {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_react_components_intro_js__WEBPACK_IMPORTED_MODULE_0__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_react_components_about_js__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_react_components_skills_js__WEBPACK_IMPORTED_MODULE_2__["default"], {})]
+  const specialTag = textareaValue => {
+    if (!textareaValue) return '';
+    let processedText = textareaValue;
+    processedText = processedText.replace(/\[bold\]/g, "<b>");
+    processedText = processedText.replace(/\[\/bold\]/g, "</b>");
+    processedText = processedText.replace(/\[quote\]/g, "\"");
+    processedText = processedText.replace(/\[squote\]/g, "'");
+    processedText = processedText.replace(/\[break\]/g, "<br />");
+    return processedText;
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_react_components_intro_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      specialTag: specialTag
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_react_components_about_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      specialTag: specialTag
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_react_components_skills_js__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_react_components_experience_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      specialTag: specialTag
+    })]
   });
 };
-(0,_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_4__["default"])(() => {
-  const root = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.createRoot)(document.getElementById("r-slot"));
-  root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Portfolio, {}));
+(0,_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_5__["default"])(() => {
+  const root = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.createRoot)(document.getElementById("r-slot"));
+  root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Portfolio, {}));
 });
 }();
 /******/ })()

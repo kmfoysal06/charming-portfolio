@@ -1,5 +1,7 @@
 
-const Intro = () => {
+const Intro = ({ specialTag }) => {
+
+  const short_description = specialTag(portfolio_data.short_description);
 
   return (
     <>
@@ -11,7 +13,9 @@ const Intro = () => {
           </div>
           <div className="intro-primary-info">
             <h3 className="text-3xl font-bold mt-6 lg:mt-0">Hi, I'm {portfolio_data.name} <span className="d-contents CHARMING_PORTFOLIO-welcome-emoji">👋</span></h3>
-            <p className="py-4">{portfolio_data.short_description}</p>
+            {short_description && (
+              <p className="py-4" dangerouslySetInnerHTML={{ __html: short_description }} />
+            )}
             <br />
             <p><span className="dashicons dashicons-location-alt mr-3"></span>{portfolio_data.address}</p>
             <p><span className="mr-3"><i className={portfolio_data.available ? "simplecharm-portfolio-available" : "simplecharm-portfolio-available-false"}></i></span>
