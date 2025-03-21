@@ -225,6 +225,17 @@
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
+.hero {
+  display: grid;
+  width: 100%;
+  place-items: center;
+  background-size: cover;
+  background-position: center;
+}
+.hero > * {
+  grid-column-start: 1;
+  grid-row-start: 1;
+}
 .hero-content {
   z-index: 0;
   display: flex;
@@ -817,6 +828,9 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
 .mb-6 {
   margin-bottom: 1.5rem;
 }
@@ -847,9 +861,15 @@
 .hidden {
   display: none;
 }
+.min-h-lvh {
+  min-height: 100lvh;
+}
 .min-h-max {
   min-height: -moz-max-content;
   min-height: max-content;
+}
+.min-h-screen {
+  min-height: 100vh;
 }
 .w-full {
   width: 100%;

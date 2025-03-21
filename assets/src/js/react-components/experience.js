@@ -41,7 +41,7 @@ const Experience = ({ specialTag }) => {
         <div className="badge badge-neutral py-3 px-4">Experience</div>
         <p>Here is a quick summary of my most recent experiences:</p>
       </div>
-      <div className="experience-content charming_portfolio_shadow_thin gap-y-3" tabIndex="0">
+      <div className="" tabIndex="0">
         {portfolio_data.experiences.map((singleExperience, index) => {
           const flattenedExperience = flattenArray(singleExperience);
 
@@ -69,7 +69,7 @@ const Experience = ({ specialTag }) => {
             : '';
 
           return (
-            <div key={index}>
+            <div key={index} className="experience-content charming_portfolio_shadow_thin gap-y-3">
               <div className="experience-name flex justify-center items-center">
                 <h2 className="text-3xl">{flattenedExperience.institution}</h2>
               </div>

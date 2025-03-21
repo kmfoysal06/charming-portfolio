@@ -37334,7 +37334,7 @@ const Experience = _ref => {
         children: "Here is a quick summary of my most recent experiences:"
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-      className: "experience-content charming_portfolio_shadow_thin gap-y-3",
+      className: "",
       tabIndex: "0",
       children: portfolio_data.experiences.map((singleExperience, index) => {
         const flattenedExperience = flattenArray(singleExperience);
@@ -37351,6 +37351,7 @@ const Experience = _ref => {
         // Process the responsibility field with special tags
         const responsibility = flattenedExperience.responsibility ? specialTag(flattenedExperience.responsibility) : '';
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "experience-content charming_portfolio_shadow_thin gap-y-3",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
             className: "experience-name flex justify-center items-center",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
@@ -37618,7 +37619,7 @@ const Portfolio = () => {
   });
 };
 (0,_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_5__["default"])(() => {
-  const root = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.createRoot)(document.getElementById("r-slot"));
+  const root = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.createRoot)(document.getElementById("charming-portfolio-react-root"));
   root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Portfolio, {}));
 });
 }();
