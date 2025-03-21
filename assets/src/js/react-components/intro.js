@@ -1,3 +1,4 @@
+import SocialIcons from './social_icons';
 
 const Intro = ({ specialTag }) => {
 
@@ -20,10 +21,13 @@ const Intro = ({ specialTag }) => {
             <p><span className="dashicons dashicons-location-alt mr-3"></span>{portfolio_data.address}</p>
             <p><span className="mr-3"><i className={portfolio_data.available ? "simplecharm-portfolio-available" : "simplecharm-portfolio-available-false"}></i></span>
               {portfolio_data.available ? "Available for New Projects" : "Currently Not Available for New Projects"}
-            </p>        <br />
+            </p>
+            <br />
+            <SocialIcons icons={portfolio_data.social_links} />
           </div>
         </div>
       </section>
+
     </>
   )
 }

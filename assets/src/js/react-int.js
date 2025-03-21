@@ -21,6 +21,7 @@ const Portfolio = () => {
 
   return (
     <>
+      <Intro specialTag={specialTag} />
       <About specialTag={specialTag} />
       <Skills />
       <Experience specialTag={specialTag} />

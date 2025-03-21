@@ -20,7 +20,7 @@ $CHARMING_PORTFOLIO_dashicons_css_url = includes_url('css/dashicons.min.css');
 	<!-- hero section -->
 <section class="min-h-screen min-h-lvh grid items-center mb-2">
   <?php
-CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/basic-info", "", $portfolio_saved_value);
+//CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/basic-info", "", $portfolio_saved_value);
 ?>
 </section>
 
