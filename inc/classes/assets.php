@@ -31,7 +31,7 @@ class Assets
     public function enqueue_scripts()
     {
       $portfolio_saved_value = Portfolio::get_instance()->display_saved_value();
-      $portfolio_saved_value['social_links_frontend'] = CHARMING_PORTFOLIO_link_social_frontend($portfolio_saved_value['social_links']);
+
       // register scripts
         wp_register_script("CHARMING_PORTFOLIO_main", CHARMING_PORTFOLIO_DIR_URI . '/assets/build/js/main.js', ['jquery'], filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/js/main.js'), true);
         wp_register_script("CHARMING_PORTFOLIO_scrollReveal", "https://unpkg.com/scrollreveal", [], null, false);

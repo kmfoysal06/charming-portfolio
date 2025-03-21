@@ -21,7 +21,6 @@ const Portfolio = () => {
 
   return (
     <>
-      <Intro specialTag={specialTag} />
       <About specialTag={specialTag} />
       <Skills />
       <Experience specialTag={specialTag} />
@@ -32,7 +31,7 @@ const Portfolio = () => {
 domReady(
   () => {
     const root = createRoot(
-      document.getElementById("r-slot")
+      document.getElementById("charming-portfolio-react-root")
     );
 
     root.render(<Portfolio />);
