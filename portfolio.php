@@ -26,8 +26,14 @@ if (!defined("CHARMING_PORTFOLIO_DIR_URI")) {
     define("CHARMING_PORTFOLIO_DIR_URI", untrailingslashit(plugin_dir_url(__FILE__)));
 }
 
+
+
 require_once CHARMING_PORTFOLIO_DIR_PATH . '/inc/helpers/autoload.php';
 require_once CHARMING_PORTFOLIO_DIR_PATH . '/inc/helpers/template-tags.php';
+
+if (!defined("CHARMING_PORTFOLIO_CLIENT_RENDER")) {
+    define("CHARMING_PORTFOLIO_CLIENT_RENDER", CHARMING_PORTFOLIO_CLIENT_RENDER());
+}
 
 function CHARMING_PORTFOLIO_get_instance()
 {

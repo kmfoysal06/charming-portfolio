@@ -42,7 +42,9 @@ class Assets
 		if(is_front_page()){
 			if(CHARMING_PORTFOLIO_enabled()){
 				wp_enqueue_script('CHARMING_PORTFOLIO_main');
-                wp_enqueue_script('CHARMING_PORTFOLIO_portofolio_react');
+                if(CHARMING_PORTFOLIO_CLIENT_RENDER === true){
+                    wp_enqueue_script('CHARMING_PORTFOLIO_portofolio_react');
+                }
 			}
         }
     }

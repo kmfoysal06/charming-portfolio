@@ -17,22 +17,14 @@ $CHARMING_PORTFOLIO_dashicons_css_url = includes_url('css/dashicons.min.css');
 <?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/header");
 ?>
 <div class="charming_portfolio-plugin-inner">
-	<!-- hero section -->
-<!-- <section class="min-h-screen min-h-lvh grid items-center mb-2">
-  <?php
-//CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/basic-info", "", $portfolio_saved_value);
-?>
-</section>-->
 
-<!-- Slot To Load React Components -->
-<div id="charming-portfolio-react-root">
-
-</div>
-
-<!-- Project Section -->
-<!-- <section class="projects min-h-max p-6 my-2 flex flex-col">-->
-<!-- 	<?php //CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/projects", "", $portfolio_saved_value); ?> -->
-<!-- </section> -->
+    <?php if(CHARMING_PORTFOLIO_CLIENT_RENDER === true):?>
+        <!-- Slot To Load React Components -->
+        <div id="charming-portfolio-react-root">
+        </div>
+    <?php else: ?>
+        server side rendering is currently off
+    <?php endif; ?>
 
 <!-- Contact and Footer -->
 <?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/footer", "", $portfolio_saved_value);?>
