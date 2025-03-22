@@ -7,9 +7,9 @@ const Intro = ({ portfolio, specialTag }) => {
   return (
     <>
       <section className="min-h-screen min-h-lvh grid items-center mb-2">
-        <div className="grid grid-cols-1 text-center lg:text-justify lg:grid-cols-2 lg:grid-flow-col-reverse p-4 intro mt-5" tabIndex="0">
+        <div className="grid grid-cols-1 text-center lg:text-justify lg:grid-cols-2 lg:grid-flow-col-reverse cp-p4 intro cp-mt5" tabIndex="0">
           <div className="CHARMING_PORTFOLIO_primary-image-container">
-            <img src={portfolio.user_image} className="lg:max-w-sm rounded-lg shadow-2xl block m-auto sm:w-4/5" />
+            <img src={portfolio.user_image} className="lg:max-w-sm rounded-lg shadow-2xl block cp-m-auto sm:w-4/5" />
             <img src={portfolio.user_image} className="lg:max-w-sm rounded-lg shadow-2xl m-auto sm:w-4/5 " />
           </div>
           <div className="intro-primary-info">

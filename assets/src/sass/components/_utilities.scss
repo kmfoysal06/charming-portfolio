@@ -72,5 +72,38 @@
   .cp-gapy#{$i} {
     row-gap: #{$i * 0.25}rem;
   }
+}
+.cp-m-auto {
+  margin: auto;
+}
 
+//height related classes
+.min-h-screen {
+  min-height: 100vh;
+}
+.min-h-max {
+  min-height: max-content;
+}
+.min-h-lvh {
+  min-height: 100vh;
+}
+
+// display related classes
+
+
+.grid {
+  display: grid;
+}
+.block {
+  display: block;
+}
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
 }

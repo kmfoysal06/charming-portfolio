@@ -4,10 +4,10 @@ const About = ({ specialTag, portfolio }) => {
   const description = specialTag(portfolio.description);
   return (
     <>
-      <section className="about-me min-h-screen min-h-max my-2 flex justify-center">
+      <section className="about-me min-h-screen min-h-max cp-my2 flex justify-center">
         <div className="flex flex-col" tabIndex="0">
-          <div className="aboutme-title my-3 flex flex-col items-center">
-            <div className="badge badge-neutral py-3 px-4">{__("About Me", "charming-portfolio")}</div>
+          <div className="aboutme-title cp-my3 flex flex-col items-center">
+            <div className="badge badge-neutral cp-py3 cp-px4">{__("About Me", "charming-portfolio")}</div>
             <h3 className="text-xl">{__("Curious about me? Here you have it:", "charming-portfolio")}</h3>
           </div>
           <div className="aboutme hero-content sm:flex-col md:flex-row lg:flex-row  sm:justify-between md:justify-between lg:justify-between">

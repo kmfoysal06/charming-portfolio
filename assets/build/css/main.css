@@ -2448,6 +2448,43 @@ html {
   row-gap: 2.5rem;
 }
 
+.cp-m-auto {
+  margin: auto;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.min-h-max {
+  min-height: -moz-max-content;
+  min-height: max-content;
+}
+
+.min-h-lvh {
+  min-height: 100vh;
+}
+
+.grid {
+  display: grid;
+}
+
+.block {
+  display: block;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
 .experience-content {
   width: 100%;
   max-width: 1200px;

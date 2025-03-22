@@ -37248,14 +37248,14 @@ const About = _ref => {
   const description = specialTag(portfolio.description);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("section", {
-      className: "about-me min-h-screen min-h-max my-2 flex justify-center",
+      className: "about-me min-h-screen min-h-max cp-my2 flex justify-center",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
         className: "flex flex-col",
         tabIndex: "0",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "aboutme-title my-3 flex flex-col items-center",
+          className: "aboutme-title cp-my3 flex flex-col items-center",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            className: "badge badge-neutral py-3 px-4",
+            className: "badge badge-neutral cp-py3 cp-px4",
             children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("About Me", "charming-portfolio")
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
             className: "text-xl",
@@ -37564,13 +37564,13 @@ const Intro = _ref => {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("section", {
       className: "min-h-screen min-h-lvh grid items-center mb-2",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "grid grid-cols-1 text-center lg:text-justify lg:grid-cols-2 lg:grid-flow-col-reverse p-4 intro mt-5",
+        className: "grid grid-cols-1 text-center lg:text-justify lg:grid-cols-2 lg:grid-flow-col-reverse cp-p4 intro cp-mt5",
         tabIndex: "0",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "CHARMING_PORTFOLIO_primary-image-container",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
             src: portfolio.user_image,
-            className: "lg:max-w-sm rounded-lg shadow-2xl block m-auto sm:w-4/5"
+            className: "lg:max-w-sm rounded-lg shadow-2xl block cp-m-auto sm:w-4/5"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
             src: portfolio.user_image,
             className: "lg:max-w-sm rounded-lg shadow-2xl m-auto sm:w-4/5 "
