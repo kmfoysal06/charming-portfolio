@@ -23,7 +23,9 @@ const Intro = ({ portfolio, specialTag }) => {
               {portfolio.available ? "Available for New Projects" : "Currently Not Available for New Projects"}
             </p>
             <br />
-            <SocialIcons icons={portfolio.social_links} />
+            <div className="social-link cp-gap3 cp-my2">
+                <SocialIcons icons={portfolio.social_links} />
+            </div>
           </div>
         </div>
       </section>
