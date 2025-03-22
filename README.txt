@@ -58,6 +58,9 @@ TailwindCSS
 4. First You Have to Switch Enable to Enable The Portfolio in Your Site HomePage From Portfolio->Customize Portfolio.
 4. After Filling Up The Information You Can See Your Portfolio in Frontpage With Your Informations.
 
+== Uncompiled Assets ==
+The Uncompiled Assetes and The Configuration Files Will Be Found [Here](https://github.com/kmfoysal06/charming-portfolio/tree/master/assets)
+
 == Screenshots ==
 1. Basic Information Setting
 2. About Me Setting
