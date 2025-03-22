@@ -13,3 +13,64 @@
     border-radius: 4px;
   }
 }
+
+// all kind of margin and paddings
+
+@for $i from 1 through 10 {
+  .cp-m#{$i} {
+    margin: #{$i * 0.25}rem;
+  }
+  .cp-mx#{$i} {
+    margin-left: #{$i * 0.25}rem;
+    margin-right: #{$i * 0.25}rem;
+  }
+  .cp-my#{$i} {
+    margin-top: #{$i * 0.25}rem;
+    margin-bottom: #{$i * 0.25}rem;
+  }
+  .cp-mt#{$i} {
+    margin-top: #{$i * 0.25}rem;
+  }
+  .cp-mb#{$i} {
+    margin-bottom: #{$i * 0.25}rem;
+  }
+  .cp-ml#{$i} {
+    margin-left: #{$i * 0.25}rem;
+  }
+  .cp-mr#{$i} {
+    margin-right: #{$i * 0.25}rem;
+  }
+  .cp-p#{$i} {
+    padding: #{$i * 0.25}rem;
+  }
+  .cp-pt#{$i} {
+    padding-top: #{$i * 0.25}rem;
+  }
+  .cp-pb#{$i} {
+    padding-bottom: #{$i * 0.25}rem;
+  }
+  .cp-pl#{$i} {
+    padding-left: #{$i * 0.25}rem;
+  }
+  .cp-pr#{$i} {
+    padding-right: #{$i * 0.25}rem;
+  }
+  .cp-px#{$i} {
+    padding-left: #{$i * 0.25}rem;
+    padding-right: #{$i * 0.25}rem;
+  }
+  .cp-py#{$i} {
+    padding-top: #{$i * 0.25}rem;
+    padding-bottom: #{$i * 0.25}rem;
+  }
+  .cp-gap#{$i} {
+    gap: #{$i * 0.25}rem;
+  }
+  .cp-gapx#{$i} {
+    column-gap: #{$i * 0.25}rem;
+  }
+  .cp-gapy#{$i} {
+    row-gap: #{$i * 0.25}rem;
+  }
+
+}

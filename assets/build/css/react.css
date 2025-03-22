@@ -2513,15 +2513,6 @@ html {
   width: min(460px, 100%);
   margin: 0 auto;
 }
-.charming_portfolio-plugin-inner footer .footer-mail, .charming_portfolio-plugin-inner footer .footer-phone {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.charming_portfolio-plugin-inner footer .social-links {
-  display: flex;
-  justify-content: center;
-}
 
 /**
  * Basic Styling
@@ -2616,4 +2607,4 @@ section {
   }
 }
 
-/*# sourceMappingURL=main.css.map*/
+/*# sourceMappingURL=react.css.map*/

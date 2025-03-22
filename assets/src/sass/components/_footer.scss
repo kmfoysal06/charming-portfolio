@@ -1,0 +1,25 @@
+.charming_portfolio-plugin-inner {
+  .home-footer {
+    background-color: rgb(156 163 175 / 1);
+    color: #fff;
+    text-align: center;
+  }
+  footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .footer-text {
+      width: min(460px, 100%);
+      margin: 0 auto;
+    }
+    .footer-mail, .footer-phone {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

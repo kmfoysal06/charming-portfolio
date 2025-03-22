@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 
-const About = ({ specialTag }) => {
-  const description = specialTag(portfolio_data.description);
+const About = ({ specialTag, portfolio }) => {
+  const description = specialTag(portfolio.description);
   return (
     <>
       <section className="about-me min-h-screen min-h-max my-2 flex justify-center">
@@ -11,7 +11,7 @@ const About = ({ specialTag }) => {
             <h3 className="text-xl">{__("Curious about me? Here you have it:", "charming-portfolio")}</h3>
           </div>
           <div className="aboutme hero-content sm:flex-col md:flex-row lg:flex-row  sm:justify-between md:justify-between lg:justify-between">
-            <img src={portfolio_data.user_image2} className="sm:w-full md:w-2/4 lg:w-2/4 rounded-lg shadow-2xl" />
+            <img src={portfolio.user_image2} className="sm:w-full md:w-2/4 lg:w-2/4 rounded-lg shadow-2xl" />
             <div>
               {description && (
                 <p className="py-6" dangerouslySetInnerHTML={{ __html: description }} />

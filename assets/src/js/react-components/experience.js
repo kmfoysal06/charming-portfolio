@@ -1,4 +1,4 @@
-const Experience = ({ specialTag }) => {
+const Experience = ({ specialTag, experiences }) => {
 
   /**
    * Make the array to easy to use
@@ -17,10 +17,9 @@ const Experience = ({ specialTag }) => {
 
   // Check if experiences exist and are not empty
   const hasExperiences =
-    portfolio_data &&
-    portfolio_data.experiences &&
-    Array.isArray(portfolio_data.experiences) &&
-    portfolio_data.experiences.length > 0;
+    experiences &&
+    Array.isArray(experiences) &&
+    experiences.length > 0;
 
 
   const formatDate = (dateString) => {
@@ -42,7 +41,7 @@ const Experience = ({ specialTag }) => {
         <p>Here is a quick summary of my most recent experiences:</p>
       </div>
       <div className="" tabIndex="0">
-        {portfolio_data.experiences.map((singleExperience, index) => {
+        {experiences.map((singleExperience, index) => {
           const flattenedExperience = flattenArray(singleExperience);
 
           // Skip if empty after flattening

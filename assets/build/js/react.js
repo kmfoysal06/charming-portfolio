@@ -37242,9 +37242,10 @@ __webpack_require__.r(__webpack_exports__);
 
 const About = _ref => {
   let {
-    specialTag
+    specialTag,
+    portfolio
   } = _ref;
-  const description = specialTag(portfolio_data.description);
+  const description = specialTag(portfolio.description);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("section", {
       className: "about-me min-h-screen min-h-max my-2 flex justify-center",
@@ -37263,7 +37264,7 @@ const About = _ref => {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "aboutme hero-content sm:flex-col md:flex-row lg:flex-row  sm:justify-between md:justify-between lg:justify-between",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-            src: portfolio_data.user_image2,
+            src: portfolio.user_image2,
             className: "sm:w-full md:w-2/4 lg:w-2/4 rounded-lg shadow-2xl"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
             children: description && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
@@ -37282,6 +37283,56 @@ const About = _ref => {
 
 /***/ }),
 
+/***/ "./src/js/react-components/copy-btn.js":
+/*!*********************************************!*\
+  !*** ./src/js/react-components/copy-btn.js ***!
+  \*********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+const copyText = copyText => {
+  try {
+    navigator.clipboard.writeText(copyText);
+    bottomAlert("Copied!", "#204ecf", 1000);
+    return;
+  } catch (e) {
+    bottomAlert("Can't Copy! Try Again.", "#f00", 3000);
+  }
+};
+const bottomAlert = (alertText, bgColor, timing) => {
+  const bottomAlert = document.createElement("div");
+  bottomAlert.id = "simplecharm-portfolio-bottom-alert";
+  document.body.appendChild(bottomAlert);
+  bottomAlert.textContent = alertText;
+  bottomAlert.style.background = bgColor;
+  bottomAlert.style.opacity = "1";
+  bottomAlert.style.transform = "translate(-50%,0)";
+  setTimeout(function () {
+    bottomAlert.style.transform = "translate(-50%,50px)";
+    bottomAlert.style.opacity = "0";
+    document.body.removeChild(bottomAlert);
+  }, timing);
+};
+const CopyBtn = _ref => {
+  let {
+    content,
+    className
+  } = _ref;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+    className: className,
+    onClick: () => copyText(content),
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+      className: "dashicons dashicons-clipboard cursor-pointer"
+    })
+  });
+};
+/* harmony default export */ __webpack_exports__["default"] = (CopyBtn);
+
+/***/ }),
+
 /***/ "./src/js/react-components/experience.js":
 /*!***********************************************!*\
   !*** ./src/js/react-components/experience.js ***!
@@ -37294,7 +37345,8 @@ __webpack_require__.r(__webpack_exports__);
 
 const Experience = _ref => {
   let {
-    specialTag
+    specialTag,
+    experiences
   } = _ref;
   /**
    * Make the array to easy to use
@@ -37310,7 +37362,7 @@ const Experience = _ref => {
   };
 
   // Check if experiences exist and are not empty
-  const hasExperiences = portfolio_data && portfolio_data.experiences && Array.isArray(portfolio_data.experiences) && portfolio_data.experiences.length > 0;
+  const hasExperiences = experiences && Array.isArray(experiences) && experiences.length > 0;
   const formatDate = dateString => {
     if (!dateString) return '';
     const date = new Date(dateString);
@@ -37336,7 +37388,7 @@ const Experience = _ref => {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: "",
       tabIndex: "0",
-      children: portfolio_data.experiences.map((singleExperience, index) => {
+      children: experiences.map((singleExperience, index) => {
         const flattenedExperience = flattenArray(singleExperience);
 
         // Skip if empty after flattening
@@ -37378,6 +37430,79 @@ const Experience = _ref => {
   });
 };
 /* harmony default export */ __webpack_exports__["default"] = (Experience);
+
+/***/ }),
+
+/***/ "./src/js/react-components/footer.js":
+/*!*******************************************!*\
+  !*** ./src/js/react-components/footer.js ***!
+  \*******************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "./node_modules/@wordpress/i18n/build-module/index.js");
+/* harmony import */ var _social_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./social_icons */ "./src/js/react-components/social_icons.js");
+/* harmony import */ var _copy_btn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./copy-btn */ "./src/js/react-components/copy-btn.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+const Footer = _ref => {
+  let {
+    portfolio
+  } = _ref;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("section", {
+    className: "home-footer cp-py3 cp-mt2",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("footer", {
+      role: "contentinfo",
+      className: "charming-portfolio-footer footer-inner cp-gap3",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "badge badge-neutral m-auto py-3 px-4 mb-6",
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Get in Touch", "charming-portfolio")
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "footer-text",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("What’s next? Feel free to reach out to me if you're looking for a developer, have a query, or simply want to connect.", "charming-portfolio")
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: "footer-mail cp-gapx3",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          className: "dashicons dashicons-email"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
+          className: "text-lg md:text-xl lg:text-xl line-break-anywhere",
+          children: portfolio.email
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_copy_btn__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          className: "simplecharm-portfolio-copy-mail simplecharm-portfolio-button-hover",
+          content: portfolio.email
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: "footer-phone cp-gapx3",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          className: "dashicons dashicons-smartphone"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
+          className: "text-lg md:text-xl lg:text-xl line-break-anywhere",
+          children: portfolio.phone
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_copy_btn__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          className: "simplecharm-portfolio-copy-phone simplecharm-portfolio-button-hover",
+          content: portfolio.phone
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: "footer-social-links",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("You may also find me on these platforms!", "charming-portfolio")
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          className: "social-link cp-gap3 cp-my2",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_social_icons__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            icons: portfolio.social_links
+          })
+        })]
+      })]
+    })
+  });
+};
+/* harmony default export */ __webpack_exports__["default"] = (Footer);
 
 /***/ }),
 
@@ -37434,9 +37559,10 @@ __webpack_require__.r(__webpack_exports__);
 
 const Intro = _ref => {
   let {
+    portfolio,
     specialTag
   } = _ref;
-  const short_description = specialTag(portfolio_data.short_description);
+  const short_description = specialTag(portfolio.short_description);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("section", {
       className: "min-h-screen min-h-lvh grid items-center mb-2",
@@ -37446,17 +37572,17 @@ const Intro = _ref => {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "CHARMING_PORTFOLIO_primary-image-container",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-            src: portfolio_data.user_image,
+            src: portfolio.user_image,
             className: "lg:max-w-sm rounded-lg shadow-2xl block m-auto sm:w-4/5"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-            src: portfolio_data.user_image,
+            src: portfolio.user_image,
             className: "lg:max-w-sm rounded-lg shadow-2xl m-auto sm:w-4/5 "
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "intro-primary-info",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h3", {
             className: "text-3xl font-bold mt-6 lg:mt-0",
-            children: ["Hi, I'm ", portfolio_data.name, " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+            children: ["Hi, I'm ", portfolio.name, " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
               className: "d-contents CHARMING_PORTFOLIO-welcome-emoji",
               children: "\uD83D\uDC4B"
             })]
@@ -37468,16 +37594,16 @@ const Intro = _ref => {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
               className: "dashicons dashicons-location-alt mr-3"
-            }), portfolio_data.address]
+            }), portfolio.address]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
               className: "mr-3",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-                className: portfolio_data.available ? "simplecharm-portfolio-available" : "simplecharm-portfolio-available-false"
+                className: portfolio.available ? "simplecharm-portfolio-available" : "simplecharm-portfolio-available-false"
               })
-            }), portfolio_data.available ? "Available for New Projects" : "Currently Not Available for New Projects"]
+            }), portfolio.available ? "Available for New Projects" : "Currently Not Available for New Projects"]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_social_icons__WEBPACK_IMPORTED_MODULE_0__["default"], {
-            icons: portfolio_data.social_links
+            icons: portfolio.social_links
           })]
         })]
       })
@@ -37485,6 +37611,83 @@ const Intro = _ref => {
   });
 };
 /* harmony default export */ __webpack_exports__["default"] = (Intro);
+
+/***/ }),
+
+/***/ "./src/js/react-components/projects.js":
+/*!*********************************************!*\
+  !*** ./src/js/react-components/projects.js ***!
+  \*********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "./node_modules/@wordpress/i18n/build-module/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+const Projects = _ref => {
+  let {
+    projects,
+    specialTag,
+    splitTags
+  } = _ref;
+  const hasProjects = projects && Object.keys(projects).length;
+  if (!hasProjects) {
+    return null;
+  }
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("section", {
+    className: "projects min-h-max p-6 my-2 flex flex-col",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "project-title my-3 flex flex-col items-center",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "badge badge-neutral py-3 px-4",
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Work", "charming-portfolio")
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Some of the noteworthy projects I have built:", "charming-portfolio")
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "single-work-info grid lg:grid-cols-2 md:grid-cols-2 gap-x-4 my-3",
+      children: Object.keys(projects).map(id => projects[id].title && projects[id].description && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "line-break-anywhere",
+        tabIndex: "0",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "flex flex-col my-4 gap-y-3 p-6 pb-3 charming_portfolio_shadow_thin portfolio-project-bg",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
+            className: "text-2xl",
+            children: projects[id].title
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            className: "overflow-y-auto",
+            children: specialTag(projects[id].description)
+          }), projects[id].tags && splitTags(projects[id].tags), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "work-live-link",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+              href: projects[id].link,
+              target: "_blank",
+              className: "charming_portfolio_shadow_thin",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+                className: "dashicons dashicons-external"
+              })
+            })
+          })]
+        })
+      }, id))
+    })]
+  });
+};
+/* harmony default export */ __webpack_exports__["default"] = (Projects);
+
+//<?php printf(
+//				wp_kses(
+//					CHARMING_PORTFOLIO_split_tags(isset($work['tags']) ? $work['tags'] : ''),
+//					[
+//						'div' => [
+//							'class' => []
+//						]
+//					]
+//				)
+//			);
+//			?>
 
 /***/ }),
 
@@ -37500,10 +37703,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
-const Skills = () => {
+const Skills = _ref => {
+  let {
+    skills
+  } = _ref;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("section", {
     className: "skills min-h-max p-6 my-2 flex flex-col",
-    children: portfolio_data.skills && Object.keys(portfolio_data.skills).length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: skills && Object.keys(skills).length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
         className: "skills-title flex flex-col items-center",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -37514,8 +37720,8 @@ const Skills = () => {
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
         className: "skills-container",
-        children: Object.keys(portfolio_data.skills).map((skillKey, index) => {
-          const skill = portfolio_data.skills[skillKey];
+        children: Object.keys(skills).map((skillKey, index) => {
+          const skill = skills[skillKey];
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
             className: "charming-portfolio-skill-card charming_portfolio_shadow_thin cursor-pointer",
             tabIndex: "0",
@@ -37693,13 +37899,19 @@ var __webpack_exports__ = {};
   !*** ./src/js/react-int.js ***!
   \*****************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "./node_modules/react-dom/client.js");
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/dom-ready */ "./node_modules/@wordpress/dom-ready/build-module/index.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/element */ "./node_modules/react-dom/client.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @wordpress/element */ "./node_modules/react/index.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/dom-ready */ "./node_modules/@wordpress/dom-ready/build-module/index.js");
 /* harmony import */ var _react_components_intro_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./react-components/intro.js */ "./src/js/react-components/intro.js");
 /* harmony import */ var _react_components_about_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./react-components/about.js */ "./src/js/react-components/about.js");
 /* harmony import */ var _react_components_skills_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./react-components/skills.js */ "./src/js/react-components/skills.js");
 /* harmony import */ var _react_components_experience_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./react-components/experience.js */ "./src/js/react-components/experience.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _react_components_projects_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./react-components/projects.js */ "./src/js/react-components/projects.js");
+/* harmony import */ var _react_components_footer_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./react-components/footer.js */ "./src/js/react-components/footer.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
 
 
 
@@ -37709,28 +37921,55 @@ __webpack_require__.r(__webpack_exports__);
 
 const Portfolio = () => {
   const specialTag = textareaValue => {
-    if (!textareaValue) return '';
+    if (!textareaValue) return "";
     let processedText = textareaValue;
     processedText = processedText.replace(/\[bold\]/g, "<b>");
     processedText = processedText.replace(/\[\/bold\]/g, "</b>");
-    processedText = processedText.replace(/\[quote\]/g, "\"");
+    processedText = processedText.replace(/\[quote\]/g, '"');
     processedText = processedText.replace(/\[squote\]/g, "'");
     processedText = processedText.replace(/\[break\]/g, "<br />");
     return processedText;
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_react_components_intro_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
-      specialTag: specialTag
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_react_components_about_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      specialTag: specialTag
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_react_components_skills_js__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_react_components_experience_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      specialTag: specialTag
+  const splitTags = tags => {
+    const tags_array = tags.length > 0 ? tags.split(", ") : [];
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      className: "work-tags",
+      children: tags_array.map(single_tag => {
+        if (!single_tag) return;
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          className: "min-w-max badge badge-neutral p-4 mx-2 my-2",
+          tabIndex: "0",
+          children: single_tag
+        }, single_tag);
+      })
+    });
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_react_components_intro_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      specialTag: specialTag,
+      portfolio: portfolio_data
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_react_components_about_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      specialTag: specialTag,
+      portfolio: portfolio_data
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_react_components_skills_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      skills: portfolio_data.skills
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_react_components_experience_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      specialTag: specialTag,
+      experiences: portfolio_data.experiences
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_react_components_projects_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      specialTag: specialTag,
+      projects: portfolio_data.works,
+      splitTags: splitTags
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_react_components_footer_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      portfolio: portfolio_data
     })]
   });
 };
-(0,_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_5__["default"])(() => {
-  const root = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.createRoot)(document.getElementById("charming-portfolio-react-root"));
-  root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Portfolio, {}));
+(0,_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_7__["default"])(() => {
+  const root = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_8__.createRoot)(document.getElementById("charming-portfolio-react-root"));
+  root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_element__WEBPACK_IMPORTED_MODULE_9__.StrictMode, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(Portfolio, {})
+  }));
 });
 }();
 /******/ })()
