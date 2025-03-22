@@ -31,6 +31,9 @@ if (!defined("CHARMING_PORTFOLIO_DIR_URI")) {
 require_once CHARMING_PORTFOLIO_DIR_PATH . '/inc/helpers/autoload.php';
 require_once CHARMING_PORTFOLIO_DIR_PATH . '/inc/helpers/template-tags.php';
 
+/**
+* is user allowing to render the portfolio content in client side
+**/
 if (!defined("CHARMING_PORTFOLIO_CLIENT_RENDER")) {
     define("CHARMING_PORTFOLIO_CLIENT_RENDER", CHARMING_PORTFOLIO_CLIENT_RENDER());
 }

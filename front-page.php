@@ -17,8 +17,11 @@ $CHARMING_PORTFOLIO_dashicons_css_url = includes_url('css/dashicons.min.css');
 <?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/header");
 ?>
 <div class="charming_portfolio-plugin-inner">
-
-    <?php if(CHARMING_PORTFOLIO_CLIENT_RENDER === true):?>
+    <?php 
+    /**
+    * Slot for React loaded only if user allows client side rendering 
+    **/
+    if(CHARMING_PORTFOLIO_CLIENT_RENDER === true):?>
         <!-- Slot To Load React Components -->
         <div id="charming-portfolio-react-root">
         </div>

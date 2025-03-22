@@ -8,6 +8,14 @@ import Projects from "./react-components/projects.js";
 import Footer from "./react-components/footer.js";
 
 const Portfolio = () => {
+    /**
+     * To Convert Special String to HTML Tags
+     * @example 
+     * [bold]Hello[/bold] => <b>Hello</b>
+     * [quote] => "
+     * [squote] => '
+     * [break] => <br />
+     */
     const specialTag = (textareaValue) => {
         if (!textareaValue) return "";
 
@@ -20,7 +28,10 @@ const Portfolio = () => {
 
         return processedText;
     };
-
+    
+    /**
+     * To Convert Array to HTML Tags to Display Badges
+     */
     const splitTags = (tags) => {
         const tags_array = tags.length > 0 ? tags.split(", ") : [];
 

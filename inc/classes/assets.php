@@ -35,13 +35,16 @@ class Assets
       // register scripts
         wp_register_script("CHARMING_PORTFOLIO_main", CHARMING_PORTFOLIO_DIR_URI . '/assets/build/js/main.js', ['jquery'], filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/js/main.js'), true);
         wp_register_script("CHARMING_PORTFOLIO_scrollReveal", "https://unpkg.com/scrollreveal", [], null, false);
-        wp_register_script("CHARMING_PORTFOLIO_portofolio_react", CHARMING_PORTFOLIO_DIR_URI . '/assets/build/js/react.js', [], filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/js/react.js'), true);
+        wp_register_script("CHARMING_PORTFOLIO_portofolio_react", CHARMING_PORTFOLIO_DIR_URI . '/assets/build/js/portfolio-react.js', [], filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/js/portfolio-react.js'), true);
         wp_localize_script("CHARMING_PORTFOLIO_portofolio_react", "portfolio_data", $portfolio_saved_value);
 
         // enqueue scripts
 		if(is_front_page()){
 			if(CHARMING_PORTFOLIO_enabled()){
 				wp_enqueue_script('CHARMING_PORTFOLIO_main');
+                /**
+                 * Load React only if user allows client side rendering
+                 * */
                 if(CHARMING_PORTFOLIO_CLIENT_RENDER === true){
                     wp_enqueue_script('CHARMING_PORTFOLIO_portofolio_react');
                 }
