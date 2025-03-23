@@ -37490,7 +37490,7 @@ const Footer = _ref => {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
           children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("You may also find me on these platforms!", "charming-portfolio")
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: "social-link cp-gap3 cp-my2",
+          className: "social-link justify-center cp-gap3 cp-my2",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_social_icons__WEBPACK_IMPORTED_MODULE_1__["default"], {
             icons: portfolio.social_links
           })
@@ -37600,7 +37600,7 @@ const Intro = _ref => {
               })
             }), portfolio.available ? "Available for New Projects" : "Currently Not Available for New Projects"]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            className: "social-link cp-gap3 cp-my2",
+            className: "social-link justify-center-sm justify-start cp-gap3 cp-my2",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_social_icons__WEBPACK_IMPORTED_MODULE_0__["default"], {
               icons: portfolio.social_links
             })

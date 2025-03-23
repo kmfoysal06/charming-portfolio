@@ -48,7 +48,7 @@ const Footer = ({ portfolio }) => {
                     <p>
                         {__("You may also find me on these platforms!", "charming-portfolio")}
                     </p>
-                    <div className="social-link cp-gap3 cp-my2">
+                    <div className="social-link justify-center cp-gap3 cp-my2">
                         <SocialIcons icons={portfolio.social_links} />
                     </div>
                 </div>

@@ -1,9 +1,10 @@
 // utility classes
 .charming_portfolio_shadow_thin {
-	box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
-    &:hover {
-				 box-shadow: rgba(9, 23, 66, 0.25) -1px 2px 1px, rgba(9, 30, 66, 0.13) 3px -2px 4px 1px;
-    }
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+
+  &:hover {
+    box-shadow: rgba(9, 23, 66, 0.25) -1px 2px 1px, rgba(9, 30, 66, 0.13) 3px -2px 4px 1px;
+  }
 }
 
 //badge
@@ -20,59 +21,76 @@
   .cp-m#{$i} {
     margin: #{$i * 0.25}rem;
   }
+
   .cp-mx#{$i} {
     margin-left: #{$i * 0.25}rem;
     margin-right: #{$i * 0.25}rem;
   }
+
   .cp-my#{$i} {
     margin-top: #{$i * 0.25}rem;
     margin-bottom: #{$i * 0.25}rem;
   }
+
   .cp-mt#{$i} {
     margin-top: #{$i * 0.25}rem;
   }
+
   .cp-mb#{$i} {
     margin-bottom: #{$i * 0.25}rem;
   }
+
   .cp-ml#{$i} {
     margin-left: #{$i * 0.25}rem;
   }
+
   .cp-mr#{$i} {
     margin-right: #{$i * 0.25}rem;
   }
+
   .cp-p#{$i} {
     padding: #{$i * 0.25}rem;
   }
+
   .cp-pt#{$i} {
     padding-top: #{$i * 0.25}rem;
   }
+
   .cp-pb#{$i} {
     padding-bottom: #{$i * 0.25}rem;
   }
+
   .cp-pl#{$i} {
     padding-left: #{$i * 0.25}rem;
   }
+
   .cp-pr#{$i} {
     padding-right: #{$i * 0.25}rem;
   }
+
   .cp-px#{$i} {
     padding-left: #{$i * 0.25}rem;
     padding-right: #{$i * 0.25}rem;
   }
+
   .cp-py#{$i} {
     padding-top: #{$i * 0.25}rem;
     padding-bottom: #{$i * 0.25}rem;
   }
+
   .cp-gap#{$i} {
     gap: #{$i * 0.25}rem;
   }
+
   .cp-gapx#{$i} {
     column-gap: #{$i * 0.25}rem;
   }
+
   .cp-gapy#{$i} {
     row-gap: #{$i * 0.25}rem;
   }
 }
+
 .cp-m-auto {
   margin: auto;
 }
@@ -81,9 +99,11 @@
 .min-h-screen {
   min-height: 100vh;
 }
+
 .min-h-max {
   min-height: max-content;
 }
+
 .min-h-lvh {
   min-height: 100vh;
 }
@@ -94,9 +114,11 @@
 .grid {
   display: grid;
 }
+
 .block {
   display: block;
 }
+
 .flex {
   display: flex;
 }
@@ -104,6 +126,25 @@
 .flex-col {
   flex-direction: column;
 }
+
+.justify-center {
+  justify-content: center;
+}
+.justify-start {
+  justify-content: start;
+}
+
 .items-center {
   align-items: center;
+}
+
+
+// responsive utilities
+@media (max-width: 768px) {
+  .justify-center-sm {
+    justify-content: center;
+  }
+  .justify-start-sm {
+    justify-content: center;
+  }
 }

@@ -2481,10 +2481,26 @@ html {
   flex-direction: column;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
+.justify-start {
+  justify-content: start;
+}
+
 .items-center {
   align-items: center;
 }
 
+@media (max-width: 768px) {
+  .justify-center-sm {
+    justify-content: center;
+  }
+  .justify-start-sm {
+    justify-content: center;
+  }
+}
 .experience-content {
   width: 100%;
   max-width: 1200px;
@@ -2538,7 +2554,6 @@ html {
 
 .charming_portfolio-plugin-inner .social-link {
   display: flex;
-  justify-content: center;
 }
 
 /**
