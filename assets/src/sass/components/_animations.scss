@@ -1,42 +1,72 @@
-.simplecharm-portfolio-available{
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	position: relative;
-	background: #00ff00;
-	border-radius: 100%;
-	animation: simplecharm-portfolio-available 1s linear infinite;
+.simplecharm-portfolio-available {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  position: relative;
+  background: #00ff00;
+  border-radius: 100%;
+  animation: simplecharm-portfolio-available 1s linear infinite;
 }
-.simplecharm-portfolio-available-false{
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	position: relative;
-	background: #ff0000;
-	border-radius: 100%;
+
+.simplecharm-portfolio-available-false {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  position: relative;
+  background: #ff0000;
+  border-radius: 100%;
 }
-.CHARMING_PORTFOLIO-welcome-emoji{
-	position: absolute;
-	animation: CHARMING_PORTFOLIO-welcome-emoji 1.5s linear infinite;
+
+.CHARMING_PORTFOLIO-welcome-emoji {
+  position: absolute;
+  animation: CHARMING_PORTFOLIO-welcome-emoji 1.5s linear infinite;
 }
-@keyframes simplecharm-portfolio-available{
-	0%{
-		box-shadow: 0px 0px 0px 0px #01FEF6,
-					0px 0px 0px 0px #001222;
-	}
-	100%{
-		box-shadow: 0px 0px 20px 1px #01FEF6,
-					0px 0px 24px 2px #001222;
-	}
+
+.pop-in-animation {
+  transform: translatey(10px);
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.5s;
 }
-@keyframes CHARMING_PORTFOLIO-welcome-emoji{
-	0%{
-		transform: rotate(-15deg);
-	}
-	50%{
-		transform: rotate(0deg);
-	}
-	100%{
-		transform: rotate(-15deg);
-	}
+
+.pop-in-animation.active {
+  transform: translatey(0);
+  opacity: 1;
+}
+
+@keyframes simplecharm-portfolio-available {
+  0% {
+    box-shadow: 0px 0px 0px 0px #01FEF6,
+      0px 0px 0px 0px #001222;
+  }
+
+  100% {
+    box-shadow: 0px 0px 20px 1px #01FEF6,
+      0px 0px 24px 2px #001222;
+  }
+}
+
+@keyframes CHARMING_PORTFOLIO-welcome-emoji {
+  0% {
+    transform: rotate(-15deg);
+  }
+
+  50% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-15deg);
+  }
+}
+
+@keyframes charming_portfolio-fly-in {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

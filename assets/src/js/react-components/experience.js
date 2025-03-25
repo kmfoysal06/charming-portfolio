@@ -1,4 +1,9 @@
+import {useRef} from '@wordpress/element';
+import ScrollAnimate from './hooks/scroll-animation';
+
 const Experience = ({ specialTag, experiences }) => {
+    const thisDivs = useRef([]);
+    ScrollAnimate(thisDivs);
   /**
    * Make the array to easy to use
    */
@@ -32,7 +37,7 @@ const Experience = ({ specialTag, experiences }) => {
 
   return (
     <section className="experience min-h-max p-6 my-2 flex flex-col">
-      <div className="experience-title my-3 flex flex-col items-center">
+      <div className="section-title pop-in-animation" ref={(el) => el && thisDivs.current.push(el)}>
         <div className="badge badge-neutral py-3 px-4">Experience</div>
         <p>Here is a quick summary of my most recent experiences:</p>
       </div>
@@ -67,8 +72,9 @@ const Experience = ({ specialTag, experiences }) => {
         return (
           <div
             key={index}
-            className="experience-content charming_portfolio_shadow_thin gap-y-3"
+            className="experience-content charming_portfolio_shadow_thin gap-y-3 pop-in-animation"
             tabIndex="0"
+            ref={(el) => el && thisDivs.current.push(el)}
           >
             <div className="experience-name flex justify-center items-center">
               <h2 className="text-3xl">{flattenedExperience.institution}</h2>

@@ -1,8 +1,12 @@
 import { __ } from "@wordpress/i18n";
 import SocialIcons from "./social_icons";
 import CopyBtn from "./copy-btn";
+import { useRef } from "@wordpress/element";
+import ScrollAnimate from "./hooks/scroll-animation";
 
 const Footer = ({ portfolio }) => {
+    const thisDivs = useRef([]);
+    ScrollAnimate(thisDivs);
 
     return (
         <section className="home-footer cp-py3 cp-mt2">
@@ -10,11 +14,11 @@ const Footer = ({ portfolio }) => {
                 role="contentinfo"
                 className="charming-portfolio-footer footer-inner cp-gap3"
             >
-                <div className="badge badge-neutral m-auto py-3 px-4 mb-6">
+                <div className="badge badge-neutral m-auto py-3 px-4 mb-6 pop-in-animation" ref={(el) => el && thisDivs.current.push(el)}>
                     {__("Get in Touch", "charming-portfolio")}
                 </div>
 
-                <div className="footer-text">
+                <div className="footer-text pop-in-animation" ref={(el) => el && thisDivs.current.push(el)}>
                     <p>
                         {__(
                             "What’s next? Feel free to reach out to me if you're looking for a developer, have a query, or simply want to connect.",
@@ -22,7 +26,7 @@ const Footer = ({ portfolio }) => {
                         )}
                     </p>
                 </div>
-                <div className="footer-mail cp-gapx3">
+                <div className="footer-mail cp-gapx3 pop-in-animation" ref={(el) => el && thisDivs.current.push(el)}>
                     <span className="dashicons dashicons-email"></span>
                     <h2 className="text-lg md:text-xl lg:text-xl line-break-anywhere">
                         {portfolio.email}
@@ -33,7 +37,7 @@ const Footer = ({ portfolio }) => {
                     />
                 </div>
 
-                <div className="footer-phone cp-gapx3">
+                <div className="footer-phone cp-gapx3 pop-in-animation" ref={(el) => el && thisDivs.current.push(el)}>
                     <span className="dashicons dashicons-smartphone"></span>
                     <h2 className="text-lg md:text-xl lg:text-xl line-break-anywhere">
                         {portfolio.phone}
@@ -44,7 +48,7 @@ const Footer = ({ portfolio }) => {
                     />
 
                 </div>
-                <div className="footer-social-links">
+                <div className="footer-social-links pop-in-animation" ref={(el) => el && thisDivs.current.push(el)}>
                     <p>
                         {__("You may also find me on these platforms!", "charming-portfolio")}
                     </p>

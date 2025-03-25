@@ -1,4 +1,6 @@
 import { __ } from "@wordpress/i18n";
+import ScrollAnimate from "./hooks/scroll-animation";
+import { useRef } from "@wordpress/element";
 
 const Projects = ({ projects, specialTag, splitTags }) => {
     const hasProjects = projects && Object.keys(projects).length;
@@ -7,9 +9,12 @@ const Projects = ({ projects, specialTag, splitTags }) => {
         return null;
     }
 
+    const thisDivs = useRef([]);
+    ScrollAnimate(thisDivs);
+
     return (
         <section className="projects min-h-max p-6 my-2 flex flex-col">
-            <div className="project-title my-3 flex flex-col items-center">
+            <div className="section-title pop-in-animation" ref={(el) => el && thisDivs.current.push(el)}>
                 <div className="badge badge-neutral py-3 px-4">
                     {__("Work", "charming-portfolio")}
                 </div>
@@ -24,7 +29,7 @@ const Projects = ({ projects, specialTag, splitTags }) => {
             <div className="single-work-info grid lg:grid-cols-2 md:grid-cols-2 gap-x-4 my-3">
                 {Object.keys(projects).map((id) =>
                     (projects[id].title && projects[id].description) && (
-                        <div className="line-break-anywhere" tabIndex="0" key={id}>
+                        <div className="line-break-anywhere pop-in-animation" tabIndex="0" key={id} ref={(el) => el && thisDivs.current.push(el)}>
                             <div className="flex flex-col my-4 gap-y-3 p-6 pb-3 charming_portfolio_shadow_thin portfolio-project-bg">
                                 <h2 className="text-2xl">{projects[id].title}</h2>
                                 <p className="overflow-y-auto">

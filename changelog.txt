@@ -38,3 +38,8 @@
 -Improved UI
 ==v1.3.9==
 -Moved Front Page (Portfolio Page) to React
+==v1.4==
+-Fixed CSS Issues
+-Added Scroll Revealing Animations
+-Improved UI
+-Fixed Bugs
