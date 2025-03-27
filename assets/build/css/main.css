@@ -1708,9 +1708,9 @@ html {
   gap: 3rem;
 }
 .aboutme h3 {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  font-weight: 600;
   color: rgb(17, 24, 39);
 }
 

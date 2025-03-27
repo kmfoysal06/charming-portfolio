@@ -37826,10 +37826,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Skills = _ref => {
+const Skill = _ref => {
+  let {
+    skill
+  } = _ref;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    className: "charming-portfolio-skill-card charming_portfolio_shadow_thin cursor-pointer",
+    tabIndex: "0",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+      src: skill.image,
+      alt: skill.name,
+      className: "charming-portfolio-single-skill",
+      width: "70"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+      className: "skill-name",
+      children: skill.name
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: "simplecharm-skill-card-blank"
+    })]
+  });
+};
+const Skills = _ref2 => {
   let {
     skills
-  } = _ref;
+  } = _ref2;
   const thisDivs = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useRef)([]);
   (0,_hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_1__["default"])(thisDivs);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("section", {
@@ -37848,20 +37868,8 @@ const Skills = _ref => {
         ref: el => el && thisDivs.current.push(el),
         children: Object.keys(skills).map((skillKey, index) => {
           const skill = skills[skillKey];
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "charming-portfolio-skill-card charming_portfolio_shadow_thin cursor-pointer",
-            tabIndex: "0",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-              src: skill.image,
-              alt: skill.name,
-              className: "charming-portfolio-single-skill",
-              width: "70"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-              className: "skill-name",
-              children: skill.name
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-              className: "simplecharm-skill-card-blank"
-            })]
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Skill, {
+            skill: skill
           }, skillKey || index);
         })
       })]
