@@ -1,6 +1,12 @@
 .aboutme{
   display: flex;
   gap: 3rem;
+  h3 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 500;
+    color: rgb(17, 24, 39);
+  }
 }
 
 @media (max-width: 768px){

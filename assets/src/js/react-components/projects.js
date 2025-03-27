@@ -1,6 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import ScrollAnimate from "./hooks/scroll-animation";
 import { useRef } from "@wordpress/element";
+import Badge from "./badge";
 
 const Projects = ({ projects, specialTag, splitTags }) => {
     const hasProjects = projects && Object.keys(projects).length;
@@ -15,9 +16,9 @@ const Projects = ({ projects, specialTag, splitTags }) => {
     return (
         <section className="projects min-h-max p-6 my-2 flex flex-col">
             <div className="section-title pop-in-animation" ref={(el) => el && thisDivs.current.push(el)}>
-                <div className="badge badge-neutral py-3 px-4">
-                    {__("Work", "charming-portfolio")}
-                </div>
+
+            <Badge badgeTitle={"Works"} />
+
                 <p>
                     {__(
                         "Some of the noteworthy projects I have built:",

@@ -1,5 +1,6 @@
 import {useRef} from '@wordpress/element';
 import ScrollAnimate from './hooks/scroll-animation';
+import Badge from "./badge";
 
 const Experience = ({ specialTag, experiences }) => {
     const thisDivs = useRef([]);
@@ -38,7 +39,7 @@ const Experience = ({ specialTag, experiences }) => {
   return (
     <section className="experience min-h-max p-6 my-2 flex flex-col">
       <div className="section-title pop-in-animation" ref={(el) => el && thisDivs.current.push(el)}>
-        <div className="badge badge-neutral py-3 px-4">Experience</div>
+            <Badge badgeTitle={"Experience"} />
         <p>Here is a quick summary of my most recent experiences:</p>
       </div>
       {experiences.map((singleExperience, index) => {

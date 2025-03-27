@@ -1,6 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import { useRef } from "@wordpress/element";
 import ScrollAnimate from "./hooks/scroll-animation";
+import Badge from "./badge";
 
 const About = ({ specialTag, portfolio }) => {
   const description = specialTag(portfolio.description);
@@ -16,12 +17,8 @@ const About = ({ specialTag, portfolio }) => {
             className="section-title pop-in-animation"
             ref={(el) => el && thisDivs.current.push(el)}
           >
-            <div className="badge badge-neutral cp-py3 cp-px4">
-              {__("About Me", "charming-portfolio")}
-            </div>
-            <h3 className="text-xl">
-              {__("Curious about me? Here you have it:", "charming-portfolio")}
-            </h3>
+            <Badge badgeTitle={"About Me"} />
+           
           </div>
           <div className="aboutme hero-content sm:flex-col md:flex-row lg:flex-row  sm:justify-between md:justify-between lg:justify-between">
             <img
@@ -33,9 +30,13 @@ const About = ({ specialTag, portfolio }) => {
               className="pop-in-animation"
               ref={(el) => el && thisDivs.current.push(el)}
             >
+            <h3>
+              {__("Curious about me? Here you have it:", "charming-portfolio")}
+            </h3>
+
               {description && (
                 <p
-                  className="py-6"
+                  className="py-3"
                   dangerouslySetInnerHTML={{ __html: description }}
                 />
               )}
