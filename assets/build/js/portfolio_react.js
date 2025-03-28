@@ -37333,8 +37333,9 @@ __webpack_require__.r(__webpack_exports__);
 
 const copyText = copyText => {
   try {
-    navigator.clipboard.writeText(copyText);
-    bottomAlert("Copied!", "#204ecf", 1000);
+    navigator.clipboard.writeText(copyText).then(() => {
+      bottomAlert("Copied!", "#204ecf", 1000);
+    });
     return;
   } catch (e) {
     bottomAlert("Can't Copy! Try Again.", "#f00", 3000);
@@ -37900,26 +37901,33 @@ const SocialIcon = _ref => {
   /**
    * All Icons Available in Dashicons
    */
-  const dashIconsIcons = ['twitter', 'facebook', 'instagram', 'youtube', 'linkedin', 'pinterest', 'podio', 'google', 'reddit', 'wordpress', 'rss', 'whatsapp', 'xing', 'twitch'];
+  const dashIconsIcons = ["twitter", "facebook", "instagram", "youtube", "linkedin", "pinterest", "podio", "google", "reddit", "wordpress", "rss", "whatsapp", "xing", "twitch"];
   /**
    * All Svg Icon Hosted in Icons/ Directory
    */
-
-  const svgIcons = {
-    'github': /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_icons_github__WEBPACK_IMPORTED_MODULE_0__["default"], {
-      url: url
-    })
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: dashIconsIcons.includes(iconName) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+  const DashIconsIcon = _ref2 => {
+    let {
+      name,
+      url
+    } = _ref2;
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
       className: "simplecharm-portfolio-button-hover",
       href: url,
       target: "_blank",
       rel: "noopener noreferrer",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-        className: `dashicons dashicons-${iconName}`
+        className: `dashicons dashicons-${name}`
       })
-    }) : svgIcons[iconName] || /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+    });
+  };
+  const DefaultIcon = _ref3 => {
+    let {
+      url
+    } = _ref3;
+    /**
+     * Default Svg Icon if None(dashicons or icons from svgs) Available
+     */
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
       className: "simplecharm-portfolio-button-hover",
       href: url,
       target: "_blank",
@@ -37927,13 +37935,26 @@ const SocialIcon = _ref => {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
         className: "dashicons dashicons-admin-links"
       })
+    });
+  };
+  const svgIcons = {
+    github: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_icons_github__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      url: url
+    })
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: dashIconsIcons.includes(iconName) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(DashIconsIcon, {
+      name: iconName,
+      url: url
+    }) : svgIcons[iconName] || /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(DefaultIcon, {
+      url: url
     })
   });
 };
-const SocialIcons = _ref2 => {
+const SocialIcons = _ref4 => {
   let {
     icons
-  } = _ref2;
+  } = _ref4;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: Object.keys(icons).map((id, i) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(SocialIcon, {
       iconName: icons[id].name.toLowerCase(),

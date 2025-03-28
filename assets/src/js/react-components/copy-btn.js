@@ -1,7 +1,9 @@
 const copyText = (copyText) => {
     try {
-        navigator.clipboard.writeText(copyText);
-        bottomAlert("Copied!", "#204ecf", 1000);
+        navigator.clipboard.writeText(copyText)
+            .then(() => {
+                bottomAlert("Copied!", "#204ecf", 1000);
+            })
         return;
     } catch (e) {
         bottomAlert("Can't Copy! Try Again.", "#f00", 3000);
@@ -23,7 +25,7 @@ const bottomAlert = (alertText, bgColor, timing) => {
         document.body.removeChild(bottomAlert);
     }, timing);
 };
-const CopyBtn = ({ content , className}) => {
+const CopyBtn = ({ content, className }) => {
 
     return (
         <button
