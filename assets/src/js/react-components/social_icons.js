@@ -1,4 +1,5 @@
 import GithubIcon from "./icons/github";
+import LeetCodeIcon from "./icons/leetcode";
 
 const SocialIcon = ({ iconName, url }) => {
   /**
@@ -30,6 +31,7 @@ const SocialIcon = ({ iconName, url }) => {
         href={url}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label={`Open ${name} link`}
       >
         <span className={`dashicons dashicons-${name}`}></span>
       </a>
@@ -46,6 +48,7 @@ const SocialIcon = ({ iconName, url }) => {
         href={url}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label={`Open Link ${url}`}
       >
         <span className="dashicons dashicons-admin-links"></span>
       </a>
@@ -54,6 +57,7 @@ const SocialIcon = ({ iconName, url }) => {
 
   const svgIcons = {
     github: <GithubIcon url={url} />,
+    leetcode: <LeetCodeIcon url={url} />,
   };
   return (
     <>

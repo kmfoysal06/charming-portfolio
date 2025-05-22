@@ -35,9 +35,13 @@ design figma: https://www.figma.com/community/file/1262992249991763120/Personal-
 Most of The Icons Used From Dashicons.
 https://developer.wordpress.org/resource/dashicons/
 
-There Are Also Some Icons Used From Fontawesome Free
--License: CC BY 4.0 License
+There Are Also Some Icons Used From Fontawesome Free and svgrepo.com
+-License FA: CC BY 4.0 License
 -License URI: https://fontawesome.com/license/free
+
+-License svgrepo: GNU Public License
+-License URI: https://www.svgrepo.com/page/licensing/#GPL
+
 
 == Library and Frameworks ==
 TailwindCSS

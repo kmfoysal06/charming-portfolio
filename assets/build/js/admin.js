@@ -70,8 +70,7 @@
       this.mediaUploader('simplecharm-portfolio-user-image', "CHARMING_PORTFOLIO_user_image", "Upload Image");
       this.mediaUploader('simplecharm-portfolio-user-image2', "CHARMING_PORTFOLIO_user_image2", "Upload Another Image");
     }
-    mediaUploader(picked_image, hidden_field) {
-      let custom_text = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'Upload Image';
+    mediaUploader(picked_image, hidden_field, custom_text = 'Upload Image') {
       let image = null;
       $(`.${picked_image}`).on('keyup', function (e) {
         if ($(e.keyCode)[0] !== 13) return;

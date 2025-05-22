@@ -37247,11 +37247,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const About = _ref => {
-  let {
-    specialTag,
-    portfolio
-  } = _ref;
+const About = ({
+  specialTag,
+  portfolio
+}) => {
   const description = specialTag(portfolio.description);
 
   // animate on scroll
@@ -37274,6 +37273,7 @@ const About = _ref => {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
             src: portfolio.user_image2,
             className: "sm:w-full md:w-2/4 lg:w-2/4 rounded-lg shadow-2xl pop-in-animation",
+            alt: portfolio.name,
             ref: el => el && thisDivs.current.push(el)
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
             className: "pop-in-animation",
@@ -37308,15 +37308,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
-const Badge = _ref => {
-  let {
-    badgeTitle
-  } = _ref;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    className: "badge badge-neutral cp-py3 cp-px4",
-    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)(badgeTitle, "charming-portfolio")
-  });
-};
+const Badge = ({
+  badgeTitle
+}) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+  className: "badge badge-neutral cp-py3 cp-px4",
+  children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)(badgeTitle, "charming-portfolio")
+});
 /* harmony default export */ __webpack_exports__["default"] = (Badge);
 
 /***/ }),
@@ -37355,14 +37352,14 @@ const bottomAlert = (alertText, bgColor, timing) => {
     document.body.removeChild(bottomAlert);
   }, timing);
 };
-const CopyBtn = _ref => {
-  let {
-    content,
-    className
-  } = _ref;
+const CopyBtn = ({
+  content,
+  className
+}) => {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
     className: className,
     onClick: () => copyText(content),
+    "aria-label": "Copy Button",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
       className: "dashicons dashicons-clipboard cursor-pointer"
     })
@@ -37389,11 +37386,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Experience = _ref => {
-  let {
-    specialTag,
-    experiences
-  } = _ref;
+const Experience = ({
+  specialTag,
+  experiences
+}) => {
   const thisDivs = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useRef)([]);
   (0,_hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_0__["default"])(thisDivs);
   /**
@@ -37500,10 +37496,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Footer = _ref => {
-  let {
-    portfolio
-  } = _ref;
+const Footer = ({
+  portfolio
+}) => {
   const thisDivs = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useRef)([]);
   (0,_hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_3__["default"])(thisDivs);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("section", {
@@ -37572,8 +37567,7 @@ const Footer = _ref => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-const ScrollAnimate = function (elements) {
-  let eventType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'scroll';
+const ScrollAnimate = (elements, eventType = 'scroll') => {
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
     elements.current.forEach(div => {
@@ -37612,13 +37606,13 @@ __webpack_require__.r(__webpack_exports__);
  * @since 1.3.9
  */
 
-const GithubIcon = _ref => {
-  let {
-    url
-  } = _ref;
+const GithubIcon = ({
+  url
+}) => {
   //    Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
     className: "simplecharm-portfolio-button-hover",
+    "aria-label": `Open Social Link ${url}`,
     href: url,
     target: "_blank",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", {
@@ -37632,6 +37626,47 @@ const GithubIcon = _ref => {
   });
 };
 /* harmony default export */ __webpack_exports__["default"] = (GithubIcon);
+
+/***/ }),
+
+/***/ "./src/js/react-components/icons/leetcode.js":
+/*!***************************************************!*\
+  !*** ./src/js/react-components/icons/leetcode.js ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+/**
+ * SVG Icon For LeetCode
+ * @package Charming Portfolio
+ * @since 1.3.9
+ */
+
+// Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools
+const LeetCodeIcon = ({
+  url
+}) => {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+    className: "simplecharm-portfolio-button-hover",
+    "aria-label": `Open Social Link ${url}`,
+    href: url,
+    target: "_blank",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      fill: "#000000",
+      width: "20px",
+      height: "20px",
+      viewBox: "0 0 32 32",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+        d: "M21.469 23.907l-3.595 3.473c-0.624 0.625-1.484 0.885-2.432 0.885s-1.807-0.26-2.432-0.885l-5.776-5.812c-0.62-0.625-0.937-1.537-0.937-2.485 0-0.952 0.317-1.812 0.937-2.432l5.76-5.844c0.62-0.619 1.5-0.859 2.448-0.859s1.808 0.26 2.432 0.885l3.595 3.473c0.687 0.688 1.823 0.663 2.536-0.052 0.708-0.713 0.735-1.848 0.047-2.536l-3.473-3.511c-0.901-0.891-2.032-1.505-3.261-1.787l3.287-3.333c0.688-0.687 0.667-1.823-0.047-2.536s-1.849-0.735-2.536-0.052l-13.469 13.469c-1.307 1.312-1.989 3.113-1.989 5.113 0 1.996 0.683 3.86 1.989 5.168l5.797 5.812c1.307 1.307 3.115 1.937 5.115 1.937 1.995 0 3.801-0.683 5.109-1.989l3.479-3.521c0.688-0.683 0.661-1.817-0.052-2.531s-1.849-0.74-2.531-0.052zM27.749 17.349h-13.531c-0.932 0-1.692 0.801-1.692 1.791 0 0.991 0.76 1.797 1.692 1.797h13.531c0.933 0 1.693-0.807 1.693-1.797 0-0.989-0.76-1.791-1.693-1.791z"
+      })
+    })
+  });
+};
+/* harmony default export */ __webpack_exports__["default"] = (LeetCodeIcon);
 
 /***/ }),
 
@@ -37652,11 +37687,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Intro = _ref => {
-  let {
-    portfolio,
-    specialTag
-  } = _ref;
+const Intro = ({
+  portfolio,
+  specialTag
+}) => {
   const elements = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useRef)([]);
   (0,_hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_1__["default"])(elements, 'load');
   const short_description = specialTag(portfolio.short_description);
@@ -37671,10 +37705,12 @@ const Intro = _ref => {
           className: "CHARMING_PORTFOLIO_primary-image-container",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
             src: portfolio.user_image,
-            className: "lg:max-w-sm rounded-lg shadow-2xl block cp-m-auto sm:w-4/5"
+            className: "lg:max-w-sm rounded-lg shadow-2xl block cp-m-auto sm:w-4/5",
+            alt: portfolio.name
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
             src: portfolio.user_image,
-            className: "lg:max-w-sm rounded-lg shadow-2xl m-auto sm:w-4/5 "
+            className: "lg:max-w-sm rounded-lg shadow-2xl m-auto sm:w-4/5 ",
+            alt: portfolio.name
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: "intro-primary-info pop-in-animation",
@@ -37740,12 +37776,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Projects = _ref => {
-  let {
-    projects,
-    specialTag,
-    splitTags
-  } = _ref;
+const Projects = ({
+  projects,
+  specialTag,
+  splitTags
+}) => {
   const hasProjects = projects && Object.keys(projects).length;
   if (!hasProjects) {
     return null;
@@ -37782,6 +37817,7 @@ const Projects = _ref => {
               href: projects[id].link,
               target: "_blank",
               className: "charming_portfolio_shadow_thin",
+              "aria-label": `Open ${projects[id].link}`,
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                 className: "dashicons dashicons-external"
               })
@@ -37827,30 +37863,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Skill = _ref => {
-  let {
-    skill
-  } = _ref;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-    className: "charming-portfolio-skill-card charming_portfolio_shadow_thin cursor-pointer",
-    tabIndex: "0",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-      src: skill.image,
-      alt: skill.name,
-      className: "charming-portfolio-single-skill",
-      width: "70"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-      className: "skill-name",
-      children: skill.name
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      className: "simplecharm-skill-card-blank"
-    })]
-  });
-};
-const Skills = _ref2 => {
-  let {
-    skills
-  } = _ref2;
+const Skill = ({
+  skill
+}) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+  className: "charming-portfolio-skill-card charming_portfolio_shadow_thin cursor-pointer",
+  tabIndex: "0",
+  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+    src: skill.image,
+    alt: skill.name,
+    className: "charming-portfolio-single-skill",
+    width: "70"
+  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+    className: "skill-name",
+    children: skill.name
+  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    className: "simplecharm-skill-card-blank"
+  })]
+});
+const Skills = ({
+  skills
+}) => {
   const thisDivs = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useRef)([]);
   (0,_hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_1__["default"])(thisDivs);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("section", {
@@ -37890,14 +37922,15 @@ const Skills = _ref2 => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _icons_github__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./icons/github */ "./src/js/react-components/icons/github.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _icons_leetcode__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./icons/leetcode */ "./src/js/react-components/icons/leetcode.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
-const SocialIcon = _ref => {
-  let {
-    iconName,
-    url
-  } = _ref;
+
+const SocialIcon = ({
+  iconName,
+  url
+}) => {
   /**
    * All Icons Available in Dashicons
    */
@@ -37905,58 +37938,60 @@ const SocialIcon = _ref => {
   /**
    * All Svg Icon Hosted in Icons/ Directory
    */
-  const DashIconsIcon = _ref2 => {
-    let {
-      name,
-      url
-    } = _ref2;
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+  const DashIconsIcon = ({
+    name,
+    url
+  }) => {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
       className: "simplecharm-portfolio-button-hover",
       href: url,
       target: "_blank",
       rel: "noopener noreferrer",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+      "aria-label": `Open ${name} link`,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
         className: `dashicons dashicons-${name}`
       })
     });
   };
-  const DefaultIcon = _ref3 => {
-    let {
-      url
-    } = _ref3;
+  const DefaultIcon = ({
+    url
+  }) => {
     /**
      * Default Svg Icon if None(dashicons or icons from svgs) Available
      */
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
       className: "simplecharm-portfolio-button-hover",
       href: url,
       target: "_blank",
       rel: "noopener noreferrer",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+      "aria-label": `Open Link ${url}`,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
         className: "dashicons dashicons-admin-links"
       })
     });
   };
   const svgIcons = {
-    github: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_icons_github__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    github: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_icons_github__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      url: url
+    }),
+    leetcode: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_icons_leetcode__WEBPACK_IMPORTED_MODULE_1__["default"], {
       url: url
     })
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: dashIconsIcons.includes(iconName) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(DashIconsIcon, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: dashIconsIcons.includes(iconName) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(DashIconsIcon, {
       name: iconName,
       url: url
-    }) : svgIcons[iconName] || /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(DefaultIcon, {
+    }) : svgIcons[iconName] || /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(DefaultIcon, {
       url: url
     })
   });
 };
-const SocialIcons = _ref4 => {
-  let {
-    icons
-  } = _ref4;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: Object.keys(icons).map((id, i) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(SocialIcon, {
+const SocialIcons = ({
+  icons
+}) => {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: Object.keys(icons).map((id, i) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(SocialIcon, {
       iconName: icons[id].name.toLowerCase(),
       url: icons[id].url
     }, id))

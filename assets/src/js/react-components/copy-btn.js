@@ -31,6 +31,7 @@ const CopyBtn = ({ content, className }) => {
         <button
             className={className}
             onClick={() => copyText(content)}
+            aria-label="Copy Button"
         >
             <span className="dashicons dashicons-clipboard cursor-pointer"></span>
         </button>

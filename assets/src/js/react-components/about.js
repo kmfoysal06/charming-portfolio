@@ -24,6 +24,7 @@ const About = ({ specialTag, portfolio }) => {
             <img
               src={portfolio.user_image2}
               className="sm:w-full md:w-2/4 lg:w-2/4 rounded-lg shadow-2xl pop-in-animation"
+            alt={portfolio.name}
               ref={(el) => el && thisDivs.current.push(el)}
             />
             <div

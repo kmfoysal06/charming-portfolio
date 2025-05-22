@@ -13,8 +13,8 @@ const Intro = ({ portfolio, specialTag }) => {
             <section className="min-h-screen min-h-lvh grid items-center mb-2">
                 <div className="grid grid-cols-1 text-center lg:text-justify lg:grid-cols-2 lg:grid-flow-col-reverse cp-p4 intro cp-mt5 pop-in-animation" ref={(el) => el && elements.current.push(el)} tabIndex="0">
                     <div className="CHARMING_PORTFOLIO_primary-image-container">
-                        <img src={portfolio.user_image} className="lg:max-w-sm rounded-lg shadow-2xl block cp-m-auto sm:w-4/5" />
-                        <img src={portfolio.user_image} className="lg:max-w-sm rounded-lg shadow-2xl m-auto sm:w-4/5 " />
+                        <img src={portfolio.user_image} className="lg:max-w-sm rounded-lg shadow-2xl block cp-m-auto sm:w-4/5" alt={portfolio.name} />
+                        <img src={portfolio.user_image} className="lg:max-w-sm rounded-lg shadow-2xl m-auto sm:w-4/5 " alt={portfolio.name} />
                     </div>
                     <div className="intro-primary-info pop-in-animation" ref={(el) => elements.current.push(el)}>
                         <h3 className="text-3xl font-bold mt-6 lg:mt-0">Hi, I'm {portfolio.name} <span className="d-contents CHARMING_PORTFOLIO-welcome-emoji">👋</span></h3>

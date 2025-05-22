@@ -44,6 +44,7 @@ const Projects = ({ projects, specialTag, splitTags }) => {
                                         href={projects[id].link}
                                         target="_blank"
                                         className="charming_portfolio_shadow_thin"
+                                        aria-label={`Open ${projects[id].link}`}
                                     >
                                         <span className="dashicons dashicons-external"></span>
                                     </a>
