@@ -1,0 +1,56 @@
+ .simrev-up {
+    transition: transform 0.5s ease-in-out;
+    transform: translateY(100px);
+    opacity: 0;
+ }
+ .simrev-down {
+    transition: transform 0.5s ease-in-out;
+    transform: translateY(-100px);
+    opacity: 0;
+ }
+ .simrev-up-delay {
+    opacity: 0;
+    transition: 1s ease-in-out;
+    transition-delay: var(--delay, 0s);
+    transform: translateY(100px);
+ }
+ .simrev-right {
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(100px);
+    opacity: 0;
+ }
+ .simrev-right-delay {
+     opacity: 0;
+     transition: 1s ease-in-out;
+     transition-delay: var(--delay, 0s);
+     transform: translateX(100px);
+ }
+ .simrev-left {
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(-100px);
+    opacity: 0;
+ }
+ .simrev-up.simrev-visible {
+    transform: translateY(0);
+    opacity: 1;
+ }
+ .simrev-down.simrev-visible {
+    transform: translateY(0);
+    opacity: 1;
+ }
+ .simrev-right.simrev-visible {
+     transform: translateX(0);
+     opacity: 1;
+ }
+ .simrev-left.simrev-visible {
+     transform: translateX(0);
+     opacity: 1;
+ }
+ .simrev-right-delay.simrev-visible {
+     transform: translateX(0);
+     opacity: 1;
+ }
+ .simrev-up-delay.simrev-visible {
+    transform: translateY(0);
+    opacity: 1;
+ }

@@ -22,11 +22,9 @@ $CHARMING_PORTFOLIO_dashicons_css_url = includes_url('css/dashicons.min.css');
     * Slot for React loaded only if user allows client side rendering 
     **/
     if(CHARMING_PORTFOLIO_CLIENT_RENDER === true):?>
-        <!-- Slot To Load React Components -->
+        <!-- Slot To Load Portfolio Components -->
         <div id="charming-portfolio-react-root">
         </div>
-    <?php else: ?>
-        server side rendering is currently off
     <?php endif; ?>
 
 <!-- Contact and Footer -->

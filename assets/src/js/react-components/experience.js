@@ -38,7 +38,7 @@ const Experience = ({ specialTag, experiences }) => {
 
   return (
     <section className="experience min-h-max p-6 my-2 flex flex-col">
-      <div className="section-title pop-in-animation" ref={(el) => el && thisDivs.current.push(el)}>
+      <div className="section-title simrev-up" ref={(el) => el && thisDivs.current.push(el)}>
             <Badge badgeTitle={"Experience"} />
         <p>Here is a quick summary of my most recent experiences:</p>
       </div>
@@ -73,7 +73,7 @@ const Experience = ({ specialTag, experiences }) => {
         return (
           <div
             key={index}
-            className="experience-content charming_portfolio_shadow_thin gap-y-3 pop-in-animation"
+            className="experience-content charming_portfolio_shadow_thin gap-y-3 simrev-up"
             tabIndex="0"
             ref={(el) => el && thisDivs.current.push(el)}
           >

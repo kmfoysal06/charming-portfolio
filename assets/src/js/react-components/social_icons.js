@@ -1,7 +1,7 @@
 import GithubIcon from "./icons/github";
 import LeetCodeIcon from "./icons/leetcode";
 
-const SocialIcon = ({ iconName, url }) => {
+const SocialIcon = ({ iconName, url}) => {
   /**
    * All Icons Available in Dashicons
    */
@@ -24,7 +24,7 @@ const SocialIcon = ({ iconName, url }) => {
   /**
    * All Svg Icon Hosted in Icons/ Directory
    */
-  const DashIconsIcon = ({ name, url }) => {
+  const DashIconsIcon = ({ name, url}) => {
     return (
       <a
         className="simplecharm-portfolio-button-hover"
@@ -38,7 +38,7 @@ const SocialIcon = ({ iconName, url }) => {
     );
   };
 
-  const DefaultIcon = ({ url }) => {
+  const DefaultIcon = ({ url}) => {
     /**
      * Default Svg Icon if None(dashicons or icons from svgs) Available
      */
@@ -70,15 +70,16 @@ const SocialIcon = ({ iconName, url }) => {
   );
 };
 
-const SocialIcons = ({ icons }) => {
+const SocialIcons = ({ icons, thisDivs}) => {
   return (
     <>
       {Object.keys(icons).map((id, i) => (
-        <SocialIcon
-          iconName={icons[id].name.toLowerCase()}
-          url={icons[id].url}
-          key={id}
-        />
+        <div className="simrev-up-delay" ref={(el) => el && thisDivs.current.push(el)} style={{ "--delay": `${i * 30}ms` }} key={id}>
+            <SocialIcon
+              iconName={icons[id].name.toLowerCase()}
+              url={icons[id].url}
+              key={id} />
+        </div>
       ))}
     </>
   );

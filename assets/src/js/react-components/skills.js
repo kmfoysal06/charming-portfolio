@@ -3,10 +3,12 @@ import ScrollAnimate from "./hooks/scroll-animation";
 import { useRef } from "@wordpress/element";
 import Badge from "./badge";
 
-const Skill = ({ skill }) => (
+const Skill = ({ skill, id, refDivs}) => (
     <div
-        className="charming-portfolio-skill-card charming_portfolio_shadow_thin cursor-pointer"
+        className="charming-portfolio-skill-card charming_portfolio_shadow_thin cursor-pointer simrev-up-delay"
         tabIndex="0"
+        ref={(el) => el && refDivs.current.push(el)}
+        style={{ "--delay": `${(id + 3) * 50}ms` }}
     >
         <img
             src={skill.image}
@@ -27,8 +29,9 @@ const Skills = ({ skills }) => {
             {skills && Object.keys(skills).length > 0 ? (
                 <>
                     <div
-                        className="section-title pop-in-animation"
+                        className="section-title simrev-up-delay"
                         ref={(el) => el && thisDivs.current.push(el)}
+                        style={{ "--delay": "20ms" }}
                     >
                         <Badge badgeTitle={"Skills"} />
                         <p>
@@ -39,12 +42,13 @@ const Skills = ({ skills }) => {
                         </p>
                     </div>
                     <div
-                        className="skills-container pop-in-animation"
+                        className="skills-container simrev-up-delay"
                         ref={(el) => el && thisDivs.current.push(el)}
+                        style={{ "--delay": "70ms" }}
                     >
                         {Object.keys(skills).map((skillKey, index) => {
                             const skill = skills[skillKey];
-                            return <Skill key={skillKey || index} skill={skill} />;
+                            return <Skill key={skillKey || index} skill={skill} id={index} refDivs={thisDivs} />;
                         })}
                     </div>
                 </>

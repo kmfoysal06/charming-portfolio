@@ -380,11 +380,6 @@ if(!function_exists("CHARMING_PORTFOLIO_enabled")) {
  */
 if(!function_exists("CHARMING_PORTFOLIO_CLIENT_RENDER")) {
 	function CHARMING_PORTFOLIO_CLIENT_RENDER():bool {
-		$portfolio_data = \CHARMING_PORTFOLIO\Inc\Classes\Portfolio::get_instance()->display_saved_value();
-		if($portfolio_data){
-			$portfolio_client_render = $portfolio_data['client_render'] ?? false;
-			return $portfolio_client_render;
-		}
-		return false;
+	    return true;	
 	}
 }

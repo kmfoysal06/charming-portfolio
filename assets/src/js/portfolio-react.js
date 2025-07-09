@@ -6,8 +6,10 @@ import Skills from "./react-components/skills.js";
 import Experience from "./react-components/experience.js";
 import Projects from "./react-components/projects.js";
 import Footer from "./react-components/footer.js";
+import ScrollAnimate from "./react-components/hooks/scroll-animation.js";
 
 const Portfolio = () => {
+    //ScrollAnimate();
     /**
      * To Convert Special String to HTML Tags
      * @example 
