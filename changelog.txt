@@ -43,3 +43,7 @@
 -Added Scroll Revealing Animations
 -Improved UI
 -Fixed Bugs
+==v1.5==
+-New Icons Support
+-Latest WordPress Compatibility
+-Bug Fixes
