@@ -30,7 +30,7 @@ const Projects = ({ projects, specialTag, splitTags }) => {
             <div className="single-work-info grid lg:grid-cols-2 md:grid-cols-2 gap-x-4 my-3">
                 {Object.keys(projects).map((id) =>
                     (projects[id].title && projects[id].description) && (
-                        <div className="line-break-anywhere simrev-up" tabIndex="0" key={id} ref={(el) => el && thisDivs.current.push(el)}>
+                        <div className="line-break-anywhere simrev-up-delay" tabIndex="0" key={id} ref={(el) => el && thisDivs.current.push(el)} style={{ "--delay": `${id * 20}ms` }}>
                             <div className="flex flex-col my-4 gap-y-3 p-6 pb-3 charming_portfolio_shadow_thin portfolio-project-bg">
                                 <h2 className="text-2xl">{projects[id].title}</h2>
                                 <p className="overflow-y-auto">

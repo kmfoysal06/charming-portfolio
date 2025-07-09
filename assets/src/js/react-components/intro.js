@@ -23,11 +23,11 @@ const Intro = ({ portfolio, specialTag }) => {
               ref={(el) => el && thisDivs.current.push(el)}
             />
           </div>
-          <div className="intro-primary-info">
+          <div className="intro-primary-info flex justify-center flex-col">
             <h3 className="text-3xl font-bold mt-6 lg:mt-0 simrev-up-delay" ref={(el) => el && thisDivs.current.push(el)} style={{ "--delay": "20ms" }}>
               Hi, I'm {portfolio.name}{" "}
               <span className="d-contents CHARMING_PORTFOLIO-welcome-emoji">
-                👋
+                👋 
               </span>
             </h3>
             {short_description && (

@@ -8,7 +8,7 @@ const Skill = ({ skill, id, refDivs}) => (
         className="charming-portfolio-skill-card charming_portfolio_shadow_thin cursor-pointer simrev-up-delay"
         tabIndex="0"
         ref={(el) => el && refDivs.current.push(el)}
-        style={{ "--delay": `${(id + 3) * 50}ms` }}
+        style={{ "--delay": `${(id) * 30}ms` }}
     >
         <img
             src={skill.image}

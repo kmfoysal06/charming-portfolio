@@ -18,7 +18,7 @@ const Footer = ({ portfolio }) => {
                     {__("Get in Touch", "charming-portfolio")}
                 </div>
 
-                <div className="footer-text simrev-up-delay" ref={(el) => el && thisDivs.current.push(el)} style={{ "--delay": "50ms" }}>
+                <div className="footer-text simrev-up-delay" ref={(el) => el && thisDivs.current.push(el)} style={{ "--delay": "40ms" }}>
                     <p>
                         {__(
                             "What’s next? Feel free to reach out to me if you're looking for a developer, have a query, or simply want to connect.",
@@ -26,7 +26,7 @@ const Footer = ({ portfolio }) => {
                         )}
                     </p>
                 </div>
-                <div className="footer-mail cp-gapx3 simrev-up-delay" ref={(el) => el && thisDivs.current.push(el)} style={{ "--delay": "80ms" }}>
+                <div className="footer-mail cp-gapx3 simrev-up-delay" ref={(el) => el && thisDivs.current.push(el)} style={{ "--delay": "60ms" }}>
                     <span className="dashicons dashicons-email"></span>
                     <h2 className="text-lg md:text-xl lg:text-xl line-break-anywhere">
                         {portfolio.email}
@@ -37,7 +37,7 @@ const Footer = ({ portfolio }) => {
                     />
                 </div>
 
-                <div className="footer-phone cp-gapx3 simrev-up-delay" ref={(el) => el && thisDivs.current.push(el)} style={{ "--delay": "120ms" }}>
+                <div className="footer-phone cp-gapx3 simrev-up-delay" ref={(el) => el && thisDivs.current.push(el)} style={{ "--delay": "80ms" }}>
                     <span className="dashicons dashicons-smartphone"></span>
                     <h2 className="text-lg md:text-xl lg:text-xl line-break-anywhere">
                         {portfolio.phone}
@@ -48,7 +48,7 @@ const Footer = ({ portfolio }) => {
                     />
 
                 </div>
-                <div className="footer-social-links simrev-up-delay" ref={(el) => el && thisDivs.current.push(el)} style={{ "--delay": "150ms" }}>
+                <div className="footer-social-links simrev-up-delay" ref={(el) => el && thisDivs.current.push(el)} style={{ "--delay": "100ms" }}>
                     <p>
                         {__("You may also find me on these platforms!", "charming-portfolio")}
                     </p>
