@@ -17,6 +17,11 @@ if( ! defined( 'ABSPATH' ) ) {
             <span></span>
 		</div>
 	</div>
+
+	<label for="enable-blog"><?php esc_html_e("Show Blogs Section",'charming-portfolio'); ?></label>
+
+		<input type="checkbox" id="enable-blog" class="portfolio-enabled-blog" name="CHARMING_PORTFOLIO[enabled_blog]" <?php echo esc_html(checked($args["enabled_blog"], 'on'));  ?>>
+
 	<label for="name"><?php esc_html_e("Name:",'charming-portfolio'); ?></label>
 	<input type="text" id="name" class="user-name" name="CHARMING_PORTFOLIO[name]" value="<?php echo esc_html($args["name"])  ?>" autocomplete="false" minlength="2" maxlength="30">
 	<span></span>

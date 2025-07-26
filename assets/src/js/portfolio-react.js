@@ -6,6 +6,7 @@ import Skills from "./react-components/skills.js";
 import Experience from "./react-components/experience.js";
 import Projects from "./react-components/projects.js";
 import Footer from "./react-components/footer.js";
+import Blogs from "./react-components/blogs.js";
 import ScrollAnimate from "./react-components/hooks/scroll-animation.js";
 
 const Portfolio = () => {
@@ -62,6 +63,7 @@ const Portfolio = () => {
             <Skills skills={portfolio_data.skills} />
             <Experience specialTag={specialTag} experiences={portfolio_data.experiences} />
             <Projects specialTag={specialTag} projects={portfolio_data.works} splitTags={splitTags} />
+            <Blogs blogs={latest_blogs} />
             <Footer portfolio={portfolio_data} />
         </>
     );

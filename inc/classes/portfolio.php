@@ -430,6 +430,7 @@ class Portfolio
         $additional_option_value = get_option("CHARMING_PORTFOLIO_additional_data");
 		$saved_values            = [
             'enabled'  		=> false,
+            'enabled_blog' => false,
             'client_render'     => true,
             'name'              => 'Charm',
             'user_image'        => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg",
@@ -445,6 +446,8 @@ class Portfolio
         ];
 		if (is_array($option_value)) {
 	    $enabled 	       = array_key_exists("enabled", $option_value) ? $option_value["enabled"] : false;
+
+	    $enabled_blog 	       = array_key_exists("enabled_blog", $option_value) ? $option_value["enabled_blog"] : false;
             $client_render     = true;
             $name              = array_key_exists("name", $option_value) ? $option_value["name"] : "";
             $image             = (array_key_exists("image", $option_value) && !empty($option_value['image'])) ? $option_value["image"] : CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg";
@@ -458,6 +461,7 @@ class Portfolio
             $social_links      = array_key_exists("social_link", $option_value) ? CHARMING_PORTFOLIO_load_social($option_value['social_link']) : [];
 	$saved_values      = [
                 'enabled' => $enabled,
+                'enabled_blog' => $enabled_blog,
                 'client_render' => $client_render,
                 'name'              => $name,
                 'user_image'        => $image,
