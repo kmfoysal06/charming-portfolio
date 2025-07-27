@@ -53,6 +53,14 @@ const rules = [
       'sass-loader',
     ]
   },
+{
+    test: /\.css$/,
+    use: [
+      MiniCssExtractPlugin.loader,
+      'css-loader',
+      'postcss-loader',
+    ]
+  },
   {
     test: /\.(png|jpg|jpeg|gif|ico)$/,
     use: {

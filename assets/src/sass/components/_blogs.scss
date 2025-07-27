@@ -1,0 +1,51 @@
+.charming-portfolio-blogs-container {
+  .single-blog {
+	max-width: 400px;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+		rgb(209, 213, 219) 0px 0px 0px 1px inset;
+	scroll-snap-align: start;
+    .blog-meta {
+    	padding: 10px;
+    }
+    img {
+    	width: min(300px, 100%);
+    	margin: 0 auto;
+    }
+    p,
+    h3,
+    a {
+    	margin: 0;
+    }
+    a {
+    	text-decoration: none;
+        &:hover {
+	    text-decoration: underline;
+      }
+    }
+  }
+  .blogs-header {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 8px;
+  }
+  
+  .sw-nav {
+  	display: flex;
+  	gap: 4px;
+  	cursor: pointer;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+  	position: static!important;
+  }
+
+}
+@media screen and (max-width: 400px) {
+.charming-portfolio-blogs-container {
+	.single-blog img {
+		margin: 0 auto;
+		display: block;
+		padding-top: 8px;
+	}
+  }
+}

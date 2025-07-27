@@ -37,6 +37,7 @@ class Blogs
             while ($query->have_posts()) {
                 $query->the_post();
                 $blogs[] = [
+                    'id' => get_the_ID(),
                     'title' => get_the_title(),
                     'excerpt' => get_the_excerpt(),
                     'thumbnail' => get_the_post_thumbnail_url(get_the_ID(), 'medium'),
