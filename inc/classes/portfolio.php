@@ -121,7 +121,7 @@ class Portfolio
 
                         <input type="hidden" name="charming-portfolio__nonce" value="<?php echo esc_attr(wp_create_nonce("CHARMING_PORTFOLIO_modify_page__nonce")) ?>">
                         <div class="btn-wrapper">
-                            <input type="submit" name="update_portfolio_data" value="UPDATE" class="btn btn-fullwidth">
+                            <input type="submit" name="update_portfolio_data" value="UPDATE" class="charming-portfolio-save-data btn btn-fullwidth">
                             <span></span>
                         </div>
 
@@ -424,7 +424,7 @@ class Portfolio
     /**
      * This Function Will Return The Saved Value
      */
-    public function display_saved_value()
+    public function display_saved_value_dep()
     {
         $option_value            = get_option("CHARMING_PORTFOLIO_data");
         $additional_option_value = get_option("CHARMING_PORTFOLIO_additional_data");
@@ -494,6 +494,64 @@ class Portfolio
 
         return $saved_values;
     }
+
+
+    public function display_saved_value()
+    {
+        $option_value            = get_option("CHARMING_PORTFOLIO_data");
+        $additional_option_value = get_option("CHARMING_PORTFOLIO_additional_data");
+		
+		if (is_array($option_value)) {
+	        $enabled 	       = array_key_exists("enabled", $option_value) ? $option_value["enabled"] : false;
+
+	        $enabled_blog 	       = array_key_exists("enabled_blog", $option_value) ? $option_value["enabled_blog"] : false;
+            $client_render     = true;
+            $name              = array_key_exists("name", $option_value) ? $option_value["name"] : "";
+            $image             = (array_key_exists("image", $option_value) && !empty($option_value['image'])) ? $option_value["image"] : CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg";
+            $image2            = (array_key_exists("image_2", $option_value) && !empty($option_value['image_2'])) ? $option_value["image_2"] : CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg";
+            $email             = array_key_exists("email", $option_value) ? $option_value["email"] : "abc@gmail.com";
+            $phone             = array_key_exists("phone", $option_value) ? $option_value["phone"] : "1234567890";
+            $short_description = array_key_exists("short_description", $option_value) ? $option_value["short_description"] : "";
+            $description       = array_key_exists("description", $option_value) ? $option_value["description"] : "";
+            $address           = array_key_exists("address", $option_value) ? $option_value["address"] : "";
+            $available         = (array_key_exists("available", $option_value) && $option_value['available'] === 'on') ? 'True' : "False";
+            $social_links      = array_key_exists("social_links", $option_value) ? $option_value['social_links'] : [];
+	$saved_values      = [
+                'enabled' => $enabled,
+                'enabled_blog' => $enabled_blog,
+                'client_render' => $client_render,
+                'name'              => $name,
+                'user_image'        => $image,
+                'user_image2'       => $image2,
+                'email'             => $email,
+                'phone'             => $phone,
+                'short_description' => $short_description,
+                'description'       => $description,
+                'address'           => $address,
+                'available'         => $available,
+                'social_links'      => $social_links,
+                'skills'            => [],
+                'experiences'       => [],
+                'works'             => [],
+            ];
+        }
+
+        if (is_array($additional_option_value)) {
+            $skills      = array_key_exists("skills", $additional_option_value) ? CHARMING_PORTFOLIO_load_skills($additional_option_value["skills"]) : [];
+            $experiences = array_key_exists("experiences", $additional_option_value) ? CHARMING_PORTFOLIO_load_experience($additional_option_value["experiences"]) : [];
+            $works       = array_key_exists("works", $additional_option_value) ? CHARMING_PORTFOLIO_load_works($additional_option_value["works"]) : [];
+        } else {
+            $skills      = [];
+            $experiences = [];
+            $works       = [];
+        }
+        $saved_values['skills']      = $skills;
+        $saved_values['experiences'] = $experiences;
+        $saved_values['works']       = $works;
+
+        return $saved_values;
+    }
+
 
     /**
      * Sanitize The Array

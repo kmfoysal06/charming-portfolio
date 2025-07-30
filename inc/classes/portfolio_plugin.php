@@ -16,5 +16,6 @@ class PORTFOLIO_PLUGIN{
 	{
         Assets::get_instance();
         Portfolio::get_instance();
+        Actions::get_instance();
 	}
 }

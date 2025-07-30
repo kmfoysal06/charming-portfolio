@@ -170,6 +170,41 @@
 
 /***/ }),
 
+/***/ "./src/js/components/save-data.js":
+/*!****************************************!*\
+  !*** ./src/js/components/save-data.js ***!
+  \****************************************/
+/***/ (function() {
+
+(function ($) {
+  class Save_Data {
+    constructor() {
+      this.init();
+    }
+    init() {
+      const saveButton = $(".charming-portfolio-save-data");
+      saveButton.on('click', function (e) {
+        e.preventDefault();
+        const enabled = $(".portfolio-enabled");
+        const blogEnabled = $(".portfolio-enabled-blog");
+        const name = $(".user-name");
+        const imagePrimary = $(".CHARMING_PORTFOLIO_user_image");
+        const shortDescription = $(".short-description");
+        const userAddress = $(".user-address");
+        const userAvailable = $(".user-available");
+        const description = $(".description");
+        const imageSecondary = $(".CHARMING_PORTFOLIO_user_image_2");
+        const mail = $(".email");
+        const phone = $(".phone");
+        console.log("saved");
+      });
+    }
+  }
+  new Save_Data();
+})(jQuery);
+
+/***/ }),
+
 /***/ "./src/js/components/skills-images.js":
 /*!********************************************!*\
   !*** ./src/js/components/skills-images.js ***!
@@ -370,6 +405,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_updateBtn_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_components_updateBtn_js__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _components_skills_images_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/skills-images.js */ "./src/js/components/skills-images.js");
 /* harmony import */ var _components_skills_images_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_components_skills_images_js__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _components_save_data_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/save-data.js */ "./src/js/components/save-data.js");
+/* harmony import */ var _components_save_data_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_components_save_data_js__WEBPACK_IMPORTED_MODULE_8__);
+
 
 
 
