@@ -31,6 +31,66 @@
 
 /***/ }),
 
+/***/ "./src/js/components/charm-alert.js":
+/*!******************************************!*\
+  !*** ./src/js/components/charm-alert.js ***!
+  \******************************************/
+/***/ (function() {
+
+class CharmAlert {
+  constructor() {
+    this.timeout = null;
+  }
+  static getInstance() {
+    if (!this.instance) {
+      this.instance = new CharmAlert();
+    }
+    return this.instance;
+  }
+  showAlert(message, type = 'info') {
+    const alertBox = document.createElement('div');
+    alertBox.className = `charm-alert charm-alert-${type}`;
+    alertBox.style.position = 'fixed';
+    alertBox.style.top = '50px';
+    // zindex 
+    alertBox.style.zIndex = '1111';
+    alertBox.style.left = '50%';
+    alertBox.style.transform = 'translateX(-50%)';
+    alertBox.style.padding = '10px 20px';
+    alertBox.style.borderRadius = '5px';
+    alertBox.style.color = '#fff';
+    alertBox.style.fontSize = '16px';
+    alertBox.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+    alertBox.style.backgroundColor = type === 'success' ? '#4CAF50' : type === 'error' ? '#F44336' : type === 'warning' ? '#FF9800' : '#2196F3';
+    alertBox.style.transition = 'opacity 0.3s ease-in-out';
+    alertBox.style.opacity = '0.9';
+    alertBox.style.cursor = 'pointer';
+    alertBox.innerText = message;
+    // pause timeout on hover and resume on mouse leave
+    alertBox.addEventListener('mouseenter', () => {
+      if (typeof this.timeout !== 'undefined') {
+        clearTimeout(this.timeout);
+      }
+    });
+    alertBox.addEventListener('mouseleave', () => {
+      this.timeout = setTimeout(() => {
+        alertBox.remove();
+      }, 3000);
+    });
+
+    // Append the alert box to the body
+    document.body.appendChild(alertBox);
+
+    // Automatically remove the alert after 3 seconds
+    this.timeout = setTimeout(() => {
+      alertBox.remove();
+    }, 3000);
+  }
+}
+window.CharmAlert = CharmAlert.getInstance();
+
+/***/ }),
+
 /***/ "./src/js/components/checkbox.js":
 /*!***************************************!*\
   !*** ./src/js/components/checkbox.js ***!
@@ -196,7 +256,65 @@
         const imageSecondary = $(".CHARMING_PORTFOLIO_user_image_2");
         const mail = $(".email");
         const phone = $(".phone");
-        console.log("saved");
+        const data = new FormData();
+        data.append('action', 'charming_portfolio_save_data');
+        data.append('nonce', charming_portfolio_admin.nonce);
+        data.append('enabled', enabled.is(':checked') ? '1' : '0');
+        data.append('blog_enabled', blogEnabled.is(':checked') ? '1' : '0');
+        data.append('name', name.val());
+        data.append('image', imagePrimary.val());
+        data.append('short_description', shortDescription.val());
+        data.append('address', userAddress.val());
+        data.append('available', userAvailable.is(':checked') ? '1' : '0');
+        data.append('description', description.val());
+        data.append('image2', imageSecondary.val());
+        data.append('email', mail.val());
+        data.append('phone', phone.val());
+
+        // get social links 
+        const socialLinks = [];
+        $(".social_links").each(function () {
+          const name = $(this).find(".name").val();
+          const url = $(this).find(".url").val();
+          if (name && url) {
+            socialLinks.push({
+              name: name,
+              url: url
+            });
+          }
+        });
+        data.append('social_links', JSON.stringify(socialLinks));
+        const updateBtnWrapper = $(".btn-wrapper");
+        updateBtnWrapper.addClass("loading");
+        updateBtnWrapper.find(".charming-portfolio-save-data").prop("disabled", true);
+        updateBtnWrapper.find(".charming-portfolio-save-data").text(charming_portfolio_admin.saving);
+        const response = $.ajax({
+          url: charming_portfolio_admin.ajax_url,
+          type: 'POST',
+          data: data,
+          contentType: false,
+          processData: false,
+          success: function (response) {
+            if (response.success) {
+              const data = response.data;
+              updateBtnWrapper.removeClass("loading");
+              updateBtnWrapper.find(".charming-portfolio-save-data").prop("disabled", false);
+              updateBtnWrapper.find(".charming-portfolio-save-data").text(charming_portfolio_admin.save);
+              CharmAlert.showAlert("Updated", 'success');
+            } else {
+              updateBtnWrapper.removeClass("loading");
+              updateBtnWrapper.find(".charming-portfolio-save-data").prop("disabled", false);
+              updateBtnWrapper.find(".charming-portfolio-save-data").text(charming_portfolio_admin.save);
+              CharmAlert.showAlert("Error updating", 'error');
+            }
+          },
+          error: function () {
+            updateBtnWrapper.removeClass("loading");
+            updateBtnWrapper.find(".charming-portfolio-save-data").prop("disabled", false);
+            updateBtnWrapper.find(".charming-portfolio-save-data").text(charming_portfolio_admin.save);
+            CharmAlert.showAlert("Error updating", 'error');
+          }
+        });
       });
     }
   }
@@ -291,13 +409,13 @@
 /***/ (function() {
 
 // Add Loader When Update Button Clicked
-const updateBtnWrapper = document.querySelector(".btn-wrapper");
-if (updateBtnWrapper) {
-  const updateBtn = updateBtnWrapper.querySelector("input");
-  updateBtn.addEventListener("click", e => {
-    updateBtnWrapper.classList.add("loading");
-  });
-}
+// const updateBtnWrapper = document.querySelector(".btn-wrapper")
+// if(updateBtnWrapper){
+// 	const updateBtn = updateBtnWrapper.querySelector("input");
+// 	updateBtn.addEventListener("click", (e) => {
+// 		updateBtnWrapper.classList.add("loading")
+// 	})		
+// }
 
 /***/ }),
 
@@ -405,8 +523,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_updateBtn_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_components_updateBtn_js__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _components_skills_images_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/skills-images.js */ "./src/js/components/skills-images.js");
 /* harmony import */ var _components_skills_images_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_components_skills_images_js__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _components_save_data_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/save-data.js */ "./src/js/components/save-data.js");
-/* harmony import */ var _components_save_data_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_components_save_data_js__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _components_charm_alert_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/charm-alert.js */ "./src/js/components/charm-alert.js");
+/* harmony import */ var _components_charm_alert_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_components_charm_alert_js__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _components_save_data_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/save-data.js */ "./src/js/components/save-data.js");
+/* harmony import */ var _components_save_data_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_components_save_data_js__WEBPACK_IMPORTED_MODULE_9__);
+
 
 
 

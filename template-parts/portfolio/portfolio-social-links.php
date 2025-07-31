@@ -16,7 +16,7 @@ if( ! defined( 'ABSPATH' ) ) {
 if (is_array($args) && array_key_exists("social_links", $args)):
             foreach ($args['social_links'] as $key => $social):
             ?>
-              <tr class="flex">
+              <tr class="social_links flex">
                 <td>
                   <label for="<?php echo esc_attr("social_link_name_" . $key); ?>"></label>
                   <input type="text" class="name" data-queue="0" placeholder="social link name" name="CHARMING_PORTFOLIO[social_link][<?php echo esc_attr($key); ?>][][name]" value="<?php echo is_array($social['name']) ? esc_attr(implode('', $social['url'])) : esc_attr($social['name'])  ?>" id="<?php echo esc_attr("social_link_name_" . $key); ?>" /></td>
@@ -32,7 +32,7 @@ if (is_array($args) && array_key_exists("social_links", $args)):
         ?>
 
     <!-- empty hidden one for jQuery -->
-    <tr class="charming_portfolio_empty-row__social_link screen-reader-text flex">
+    <tr class="charming_portfolio_empty-row__social_link screen-reader-text flex social_links">
            <td>
             <input type="text" class="name" data-queue="0" placeholder="social link name" name="CHARMING_PORTFOLIO[social_link][0][][name]" value="" id="social_link_name" /></td>
           <td>

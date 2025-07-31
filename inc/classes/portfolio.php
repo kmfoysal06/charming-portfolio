@@ -498,9 +498,24 @@ class Portfolio
 
     public function display_saved_value()
     {
-        $option_value            = get_option("CHARMING_PORTFOLIO_data");
+        $option_value            = get_option("CHARMING_PORTFOLIO_v2");
         $additional_option_value = get_option("CHARMING_PORTFOLIO_additional_data");
-		
+        $saved_values            = [
+            'enabled'  		=> false,
+            'enabled_blog' => false,
+            'client_render'     => true,
+            'name'              => 'Charm',
+            'user_image'        => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg",
+            'user_image2'       => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg",
+            'email'             => 'abc@gmail.com',
+            'phone'             => '12345678902',
+            'short_description' => "Hi, This Is Default Lorem Ipsum Description For You Lorem ipsum dolor sit amet, consectetur adipisicing elit!",
+            'address'           => "Earth",
+            'description'       => "Hi, This Is Default Lorem Ipsum Description For You Lorem ipsum dolor sit amet, consectetur adipisicing elit!Hi, This Is Default Lorem Ipsum Description For You Lorem ipsum dolor sit amet, consectetur adipisicing elit!Hi, This Is Default Lorem Ipsum Description For You Lorem ipsum dolor sit amet, consectetur adipisicing elit!",
+            'available'         => "",
+            'social_links'      => [],
+            'skills'            => [],
+        ];
 		if (is_array($option_value)) {
 	        $enabled 	       = array_key_exists("enabled", $option_value) ? $option_value["enabled"] : false;
 
@@ -516,7 +531,7 @@ class Portfolio
             $address           = array_key_exists("address", $option_value) ? $option_value["address"] : "";
             $available         = (array_key_exists("available", $option_value) && $option_value['available'] === 'on') ? 'True' : "False";
             $social_links      = array_key_exists("social_links", $option_value) ? $option_value['social_links'] : [];
-	$saved_values      = [
+        	$saved_values      = [
                 'enabled' => $enabled,
                 'enabled_blog' => $enabled_blog,
                 'client_render' => $client_render,

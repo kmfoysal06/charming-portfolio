@@ -76,6 +76,10 @@ class Assets
     public function admin_enqueue_scripts()
     {
         wp_register_script("CHARMING_PORTFOLIO_admin", CHARMING_PORTFOLIO_DIR_URI . '/assets/build/js/admin.js', [], filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/js/admin.js'), true);
+        wp_localize_script("CHARMING_PORTFOLIO_admin", "charming_portfolio_admin", [
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('charming_portfolio_save_data'),
+        ]);
         //admin only scripts
         if (is_admin()) {
             wp_enqueue_script("CHARMING_PORTFOLIO_admin");
