@@ -47,3 +47,8 @@
 -New Icons Support
 -Latest WordPress Compatibility
 -Bug Fixes
+==v2.0==
+-New UI
+-New Theme Selecting Avility
+-Updating Data With Ajax in Admin
+-Bug Fixes

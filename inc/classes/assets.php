@@ -48,7 +48,8 @@ class Assets
                 /**
                  * Load React only if user allows client side rendering
                  * */
-                if(CHARMING_PORTFOLIO_CLIENT_RENDER === true){
+                $layout = PORTFOLIO::get_instance()->display_saved_value()['layout'] ?? 'charming_v2';
+                if(CHARMING_PORTFOLIO_CLIENT_RENDER === true && $layout === 'classic'){
                     wp_enqueue_script('CHARMING_PORTFOLIO_portofolio_react');
                 }
 			}
@@ -61,8 +62,10 @@ class Assets
         // enqueue styles if its frontpage
 		if(is_front_page()){
 			if(CHARMING_PORTFOLIO_enabled()){
-                wp_enqueue_style('CHARMING_PORTFOLIO_tailwindcss');
-	    		wp_enqueue_style('dashicons');
+                if(PORTFOLIO::get_instance()->display_saved_value()['layout'] === 'classic') {
+                    wp_enqueue_style('CHARMING_PORTFOLIO_tailwindcss');
+                    wp_enqueue_style('dashicons');
+                }
 			}
         }
     }

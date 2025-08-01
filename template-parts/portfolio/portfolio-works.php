@@ -6,22 +6,23 @@
 if( ! defined( 'ABSPATH' ) ) {
     exit;
 }
+var_dump(get_option("CHARMING_PORTFOLIO_v2_additional")) ;
 ?>
 <!-- project list setting -->
 <div class="portfolio-section-wrapper">
   <h3 class="portfolio-section-toggle"><?php esc_html_e("Project Customization",'charming-portfolio'); ?></h3>
-<div class="portfolio-section-content simplecharm-portfolio-projects">
+<div class="portfolio-section-content charming-portfolio-projects">
     <p><?php
     esc_html_e("You Can Not Use Quotation (\"\" and '') so You Can Use [quote], [squote] and [bold][/bold] for Adding Double and Single Quotation and Make Any Text Bold.","charming-portfolio") ?>
     </p>
     <table id="repeatable-fieldset-three" width="100%">
       <tbody>
         <?php if(is_array($args) && array_key_exists('works', $args)): 
-        $flattern_works = CHARMING_PORTFOLIO_load_works($args['works']); ?>
-        <?php foreach( $flattern_works as $key => $work ):
+        $works = $args['works']; ?>
+        <?php foreach( $works as $key => $work ):
             $key = $key + 1;
         if(empty($work['title'])) continue; ?>
-    <tr class="flex simplecharm-basic-border simplecharm-basic-padding flex flex-col">
+    <tr class="flex simplecharm-basic-border simplecharm-basic-padding flex flex-col single-project">
         <td>
             <label for="<?php echo esc_attr("project-title-" . $key); ?>"><?php esc_html_e("Title","charming-portfolio"); ?></label>
             <input type="text" class="title" placeholder="<?php esc_attr_e("Project Title","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][title]" value="<?php echo esc_attr($work['title']); ?>" id="<?php echo esc_attr("project-title-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" maxlength="30">
@@ -45,7 +46,7 @@ if( ! defined( 'ABSPATH' ) ) {
         <?php endforeach; ?>
         <?php endif?>
     <!-- empty hidden one for jQuery -->
-    <tr class="charming_portfolio_empty-row__works screen-reader-text flex simplecharm-basic-border simplecharm-basic-padding flex flex-col">
+    <tr class="charming_portfolio_empty-row__works screen-reader-text flex simplecharm-basic-border simplecharm-basic-padding flex flex-col single-project">
     <td>
         <label for="project-title"><?php esc_html_e("Title","charming-portfolio"); ?></label>
         <input type="text" class="title" placeholder="<?php esc_attr_e("Project Title","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][0][title]" value="" id="project-title" data-queue="0">

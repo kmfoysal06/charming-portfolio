@@ -118,6 +118,8 @@ class Portfolio
                         <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "contact", $portfolio_saved_data);?>
                         <!-- social links -->
                         <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "social-links", $portfolio_saved_data);?>
+                        <!-- choose layout -->
+                        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "layout", $portfolio_saved_data);?>
 
                         <input type="hidden" name="charming-portfolio__nonce" value="<?php echo esc_attr(wp_create_nonce("CHARMING_PORTFOLIO_modify_page__nonce")) ?>">
                         <div class="btn-wrapper">
@@ -142,8 +144,8 @@ class Portfolio
                 <h2><?php esc_html__("Customize Your Additional Informations Here:","charming-portfolio"); ?></h2>
             </div>
             <form class="page-contents" method="POST">
-                <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'skills', $this->display_saved_value());?>
-                <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'experience', $this->display_saved_value());?>
+                <?php  CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'skills', $this->display_saved_value());?>
+                <?php  CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'experience', $this->display_saved_value());?>
                 <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'works', $this->display_saved_value());?>
                 <input type="hidden" name="charming-portfolio__nonce" value="<?php echo esc_attr(wp_create_nonce("CHARMING_PORTFOLIO_modify_additionals__nonce")) ?>">
                 <div class="btn-wrapper">
@@ -499,23 +501,9 @@ class Portfolio
     public function display_saved_value()
     {
         $option_value            = get_option("CHARMING_PORTFOLIO_v2");
-        $additional_option_value = get_option("CHARMING_PORTFOLIO_additional_data");
-        $saved_values            = [
-            'enabled'  		=> false,
-            'enabled_blog' => false,
-            'client_render'     => true,
-            'name'              => 'Charm',
-            'user_image'        => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg",
-            'user_image2'       => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg",
-            'email'             => 'abc@gmail.com',
-            'phone'             => '12345678902',
-            'short_description' => "Hi, This Is Default Lorem Ipsum Description For You Lorem ipsum dolor sit amet, consectetur adipisicing elit!",
-            'address'           => "Earth",
-            'description'       => "Hi, This Is Default Lorem Ipsum Description For You Lorem ipsum dolor sit amet, consectetur adipisicing elit!Hi, This Is Default Lorem Ipsum Description For You Lorem ipsum dolor sit amet, consectetur adipisicing elit!Hi, This Is Default Lorem Ipsum Description For You Lorem ipsum dolor sit amet, consectetur adipisicing elit!",
-            'available'         => false,
-            'social_links'      => [],
-            'skills'            => [],
-        ];
+        $additional_option_value = get_option("CHARMING_PORTFOLIO_additional_v2");
+        // return $additional_option_value;
+
 		if (is_array($option_value)) {
 	        $enabled 	       = array_key_exists("enabled", $option_value) ? $option_value["enabled"] : false;
 
@@ -531,6 +519,7 @@ class Portfolio
             $address           = array_key_exists("address", $option_value) ? $option_value["address"] : "";
             $available         = array_key_exists("available", $option_value) ? $option_value["available"] : false;
             $social_links      = array_key_exists("social_links", $option_value) ? $option_value['social_links'] : [];
+            $layout            = array_key_exists("layout", $option_value) ? $option_value['layout'] : 'charming_v2';
         	$saved_values      = [
                 'enabled' => $enabled,
                 'enabled_blog' => $enabled_blog,
@@ -545,24 +534,21 @@ class Portfolio
                 'address'           => $address,
                 'available'         => $available,
                 'social_links'      => $social_links,
+                'layout'            => $layout,
                 'skills'            => [],
                 'experiences'       => [],
                 'works'             => [],
             ];
         }
-
+        
         if (is_array($additional_option_value)) {
-            $skills      = array_key_exists("skills", $additional_option_value) ? CHARMING_PORTFOLIO_load_skills($additional_option_value["skills"]) : [];
-            $experiences = array_key_exists("experiences", $additional_option_value) ? CHARMING_PORTFOLIO_load_experience($additional_option_value["experiences"]) : [];
-            $works       = array_key_exists("works", $additional_option_value) ? CHARMING_PORTFOLIO_load_works($additional_option_value["works"]) : [];
-        } else {
-            $skills      = [];
-            $experiences = [];
-            $works       = [];
+            $skills      = array_key_exists("skills", $additional_option_value) ? $additional_option_value["skills"] : [];
+            $experiences = array_key_exists("experiences", $additional_option_value) ? $additional_option_value["experiences"] : [];
+            $works       = array_key_exists("works", $additional_option_value) ? $additional_option_value["works"] : [];
         }
-        $saved_values['skills']      = $skills;
-        $saved_values['experiences'] = $experiences;
-        $saved_values['works']       = $works;
+        $saved_values['skills']      = $skills ?? [];
+        $saved_values['experiences'] = $experiences ?? [];
+        $saved_values['works']       = $works ?? [];
 
         return $saved_values;
     }

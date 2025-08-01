@@ -17,30 +17,30 @@ if( ! defined( 'ABSPATH' ) ) {
 if (is_array($args) && array_key_exists("experiences", $args)):
     foreach ($args['experiences'] as $key => $experience):
         $key = $key + 1;
-      $flattern_experience = CHARMING_PORTFOLIO_flattern_array($experience);
-        if(!is_array($flattern_experience) || empty($flattern_experience)) continue;
-        $working_now = (array_key_exists('working',$flattern_experience)) ? $flattern_experience['working'] : 'off';
+    //   $experience = CHARMING_PORTFOLIO_flattern_array($experience);
+        if(!is_array($experience) || empty($experience)) continue;
+        $working_now = (array_key_exists('working',$experience)) ? $experience['working'] : 'off';
     ?>
  <tr class="flex flex-col simplecharm-basic-border simplecharm-basic-padding single-experience">
     <td>
         <label for="<?php echo esc_attr("experience-institution-" . $key,'charming-portfolio'); ?>"><?php esc_html_e("Institution",'charming-portfolio'); ?></label>
-        <input type="text" class="institution" placeholder="Experience Institution" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][institution]" value="<?php echo (array_key_exists("institution",$flattern_experience)) ? esc_attr($flattern_experience['institution']) : "" ;?>" id="experience-institution-<?php echo esc_attr($key); ?>"  data-queue="<?php echo esc_attr($key); ?>" maxlength="30">
+        <input type="text" class="institution" placeholder="Experience Institution" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][institution]" value="<?php echo (array_key_exists("institution",$experience)) ? esc_attr($experience['institution']) : "" ;?>" id="experience-institution-<?php echo esc_attr($key); ?>"  data-queue="<?php echo esc_attr($key); ?>" maxlength="30">
     </td>
     <td>
         <label for="<?php echo esc_attr("experience-post-title-" . $key); ?>" title="<?php esc_attr_e("enter your job post title eg:- Sr. Laravel Developer etc.","charming-portfolio"); ?>"><?php esc_html_e("Post Title","charming-portfolio"); ?></label>
-        <input type="text" class="post-title" placeholder="<?php esc_html_e('Post Title','charming-portfolio'); ?>" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][post-title]" value="<?php echo (array_key_exists("post-title",$flattern_experience)) ? esc_attr($flattern_experience['post-title']) : '' ;?>" id="<?php echo esc_attr("experience-post-title-" . $key,'charming-portfolio'); ?>" data-queue="<?php echo esc_attr($key); ?>" maxlength="30">
+        <input type="text" class="post-title" placeholder="<?php esc_html_e('Post Title','charming-portfolio'); ?>" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][post-title]" value="<?php echo (array_key_exists("post-title",$experience)) ? esc_attr($experience['post-title']) : '' ;?>" id="<?php echo esc_attr("experience-post-title-" . $key,'charming-portfolio'); ?>" data-queue="<?php echo esc_attr($key); ?>" maxlength="30">
     </td>
     <td class="responsibilities" id="repeatable-fieldset-three">
         <label for="<?php echo esc_attr("responsibilities-" . $key); ?>" title="<?php esc_attr_e('You Can Not Use Quotation ("" and \'\') so You Can Use [quote], [squote] and [bold][/bold] for Adding Double and Single Quotation and Make Any Text Bold.Also You Have to Use [break] instead of Adding Enter.','charming-portfolio'); ?>"><?php esc_html_e('Responsibilities','charming-portfolio'); ?></label>
-        <textarea name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key,'charming-portfolio'); ?>][][responsibility]" id="<?php echo esc_attr("responsibilities-" . $key); ?>" cols="50" rows="10" class="responsibility" data-queue="<?php echo esc_attr($key); ?>" maxlength="800"><?php echo esc_textarea((array_key_exists("responsibility",$flattern_experience)) ? $flattern_experience['responsibility'] : '') ;?></textarea>
+        <textarea name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key,'charming-portfolio'); ?>][][responsibility]" id="<?php echo esc_attr("responsibilities-" . $key); ?>" cols="50" rows="10" class="responsibility" data-queue="<?php echo esc_attr($key); ?>" maxlength="800"><?php echo esc_textarea((array_key_exists("responsibility",$experience)) ? $experience['responsibility'] : '') ;?></textarea>
     </td>
     <td>
         <label for="<?php echo esc_attr("start-date-" . $key); ?>"><?php esc_html_e("Start Date",'charming-portfolio'); ?></label>
-        <input type="date" class="start_date" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][start_date]" placeholder="<?php esc_attr_e("Start Date",'charming-portfolio'); ?>" id="<?php echo esc_attr("start-date-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" value="<?php echo (array_key_exists("start_date",$flattern_experience)) ? esc_attr($flattern_experience['start_date']) : '' ;?>">
+        <input type="date" class="start_date" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][start_date]" placeholder="<?php esc_attr_e("Start Date",'charming-portfolio'); ?>" id="<?php echo esc_attr("start-date-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" value="<?php echo (array_key_exists("start_date",$experience)) ? esc_attr($experience['start_date']) : '' ;?>">
     </td>
     <td>
         <label for="<?php echo esc_attr("end-date-" . $key); ?>"><?php esc_html_e("End Date",'charming-portfolio'); ?></label>
-        <input type="date" class="end_date" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][end_date]" placeholder="<?php esc_attr_e("End Date",'charming-portfolio'); ?>" id="<?php echo esc_attr("end-date-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" value="<?php echo (array_key_exists("end_date",$flattern_experience)) ? esc_attr($flattern_experience['end_date']) : '' ;?>" <?php disabled($working_now,'on');?>>
+        <input type="date" class="end_date" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][end_date]" placeholder="<?php esc_attr_e("End Date",'charming-portfolio'); ?>" id="<?php echo esc_attr("end-date-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" value="<?php echo (array_key_exists("end_date",$experience)) ? esc_attr($experience['end_date']) : '' ;?>" <?php disabled($working_now,'on');?>>
     </td>
     <td>
         <label for="<?php echo esc_attr("working-now-" . $key,'charming-portfolio'); ?>" title="<?php esc_attr_e("Are You Still Working Here?",'charming-portfolio'); ?>"><?php esc_html_e("Still Working?",'charming-portfolio'); ?></label>

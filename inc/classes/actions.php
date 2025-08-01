@@ -131,139 +131,71 @@ class Actions
                     'message' => 'Bot Detected! Please try again later.',
                 ]);
             }
+            unset($_POST['action']);
+            unset($_POST['nonce']);
 
             $modified_data = PORTFOLIO::get_instance()->sanitize_array(wp_unslash($_POST));
             $skills = $modified_data['skills'] ?? "[]";
             $skills = json_decode(wp_unslash($skills), true);
+            $projects = $modified_data['works'] ?? "[]";
+            $projects = json_decode(wp_unslash($projects), true);
+            $experiences = $modified_data['experiences'] ?? "[]";
+            $experiences = json_decode(wp_unslash($experiences), true);
 
 
 
-            array_map(function($skill){
+            $skills = array_map(function($skill){
                 // sanitize skill name
                 $skill['name'] = sanitize_text_field(wp_unslash($skill['name']));
-                // validate image url
-                if (isset($skill['image']) && !filter_var($skill['image'], FILTER_VALIDATE_URL)) {
-                    wp_send_json([
-                        'success' => false,
-                        'message' => 'Invalid Skill Image URL!'
-                    ]);
-                }
                 return $skill;
             }, $skills);
+
+            $experiences = array_map(function($experience){
+                // sanitize institution name
+                $experience['institution'] = sanitize_text_field(wp_unslash($experience['institution']));
+                // sanitize post title
+                $experience['post-title'] = sanitize_text_field(wp_unslash($experience['post_title']));
+                unset($experience['post_title']);
+                // sanitize responsibility
+                $experience['responsibility'] = sanitize_textarea_field(wp_unslash($experience['responsibility']));
+                // validate start date
+                if (isset($experience['start_date']) && !preg_match("/[0-9]{4}-[0-9]{2}-[0-9]{2}/", $experience['start_date'])) {
+                    wp_send_json([
+                        'success' => false,
+                        'message' => 'Invalid Start Date!'
+                    ]);
+                }
+                // validate end date
+                if (isset($experience['end_date']) && !preg_match("/[0-9]{4}-[0-9]{2}-[0-9]{2}/", $experience['end_date'])) {
+                    wp_send_json([
+                        'success' => false,
+                        'message' => 'Invalid End Date!'
+                    ]);
+                }
+                return $experience;
+            }, $experiences);
+
+            $projects = array_map(function($project){
+                // sanitize project title
+                $project['title'] = sanitize_text_field(wp_unslash($project['title']));
+                // sanitize project description
+                $project['description'] = sanitize_textarea_field(wp_unslash($project['description']));
+                // sanitize project tags
+                $project['tags'] = sanitize_text_field(wp_unslash($project['tags']));
+                $project['link'] = esc_url_raw(wp_unslash($project['link']));
+                return $project;
+            }, $projects);
+            
+            $modified_data['skills'] = $skills;
+            $modified_data['works'] = $projects;
+            $modified_data['experiences'] = $experiences;
+            
+            update_option('CHARMING_PORTFOLIO_additional_v2', $modified_data);
             wp_send_json([
                 'success' => true,
                 'message' => 'Skills data saved successfully',
-                'data' => $skills
+                'data' => [$modified_data]
             ]);
 
-            //validations
-            // if (isset($modified_data['skills']) && is_array($modified_data['skills'])) {
-            //     foreach ($modified_data['skills'] as $skill) {
-            //         foreach ($skill as $single_skill) {
-            //             if (empty($single_skill['name'])) {
-            //                 continue;
-            //             }
-
-            //             if (strlen($single_skill['name']) > 25) {
-            //                 add_action('admin_notices', function () {
-            //                     echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__('Skill Name is too long! It should be less than 25 words','charming-portfolio').'</p></div>';
-            //                 });
-            //                 return;
-            //             }
-            //         }
-            //     }
-            // }
-            // if (isset($modified_data['experiences']) &&is_array($modified_data['experiences'])) {
-            //     foreach ($modified_data['experiences'] as $experience) {
-            //         foreach ($experience as $single_experience) {
-            //             if (isset($single_experience['institution'])) {
-            //                 if (empty($single_experience['institution'])) {
-            //                     continue;
-            //                 }
-
-            //                 if (strlen($single_experience['institution']) > 30) {
-            //                     add_action('admin_notices', function () {
-            //                         echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__('Institution Name is too long! It should be less than 30 words','charming-portfolio').'</p></div>';
-            //                     });
-            //                     return;
-            //                 }
-            //             }elseif(isset($single_experience['post-title'])){
-            //                 if(empty($single_experience['post-title'])) continue;
-            //                 if(strlen($single_experience['post-title']) > 30){
-            //                     add_action('admin_notices', function () {
-            //                         echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__('Post Title is too long! It should be less than 30 words','charming-portfolio').'</p></div>';
-            //                     });
-            //                     return;
-            //                 }
-            //             }elseif(isset($single_experience['responsibility'])){
-            //                 if(empty($single_experience['responsibility'])) continue;
-            //                 if(strlen($single_experience['responsibility']) > 800){
-            //                     add_action('admin_notices', function () {
-            //                         echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__("Responsibility is too long! It should be less than 200 words","charming-portfolio").'</p></div>';
-            //                     });
-            //                     return;
-            //                 }
-            //             }elseif(isset($single_experience['start_date'])){
-            //                 if(empty($single_experience['start_date'])) continue;
-            //                 // only date must be contain
-            //                 if(!preg_match("/[0-9]{4}-[0-9]{2}-[0-9]{2}/",$single_experience['start_date'])){
-            //                     add_action('admin_notices', function () {
-            //                         echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__('Start Date is Invalid',"charming-portfolio").'!</p></div>';
-            //                     });
-            //                     return;
-            //                 }
-            //             }elseif(isset($single_experience['end_date'])){
-            //                 if(empty($single_experience['end_date'])) continue;
-            //                 // only date must be contain
-            //                 if(!preg_match("/[0-9]{4}-[0-9]{2}-[0-9]{2}/",$single_experience['end_date'])){
-            //                     add_action('admin_notices', function () {
-            //                         echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__('End Date is Invalid',"charming-portfolio").'</p></div>';
-            //                     });
-            //                     return;
-            //                 }
-            //             }
-            //         }
-            //     }
-            // }
-            // if (isset($modified_data['works']) && is_array($modified_data['works'])) {
-            //     foreach ($modified_data['works'] as $work) {
-            //             if (empty($work['title'])) {
-            //                 continue;
-            //             }
-
-            //             if (strlen($work['title']) > 30) {
-            //                 add_action('admin_notices', function () {
-            //                     echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__('Project Title is too long! It should be less than 30 words','charming-portfolio').'</p></div>';
-            //                 });
-            //                 return;
-            //             }
-            //             if (strlen($work['description']) > 800) {
-            //                 add_action('admin_notices', function () {
-            //                     echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__("Project Description is too long! It should be less than 800 words","charming-portfolio").'</p></div>';
-            //                 });
-            //                 return;
-            //             }
-            //             if (strlen($work['tags']) > 200) {
-            //                 add_action('admin_notices', function () {
-            //                     echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__("Project Tags is too long! It should be less than 200 words","charming-portfolio").'</p></div>';
-            //                 });
-            //                 return;
-            //             }
-            //             if (!filter_var($work['link'], FILTER_VALIDATE_URL)) {
-            //                 add_action('admin_notices', function () {
-            //                     echo '<div class="notice notice-error is-dismissible"><p>'.esc_html__("Invalid URL!Try to add http:// or https://","charming-portfolio").'</p></div>';
-            //                 });
-            //                 return;
-            //             }
-
-            //     }
-            // }
-
-            // if (update_option('CHARMING_PORTFOLIO_additional_data', $modified_data)) {
-            //     // Display success message
-            //     add_action('admin_notices', function () {
-            //         echo '<div class="notice notice-success is-dismissible"><p>'.esc_html__("Data saved successfully!","charming-portfolio").'</p></div>';
-            //     });
-            // }
         }
 }

@@ -20,6 +20,8 @@
                     const imageSecondary = $(".CHARMING_PORTFOLIO_user_image_2");
                     const mail = $(".email");
                     const phone = $(".phone");
+                    const layout = $(this).find(".charming-portfolio-layout input[type='radio']:checked").val();
+
 
                     const data = new FormData();
                     data.append('action', 'charming_portfolio_save_data')
@@ -35,6 +37,7 @@
                     data.append('image2', imageSecondary.val());
                     data.append('email', mail.val());
                     data.append('phone', phone.val());
+                    data.append('layout', layout);
 
                     // get social links 
                     const socialLinks = [];
@@ -91,6 +94,7 @@
                     e.preventDefault();
                     const skills = $(".charming-portfolio-skills .skill");
                     const experiences = $(".charming-portfolio-experience .single-experience");
+                    const projects = $(".charming-portfolio-projects .single-project");
                     // console.log(skills)
                     
                     const skillsData = [];
@@ -114,9 +118,9 @@
                         const startDate = $(this).find(".start_date").val();
                         const endDate = $(this).find(".end_date").val();
                         const stillWorking = $(this).find(".working").is(':checked') ? '1' : '0';
-                        console.log(responsibility);
-                        console.log(startDate);
-                        console.log(endDate);
+                        // console.log(responsibility);
+                        // console.log(startDate);
+                        // console.log(endDate);
                         // console.log(stillWorking);
                         // console.log(institution, postTitle, responsibility, startDate, endDate, stillWorking);
 
@@ -130,13 +134,35 @@
                                 still_working: stillWorking
                             });
                         }
-                    })
-                    console.log(experiencesData)
+                    });
+                    const projectsData = [];
+                    projects.each(function() {
+                        const projectName = $(this).find(".title").val();
+                        const projectDescription = $(this).find(".description").val();
+                        const projectTags = $(this).find(".tags").val();
+                        const projectLink = $(this).find(".link").val();
+                        
+                        
+                        if(projectName && projectDescription && projectTags && projectLink) {
+                            projectsData.push({
+                                title: projectName,
+                                description: projectDescription,
+                                tags: projectTags,
+                                link: projectLink
+                            });
+                        }
+                        // console.log(projectName);
+                        // console.log(projectDescription);
+                        // console.log(projectTags);
+                        // console.log(projectLink);
+                    });
+                    console.log(projectsData)
                     const data = new FormData();
                     data.append('action', 'charming_portfolio_save_data_additional');
                     data.append('nonce', charming_portfolio_admin.nonce);
                     data.append('skills', JSON.stringify(skillsData));
                     data.append("experiences", JSON.stringify(experiencesData));
+                    data.append("works", JSON.stringify(projectsData));
 
 
                     const updateBtnWrapper = $(".btn-wrapper");
