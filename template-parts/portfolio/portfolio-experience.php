@@ -21,7 +21,7 @@ if (is_array($args) && array_key_exists("experiences", $args)):
         if(!is_array($flattern_experience) || empty($flattern_experience)) continue;
         $working_now = (array_key_exists('working',$flattern_experience)) ? $flattern_experience['working'] : 'off';
     ?>
- <tr class="flex flex-col simplecharm-basic-border simplecharm-basic-padding">
+ <tr class="flex flex-col simplecharm-basic-border simplecharm-basic-padding single-experience">
     <td>
         <label for="<?php echo esc_attr("experience-institution-" . $key,'charming-portfolio'); ?>"><?php esc_html_e("Institution",'charming-portfolio'); ?></label>
         <input type="text" class="institution" placeholder="Experience Institution" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][institution]" value="<?php echo (array_key_exists("institution",$flattern_experience)) ? esc_attr($flattern_experience['institution']) : "" ;?>" id="experience-institution-<?php echo esc_attr($key); ?>"  data-queue="<?php echo esc_attr($key); ?>" maxlength="30">
@@ -60,7 +60,7 @@ endif;
 ?>
 
     <!-- empty hidden one for jQuery -->
-    <tr class="charming_portfolio_empty-row__experience screen-reader-text flex flex-col simplecharm-basic-border simplecharm-basic-padding">
+    <tr class="charming_portfolio_empty-row__experience screen-reader-text flex flex-col simplecharm-basic-border simplecharm-basic-padding single-experience">
     <td>
         <label for="experience-institution"><?php esc_html_e("institution",'charming-portfolio'); ?></label>
         <input type="text" class="institution" placeholder="<?php esc_attr_e("Experience institution",'charming-portfolio'); ?>" name="charming_portfolio[experiences][0][institution]" value="" id="experience-institution" data-queue="0">

@@ -147,7 +147,7 @@ class Portfolio
                 <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'works', $this->display_saved_value());?>
                 <input type="hidden" name="charming-portfolio__nonce" value="<?php echo esc_attr(wp_create_nonce("CHARMING_PORTFOLIO_modify_additionals__nonce")) ?>">
                 <div class="btn-wrapper">
-                    <input type="submit" name="update_portfolio_data" value="UPDATE" class="btn btn-fullwidth">
+                    <input type="button" name="update_portfolio_data" value="Update" class="btn btn-fullwidth charming-portfolio-save-additional-data">
                     <span></span>
                 </div>
 
@@ -512,7 +512,7 @@ class Portfolio
             'short_description' => "Hi, This Is Default Lorem Ipsum Description For You Lorem ipsum dolor sit amet, consectetur adipisicing elit!",
             'address'           => "Earth",
             'description'       => "Hi, This Is Default Lorem Ipsum Description For You Lorem ipsum dolor sit amet, consectetur adipisicing elit!Hi, This Is Default Lorem Ipsum Description For You Lorem ipsum dolor sit amet, consectetur adipisicing elit!Hi, This Is Default Lorem Ipsum Description For You Lorem ipsum dolor sit amet, consectetur adipisicing elit!",
-            'available'         => "",
+            'available'         => false,
             'social_links'      => [],
             'skills'            => [],
         ];
@@ -529,7 +529,7 @@ class Portfolio
             $short_description = array_key_exists("short_description", $option_value) ? $option_value["short_description"] : "";
             $description       = array_key_exists("description", $option_value) ? $option_value["description"] : "";
             $address           = array_key_exists("address", $option_value) ? $option_value["address"] : "";
-            $available         = (array_key_exists("available", $option_value) && $option_value['available'] === 'on') ? 'True' : "False";
+            $available         = array_key_exists("available", $option_value) ? $option_value["available"] : false;
             $social_links      = array_key_exists("social_links", $option_value) ? $option_value['social_links'] : [];
         	$saved_values      = [
                 'enabled' => $enabled,

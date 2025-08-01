@@ -7,18 +7,14 @@
             this.init();
         }
         init() {
-//picked_image.on('keyup', function(e) {
-//if ($(e.keyCode)[0] !== 13) return;
-//e.target.click();
-//})
 	$(document).on("click", ".charming-portfolio-skills.admin img", function(e) {
-				let custom_text = "Upload Image for Logo of The Skill";
-				const skillImage = $(this);
-				const hiddenField = $(this).siblings("input[type=hidden]");
-				const queue = hiddenField.data("queue")
-				console.log(queue)
+            let custom_text = "Upload Image for Logo of The Skill";
+            const skillImage = $(this);
+            const hiddenField = $(this).siblings("input[type=hidden]");
+            const queue = hiddenField.data("queue")
+            console.log(queue)
 
-      let image = null;
+            let image = null;
             
             skillImage.off('click').on('click', function(e) {
                 e.preventDefault();
