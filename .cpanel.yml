@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/kmfoysa1/cp.kmfoysal06.com/wp-content/plugins/charming-portfolio
+    - /bin/cp -R * $DEPLOYPATH
