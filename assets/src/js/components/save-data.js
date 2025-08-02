@@ -20,7 +20,7 @@
                     const imageSecondary = $(".CHARMING_PORTFOLIO_user_image_2");
                     const mail = $(".email");
                     const phone = $(".phone");
-                    const layout = $(this).find(".charming-portfolio-layout input[type='radio']:checked").val();
+                    const layout = $(".charming-portfolio-layout input[type='radio']:checked").val();
 
 
                     const data = new FormData();
