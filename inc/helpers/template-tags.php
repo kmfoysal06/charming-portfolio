@@ -383,3 +383,25 @@ if(!function_exists("CHARMING_PORTFOLIO_CLIENT_RENDER")) {
 	    return true;	
 	}
 }
+
+/**
+ * Get Latest $n Posts
+ */
+if (!function_exists("CHARMING_PORTFOLIO_get_latest_posts")) {
+    function CHARMING_PORTFOLIO_get_latest_posts($n = 5) {
+        $args = [
+            'posts_per_page' => $n,
+            'post_status' => 'publish',
+            'post_type' => 'post',
+        ];
+        $latest_posts = get_posts($args);
+        $posts_array = [];
+        foreach ($latest_posts as $post) {
+            $posts_array[] = [
+                'title' => get_the_title($post->ID),
+                'url' => get_permalink($post->ID),
+            ];
+        }
+        return $posts_array;
+    }
+}

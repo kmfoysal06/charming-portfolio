@@ -225,6 +225,17 @@
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
+.hero {
+  display: grid;
+  width: 100%;
+  place-items: center;
+  background-size: cover;
+  background-position: center;
+}
+.hero > * {
+  grid-column-start: 1;
+  grid-row-start: 1;
+}
 .hero-content {
   z-index: 0;
   display: flex;
@@ -656,11 +667,6 @@
 .menu :where(li > .menu-dropdown-toggle.menu-dropdown-show):after {
   transform: rotate(225deg);
   margin-top: 0;
-}
-.mockup-phone .display {
-  overflow: hidden;
-  border-radius: 40px;
-  margin-top: -25px;
 }
 .mockup-browser .mockup-browser-toolbar .input {
   position: relative;
