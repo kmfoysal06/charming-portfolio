@@ -24,8 +24,8 @@ class Portfolio
         add_action('admin_bar_menu', [$this,'add_admin_bar_menu'], 100);
         add_action("admin_menu", [$this, "add_submenu"]);
         add_action("admin_menu", [$this, "add_additional_submenu"]);
-        add_action("admin_init", [$this, "save_data"]);
-        add_action("admin_init", [$this, "save_additional_data"]);
+        // add_action("admin_init", [$this, "save_data"]);
+        // add_action("admin_init", [$this, "save_additional_data"]);
         add_action('admin_enqueue_scripts', [$this, "load_media"]);
     }
     public function add_menu()
