@@ -258,7 +258,7 @@ window.CharmAlert = CharmAlert.getInstance();
           const imageSecondary = $(".CHARMING_PORTFOLIO_user_image_2");
           const mail = $(".email");
           const phone = $(".phone");
-          const layout = $(this).find(".charming-portfolio-layout input[type='radio']:checked").val();
+          const layout = $(".charming-portfolio-layout input[type='radio']:checked").val();
           const data = new FormData();
           data.append('action', 'charming_portfolio_save_data');
           data.append('nonce', charming_portfolio_admin.nonce);
