@@ -197,6 +197,8 @@ window.CharmAlert = CharmAlert.getInstance();
       this.handleRepeater("charming_portfolio_skill_link_add", ['charming_portfolio_empty-row__skills_link', 'screen-reader-text'], '#repeatable-fieldset-one tbody>tr', 'charming_portfolio_skills_remove', 'skills');
       this.handleRepeater("charming_portfolio_experience_add", ['charming_portfolio_empty-row__experience', 'screen-reader-text'], '#repeatable-fieldset-two tbody>tr', 'charming_portfolio_experience_remove', 'experiences');
       this.handleRepeater("charming_portfolio_work_add", ['charming_portfolio_empty-row__works', 'screen-reader-text'], '#repeatable-fieldset-three tbody>tr', 'charming_portfolio_project_remove', 'works');
+      this.handleRepeater("charming_portfolio_header_link_add", ['charming_portfolio_empty-row__header_link', 'screen-reader-text'], '#repeatable-fieldset-header-links tbody>tr', 'charming_portfolio_header_link_remove', 'header_link');
+      this.handleRepeater("charming_portfolio_footer_link_add", ['charming_portfolio_empty-row__footer_link', 'screen-reader-text'], '#repeatable-fieldset-footer-links tbody>tr', 'charming_portfolio_footer_link_remove', 'footer_link');
     }
     handleRepeater(addBtn, hiddenFields, insertBefore, removeBtn, dataName) {
       let queue = $(`${insertBefore}:nth-last-child(2) input`).data("queue");
@@ -258,7 +260,7 @@ window.CharmAlert = CharmAlert.getInstance();
           const imageSecondary = $(".CHARMING_PORTFOLIO_user_image_2");
           const mail = $(".email");
           const phone = $(".phone");
-          const layout = $(".charming-portfolio-layout input[type='radio']:checked").val();
+          const layout = $(".charming-portfolio-layout input[type='radio']:checked").val() ?? 'charming_v2';
           const data = new FormData();
           data.append('action', 'charming_portfolio_save_data');
           data.append('nonce', charming_portfolio_admin.nonce);
@@ -287,7 +289,31 @@ window.CharmAlert = CharmAlert.getInstance();
               });
             }
           });
+          const headerLinks = [];
+          $(".header_links").each(function () {
+            const name = $(this).find(".name").val();
+            const url = $(this).find(".url").val();
+            if (name && url) {
+              headerLinks.push({
+                name: name,
+                url: url
+              });
+            }
+          });
+          const footerLinks = [];
+          $(".footer_links").each(function () {
+            const name = $(this).find(".name").val();
+            const url = $(this).find(".url").val();
+            if (name && url) {
+              footerLinks.push({
+                name: name,
+                url: url
+              });
+            }
+          });
           data.append('social_links', JSON.stringify(socialLinks));
+          data.append('header_links', JSON.stringify(headerLinks));
+          data.append('footer_links', JSON.stringify(footerLinks));
           const updateBtnWrapper = $(".btn-wrapper");
           updateBtnWrapper.addClass("loading");
           updateBtnWrapper.find(".charming-portfolio-save-data").prop("disabled", true);

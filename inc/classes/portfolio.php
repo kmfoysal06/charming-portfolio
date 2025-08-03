@@ -118,6 +118,10 @@ class Portfolio
                         <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "contact", $portfolio_saved_data);?>
                         <!-- social links -->
                         <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "social-links", $portfolio_saved_data);?>
+                        <!-- links to show on header menu -->
+                        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "header-links", $portfolio_saved_data);?>
+                        <!-- links to show on footer -->
+                        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "footer-links", $portfolio_saved_data);?>
                         <!-- choose layout -->
                         <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "layout", $portfolio_saved_data);?>
 
@@ -257,6 +261,8 @@ class Portfolio
             $address           = array_key_exists("address", $option_value) ? $option_value["address"] : "";
             $available         = array_key_exists("available", $option_value) ? $option_value["available"] : false;
             $social_links      = array_key_exists("social_links", $option_value) ? $option_value['social_links'] : [];
+            $header_links      = array_key_exists("header_links", $option_value) ? $option_value['header_links'] : [];
+            $footer_links      = array_key_exists("footer_links", $option_value) ? $option_value['footer_links'] : [];
             $layout            = array_key_exists("layout", $option_value) ? $option_value['layout'] : 'charming_v2';
         	$saved_values      = [
                 'enabled' => $enabled,
@@ -272,6 +278,8 @@ class Portfolio
                 'address'           => $address,
                 'available'         => $available,
                 'social_links'      => $social_links,
+                'header_links'      => $header_links,
+                'footer_links'      => $footer_links,
                 'layout'            => $layout,
                 'skills'            => [],
                 'experiences'       => [],

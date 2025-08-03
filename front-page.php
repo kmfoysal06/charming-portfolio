@@ -26,7 +26,6 @@ $CHARMING_PORTFOLIO_dashicons_css_url = includes_url('css/dashicons.min.css');
         <div id="charming-portfolio-react-root">
         </div>
     <?php endif; ?>
-
     <?php if($portfolio_saved_value['layout'] === 'charming_v2'):?>
         <!-- Charming V2 Layout -->
         <?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/charming_v2/index", "", $portfolio_saved_value);?>

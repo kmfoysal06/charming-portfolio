@@ -61,4 +61,3 @@ if (!function_exists('CHARMING_PORTFOLIO_template_override')) {
         return $template;
     }
 }
-

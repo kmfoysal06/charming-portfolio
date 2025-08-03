@@ -85,6 +85,25 @@ class Actions
             return $single_link;
         }, $social_links);
         $modified_data['social_links'] = $social_links;
+        
+        $header_links = json_decode(wp_unslash($modified_data['header_links']), true);
+        $header_links = array_map(function($single_link){
+            // wp_unslash and sanitize 
+            $single_link['name'] = sanitize_text_field(wp_unslash($single_link['name']));
+            $single_link['url'] = esc_url_raw(wp_unslash($single_link['url']));
+            return $single_link;
+        }, $header_links);
+        $modified_data['header_links'] = $header_links;
+        
+        $footer_links = json_decode(wp_unslash($modified_data['footer_links']), true);
+        $footer_links = array_map(function($single_link){
+            // wp_unslash and sanitize 
+            $single_link['name'] = sanitize_text_field(wp_unslash($single_link['name']));
+            $single_link['url'] = esc_url_raw(wp_unslash($single_link['url']));
+            return $single_link;
+        }, $footer_links);
+        $modified_data['footer_links'] = $footer_links;
+
         if (isset($modified_data['short_description']) && strlen($modified_data['short_description']) > 200) {
             wp_send_json([
                 'success' => false,
@@ -121,7 +140,7 @@ class Actions
         wp_send_json([
             'success' => true,
             'message' => 'Data saved successfully',
-             'data' => $social_links
+             'data' => $modified_data
         ]);
     }
     public function save_data_additional() {

@@ -51,24 +51,16 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
                             <?php endforeach; ?>
                     </ul>
                 </div>
-                <div class="footer-subsection">
-                    <h3>External Links:</h3>
-                    <ul>
-                        <li> <a href="" target="_blank">My Portfolio <i class="fa fa-external-link"
-                                    aria-hidden="true"></i>
-                            </a> </li>
-                        <li> <a href="" target="_blank">Github <i class="fa fa-external-link" aria-hidden="true"></i>
-                            </a> </li>
-                        <li> <a href="" target="_blank">Blockblog Theme <i class="fa fa-external-link"
-                                    aria-hidden="true"></i>
-                            </a> </li>
-                        <li> <a href="" target="_blank">Charming Portfolio <i class="fa fa-external-link"
-                                    aria-hidden="true"></i>
-                            </a> </li>
-                        <li> <a href="" target="_blank">WordPress <i class="fa fa-external-link" aria-hidden="true"></i>
-                            </a> </li>
-                    </ul>
-                </div>
+                <?php if(array_key_exists('footer_links', $args) && is_array($args['footer_links'])): ?>
+                    <div class="footer-subsection">
+                        <h3>External Links:</h3>
+                        <ul>
+                            <?php foreach($args['footer_links'] as $single_link): ?>
+                                <li> <a href="<?php echo esc_url($single_link['url']); ?>" target="_blank"><?php echo esc_html($single_link['name']); ?> <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
             </div>
         <?php endif; ?>
 
