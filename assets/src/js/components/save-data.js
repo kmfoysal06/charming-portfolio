@@ -158,7 +158,7 @@
                                 responsibility: responsibility,
                                 start_date: startDate,
                                 end_date: endDate,
-                                still_working: stillWorking
+                                working: stillWorking
                             });
                         }
                     });

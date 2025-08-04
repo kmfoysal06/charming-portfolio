@@ -12,7 +12,6 @@
             const skillImage = $(this);
             const hiddenField = $(this).siblings("input[type=hidden]");
             const queue = hiddenField.data("queue")
-            console.log(queue)
 
             let image = null;
             

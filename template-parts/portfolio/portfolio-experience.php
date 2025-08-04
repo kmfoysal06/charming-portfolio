@@ -19,7 +19,7 @@ if (is_array($args) && array_key_exists("experiences", $args)):
         $key = $key + 1;
     //   $experience = CHARMING_PORTFOLIO_flattern_array($experience);
         if(!is_array($experience) || empty($experience)) continue;
-        $working_now = (array_key_exists('working',$experience)) ? $experience['working'] : 'off';
+        $working_now = (array_key_exists('working',$experience)) ? $experience['working'] : '0';
     ?>
  <tr class="flex flex-col simplecharm-basic-border simplecharm-basic-padding single-experience">
     <td>
@@ -45,7 +45,7 @@ if (is_array($args) && array_key_exists("experiences", $args)):
     <td>
         <label for="<?php echo esc_attr("working-now-" . $key,'charming-portfolio'); ?>" title="<?php esc_attr_e("Are You Still Working Here?",'charming-portfolio'); ?>"><?php esc_html_e("Still Working?",'charming-portfolio'); ?></label>
        <div class="still-working-wrapper checkbox-wrapper">
-            <input type="checkbox" id="<?php echo esc_attr("working-now-" . $key); ?>" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][working]" class="working" data-queue="<?php echo esc_attr($key); ?>" <?php checked($working_now,'on'); ?>>
+            <input type="checkbox" id="<?php echo esc_attr("working-now-" . $key); ?>" class="working" data-queue="<?php echo esc_attr($key); ?>" <?php checked($working_now,'1'); ?>>
             <span></span>
        </div>
     </td>

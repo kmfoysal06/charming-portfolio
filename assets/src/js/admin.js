@@ -5,8 +5,10 @@ import "./components/toggler.js";
 import "./components/admin-experience.js";
 import "./components/checkbox.js";
 import "./components/updateBtn.js";
-import "./components/skills-images.js";
 
 import "./components/charm-alert.js";
 import "./components/save-data.js";
 
+// media modal on repeater
+import "./components/media/skills-images.js";
+import "./components/media/project-images.js";
