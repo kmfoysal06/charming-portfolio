@@ -13,8 +13,8 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
         <div class="footer-section footer-owner-data">
             <div class="contactinfo">
                 <h3><?php echo esc_html($args['name']) ?></h3>
-                <p>Web Developer</p>
-                <p>Anowara, Chittagong, Bangladesh</p>
+                <p><?php echo esc_html($args['address']) ?? "Earth"?></p>
+                <p><?php echo esc_html($args['designation']) ?? "Ununemployed"?></p>
                 <p><?php echo esc_html($args['email']) ?></p>
             </div>
             <div class="footer-search">
@@ -66,6 +66,6 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
 
     </div>
     <div class="charming-portfolio-container copyright">
-        <p> Copy RIght Bro Copy Right</p>
+        <p>Powerd By Charming Portfolio</p>
     </div>
 </footer>

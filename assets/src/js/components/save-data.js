@@ -12,6 +12,7 @@
                     const enabled = $(".portfolio-enabled");
                     const blogEnabled = $(".portfolio-enabled-blog");
                     const name = $(".user-name");
+                    const designation = $(".user-designation");
                     const imagePrimary = $(".CHARMING_PORTFOLIO_user_image");
                     const shortDescription = $(".short-description");
                     const userAddress = $(".user-address");
@@ -29,6 +30,7 @@
                     data.append('enabled', enabled.is(':checked') ? '1' : '0');
                     data.append('enabled_blog', blogEnabled.is(':checked') ? '1' : '0');
                     data.append('name', name.val());
+                    data.append('designation', designation.val());
                     data.append('image', imagePrimary.val());
                     data.append('short_description', shortDescription.val());
                     data.append('address', userAddress.val());
@@ -139,20 +141,17 @@
 
                     const experiencesData = [];
                     experiences.each(function() {
+                        const logo = $(this).find(".image-url").val();
                         const institution = $(this).find(".institution").val();
                         const postTitle = $(this).find(".post-title").val();
                         const responsibility = $(this).find(".responsibility").val();
                         const startDate = $(this).find(".start_date").val();
                         const endDate = $(this).find(".end_date").val();
                         const stillWorking = $(this).find(".working").is(':checked') ? '1' : '0';
-                        // console.log(responsibility);
-                        // console.log(startDate);
-                        // console.log(endDate);
-                        // console.log(stillWorking);
-                        // console.log(institution, postTitle, responsibility, startDate, endDate, stillWorking);
 
                         if(institution && postTitle && responsibility && startDate) {
                             experiencesData.push({
+                                logo: logo,
                                 institution: institution,
                                 post_title: postTitle,
                                 responsibility: responsibility,
@@ -165,6 +164,7 @@
                     const projectsData = [];
                     projects.each(function() {
                         const projectName = $(this).find(".title").val();
+                        const imageUrl = $(this).find(".image-url").val();
                         const projectDescription = $(this).find(".description").val();
                         const projectTags = $(this).find(".tags").val();
                         const projectLink = $(this).find(".link").val();
@@ -172,6 +172,7 @@
                         
                         if(projectName && projectDescription && projectTags && projectLink) {
                             projectsData.push({
+                                image_url: imageUrl,
                                 title: projectName,
                                 description: projectDescription,
                                 tags: projectTags,

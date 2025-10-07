@@ -2,13 +2,13 @@
  * Special Media Uploader For Skills
  */
 (function($) {
-    class SimpleCharm_portfolio_Media_Projects {
+    class SimpleCharm_portfolio_Media_Experience {
         constructor() {
             this.init();
         }
         init() {
-	$(document).on("click", ".charming-portfolio-projects.admin img", function(e) {
-            let custom_text = "Upload Image for Thumbnail of The Project";
+	$(document).on("click", ".charming-portfolio-experience.admin img", function(e) {
+            let custom_text = "Upload the brand logo of you experience company";
             const projectImage = $(this);
             const hiddenField = $(this).siblings("input[type=hidden]");
             const queue = hiddenField.data("queue")
@@ -45,5 +45,5 @@
 	})
         }
            }
-    new SimpleCharm_portfolio_Media_Projects();
+    new SimpleCharm_portfolio_Media_Experience();
 })(jQuery);

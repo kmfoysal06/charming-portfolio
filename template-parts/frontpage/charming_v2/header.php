@@ -25,9 +25,9 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
             <?php endforeach; ?>
         </ul>
     <?php endif; ?>
-    <a href="github.com" class="header-icon">
+    <!-- <a href="github.com" class="header-icon">
         <i class="fa-brands fa-github"></i>
-    </a>
+    </a> -->
     <div class="menu-icons">
         <i class="fa-solid fa-bars menu-toggle"></i>
     </div>

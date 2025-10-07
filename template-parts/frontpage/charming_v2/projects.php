@@ -19,7 +19,9 @@ if(is_array($projects)):
     <div class="section-content">
         <?php foreach($projects as $project): ?>
             <div class="single-project">
-                <img src="https://ps.w.org/charming-portfolio/assets/screenshot-9.png?rev=3138395" width="300px"
+                <?php if(isset($project['thumbnail']) && !empty($project['thumbnail'])): ?>
+                    <img src="<?php echo esc_url($project['thumbnail']); ?>" width="300px"
+                <?php endif; ?>
                     height="auto" alt="Project 1" />
                 <div class="project-details">
                     <h3><?php echo esc_html($project['title']); ?></h3>

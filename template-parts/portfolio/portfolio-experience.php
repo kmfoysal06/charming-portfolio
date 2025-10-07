@@ -10,7 +10,8 @@ if( ! defined( 'ABSPATH' ) ) {
 <!-- experience setting -->
 <div class="portfolio-section-wrapper">
   <h3 class="portfolio-section-toggle"><?php esc_html_e("Experience Customization","charming-portfolio"); ?></h3>
-<div class="portfolio-section-content charming-portfolio-experience">
+
+<div class="portfolio-section-content charming-portfolio-experience admin">
     <table id="repeatable-fieldset-two" width="100%">
       <tbody>
   <?php
@@ -20,8 +21,17 @@ if (is_array($args) && array_key_exists("experiences", $args)):
     //   $experience = CHARMING_PORTFOLIO_flattern_array($experience);
         if(!is_array($experience) || empty($experience)) continue;
         $working_now = (array_key_exists('working',$experience)) ? $experience['working'] : '0';
+        $logo = isset($experience['logo']) ? $experience['logo'] : CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/code.png";
+                
+
     ?>
  <tr class="flex flex-col simplecharm-basic-border simplecharm-basic-padding single-experience">
+    <td>
+
+            <label for="<?php echo esc_attr("experience-image-" . $key); ?>"><?php esc_html_e("Experience Image","charming-portfolio"); ?></label>
+            <img width="200px" height="auto" src="<?php echo esc_url($logo) ?>" class="image" />
+                        <input type="hidden" name="" value="<?php echo esc_url($logo) ?>" class="image-url" data-queue="<?php echo esc_attr($key); ?>" id="<?php echo esc_attr("experience-image-" . $key); ?>"/>
+		</td>
     <td>
         <label for="<?php echo esc_attr("experience-institution-" . $key,'charming-portfolio'); ?>"><?php esc_html_e("Institution",'charming-portfolio'); ?></label>
         <input type="text" class="institution" placeholder="Experience Institution" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][institution]" value="<?php echo (array_key_exists("institution",$experience)) ? esc_attr($experience['institution']) : "" ;?>" id="experience-institution-<?php echo esc_attr($key); ?>"  data-queue="<?php echo esc_attr($key); ?>" maxlength="30">
@@ -61,6 +71,13 @@ endif;
 
     <!-- empty hidden one for jQuery -->
     <tr class="charming_portfolio_empty-row__experience screen-reader-text flex flex-col simplecharm-basic-border simplecharm-basic-padding single-experience">
+        <td>
+
+            <label for="<?php echo esc_attr("experience-image-" . $key); ?>"><?php esc_html_e("Brand Logo","charming-portfolio"); ?></label>
+            <img width="200px" height="auto" src="<?php echo esc_url(CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/code.png") ?>" class="image" />
+                        <input type="hidden" name="" value="<?php echo esc_url(CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/code.png") ?>" class="image-url" data-queue="0" id="0"/>
+		</td>
+
     <td>
         <label for="experience-institution"><?php esc_html_e("institution",'charming-portfolio'); ?></label>
         <input type="text" class="institution" placeholder="<?php esc_attr_e("Experience institution",'charming-portfolio'); ?>" name="charming_portfolio[experiences][0][institution]" value="" id="experience-institution" data-queue="0">

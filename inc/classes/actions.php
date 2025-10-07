@@ -46,6 +46,13 @@ class Actions
                 'message' => 'name invalid'
             ]);
         }
+        // check for designation is valid and it should be only characters and some limited special characters
+        if(!preg_match("/^[a-zA-Z\s\.\,\-]{2,50}$/", $modified_data['designation'])) {
+            wp_send_json([
+                'success' => false,
+                'message' => 'designation invalid'
+            ]);
+        }
         // validation for email and phone
         if (!filter_var($modified_data['email'], FILTER_VALIDATE_EMAIL)) {
             wp_send_json([
@@ -60,23 +67,7 @@ class Actions
                 'message' => 'phone invalid'
             ]);
         }
-        //validation of social link
-        // if (is_array($modified_data['social_link']) && !empty($modified_data['social_link'])) {
-        //     foreach ($modified_data['social_link'] as $key => $value) {
-        //         if (!preg_match("/^[a-zA-Z\s]{2,30}$/", $key)) {
-        //             wp_send_json([
-        //                 'success' => false,
-        //                 'message' => 'social link name invalid'
-        //             ]);
-        //         }
-        //         if (!filter_var($value, FILTER_VALIDATE_URL)) {
-        //             wp_send_json([
-        //                 'success' => false,
-        //                 'message' => 'social link url invalid'
-        //             ]);
-        //         }
-        //     }
-        // }
+
         $social_links = json_decode(wp_unslash($modified_data['social_links']), true);
         $social_links = array_map(function($single_link){
             // wp_unslash and sanitize 
@@ -170,6 +161,8 @@ class Actions
             }, $skills);
 
             $experiences = array_map(function($experience){
+                // sanitize brand logo
+                $experience['logo'] = sanitize_text_field(wp_unslash($experience['logo']));
                 // sanitize institution name
                 $experience['institution'] = sanitize_text_field(wp_unslash($experience['institution']));
                 // sanitize post title
@@ -195,6 +188,7 @@ class Actions
             }, $experiences);
 
             $projects = array_map(function($project){
+                $project['thumbnail'] = sanitize_text_field(wp_unslash($project['image_url']));
                 // sanitize project title
                 $project['title'] = sanitize_text_field(wp_unslash($project['title']));
                 // sanitize project description

@@ -28,7 +28,7 @@ var_dump(get_option("CHARMING_PORTFOLIO_additional_v2")) ;
     <tr class="flex simplecharm-basic-border simplecharm-basic-padding flex flex-col single-project">
         <td>
 
-            <label for="<?php echo esc_attr("project-image-" . $key); ?>"><?php esc_html_e("Title","charming-portfolio"); ?></label>
+            <label for="<?php echo esc_attr("project-image-" . $key); ?>"><?php esc_html_e("Project Image","charming-portfolio"); ?></label>
             <img width="200px" height="auto" src="<?php echo esc_url($thumbnail) ?>" class="image" />
                         <input type="hidden" name="" value="<?php echo esc_url($thumbnail) ?>" class="image-url" data-queue="<?php echo esc_attr($key); ?>" id="<?php echo esc_attr("project-image-" . $key); ?>"/>
 		</td>

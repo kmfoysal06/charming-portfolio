@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $skills = $args['skills'] ?? false;
 $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
 ?>
-<?php if(is_array($skills)): ?>
+<?php if(is_array($skills) && !empty($skills)): ?>
 <div class="charming-portfolio-container charming-portfolio-skills-section">
     <div class="section-header">
         <h2 class="badge">Skills</h2>

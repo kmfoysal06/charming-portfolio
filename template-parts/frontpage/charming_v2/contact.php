@@ -16,8 +16,8 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
         <div class="section-content">
             <div class="contact-header">
                 <div class="name">
-                    <h3><?php echo esc_html($args['name']) ?></h3>
-                    <p>WordPress Developer</p>
+                    <h3><?php echo esc_html($args['name']) ?? "Charm"?></h3>
+                    <p><?php echo esc_html($args['designation']) ?? "Ununemployed"?></p>
                 </div>
                 <div class="contact-info">
                     <p>Phone: <span><?php echo esc_html($args['phone']) ?></span></p>

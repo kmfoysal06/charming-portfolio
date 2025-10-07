@@ -12,3 +12,4 @@ import "./components/save-data.js";
 // media modal on repeater
 import "./components/media/skills-images.js";
 import "./components/media/project-images.js";
+import "./components/media/experience-images.js";

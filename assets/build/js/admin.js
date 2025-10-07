@@ -178,6 +178,63 @@ window.CharmAlert = CharmAlert.getInstance();
 
 /***/ }),
 
+/***/ "./src/js/components/media/experience-images.js":
+/*!******************************************************!*\
+  !*** ./src/js/components/media/experience-images.js ***!
+  \******************************************************/
+/***/ (function() {
+
+/**
+ * Special Media Uploader For Skills
+ */
+(function ($) {
+  class SimpleCharm_portfolio_Media_Experience {
+    constructor() {
+      this.init();
+    }
+    init() {
+      $(document).on("click", ".charming-portfolio-experience.admin img", function (e) {
+        let custom_text = "Upload the brand logo of you experience company";
+        const projectImage = $(this);
+        const hiddenField = $(this).siblings("input[type=hidden]");
+        const queue = hiddenField.data("queue");
+        let image = null;
+        projectImage.off('click').on('click', function (e) {
+          e.preventDefault();
+          if (wp.media) {
+            wp.media.view.Modal.prototype.on('close', function () {
+              const existingModal = $(".media-modal");
+              if (existingModal) {
+                existingModal.remove();
+              }
+            });
+            image = wp.media({
+              title: custom_text,
+              multiple: false,
+              // Set to true if you want to upload multiple files at once
+              library: {
+                type: 'image' // Only load image files
+              }
+            }).open().on('select', function () {
+              // This will return the selected image from the Media Uploader, the result is an object
+              let uploaded_image = image.state().get('selection').first();
+              // Convert uploaded_image to a JSON object to make accessing it easier
+              let image_url = uploaded_image.toJSON().url;
+              // Assign the url value to the image and hidden input field
+              projectImage.attr("src", image_url);
+              hiddenField.val(image_url);
+            });
+            image.open();
+          }
+        });
+      });
+    }
+  }
+  new SimpleCharm_portfolio_Media_Experience();
+})(jQuery);
+
+/***/ }),
+
 /***/ "./src/js/components/media/project-images.js":
 /*!***************************************************!*\
   !*** ./src/js/components/media/project-images.js ***!
@@ -188,7 +245,7 @@ window.CharmAlert = CharmAlert.getInstance();
  * Special Media Uploader For Skills
  */
 (function ($) {
-  class SimpleCharm_portfolio_Media_Skill {
+  class SimpleCharm_portfolio_Media_Projects {
     constructor() {
       this.init();
     }
@@ -230,7 +287,7 @@ window.CharmAlert = CharmAlert.getInstance();
       });
     }
   }
-  new SimpleCharm_portfolio_Media_Skill();
+  new SimpleCharm_portfolio_Media_Projects();
 })(jQuery);
 
 /***/ }),
@@ -366,6 +423,7 @@ window.CharmAlert = CharmAlert.getInstance();
           const enabled = $(".portfolio-enabled");
           const blogEnabled = $(".portfolio-enabled-blog");
           const name = $(".user-name");
+          const designation = $(".user-designation");
           const imagePrimary = $(".CHARMING_PORTFOLIO_user_image");
           const shortDescription = $(".short-description");
           const userAddress = $(".user-address");
@@ -381,6 +439,7 @@ window.CharmAlert = CharmAlert.getInstance();
           data.append('enabled', enabled.is(':checked') ? '1' : '0');
           data.append('enabled_blog', blogEnabled.is(':checked') ? '1' : '0');
           data.append('name', name.val());
+          data.append('designation', designation.val());
           data.append('image', imagePrimary.val());
           data.append('short_description', shortDescription.val());
           data.append('address', userAddress.val());
@@ -482,20 +541,16 @@ window.CharmAlert = CharmAlert.getInstance();
           });
           const experiencesData = [];
           experiences.each(function () {
+            const logo = $(this).find(".image-url").val();
             const institution = $(this).find(".institution").val();
             const postTitle = $(this).find(".post-title").val();
             const responsibility = $(this).find(".responsibility").val();
             const startDate = $(this).find(".start_date").val();
             const endDate = $(this).find(".end_date").val();
             const stillWorking = $(this).find(".working").is(':checked') ? '1' : '0';
-            // console.log(responsibility);
-            // console.log(startDate);
-            // console.log(endDate);
-            // console.log(stillWorking);
-            // console.log(institution, postTitle, responsibility, startDate, endDate, stillWorking);
-
             if (institution && postTitle && responsibility && startDate) {
               experiencesData.push({
+                logo: logo,
                 institution: institution,
                 post_title: postTitle,
                 responsibility: responsibility,
@@ -508,11 +563,13 @@ window.CharmAlert = CharmAlert.getInstance();
           const projectsData = [];
           projects.each(function () {
             const projectName = $(this).find(".title").val();
+            const imageUrl = $(this).find(".image-url").val();
             const projectDescription = $(this).find(".description").val();
             const projectTags = $(this).find(".tags").val();
             const projectLink = $(this).find(".link").val();
             if (projectName && projectDescription && projectTags && projectLink) {
               projectsData.push({
+                image_url: imageUrl,
                 title: projectName,
                 description: projectDescription,
                 tags: projectTags,
@@ -719,6 +776,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_media_skills_images_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_components_media_skills_images_js__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _components_media_project_images_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/media/project-images.js */ "./src/js/components/media/project-images.js");
 /* harmony import */ var _components_media_project_images_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_components_media_project_images_js__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _components_media_experience_images_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/media/experience-images.js */ "./src/js/components/media/experience-images.js");
+/* harmony import */ var _components_media_experience_images_js__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_components_media_experience_images_js__WEBPACK_IMPORTED_MODULE_11__);
 
 
 
@@ -730,6 +789,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // media modal on repeater
+
 
 
 }();

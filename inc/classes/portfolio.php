@@ -252,6 +252,7 @@ class Portfolio
 	        $enabled_blog 	       = array_key_exists("enabled_blog", $option_value) ? $option_value["enabled_blog"] : false;
             $client_render     = true;
             $name              = array_key_exists("name", $option_value) ? $option_value["name"] : "";
+            $desig              = array_key_exists("designation", $option_value) ? $option_value["designation"] : "";
             $image             = (array_key_exists("image", $option_value) && !empty($option_value['image'])) ? $option_value["image"] : CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg";
             $image2            = (array_key_exists("image_2", $option_value) && !empty($option_value['image_2'])) ? $option_value["image_2"] : CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg";
             $email             = array_key_exists("email", $option_value) ? $option_value["email"] : "abc@gmail.com";
@@ -269,6 +270,7 @@ class Portfolio
                 'enabled_blog' => $enabled_blog,
                 'client_render' => $client_render,
                 'name'              => $name,
+                'designation'       => $desig,
                 'user_image'        => $image,
                 'user_image2'       => $image2,
                 'email'             => $email,
