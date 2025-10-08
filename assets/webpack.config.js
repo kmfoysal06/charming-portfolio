@@ -15,6 +15,7 @@ const entry = {
   main: JS_DIR + '/main.js',
   portfolio_react: JS_DIR + '/portfolio-react.js',
   admin: JS_DIR + '/admin.js',
+  charming_v2: JS_DIR + '/charming-v2.js',
 }
 
 const output = {

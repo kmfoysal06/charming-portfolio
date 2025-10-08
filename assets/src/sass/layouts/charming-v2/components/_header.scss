@@ -1,0 +1,75 @@
+header.charming-portfolio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    margin-top: 8px;
+    padding: 8px 20px;
+}
+
+.menu-icons {
+    display: none;
+}
+
+
+.charming-portfolio-header .site-icon {
+    width: 40px;
+    height: auto;
+}
+
+.charming-portfolio-header .header-nav {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+    align-items: center;
+    font-size: 16px;
+}
+
+.charming-portfolio-header .header-icon {
+    font-size: 18px;
+    color: #000;
+}
+
+.charming-portfolio-header .header-nav a {
+    color: #000;
+    text-decoration: none;
+    transition: color 150ms;
+}
+
+.charming-portfolio-header .header-nav a:hover {
+    color: #550080
+}
+/** smaller devices **/
+@media screen and (max-width: 430px) { 
+    header.charming-portfolio-header {
+        margin-top: 0;
+    }
+    .charming-portfolio-header .header-nav {
+        flex-direction: column;
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        left: 0;
+        top: 0;
+        transform: scale(0);
+        transition: transform 0.3s ease-in-out;
+    }
+    .charming-portfolio-header.mobile-menu-open .header-nav {
+        transform: scale(1);
+    }
+    .charming-portfolio-header.mobile-menu-open .menu-toggle {
+        z-index: 1;
+        position: relative;
+        display: block;
+    }
+    .menu-icons {
+        display: block;
+    }
+    .header-icon {
+        display: none;
+    }
+}
