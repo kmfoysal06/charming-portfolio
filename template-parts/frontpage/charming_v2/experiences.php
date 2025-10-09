@@ -19,7 +19,7 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
             <?php foreach($experiences as $experience): ?>
             <div class="single-experience" tabindex="0">
                 <?php if(isset($experience['logo']) && !empty($experience['logo'])): ?>
-                <img src="<?php echo esc_url($experience['logo']); ?>" width="300px" height="50px" style="object-fit: cover;" alt="<?php echo esc_html($experiene['institution']); ?>" />
+                <img src="<?php echo esc_url($experience['logo']); ?>" width="300px" height="50px" style="object-fit: cover;" alt="<?php echo esc_html($experience['institution']); ?>" />
                 <?php else: ?>
                     <?php echo esc_html($experience['institution']); ?>
                 <?php endif; ?>

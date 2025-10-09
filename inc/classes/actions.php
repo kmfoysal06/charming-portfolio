@@ -26,6 +26,8 @@ class Actions
          */
         add_action('wp_ajax_charming_portfolio_save_data', [$this, 'save_data']);
         add_action('wp_ajax_charming_portfolio_save_data_additional', [$this, 'save_data_additional']);
+        add_action("wp_ajax_charming_portfolio_add_enquiry", [$this, "add_enquiry"]);
+        add_action("wp_ajax_nopriv_charming_portfolio_add_enquiry", [$this, "add_enquiry"]);
     }
     public function save_data() {
         if ( ! check_ajax_referer( 'charming_portfolio_save_data', 'nonce', false ) ) {
@@ -211,4 +213,59 @@ class Actions
             ]);
 
         }
+    public function add_enquiry() {
+        if ( ! check_ajax_referer( 'charming_portfolio_enquiry', 'nonce', false ) ) {
+            wp_send_json([
+                'success' => false,
+                'message' => 'bot or unsafe request detected'
+            ]);
+        }
+        $data = PORTFOLIO::get_instance()->sanitize_array(wp_unslash($_POST));
+        $name = $data['name'] ?? '';
+        $email = $data['email'] ?? '';
+        $message = $data['message'] ?? '';
+        
+        if (empty($name) || !preg_match("/^[a-zA-Z\s]{2,30}$/", $name)) {
+            wp_send_json([
+                'success' => false,
+                'message' => 'name invalid'
+            ]);
+        }
+        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            wp_send_json([
+                'success' => false,
+                'message' => 'mail invalid'
+            ]);
+        }
+        if(empty($message) || strlen($message) > 500) {
+            wp_send_json([
+                'success' => false,
+                'message' => 'message invalid'
+            ]);
+        }
+//        $add_enquiry_post
+        $post_data = [
+            'post_title'    => wp_trim_words( $name, 5, '...' ),
+            'post_content'  => $message,
+            'post_status'   => 'private',
+            'post_type'     => 'charming_portfolio_e',
+            'meta_input'    => [
+                'enquiry_email' => $email,
+            ]
+        ];
+        $post_id = wp_insert_post($post_data);
+
+        if(!is_wp_error($post_id)) {
+            wp_send_json([
+                'success' => true,
+            ]);
+        }else{
+            wp_send_json([
+                'success' => false,
+                'message' => "an error occured!"
+            ]);
+        }
+
+        wp_die();
+    }
 }

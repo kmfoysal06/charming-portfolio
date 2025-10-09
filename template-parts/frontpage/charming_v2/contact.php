@@ -32,21 +32,21 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
                 <div class="form-container">
                     <div class="form-field">
                         <label for="charming-portfolio-contact-name">Name:</label>
-                        <input type="text" name="name" id="charming-portfolio-contact-name" placeholder="Your Name"
+                        <input type="text" name="name" id="charming-portfolio-contact-name" placeholder="Your Name" class="name"
                             required>
                     </div>
                     <div class="form-field">
                         <label for="charming-portfolio-contact-email">Email:</label>
-                        <input type="text" name="email" id="charming-portfolio-contact-email"
+                        <input type="text" name="email" id="charming-portfolio-contact-email" class="email"
                             placeholder="Your Email" required>
                     </div>
                     <div class="form-field">
                         <label for="charming-portfolio-contact-message">Message:</label>
-                        <textarea name="message" id="charming-portfolio-contact-message" placeholder="Your Message"
+                        <textarea name="message" id="charming-portfolio-contact-message" placeholder="Your Message" maxlength="500" class="message"
                             rows="10" required></textarea>
                     </div>
                     <div class="form-field">
-                        <button type="submit" name="submit"> Submit </button>
+                        <button type="submit" class="submit_charming_portfolio_enquiry" name="submit"> Submit </button>
                     </div>
 
                 </div>

@@ -18,10 +18,10 @@ if (is_array($args) && array_key_exists("header_links", $args)):
             ?>
               <tr class="header_links flex">
                 <td>
-                  <label for="<?php echo esc_attr("header_link_name_" . $key); ?>"></label>
+                  <label for="<?php echo esc_attr("header_link_name_" . $key); ?>" class='screen-reader-text'></label>
                   <input type="text" class="name" data-queue="0" placeholder="header link name" value="<?php echo is_array($single_link['name']) ? esc_attr(implode('', $single_link['url'])) : esc_attr($single_link['name'])  ?>" id="<?php echo esc_attr("header_link_name_" . $key); ?>" /></td>
                 <td>
-                  <label for="<?php echo esc_attr("header_link_url_" . $key); ?>"></label>
+                  <label for="<?php echo esc_attr("header_link_url_" . $key); ?>" class='screen-reader-text'></label>
                   <input type="text" class="url" data-queue="0" placeholder="header link" value="<?php echo is_array($single_link['url']) ? esc_url(implode('', $single_link['url'])) : esc_url($single_link['url']); ?>" id="<?php echo esc_attr("header_link_url_" . $key); ?>" />
                 </td>
                 <td><a class="button charming_portfolio_header_link_remove" href="#1"><?php esc_html_e("Remove","charming-portfolio"); ?></a></td>
@@ -34,8 +34,10 @@ if (is_array($args) && array_key_exists("header_links", $args)):
     <!-- empty hidden one for jQuery -->
     <tr class="charming_portfolio_empty-row__header_link screen-reader-text header_links flex">
            <td>
+            <label for="header_link_name" class="screen-reader-text"></label>
             <input type="text" class="name" data-queue="0" placeholder="header link name" value="" id="header_link_name" /></td>
           <td>
+            <label for="header_link_url" class="screen-reader-text"></label>
             <input type="text" class="url" data-queue="0" placeholder="header link" value="" id="header_link_url" />
           </td>
           <td><a class="button charming_portfolio_header_link_remove" href="#"><?php esc_html_e("Remove","charming-portfolio"); ?></a></td>

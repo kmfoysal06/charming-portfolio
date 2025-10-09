@@ -20,16 +20,87 @@ class Portfolio
     }
     public function setup_hook()
     {
-        add_action("admin_menu", [$this, "add_menu"]);
+        add_action("admin_menu", [$this, "add_menus"]);
         add_action('admin_bar_menu', [$this,'add_admin_bar_menu'], 100);
-        add_action("admin_menu", [$this, "add_submenu"]);
-        add_action("admin_menu", [$this, "add_additional_submenu"]);
-        // add_action("admin_init", [$this, "save_data"]);
-        // add_action("admin_init", [$this, "save_additional_data"]);
         add_action('admin_enqueue_scripts', [$this, "load_media"]);
+        add_action('init', [$this, 'enquiries']);
+        add_action('add_meta_boxes', [$this, 'mail_meta_box']);
+
+        add_filter( 'manage_charming_portfolio_e_posts_columns', [$this, 'charming_portfolio_e_columns'] );
+
+        add_action( 'manage_charming_portfolio_e_posts_custom_column',[$this,  'charming_portfolio_e_column_value'], 10, 2 );
     }
-    public function add_menu()
-    {
+    public function enquiries() {
+        register_post_type(
+            "charming_portfolio_e",
+            [
+                'labels' => [
+                    'name'          => __('Enquiries', 'charming-portfolio'),
+                    'singular_name' => __('Enquiry', 'charming-portfolio'),
+                ],
+                'public'        => false,
+                'has_archive'   => false,
+                'show_ui'       => true,
+                'show_in_menu'  => 'CHARMING_PORTFOLIO_page',
+                'menu_position' => 20,
+                'menu_icon'     => 'dashicons-email',
+                'supports'      => ['title', 'editor', 'author'],
+                'capability_type' => 'post',
+                'capabilities'    => [
+                    'create_posts' => false, // Removes support for the "Add New" function
+                ],
+                'map_meta_cap'    => true, // Use the mapped meta capabilities
+            ]
+        );
+    }
+    public function mail_meta_box() {
+        add_meta_box(
+            'charming_portfolio_e_details',
+            __('Enquiry Details', 'charming-portfolio'),
+            [$this, 'render_mail_meta_box'],
+            'charming_portfolio_e',
+            'normal',
+            'high'
+        );
+    }
+    public function render_mail_meta_box() {
+        global $post;
+        if(!$post?->ID) {
+            return;
+        }
+        $outline = '<label for="mail" style="width:150px; display:inline-block;">'. esc_html__('Email', 'charming-portfolio') .'</label>';
+
+	    $mail = get_post_meta( $post->ID, 'enquiry_email', true ) ?? '';
+
+	    $outline .= '<input type="text" name="mail" id="mail" class="mail" value="'. esc_attr($mail) .'" style="width:300px;"/>';
+
+        echo $outline;
+    }
+public function charming_portfolio_e_columns( $columns ) {
+    // Add your new column after the 'title' column, for example
+    $new_columns = array();
+    foreach ( $columns as $key => $value ) {
+        $new_columns[ $key ] = $value;
+        if ( 'title' === $key ) {
+            $new_columns['mail'] = __( 'Email', 'charming-portfolio' );
+            $new_columns['message'] = __( 'Message', 'charming-portfolio' );
+        }
+    }
+    return $new_columns;
+}
+public function charming_portfolio_e_column_value( $column, $post_id ) {
+    if ( 'mail' === $column ) {
+        $mail = get_post_meta($post_id, 'enquiry_email', true) ?? '';
+        echo esc_html( $mail );
+    }
+    if ( 'message' === $column ) {
+//        $msg = the content 
+        $msg = get_post_field( 'post_content', $post_id );
+        echo esc_html( wp_trim_words( $msg, 20, '...' ) );
+    }
+}
+
+    public function add_menus() {
         add_menu_page(
             'Portfolio Page',
             "Portfolio",
@@ -37,6 +108,29 @@ class Portfolio
             "CHARMING_PORTFOLIO_page",
             [$this, "portfolio_html"],
             "dashicons-portfolio"
+        );
+        add_submenu_page( "CHARMING_PORTFOLIO_page",
+            "Portfolio Page",
+            "Portfolio",
+            "manage_options",
+            "CHARMING_PORTFOLIO_page",
+            [$this, "portfolio_html"],
+        );
+        add_submenu_page( "CHARMING_PORTFOLIO_page",
+            "Customize Portfolio",
+            "Customize Portfolio",
+            "manage_options",
+            "CHARMING_PORTFOLIO_menu",
+            [$this, "portfolio_submenu_html"],
+        );
+
+        add_submenu_page(
+            "CHARMING_PORTFOLIO_page",
+            "Additional Info",
+            "Additional Info",
+            "manage_options",
+            "charming_portfolio_additional_menu",
+            [$this, "portfolio_additional_submenu_html"],
         );
     }
 
@@ -60,26 +154,10 @@ class Portfolio
     }
     public function add_submenu()
     {
-        add_submenu_page(
-            "CHARMING_PORTFOLIO_page",
-            "Customize Portfolio",
-            "Customize Portfolio",
-            "manage_options",
-            "CHARMING_PORTFOLIO_menu",
-            [$this, "portfolio_submenu_html"]
-        );
     }
 
     public function add_additional_submenu()
     {
-        add_submenu_page(
-            "CHARMING_PORTFOLIO_page",
-            "Additional Info",
-            "Additional Info",
-            "manage_options",
-            "charming_portfolio_additional_menu",
-            [$this, "portfolio_additional_submenu_html"]
-        );
     }
 
     /**
