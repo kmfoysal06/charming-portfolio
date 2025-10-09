@@ -329,6 +329,8 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
 	        $enabled 	       = array_key_exists("enabled", $option_value) ? $option_value["enabled"] : false;
 
 	        $enabled_blog 	       = array_key_exists("enabled_blog", $option_value) ? $option_value["enabled_blog"] : false;
+
+	        $contact_mailing_enabled 	       = array_key_exists("enabled_contact_mailing", $option_value) ? $option_value["enabled_contact_mailing"] : false;
             $client_render     = true;
             $name              = array_key_exists("name", $option_value) ? $option_value["name"] : "";
             $desig              = array_key_exists("designation", $option_value) ? $option_value["designation"] : "";
@@ -345,9 +347,10 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
             $footer_links      = array_key_exists("footer_links", $option_value) ? $option_value['footer_links'] : [];
             $layout            = array_key_exists("layout", $option_value) ? $option_value['layout'] : 'charming_v2';
         	$saved_values      = [
-                'enabled' => $enabled,
-                'enabled_blog' => $enabled_blog,
-                'client_render' => $client_render,
+                'enabled'           => $enabled,
+                'enabled_blog'      => $enabled_blog,
+                'contact_mailing_enabled' => $contact_mailing_enabled,
+                'client_render'     => $client_render,
                 'name'              => $name,
                 'designation'       => $desig,
                 'user_image'        => $image,

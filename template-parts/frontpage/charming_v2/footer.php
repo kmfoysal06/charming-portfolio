@@ -41,7 +41,7 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
         <?php
             $latest_blogs = CHARMING_PORTFOLIO_get_latest_posts();
         ?>
-        <?php if(is_array($latest_blogs)): ?>
+        <?php if(is_array($latest_blogs) && !empty($latest_blogs)): ?>
             <div class="footer-section footer-section-menus">
                 <div class="footer-subsection">
                     <h3>Latest Blogs:</h3>
@@ -51,7 +51,7 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
                             <?php endforeach; ?>
                     </ul>
                 </div>
-                <?php if(array_key_exists('footer_links', $args) && is_array($args['footer_links'])): ?>
+                <?php if(array_key_exists('footer_links', $args) && is_array($args['footer_links']) && !empty($args['footer_links'])): ?>
                     <div class="footer-subsection">
                         <h3>External Links:</h3>
                         <ul>

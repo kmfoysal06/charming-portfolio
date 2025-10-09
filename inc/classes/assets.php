@@ -90,6 +90,7 @@ class Assets
         wp_register_style('CHARMING_PORTFOLIO_admin', CHARMING_PORTFOLIO_DIR_URI . '/assets/build/css/admin.css',[], filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/css/admin.css'), 'all');
         if (is_admin()) {
             wp_enqueue_style("CHARMING_PORTFOLIO_admin");
+            wp_enqueue_style('dashicons');
         }
     }
     public function admin_enqueue_scripts()

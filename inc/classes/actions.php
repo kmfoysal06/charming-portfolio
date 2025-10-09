@@ -217,7 +217,7 @@ class Actions
         if ( ! check_ajax_referer( 'charming_portfolio_enquiry', 'nonce', false ) ) {
             wp_send_json([
                 'success' => false,
-                'message' => 'bot or unsafe request detected'
+                'message' => 'Bot Detected! Please try again by refreshing the page.'
             ]);
         }
         $data = PORTFOLIO::get_instance()->sanitize_array(wp_unslash($_POST));
@@ -228,19 +228,19 @@ class Actions
         if (empty($name) || !preg_match("/^[a-zA-Z\s]{2,30}$/", $name)) {
             wp_send_json([
                 'success' => false,
-                'message' => 'name invalid'
+                'message' => 'Name is not valid. Please make sure to use only letters and keep the name between 2 - 30 characters'
             ]);
         }
         if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             wp_send_json([
                 'success' => false,
-                'message' => 'mail invalid'
+                'message' => 'You mail is invalid. Please check your mail if its correct and try again.'
             ]);
         }
         if(empty($message) || strlen($message) > 500) {
             wp_send_json([
                 'success' => false,
-                'message' => 'message invalid'
+                'message' => 'Message is required and should be less than 500 characters'
             ]);
         }
 //        $add_enquiry_post
@@ -255,6 +255,27 @@ class Actions
         ];
         $post_id = wp_insert_post($post_data);
 
+        /**
+         * send user email if contact mailing enabled
+         */
+        $portfolio_settings = get_option("CHARMING_PORTFOLIO_v2");
+	    $contact_mailing_enabled = array_key_exists("enabled_contact_mailing", $portfolio_settings) ? $portfolio_settings["enabled_contact_mailing"] : false;
+
+        if($contact_mailing_enabled) {
+
+            $portfolio_owner_email = array_key_exists("email", $portfolio_settings) ? $portfolio_settings["email"] : false;
+            // message containing all data of the enquiry
+            $message = "Name: " . $name . "\n";
+            $message .= "Email: " . $email . "\n";
+            $message .= "Message: " . $data['message'] . "\n";
+            $subject = "New Enquiry from " . ($portfolio_settings['name'] ?? 'Your Portfolio');
+            $headers = ['Content-Type: text/plain; charset=UTF-8'];
+            if($portfolio_owner_email) {
+                wp_mail($portfolio_owner_email, $subject, $message, $headers);
+            }
+        }
+
+
         if(!is_wp_error($post_id)) {
             wp_send_json([
                 'success' => true,
@@ -262,7 +283,7 @@ class Actions
         }else{
             wp_send_json([
                 'success' => false,
-                'message' => "an error occured!"
+                'message' => "An internal server error occurred. Please try again later."
             ]);
         }
 

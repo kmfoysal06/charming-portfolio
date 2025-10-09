@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 $projects = $args['works'] ?? false;
 $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
-if(is_array($projects)):
+if(is_array($projects) && !empty($projects)):
 ?>
 
 <div class="charming-portfolio-container charming-portfolio-projects-section">

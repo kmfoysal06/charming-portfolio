@@ -421,6 +421,7 @@ window.CharmAlert = CharmAlert.getInstance();
         saveButton.on('click', function (e) {
           e.preventDefault();
           const enabled = $(".portfolio-enabled");
+          const contactMailingEnabled = $(".portfolio-enabled-contact-mailing");
           const blogEnabled = $(".portfolio-enabled-blog");
           const name = $(".user-name");
           const designation = $(".user-designation");
@@ -438,6 +439,7 @@ window.CharmAlert = CharmAlert.getInstance();
           data.append('nonce', charming_portfolio_admin.nonce);
           data.append('enabled', enabled.is(':checked') ? '1' : '0');
           data.append('enabled_blog', blogEnabled.is(':checked') ? '1' : '0');
+          data.append('enabled_contact_mailing', contactMailingEnabled.is(':checked') ? '1' : '0');
           data.append('name', name.val());
           data.append('designation', designation.val());
           data.append('image', imagePrimary.val());

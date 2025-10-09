@@ -10,21 +10,39 @@ if( ! defined( 'ABSPATH' ) ) {
 <div class="portfolio-section-wrapper">
         <h3 class="portfolio-section-toggle"><?php esc_html_e("Basic Informations:",'charming-portfolio'); ?></h3>
 		<div class="portfolio-section portfolio-intro portfolio-section-content">
-	<label for="enable"><?php esc_html_e("Enable Portfolio(The Home Page of The Site Will Be Transformed Into The Portfolio) :",'charming-portfolio'); ?></label>
+        <label for="enable"><?php esc_html_e("Enable Portfolio :",'charming-portfolio'); ?>
+            <span class="dashicons dashicons-editor-help" title="<?php esc_attr_e("The Home Page of The Site Will Be Transformed Into The Portfolio", "charming-portfolio"); ?>"></span>
+        </label>
 	<div class="switch-btn-wrapper">
-		<input type="checkbox" id="enable" class="portfolio-enabled" name="CHARMING_PORTFOLIO[enabled]" <?php echo esc_html(checked($args["enabled"], '1'));  ?>>
+		<input type="checkbox" id="enable" class="portfolio-enabled" name="CHARMING_PORTFOLIO[enabled]" <?php echo esc_html(checked($args["enabled"] ?? '0', '1'));  ?>>
 		<div class="switch-btn">
             <span></span>
 		</div>
 	</div>
 
-	<label for="enable-blog"><?php esc_html_e("Show Blogs Section",'charming-portfolio'); ?></label>
+	<label for="enable-blog"><?php esc_html_e("Show Blogs Section (Beta)",'charming-portfolio'); ?></label>
 	<div class="switch-btn-wrapper">
-		<input type="checkbox" id="enable-blog" class="portfolio-enabled-blog" name="CHARMING_PORTFOLIO[enabled_blog]" <?php echo esc_html(checked($args["enabled_blog"], '1'));  ?>>
+		<input type="checkbox" id="enable-blog" class="portfolio-enabled-blog" name="CHARMING_PORTFOLIO[enabled_blog]" <?php echo esc_html(checked($args["enabled_blog"] ?? '0', '1'));  ?>>
 		<div class="switch-btn">
 			<span></span>
 		</div>
 	</div>
+
+        <label for="enable-contact-mailing"><?php esc_html_e("Send Mail on Contact Enquiry Submission.",'charming-portfolio'); ?>
+
+            <span class="dashicons dashicons-editor-help" title="<?php esc_attr_e("The email will sent to you in the email address you provide bellow.", "charming-portfolio"); ?>"></span>
+        </label>
+	<div class="switch-btn-wrapper">
+		<input type="checkbox" id="enable-contact-mailing" class="portfolio-enabled-contact-mailing" name="CHARMING_PORTFOLIO[enable_contact_mailing]" <?php echo esc_html(checked($args["contact_mailing_enabled"] ?? '0', '1'));  ?>>
+		<div class="switch-btn">
+			<span></span>
+		</div>
+	</div>
+
+        <label for="shortcode"><?php esc_html_e("Shortcode to render the portfolio:",'charming-portfolio'); ?>
+            <span class="dashicons dashicons-editor-help" title="<?php esc_attr_e("Use this shortcode in any page, post or anywhere possible. the portfolio will rendered instead.", "charming-portfolio"); ?>"></span>
+        </label>
+	<input type="text" id="shortcode" class="shortcode" name="CHARMING_PORTFOLIO[name]" value="[charming_portfolio_render_portfolio]" disabled>
 
 	<label for="name"><?php esc_html_e("Name:",'charming-portfolio'); ?></label>
 	<input type="text" id="name" class="user-name" name="CHARMING_PORTFOLIO[name]" value="<?php echo esc_html($args["name"])  ?>" autocomplete="false" minlength="2" maxlength="30">

@@ -31,14 +31,14 @@ jQuery(document).ready(function ($) {
         const result = await response.json();
 
         if(!result.success) {
-            CharmAlert.showAlert("Error! Please try again later.", 'error');
+            CharmAlert.showAlert(result.message, 'error');
         }else{
             CharmAlert.showAlert("Enquiry Added! We'll get back to you as soon as possible.", 'success');
             form[0].reset();
         }
 
     }catch(e){
-            CharmAlert.showAlert("Error adding enquiry! Please try again", 'success');
+            CharmAlert.showAlert("Error adding enquiry! Please try again", 'error');
 
     }finally {
         submitButton.prop('disabled', false).text('Submit');

@@ -98,6 +98,10 @@
   padding: 0 20px;
 }
 
+.portfolio-section input.shortcode {
+  color: #333;
+}
+
 .portfolio-section-content .responsibility {
   margin-left: 15px;
 }
