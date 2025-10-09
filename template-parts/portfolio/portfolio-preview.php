@@ -8,7 +8,10 @@ if( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div class="portfolio-section-wrapper">
+    <div class="portfolio-section-toggle-wrapper">
 	<h2 class="portfolio-section-toggle"><?php esc_html_e("Your Informations are Here:-","charming-portfolio"); ?></h2>
+    <input type="text" value="[charming_portfolio_render_portfolio]" disabled />
+    </div>
 	<div class="page-contents portfolio-section-content">
 		<div class="portfolio-intro">
 			<p><?php

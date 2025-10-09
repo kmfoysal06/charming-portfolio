@@ -24,7 +24,7 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
                     <p>Email: <span><?php echo esc_html($args['email']) ?></span></p>
                 </div>
             </div>
-            <div class="contact-form">
+            <form class="contact-form" method="post">
                 <div class="form-image">
                     <img src="<?php echo esc_url($args['user_image2']); ?>" width="300px" height="auto" alt="<?php echo esc_html($args['name']) ?>" loading="lazy" />
                 </div>
@@ -50,6 +50,6 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
                     </div>
 
                 </div>
-            </div>
+            </form>
         </div>
     </div>

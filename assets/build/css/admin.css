@@ -1,3 +1,240 @@
-.btn-wrapper{position:relative}.btn-wrapper.loading span{width:25px;height:25px;display:block;position:absolute;border:2px solid rgba(0,0,0,0);top:50%;transform:translate(-50%, -50%);left:50%;border-radius:50%;border-top-color:#000;border-bottom-color:#000;animation:spin 400ms linear infinite}@keyframes spin{0%{transform:translate(-50%, -50%) rotate(0deg)}100%{transform:translate(-50%, -50%) rotate(360deg)}}.portfolio-section{display:grid;grid-template-columns:1fr 1fr;padding:10px 20px;gap:10px;width:80%;border:1px solid #ddd}.portfolio-section-toggle{cursor:pointer}.portfolio-section-toggle::before{content:"";height:5px;width:5px;border-top:2px solid #000;border-right:2px solid #000;display:inline-block;transform:rotate(45deg);margin-right:5px;margin-bottom:2px}.portfolio-section-wrapper td{display:grid;grid-template-columns:repeat(2, 1fr)}.charming-portfolio-skills td,.charming-portfolio-social td{grid-template-columns:1fr}.portfolio-section-wrapper td textarea{width:100%;margin:0 !important}.portfolio-section-wrapper td a{width:-moz-fit-content;width:fit-content}.portfolio-section-wrapper td a.button{display:flex;align-items:center}.portfolio-section-wrapper td input{padding:0 20px}.portfolio-section-content .responsibility{margin-left:15px}.switch-btn{width:42px;height:20px;background:red;border-radius:10px;position:relative;cursor:pointer}.switch-btn span{width:18px;height:18px;background:#fff;display:block;border-radius:50%;position:absolute;top:50%;left:1px;transform:translate(0, -50%);transition:transform 200ms}.switch-btn-wrapper.on span{transform:translate(calc(100% + 3px), -50%)}.switch-btn-wrapper input[type=checkbox]{opacity:0;pointer-events:none}.switch-btn-wrapper.on .switch-btn{background:blue}.still-working-wrapper.checkbox-wrapper{position:relative;margin-top:10px}.still-working-wrapper.checkbox-wrapper span{position:absolute;height:1.05rem;width:1.05rem;border:1px solid #000;background:#fff;top:0;left:0}.still-working-wrapper.checkbox-wrapper span::after{content:"";height:.75rem;width:.75rem;background:#000;position:absolute;top:50%;left:50%;translate:-50% -50%;scale:0}.still-working-wrapper.checkbox-wrapper input:checked~span::after{scale:1}.still-working-wrapper.checkbox-wrapper label{margin-left:calc(26px + .8rem);display:block;cursor:pointer}.still-working-wrapper.checkbox-wrapper input{font-size:1rem;line-height:1.375rem;font-weight:400;position:absolute;z-index:2;opacity:0;width:35px;height:35px;cursor:pointer}.flex{display:flex !important}.flex-col{flex-direction:column !important}.button-disabled{cursor:not-allowed;pointer-events:none;opacity:.5}.simplecharm-basic-border{border:1px solid #004004}.simplecharm-basic-padding{padding:10px}.btn{padding:10px 20px;cursor:pointer;background:#fff;font-weight:600;font-size:1rem;outline:none;border:1px solid #000;display:block;margin:10px auto;transition:200ms}.btn-fullwidth{padding:10px 0;width:100%}.btn:hover{border:1px solid #0000fa;color:#0000fa}@media screen and (max-width: 500px){.admin-portfolio-modify .portfolio-intro{grid-template-columns:1fr !important}}
+/*!**************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/admin/admin.scss ***!
+  \**************************************************************************************************************************************************************/
+.btn-wrapper {
+  position: relative;
+}
+
+.btn-wrapper.loading span {
+  width: 25px;
+  height: 25px;
+  display: block;
+  position: absolute;
+  border: 2px solid transparent;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  border-radius: 50%;
+  border-top-color: black;
+  border-bottom-color: black;
+  animation: spin 400ms linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+/**
+ * Admin Styles
+ */
+.portfolio-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 10px 20px;
+  gap: 10px;
+  width: 80%;
+  border: 1px solid #ddd;
+}
+
+.portfolio-section-toggle {
+  cursor: pointer;
+}
+
+.portfolio-section-toggle-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.portfolio-section-toggle-wrapper input {
+  width: 270px;
+  margin-right: 8px;
+  font-size: 14px;
+  color: #000;
+  padding: 5px 10px;
+}
+
+.portfolio-section-toggle::before {
+  content: "";
+  height: 5px;
+  width: 5px;
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+  display: inline-block;
+  transform: rotate(45deg);
+  margin-right: 5px;
+  margin-bottom: 2px;
+}
+
+.portfolio-section-wrapper td {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.charming-portfolio-skills td, .charming-portfolio-social td {
+  grid-template-columns: 1fr;
+}
+
+.portfolio-section-wrapper td textarea {
+  width: 100%;
+  margin: 0 !important;
+}
+
+.portfolio-section-wrapper td a {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.portfolio-section-wrapper td a.button {
+  display: flex;
+  align-items: center;
+}
+
+.portfolio-section-wrapper td input {
+  padding: 0 20px;
+}
+
+.portfolio-section-content .responsibility {
+  margin-left: 15px;
+}
+
+.switch-btn {
+  width: 42px;
+  height: 20px;
+  background: #f00;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.switch-btn span {
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 1px;
+  transform: translate(0, -50%);
+  transition: transform 200ms;
+}
+
+.switch-btn-wrapper.on span {
+  transform: translate(calc(100% + 3px), -50%);
+}
+
+.switch-btn-wrapper input[type=checkbox] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.switch-btn-wrapper.on .switch-btn {
+  background: #00f;
+}
+
+.still-working-wrapper.checkbox-wrapper {
+  position: relative;
+  margin-top: 10px;
+}
+
+.still-working-wrapper.checkbox-wrapper span {
+  position: absolute;
+  height: 1.05rem;
+  width: 1.05rem;
+  border: 1px solid #000;
+  background: #fff;
+  top: 0;
+  left: 0;
+}
+
+.still-working-wrapper.checkbox-wrapper span::after {
+  content: "";
+  height: 0.75rem;
+  width: 0.75rem;
+  background: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  scale: 0;
+}
+
+.still-working-wrapper.checkbox-wrapper input:checked ~ span::after {
+  scale: 1;
+}
+
+.still-working-wrapper.checkbox-wrapper label {
+  margin-left: calc(26px + 0.8rem);
+  display: block;
+  cursor: pointer;
+}
+
+.still-working-wrapper.checkbox-wrapper input {
+  font-size: 1rem;
+  line-height: 1.375rem;
+  font-weight: 400;
+  position: absolute;
+  z-index: 2;
+  opacity: 0;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.flex {
+  display: flex !important;
+}
+
+.flex-col {
+  flex-direction: column !important;
+}
+
+.button-disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.simplecharm-basic-border {
+  border: 1px solid #004004;
+}
+
+.simplecharm-basic-padding {
+  padding: 10px;
+}
+
+.btn {
+  padding: 10px 20px;
+  cursor: pointer;
+  background: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  outline: none;
+  border: 1px solid #000;
+  display: block;
+  margin: 10px auto;
+  transition: 200ms;
+}
+
+.btn-fullwidth {
+  padding: 10px 0;
+  width: 100%;
+}
+
+.btn:hover {
+  border: 1px solid #0000fa;
+  color: #0000fa;
+}
+
+@media screen and (max-width: 500px) {
+  .admin-portfolio-modify .portfolio-intro {
+    grid-template-columns: 1fr !important;
+  }
+}
 
 /*# sourceMappingURL=admin.css.map*/

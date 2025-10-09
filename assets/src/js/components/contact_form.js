@@ -34,6 +34,7 @@ jQuery(document).ready(function ($) {
             CharmAlert.showAlert("Error! Please try again later.", 'error');
         }else{
             CharmAlert.showAlert("Enquiry Added! We'll get back to you as soon as possible.", 'success');
+            form[0].reset();
         }
 
     }catch(e){

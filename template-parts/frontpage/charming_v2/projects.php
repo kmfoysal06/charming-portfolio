@@ -20,9 +20,8 @@ if(is_array($projects)):
         <?php foreach($projects as $project): ?>
             <div class="single-project">
                 <?php if(isset($project['thumbnail']) && !empty($project['thumbnail'])): ?>
-                    <img src="<?php echo esc_url($project['thumbnail']); ?>" width="300px"
+                    <img src="<?php echo esc_url($project['thumbnail']); ?>" width="300px" height="auto" alt="<?php echo esc_attr($project['title']); ?>" />
                 <?php endif; ?>
-                    height="auto" alt="Project 1" />
                 <div class="project-details">
                     <h3><?php echo esc_html($project['title']); ?></h3>
                     <p><?php echo wp_kses(CHARMING_PORTFOLIO_special_tag($project['description']), array(

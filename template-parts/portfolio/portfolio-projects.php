@@ -6,7 +6,6 @@
 if( ! defined( 'ABSPATH' ) ) {
     exit;
 }
-var_dump(get_option("CHARMING_PORTFOLIO_additional_v2")) ;
 ?>
 <!-- project list setting -->
 <div class="portfolio-section-wrapper">

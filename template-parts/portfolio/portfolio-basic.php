@@ -8,8 +8,8 @@ if( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div class="portfolio-section-wrapper">
-	<h3 class="portfolio-section-toggle"><?php esc_html_e("Basic Informations:",'charming-portfolio'); ?></h3>
-	<div class="portfolio-section portfolio-intro portfolio-section-content">
+        <h3 class="portfolio-section-toggle"><?php esc_html_e("Basic Informations:",'charming-portfolio'); ?></h3>
+		<div class="portfolio-section portfolio-intro portfolio-section-content">
 	<label for="enable"><?php esc_html_e("Enable Portfolio(The Home Page of The Site Will Be Transformed Into The Portfolio) :",'charming-portfolio'); ?></label>
 	<div class="switch-btn-wrapper">
 		<input type="checkbox" id="enable" class="portfolio-enabled" name="CHARMING_PORTFOLIO[enabled]" <?php echo esc_html(checked($args["enabled"], '1'));  ?>>

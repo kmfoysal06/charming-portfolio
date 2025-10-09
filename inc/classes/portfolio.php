@@ -29,6 +29,7 @@ class Portfolio
         add_filter( 'manage_charming_portfolio_e_posts_columns', [$this, 'charming_portfolio_e_columns'] );
 
         add_action( 'manage_charming_portfolio_e_posts_custom_column',[$this,  'charming_portfolio_e_column_value'], 10, 2 );
+        add_shortcode( 'charming_portfolio_render_portfolio', [$this, 'render_portfolio']);
     }
     public function enquiries() {
         register_post_type(
@@ -228,7 +229,7 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
             <form class="page-contents" method="POST">
                 <?php  CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'skills', $this->display_saved_value());?>
                 <?php  CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'experience', $this->display_saved_value());?>
-                <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'works', $this->display_saved_value());?>
+                <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'projects', $this->display_saved_value());?>
                 <input type="hidden" name="charming-portfolio__nonce" value="<?php echo esc_attr(wp_create_nonce("CHARMING_PORTFOLIO_modify_additionals__nonce")) ?>">
                 <div class="btn-wrapper">
                     <input type="button" name="update_portfolio_data" value="Update" class="btn btn-fullwidth charming-portfolio-save-additional-data">
@@ -442,5 +443,13 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
         } else {
             return '';
         }
+    }
+    /**
+     * Render the portfolio as shortcode
+     */
+    public function render_portfolio() {
+        ob_start();
+        CHARMING_PORTFOLIO_get_template_part("front-page");
+        return ob_get_clean();
     }
 }

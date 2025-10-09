@@ -30,6 +30,8 @@ class Assets
     }
     public function enqueue_scripts()
     {
+        global $post;
+        $is_shortcode = (is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'charming_portfolio_render_portfolio' ));
       $portfolio_saved_value = Portfolio::get_instance()->display_saved_value();
       $latest_blogs = Blogs::get_instance()->load_latest_blogs(5);
 
@@ -48,8 +50,8 @@ class Assets
         ]);
 
         // enqueue scripts
-		if(is_front_page()){
-			if(CHARMING_PORTFOLIO_enabled()){
+		if(is_front_page() || $is_shortcode){
+			if(CHARMING_PORTFOLIO_enabled() || $is_shortcode){
 				wp_enqueue_script('CHARMING_PORTFOLIO_main');
                 /**
                  * Load React only if user allows client side rendering
@@ -65,12 +67,15 @@ class Assets
     }
     public function enqueue_styles()
     {
+        global $post; 
+        $is_shortcode = (is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'charming_portfolio_render_portfolio' ));
+
         wp_register_style('CHARMING_PORTFOLIO_tailwindcss', CHARMING_PORTFOLIO_DIR_URI . '/assets/build/css/main.css', filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/css/main.css'), 'all');
         wp_register_style('CHARMING_PORTFOLIO_charming_v2', CHARMING_PORTFOLIO_DIR_URI . '/assets/build/css/charming_v2.css', filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/css/charming_v2.css'), 'all');
 
         // enqueue styles if its frontpage
-		if(is_front_page()){
-			if(CHARMING_PORTFOLIO_enabled()){
+		if(is_front_page() || $is_shortcode){
+			if(CHARMING_PORTFOLIO_enabled() || $is_shortcode){
                 wp_enqueue_style('dashicons');
                 if(PORTFOLIO::get_instance()->display_saved_value()['layout'] === 'classic') {
                     wp_enqueue_style('CHARMING_PORTFOLIO_tailwindcss');
