@@ -19,7 +19,7 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.3.6
       with:
         server: kmfoysal06.com
-        server-dir: /charming-portfolio
+        server-dir: /cp.kmfoysal06.com/wp-content/plugins/charming-portfolio/
         local-dir: ./
         username: kmfoysa1
         password: ${{ secrets.password }}
