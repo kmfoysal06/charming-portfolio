@@ -1,0 +1,25 @@
+on: push
+name: Deploy website on push
+jobs:
+  web-deploy:
+  
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependencies and build assets
+      run: |
+        cd assets
+        npm install
+        npm run build
+
+    - name: Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+      with:
+        server: kmfoysal06.com
+        server-dir: /charming-portfolio
+        local-dir: ./
+        username: kmfoysa1
+        password: ${{ secrets.password }}
