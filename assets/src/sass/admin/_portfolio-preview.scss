@@ -78,10 +78,12 @@
   .dashboard-stats {
     display: flex;
     gap: 18px;
-
+    .dashboard-stat:first-child {
+      background: #e0f7fa;
+    }
     .dashboard-stat {
       flex: 1;
-      background: linear-gradient(135deg, #e0f7fa 0%, #fffde4 100%);
+      background: #fffde4;
       color: #444;
       border-radius: 10px;
       padding: 22px 18px;

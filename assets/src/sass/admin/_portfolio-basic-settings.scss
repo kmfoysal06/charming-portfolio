@@ -1,0 +1,350 @@
+// Charming Portfolio Settings Page - Light Mode
+
+$section-bg: #fff;
+$card-bg: #fff;
+$border: #e6e8ec;
+$input-bg: #f2f3f7;
+$input-bg-darker: #e9ebf0;
+$input-focus-bg: #fff;
+$color-danger: #fa2222;
+$color-success: #22c55e;
+$text-main: #222;
+$text-muted: #777;
+$accent-pink: #ff2eab;
+$accent-purple: #a259ff;
+$button-bg: $accent-pink;
+$button-hover-bg: $accent-purple;
+$transition: all 0.2s cubic-bezier(0.4, 0.1, 0.7, 1);
+
+.portfolio_page_CHARMING_PORTFOLIO_menu ,
+.portfolio_page_charming_portfolio_additional_menu
+{
+
+  .page-contents {
+    max-width: 740px;
+    margin: 40px auto;
+    background: $section-bg;
+    padding: 32px 28px 44px;
+    box-shadow: 0 2px 24px rgba(162, 89, 255, 0.05);
+    border-radius: 0;
+    border: 1px solid $border;
+  }
+
+  .portfolio-section-wrapper {
+    background: $card-bg;
+    border-radius: 0;
+    margin-bottom: 28px;
+    box-shadow: none;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid $border;
+    overflow: hidden;
+    overflow-x: auto;
+
+    &:last-child {
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+  }
+
+  .portfolio-section-toggle {
+    font-size: 1.19rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    margin: 0 0 8px 0;
+    padding: 18px 24px 0 24px;
+    color: $accent-pink;
+    background: none;
+    border: none;
+    user-select: none;
+  }
+
+  .portfolio-section-content {
+    padding: 0 24px 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  label {
+    font-size: .97rem;
+    font-weight: 450;
+    color: $text-main;
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    background: $input-bg;
+    color: $text-main;
+    border: 1px solid $border;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    transition: $transition;
+
+    &:focus {
+      background: $input-focus-bg;
+      border-color: $accent-pink;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(255, 46, 171, 0.08);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      color: $text-muted;
+      background: $card-bg;
+      cursor: not-allowed;
+    }
+  }
+
+  textarea {
+    min-height: 60px;
+    resize: vertical;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  // Switch Button
+  .switch-btn-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 2px 0 8px 0;
+  }
+
+  .switch-btn {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    background: $border;
+    border-radius: 12px;
+    transition: $transition;
+    box-shadow: none;
+
+    span {
+      position: absolute;
+      left: 2px;
+      top: 2px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: $color-danger;
+      transition: $transition;
+      box-shadow: 0 1px 5px rgba(255, 46, 171, 0.11);
+    }
+  }
+
+  input[type="checkbox"] {
+    display: none;
+
+    &:checked+.switch-btn span {
+      left: 22px;
+      background: $color-success;
+      box-shadow: 0 1px 5px rgba(162, 89, 255, 0.13);
+    }
+  }
+
+  /* Help Icons */
+  .charming-portfolio-help-icon,
+  .dashicons-editor-help {
+    font-size: 1.09em;
+    color: $accent-purple;
+    margin-left: 4px;
+    cursor: pointer;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $accent-pink;
+    }
+  }
+
+  /* Images */
+  .simplecharm-portfolio-user-image,
+  .simplecharm-portfolio-user-image2 {
+    display: block;
+    margin: 10px 0 4px 0;
+    border-radius: 6px;
+    border: 1px solid $border;
+    max-width: 140px;
+    box-shadow: none;
+    background: $input-bg;
+  }
+
+  /* Buttons */
+  .button,
+  .btn,
+  input[type="submit"].charming-portfolio-save-data {
+    display: inline-block;
+    padding: 0 12px;
+    border-radius: 6px;
+    border: none;
+    background: $button-bg;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(255, 46, 171, 0.07);
+    transition: $transition;
+    margin-top: 7px;
+    margin-bottom: 7px;
+
+    &:hover,
+    &:focus {
+      background: $button-hover-bg;
+      color: #fff;
+      box-shadow: 0 4px 24px rgba(162, 89, 255, 0.10);
+      outline: none;
+    }
+  }
+
+  .btn-fullwidth {
+    width: 100%;
+    padding: 8px 0;
+  }
+
+  .btn-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 32px;
+  }
+
+  /* Repeatable Table Styles - Unified Field Groups */
+  .charming-portfolio-social,
+  .charming-portfolio-header-links,
+  .charming-portfolio-layout,
+  .charming-portfolio-footer-links {
+    background: $input-bg-darker;
+    border: 1px solid $border;
+    border-radius: 6px;
+    padding: 18px 16px 12px;
+    margin-bottom: 8px;
+    box-shadow: none;
+  }
+
+  .charming-portfolio-social table,
+  .charming-portfolio-header-links table,
+  .charming-portfolio-footer-links table {
+    background: none;
+  }
+
+  .charming-portfolio-social p,
+  .charming-portfolio-header-links p,
+  .charming-portfolio-footer-links p {
+    margin: 6px 0 0 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: none;
+  }
+
+  tbody {
+    width: 100%;
+  }
+
+  tr.flex {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  td {
+    flex: 1;
+    padding: 5px 0;
+  }
+
+  tr .button {
+    margin-left: 6px;
+    font-size: 14px;
+    padding: 0 12px;
+  }
+
+  .screen-reader-text {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+  }
+
+  /* Section Specifics */
+  .charming-portfolio-layout label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 1.03rem;
+    font-weight: 500;
+    margin-right: 18px;
+    margin-bottom: 0;
+  }
+
+  input[type="radio"] {
+    accent-color: $accent-pink;
+    width: 16px;
+    height: 16px;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    position: relative;
+    &::before{
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      position: absolute;
+      display: block;
+      margin: 0;
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+
+  .portfolio_page_CHARMING_PORTFOLIO_menu {
+    .page-contents {
+      padding: 16px 6px;
+    }
+
+    .portfolio-section-content {
+      padding: 0 9px;
+    }
+
+    .portfolio-section-toggle {
+      padding: 13px 10px 0 10px;
+    }
+
+    tr.flex {
+      flex-direction: column;
+      gap: 4px;
+      align-items: stretch;
+    }
+
+    td {
+      padding: 4px 0;
+    }
+
+    .simplecharm-portfolio-user-image,
+    .simplecharm-portfolio-user-image2 {
+      max-width: 100px;
+    }
+
+    .charming-portfolio-social,
+    .charming-portfolio-header-links,
+    .charming-portfolio-footer-links {
+      padding: 12px 4px 8px;
+    } 
+  }
+}

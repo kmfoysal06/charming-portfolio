@@ -25,7 +25,7 @@ if (is_array($args) && array_key_exists("experiences", $args)):
                 
 
     ?>
- <tr class="flex flex-col simplecharm-basic-border simplecharm-basic-padding single-experience">
+ <tr class="single-experience">
     <td>
 
             <label for="<?php echo esc_attr("experience-image-" . $key); ?>"><?php esc_html_e("Experience Image","charming-portfolio"); ?></label>
@@ -42,7 +42,7 @@ if (is_array($args) && array_key_exists("experiences", $args)):
     </td>
     <td class="responsibilities" id="repeatable-fieldset-three">
         <label for="<?php echo esc_attr("responsibilities-" . $key); ?>" title="<?php esc_attr_e('You Can Not Use Quotation ("" and \'\') so You Can Use [quote], [squote] and [bold][/bold] for Adding Double and Single Quotation and Make Any Text Bold.Also You Have to Use [break] instead of Adding Enter.','charming-portfolio'); ?>"><?php esc_html_e('Responsibilities','charming-portfolio'); ?></label>
-        <textarea name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key,'charming-portfolio'); ?>][][responsibility]" id="<?php echo esc_attr("responsibilities-" . $key); ?>" cols="50" rows="10" class="responsibility" data-queue="<?php echo esc_attr($key); ?>" maxlength="800"><?php echo esc_textarea((array_key_exists("responsibility",$experience)) ? $experience['responsibility'] : '') ;?></textarea>
+        <textarea name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key,'charming-portfolio'); ?>][][responsibility]" id="<?php echo esc_attr("responsibilities-" . $key); ?>" cols="50" rows="5" class="responsibility" data-queue="<?php echo esc_attr($key); ?>" maxlength="800"><?php echo esc_textarea((array_key_exists("responsibility",$experience)) ? $experience['responsibility'] : '') ;?></textarea>
     </td>
     <td>
         <label for="<?php echo esc_attr("start-date-" . $key); ?>"><?php esc_html_e("Start Date",'charming-portfolio'); ?></label>
@@ -70,7 +70,7 @@ endif;
 ?>
 
     <!-- empty hidden one for jQuery -->
-    <tr class="charming_portfolio_empty-row__experience screen-reader-text flex flex-col simplecharm-basic-border simplecharm-basic-padding single-experience">
+    <tr class="charming_portfolio_empty-row__experience screen-reader-text single-experience">
         <td>
 
             <label for="<?php echo esc_attr("experience-image-" . $key); ?>"><?php esc_html_e("Brand Logo","charming-portfolio"); ?></label>

@@ -90,7 +90,7 @@ class Assets
         $portfolio_pages = [
             "CHARMING_PORTFOLIO_page",
             "CHARMING_PORTFOLIO_menu",
-            "CHARMING_PORTFOLIO_additional_menu",
+            "charming_portfolio_additional_menu",
         ];
         wp_register_style('CHARMING_PORTFOLIO_admin', CHARMING_PORTFOLIO_DIR_URI . '/assets/build/css/admin.css',[], filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/css/admin.css'), 'all');
         
@@ -104,7 +104,7 @@ class Assets
         $portfolio_pages = [
             "CHARMING_PORTFOLIO_page",
             "CHARMING_PORTFOLIO_menu",
-            "CHARMING_PORTFOLIO_additional_menu",
+            "charming_portfolio_additional_menu",
         ];
         wp_register_script("CHARMING_PORTFOLIO_admin", CHARMING_PORTFOLIO_DIR_URI . '/assets/build/js/admin.js', [], filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/js/admin.js'), true);
         wp_localize_script("CHARMING_PORTFOLIO_admin", "charming_portfolio_admin", [

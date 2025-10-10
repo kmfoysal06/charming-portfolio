@@ -101,9 +101,12 @@
   display: flex;
   gap: 18px;
 }
+.charming-portfolio-dashboard-container .dashboard-stats .dashboard-stat:first-child {
+  background: #e0f7fa;
+}
 .charming-portfolio-dashboard-container .dashboard-stats .dashboard-stat {
   flex: 1;
-  background: linear-gradient(135deg, #e0f7fa 0%, #fffde4 100%);
+  background: #fffde4;
   color: #444;
   border-radius: 10px;
   padding: 22px 18px;
@@ -243,247 +246,369 @@
     height: 62px;
   }
 }
-/**
- * Admin Styles
- */
-.portfolio-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 10px 20px;
-  gap: 10px;
-  width: 80%;
-  border: 1px solid #ddd;
+.portfolio_page_CHARMING_PORTFOLIO_menu,
+.portfolio_page_charming_portfolio_additional_menu {
+  /* Help Icons */
+  /* Images */
+  /* Buttons */
+  /* Repeatable Table Styles - Unified Field Groups */
+  /* Section Specifics */
 }
-
-.portfolio-section-toggle {
-  cursor: pointer;
+.portfolio_page_CHARMING_PORTFOLIO_menu .page-contents,
+.portfolio_page_charming_portfolio_additional_menu .page-contents {
+  max-width: 740px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 32px 28px 44px;
+  box-shadow: 0 2px 24px rgba(162, 89, 255, 0.05);
+  border-radius: 0;
+  border: 1px solid #e6e8ec;
 }
-
-.portfolio-section-toggle-wrapper {
+.portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-wrapper,
+.portfolio_page_charming_portfolio_additional_menu .portfolio-section-wrapper {
+  background: #fff;
+  border-radius: 0;
+  margin-bottom: 28px;
+  box-shadow: none;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid #e6e8ec;
+  overflow: hidden;
+  overflow-x: auto;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-wrapper:last-child,
+.portfolio_page_charming_portfolio_additional_menu .portfolio-section-wrapper:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-toggle,
+.portfolio_page_charming_portfolio_additional_menu .portfolio-section-toggle {
+  font-size: 1.19rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin: 0 0 8px 0;
+  padding: 18px 24px 0 24px;
+  color: #ff2eab;
+  background: none;
+  border: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-content,
+.portfolio_page_charming_portfolio_additional_menu .portfolio-section-content {
+  padding: 0 24px 0 24px;
   display: flex;
-  justify-content: space-between;
-  margin-top: 4px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 14px;
 }
-
-.portfolio-fields-has-image {
-  display: flex;
-  gap: 10px;
-}
-
-.portfolio-section-toggle-wrapper input {
-  width: 270px;
-  margin-right: 8px;
-  font-size: 14px;
-  color: #000;
-  padding: 5px 10px;
-}
-
-.portfolio-section-toggle::before {
-  content: "";
-  height: 5px;
-  width: 5px;
-  border-top: 2px solid #000;
-  border-right: 2px solid #000;
-  display: inline-block;
-  transform: rotate(45deg);
-  margin-right: 5px;
-  margin-bottom: 2px;
-}
-
-.portfolio-section-wrapper td {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.charming-portfolio-skills td, .charming-portfolio-social td {
-  grid-template-columns: 1fr;
-}
-
-.portfolio-section-wrapper td textarea {
-  width: 100%;
-  margin: 0 !important;
-}
-
-.portfolio-section-wrapper td a {
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.portfolio-section-wrapper td a.button {
+.portfolio_page_CHARMING_PORTFOLIO_menu label,
+.portfolio_page_charming_portfolio_additional_menu label {
+  font-size: 0.97rem;
+  font-weight: 450;
+  color: #222;
+  margin-bottom: 3px;
   display: flex;
   align-items: center;
+  gap: 5px;
 }
-
-.portfolio-section-wrapper td input {
-  padding: 0 20px;
-}
-
-.portfolio-section input.shortcode {
-  color: #333;
-}
-
-.portfolio-section-content .responsibility {
-  margin-left: 15px;
-}
-
-.switch-btn {
-  width: 42px;
-  height: 20px;
-  background: #f00;
-  border-radius: 10px;
-  position: relative;
-  cursor: pointer;
-}
-
-.switch-btn span {
-  width: 18px;
-  height: 18px;
-  background: #fff;
-  display: block;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 1px;
-  transform: translate(0, -50%);
-  transition: transform 200ms;
-}
-
-.switch-btn-wrapper.on span {
-  transform: translate(calc(100% + 3px), -50%);
-}
-
-.switch-btn-wrapper input[type=checkbox] {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.switch-btn-wrapper.on .switch-btn {
-  background: #00f;
-}
-
-.still-working-wrapper.checkbox-wrapper {
-  position: relative;
-  margin-top: 10px;
-}
-
-.still-working-wrapper.checkbox-wrapper span {
-  position: absolute;
-  height: 1.05rem;
-  width: 1.05rem;
-  border: 1px solid #000;
-  background: #fff;
-  top: 0;
-  left: 0;
-}
-
-.still-working-wrapper.checkbox-wrapper span::after {
-  content: "";
-  height: 0.75rem;
-  width: 0.75rem;
-  background: #000;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  scale: 0;
-}
-
-.still-working-wrapper.checkbox-wrapper input:checked ~ span::after {
-  scale: 1;
-}
-
-.still-working-wrapper.checkbox-wrapper label {
-  margin-left: calc(26px + 0.8rem);
-  display: block;
-  cursor: pointer;
-}
-
-.still-working-wrapper.checkbox-wrapper input {
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=text],
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=email],
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=tel],
+.portfolio_page_CHARMING_PORTFOLIO_menu textarea,
+.portfolio_page_charming_portfolio_additional_menu input[type=text],
+.portfolio_page_charming_portfolio_additional_menu input[type=email],
+.portfolio_page_charming_portfolio_additional_menu input[type=tel],
+.portfolio_page_charming_portfolio_additional_menu textarea {
+  background: #f2f3f7;
+  color: #222;
+  border: 1px solid #e6e8ec;
+  border-radius: 6px;
+  padding: 8px 12px;
   font-size: 1rem;
-  line-height: 1.375rem;
-  font-weight: 400;
-  position: absolute;
-  z-index: 2;
-  opacity: 0;
-  width: 35px;
-  height: 35px;
-  cursor: pointer;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  transition: all 0.2s cubic-bezier(0.4, 0.1, 0.7, 1);
 }
-
-.footer_links,
-.header_links,
-.social_links {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 10px;
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=text]:focus,
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=email]:focus,
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=tel]:focus,
+.portfolio_page_CHARMING_PORTFOLIO_menu textarea:focus,
+.portfolio_page_charming_portfolio_additional_menu input[type=text]:focus,
+.portfolio_page_charming_portfolio_additional_menu input[type=email]:focus,
+.portfolio_page_charming_portfolio_additional_menu input[type=tel]:focus,
+.portfolio_page_charming_portfolio_additional_menu textarea:focus {
   background: #fff;
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #000;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.footer_links td,
-.header_links td,
-.social_links td {
-  grid-template-columns: unset;
-}
-
-.portfolio-section-wrapper .btn-wrapper {
-  width: calc(100% - 10px);
-}
-
-.flex {
-  display: flex !important;
-}
-
-.flex-col {
-  flex-direction: column !important;
-}
-
-.button-disabled {
-  cursor: not-allowed;
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-.simplecharm-basic-border {
-  border: 1px solid #004004;
-}
-
-.simplecharm-basic-padding {
-  padding: 10px;
-}
-
-.btn {
-  padding: 10px 20px;
-  cursor: pointer;
-  background: #fff;
-  font-weight: 600;
-  font-size: 1rem;
+  border-color: #ff2eab;
   outline: none;
-  border: 1px solid #000;
-  display: block;
-  margin: 10px auto;
-  transition: 200ms;
+  box-shadow: 0 0 0 2px rgba(255, 46, 171, 0.08);
 }
-
-.btn-fullwidth {
-  padding: 10px 0;
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=text]:disabled,
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=email]:disabled,
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=tel]:disabled,
+.portfolio_page_CHARMING_PORTFOLIO_menu textarea:disabled,
+.portfolio_page_charming_portfolio_additional_menu input[type=text]:disabled,
+.portfolio_page_charming_portfolio_additional_menu input[type=email]:disabled,
+.portfolio_page_charming_portfolio_additional_menu input[type=tel]:disabled,
+.portfolio_page_charming_portfolio_additional_menu textarea:disabled {
+  opacity: 0.6;
+  color: #777;
+  background: #fff;
+  cursor: not-allowed;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu textarea,
+.portfolio_page_charming_portfolio_additional_menu textarea {
+  min-height: 60px;
+  resize: vertical;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .switch-btn-wrapper,
+.portfolio_page_charming_portfolio_additional_menu .switch-btn-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 2px 0 8px 0;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .switch-btn,
+.portfolio_page_charming_portfolio_additional_menu .switch-btn {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background: #e6e8ec;
+  border-radius: 12px;
+  transition: all 0.2s cubic-bezier(0.4, 0.1, 0.7, 1);
+  box-shadow: none;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .switch-btn span,
+.portfolio_page_charming_portfolio_additional_menu .switch-btn span {
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fa2222;
+  transition: all 0.2s cubic-bezier(0.4, 0.1, 0.7, 1);
+  box-shadow: 0 1px 5px rgba(255, 46, 171, 0.11);
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=checkbox],
+.portfolio_page_charming_portfolio_additional_menu input[type=checkbox] {
+  display: none;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=checkbox]:checked + .switch-btn span,
+.portfolio_page_charming_portfolio_additional_menu input[type=checkbox]:checked + .switch-btn span {
+  left: 22px;
+  background: #22c55e;
+  box-shadow: 0 1px 5px rgba(162, 89, 255, 0.13);
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-help-icon,
+.portfolio_page_CHARMING_PORTFOLIO_menu .dashicons-editor-help,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-help-icon,
+.portfolio_page_charming_portfolio_additional_menu .dashicons-editor-help {
+  font-size: 1.09em;
+  color: #a259ff;
+  margin-left: 4px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-help-icon:hover,
+.portfolio_page_CHARMING_PORTFOLIO_menu .dashicons-editor-help:hover,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-help-icon:hover,
+.portfolio_page_charming_portfolio_additional_menu .dashicons-editor-help:hover {
+  color: #ff2eab;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .simplecharm-portfolio-user-image,
+.portfolio_page_CHARMING_PORTFOLIO_menu .simplecharm-portfolio-user-image2,
+.portfolio_page_charming_portfolio_additional_menu .simplecharm-portfolio-user-image,
+.portfolio_page_charming_portfolio_additional_menu .simplecharm-portfolio-user-image2 {
+  display: block;
+  margin: 10px 0 4px 0;
+  border-radius: 6px;
+  border: 1px solid #e6e8ec;
+  max-width: 140px;
+  box-shadow: none;
+  background: #f2f3f7;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .button,
+.portfolio_page_CHARMING_PORTFOLIO_menu .btn,
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=submit].charming-portfolio-save-data,
+.portfolio_page_charming_portfolio_additional_menu .button,
+.portfolio_page_charming_portfolio_additional_menu .btn,
+.portfolio_page_charming_portfolio_additional_menu input[type=submit].charming-portfolio-save-data {
+  display: inline-block;
+  padding: 0 12px;
+  border-radius: 6px;
+  border: none;
+  background: #ff2eab;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(255, 46, 171, 0.07);
+  transition: all 0.2s cubic-bezier(0.4, 0.1, 0.7, 1);
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .button:hover, .portfolio_page_CHARMING_PORTFOLIO_menu .button:focus,
+.portfolio_page_CHARMING_PORTFOLIO_menu .btn:hover,
+.portfolio_page_CHARMING_PORTFOLIO_menu .btn:focus,
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=submit].charming-portfolio-save-data:hover,
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=submit].charming-portfolio-save-data:focus,
+.portfolio_page_charming_portfolio_additional_menu .button:hover,
+.portfolio_page_charming_portfolio_additional_menu .button:focus,
+.portfolio_page_charming_portfolio_additional_menu .btn:hover,
+.portfolio_page_charming_portfolio_additional_menu .btn:focus,
+.portfolio_page_charming_portfolio_additional_menu input[type=submit].charming-portfolio-save-data:hover,
+.portfolio_page_charming_portfolio_additional_menu input[type=submit].charming-portfolio-save-data:focus {
+  background: #a259ff;
+  color: #fff;
+  box-shadow: 0 4px 24px rgba(162, 89, 255, 0.1);
+  outline: none;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .btn-fullwidth,
+.portfolio_page_charming_portfolio_additional_menu .btn-fullwidth {
+  width: 100%;
+  padding: 8px 0;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .btn-wrapper,
+.portfolio_page_charming_portfolio_additional_menu .btn-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 32px;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-layout,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-layout,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links {
+  background: #e9ebf0;
+  border: 1px solid #e6e8ec;
+  border-radius: 6px;
+  padding: 18px 16px 12px;
+  margin-bottom: 8px;
+  box-shadow: none;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social table,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links table,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links table,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social table,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links table,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links table {
+  background: none;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social p,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links p,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links p,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social p,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links p,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links p {
+  margin: 6px 0 0 0;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu table,
+.portfolio_page_charming_portfolio_additional_menu table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: none;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu tbody,
+.portfolio_page_charming_portfolio_additional_menu tbody {
   width: 100%;
 }
-
-.btn:hover {
-  border: 1px solid #0000fa;
-  color: #0000fa;
+.portfolio_page_CHARMING_PORTFOLIO_menu tr.flex,
+.portfolio_page_charming_portfolio_additional_menu tr.flex {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu td,
+.portfolio_page_charming_portfolio_additional_menu td {
+  flex: 1;
+  padding: 5px 0;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu tr .button,
+.portfolio_page_charming_portfolio_additional_menu tr .button {
+  margin-left: 6px;
+  font-size: 14px;
+  padding: 0 12px;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .screen-reader-text,
+.portfolio_page_charming_portfolio_additional_menu .screen-reader-text {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-layout label,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-layout label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 1.03rem;
+  font-weight: 500;
+  margin-right: 18px;
+  margin-bottom: 0;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=radio],
+.portfolio_page_charming_portfolio_additional_menu input[type=radio] {
+  accent-color: #ff2eab;
+  width: 16px;
+  height: 16px;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  position: relative;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=radio]::before,
+.portfolio_page_charming_portfolio_additional_menu input[type=radio]::before {
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  display: block;
+  margin: 0;
 }
 
-@media screen and (max-width: 500px) {
-  .admin-portfolio-modify .portfolio-intro {
-    grid-template-columns: 1fr !important;
+/* Responsive */
+@media (max-width: 600px) {
+  .portfolio_page_CHARMING_PORTFOLIO_menu .page-contents {
+    padding: 16px 6px;
   }
+  .portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-content {
+    padding: 0 9px;
+  }
+  .portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-toggle {
+    padding: 13px 10px 0 10px;
+  }
+  .portfolio_page_CHARMING_PORTFOLIO_menu tr.flex {
+    flex-direction: column;
+    gap: 4px;
+    align-items: stretch;
+  }
+  .portfolio_page_CHARMING_PORTFOLIO_menu td {
+    padding: 4px 0;
+  }
+  .portfolio_page_CHARMING_PORTFOLIO_menu .simplecharm-portfolio-user-image,
+  .portfolio_page_CHARMING_PORTFOLIO_menu .simplecharm-portfolio-user-image2 {
+    max-width: 100px;
+  }
+  .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social,
+  .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links,
+  .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links {
+    padding: 12px 4px 8px;
+  }
+}
+.single-experience {
+  display: flex;
+  flex-flow: row wrap;
 }
 
 /*# sourceMappingURL=admin.css.map*/
