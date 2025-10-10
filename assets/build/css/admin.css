@@ -41,6 +41,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 32px;
+  flex-wrap: wrap;
 }
 .charming-portfolio-dashboard-container .header-images {
   display: flex;
@@ -58,6 +59,7 @@
 .charming-portfolio-dashboard-container .header-info {
   flex: 1;
   padding-left: 32px;
+  min-width: 200px;
 }
 .charming-portfolio-dashboard-container .header-info h1 {
   margin: 0;
@@ -69,6 +71,7 @@
   display: flex;
   gap: 18px;
   margin-top: 10px;
+  flex-wrap: wrap;
 }
 .charming-portfolio-dashboard-container .header-info .header-links a {
   text-decoration: none;
@@ -87,6 +90,12 @@
   display: flex;
   gap: 30px;
   margin-bottom: 32px;
+}
+@media (max-width: 900px) {
+  .charming-portfolio-dashboard-container .dashboard-row {
+    flex-direction: column;
+    gap: 24px;
+  }
 }
 .charming-portfolio-dashboard-container .dashboard-stats {
   display: flex;
@@ -110,6 +119,19 @@
 .charming-portfolio-dashboard-container .dashboard-stats .dashboard-stat div {
   font-size: 1.5rem;
   margin-top: 8px;
+}
+@media (max-width: 600px) {
+  .charming-portfolio-dashboard-container .dashboard-stats {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .charming-portfolio-dashboard-container .dashboard-stats .dashboard-stat {
+    padding: 16px 10px;
+    font-size: 1rem;
+  }
+  .charming-portfolio-dashboard-container .dashboard-stats .dashboard-stat div {
+    font-size: 1.2rem;
+  }
 }
 .charming-portfolio-dashboard-container .dashboard-main {
   flex: 2;
@@ -146,6 +168,7 @@
   display: flex;
   gap: 12px;
   margin-bottom: 10px;
+  flex-wrap: wrap;
 }
 .charming-portfolio-dashboard-container .social-links a {
   display: inline-block;
@@ -200,6 +223,26 @@
   margin-left: 8px;
 }
 
+@media (max-width: 700px) {
+  .charming-portfolio-dashboard-container {
+    padding: 16px;
+  }
+  .charming-portfolio-dashboard-container .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  .charming-portfolio-dashboard-container .header-info {
+    padding-left: 0;
+  }
+  .charming-portfolio-dashboard-container .header-info h1 {
+    font-size: 1.4rem;
+  }
+  .charming-portfolio-dashboard-container .header-images img {
+    width: 62px;
+    height: 62px;
+  }
+}
 /**
  * Admin Styles
  */

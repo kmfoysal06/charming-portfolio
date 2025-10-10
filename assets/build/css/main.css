@@ -680,11 +680,6 @@
   transform: rotate(225deg);
   margin-top: 0;
 }
-.mockup-phone .display {
-  overflow: hidden;
-  border-radius: 40px;
-  margin-top: -25px;
-}
 .mockup-browser .mockup-browser-toolbar .input {
   position: relative;
   margin-left: auto;
@@ -1018,9 +1013,6 @@
 .rounded-lg {
   border-radius: 0.5rem;
 }
-.border {
-  border-width: 1px;
-}
 .p-4 {
   padding: 1rem;
 }
@@ -1074,13 +1066,6 @@
 }
 .outline {
   outline-style: solid;
-}
-.transition {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
 }
 *, ::before, ::after {
   --tw-border-spacing-x: 0;

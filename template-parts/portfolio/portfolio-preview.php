@@ -77,22 +77,40 @@ if( ! defined( 'ABSPATH' ) ) {
     <div class="dashboard-stats">
         <div class="dashboard-stat">
             <span>Skills</span>
-            <div style="font-size:1.5rem;margin-top:8px;">1</div>
+            <div style="font-size:1.5rem;margin-top:8px;">
+                <?php
+                    $skills = isset($args['skills']) ? $args['skills'] : [];
+                    echo count($skills); 
+                ?>
+            </div>
         </div>
         <div class="dashboard-stat">
             <span>Experience</span>
-            <div style="font-size:1.5rem;margin-top:8px;">1</div>
+            <div style="font-size:1.5rem;margin-top:8px;">
+                <?php
+                    $experiences = isset($args['experiences']) ? $args['experiences'] : [];
+                    echo count($experiences); 
+                ?>
+            </div>
         </div>
         <div class="dashboard-stat">
             <span>Works</span>
-            <div style="font-size:1.5rem;margin-top:8px;">1</div>
+            <div style="font-size:1.5rem;margin-top:8px;">
+                <?php
+                    $works = isset($args['works']) ? $args['works'] : [];
+                    echo count($works); 
+                ?>
+            </div>
         </div>
     </div>
             <div class="footer-links">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-                <a href="#">Link 4</a>
-                <a href="#">sdafsfas</a>
+                <?php
+                    $footer_links = isset($args['footer_links']) ? $args['footer_links'] : [];
+                    foreach ($footer_links as $footer_link): ?>
+                        <a href="<?php echo esc_attr(is_array($footer_link['url']) ? implode('', $footer_link['url']) : $footer_link['url']); ?>" target="_blank">
+                            <?php echo esc_html(is_array($footer_link['name']) ? implode('', $footer_link['name']) : $footer_link['name']); ?>
+                        </a>
+                <?php endforeach; ?>
+
             </div>
 </div>
