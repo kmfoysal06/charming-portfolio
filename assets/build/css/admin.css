@@ -48,6 +48,12 @@
   display: flex;
   justify-content: space-between;
   margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.portfolio-fields-has-image {
+  display: flex;
+  gap: 10px;
 }
 
 .portfolio-section-toggle-wrapper input {
@@ -188,6 +194,30 @@
   width: 35px;
   height: 35px;
   cursor: pointer;
+}
+
+.footer_links,
+.header_links,
+.social_links {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+  background: #fff;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #000;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.footer_links td,
+.header_links td,
+.social_links td {
+  grid-template-columns: unset;
+}
+
+.portfolio-section-wrapper .btn-wrapper {
+  width: calc(100% - 10px);
 }
 
 .flex {

@@ -11,7 +11,7 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
 <div class="charming-portfolio-container charming-portfolio-contact-section">
         <div class="section-header">
             <h2 class="badge">Contact Me</h2>
-            <p>Want to know something else? Let me know:</p>
+            <p class="section-header-note">Want to know something else? Let me know:</p>
         </div>
         <div class="section-content">
             <div class="contact-header">

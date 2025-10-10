@@ -13,7 +13,7 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
     <div class="charming-portfolio-container charming-portfolio-experience-section">
         <div class="section-header">
             <h2 class="badge">Experience</h2>
-            <p>Here is a quick summary of my most recent experiences:</p>
+            <p class="section-header-note">Here is a quick summary of my most recent experiences:</p>
         </div>
         <div class="section-content">
             <?php foreach($experiences as $experience): ?>

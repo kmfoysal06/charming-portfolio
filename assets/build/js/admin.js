@@ -31,6 +31,45 @@
 
 /***/ }),
 
+/***/ "./src/js/components/admin-help-icon.js":
+/*!**********************************************!*\
+  !*** ./src/js/components/admin-help-icon.js ***!
+  \**********************************************/
+/***/ (function() {
+
+//TODO: make sure the popover fit in the screen
+document.addEventListener("mouseover", e => {
+  if (e.target.classList.contains("charming-portfolio-help-icon")) {
+    const tooltip = e.target.getAttribute("data-title");
+    if (tooltip) {
+      showPopover(tooltip, e.target);
+    }
+  }
+});
+function showPopover(content, target) {
+  let popover = document.createElement("div");
+  popover.style.position = "absolute";
+  popover.style.background = "#333";
+  popover.style.color = "#fff";
+  popover.style.padding = "5px 10px";
+  popover.style.borderRadius = "5px";
+  popover.style.fontSize = "12px";
+  popover.style.zIndex = "1000";
+  popover.style.width = "200px";
+  popover.innerText = content;
+  document.body.appendChild(popover);
+  const rect = target.getBoundingClientRect();
+  popover.style.top = rect.top + window.scrollY - popover.offsetHeight - 5 + "px";
+  popover.style.left = rect.left + 50 + window.scrollX + (rect.width - popover.offsetWidth) / 2 + "px";
+  target.addEventListener("mouseout", () => {
+    popover.remove();
+  }, {
+    once: true
+  });
+}
+
+/***/ }),
+
 /***/ "./src/js/components/charm-alert.js":
 /*!******************************************!*\
   !*** ./src/js/components/charm-alert.js ***!
@@ -766,20 +805,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_toggler_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_components_toggler_js__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _components_admin_experience_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/admin-experience.js */ "./src/js/components/admin-experience.js");
 /* harmony import */ var _components_admin_experience_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_components_admin_experience_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _components_checkbox_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/checkbox.js */ "./src/js/components/checkbox.js");
-/* harmony import */ var _components_checkbox_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_components_checkbox_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _components_updateBtn_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/updateBtn.js */ "./src/js/components/updateBtn.js");
-/* harmony import */ var _components_updateBtn_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_components_updateBtn_js__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _components_charm_alert_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/charm-alert.js */ "./src/js/components/charm-alert.js");
-/* harmony import */ var _components_charm_alert_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_components_charm_alert_js__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _components_save_data_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/save-data.js */ "./src/js/components/save-data.js");
-/* harmony import */ var _components_save_data_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_components_save_data_js__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _components_media_skills_images_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/media/skills-images.js */ "./src/js/components/media/skills-images.js");
-/* harmony import */ var _components_media_skills_images_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_components_media_skills_images_js__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _components_media_project_images_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/media/project-images.js */ "./src/js/components/media/project-images.js");
-/* harmony import */ var _components_media_project_images_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_components_media_project_images_js__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _components_media_experience_images_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/media/experience-images.js */ "./src/js/components/media/experience-images.js");
-/* harmony import */ var _components_media_experience_images_js__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_components_media_experience_images_js__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _components_admin_help_icon_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/admin-help-icon.js */ "./src/js/components/admin-help-icon.js");
+/* harmony import */ var _components_admin_help_icon_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_components_admin_help_icon_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_checkbox_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/checkbox.js */ "./src/js/components/checkbox.js");
+/* harmony import */ var _components_checkbox_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_components_checkbox_js__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _components_updateBtn_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/updateBtn.js */ "./src/js/components/updateBtn.js");
+/* harmony import */ var _components_updateBtn_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_components_updateBtn_js__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _components_charm_alert_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/charm-alert.js */ "./src/js/components/charm-alert.js");
+/* harmony import */ var _components_charm_alert_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_components_charm_alert_js__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _components_save_data_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/save-data.js */ "./src/js/components/save-data.js");
+/* harmony import */ var _components_save_data_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_components_save_data_js__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _components_media_skills_images_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/media/skills-images.js */ "./src/js/components/media/skills-images.js");
+/* harmony import */ var _components_media_skills_images_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_components_media_skills_images_js__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _components_media_project_images_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/media/project-images.js */ "./src/js/components/media/project-images.js");
+/* harmony import */ var _components_media_project_images_js__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_components_media_project_images_js__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _components_media_experience_images_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/media/experience-images.js */ "./src/js/components/media/experience-images.js");
+/* harmony import */ var _components_media_experience_images_js__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_components_media_experience_images_js__WEBPACK_IMPORTED_MODULE_12__);
+
 
 
 

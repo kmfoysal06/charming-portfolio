@@ -14,7 +14,7 @@ if(is_array($projects) && !empty($projects)):
 <div class="charming-portfolio-container charming-portfolio-projects-section">
     <div class="section-header">
         <h2 class="badge">Projects</h2>
-        <p>Some of the noteworthy projects I have built:</p>
+        <p class="section-header-note">Some of the noteworthy projects I have built:</p>
     </div>
     <div class="section-content">
         <?php foreach($projects as $project): ?>

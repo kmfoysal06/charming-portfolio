@@ -230,10 +230,9 @@ if (!function_exists("CHARMING_PORTFOLIO_experience_admin")) {
     function CHARMING_PORTFOLIO_experience_admin($experiences) {
         $experience_institutions = [];
         foreach ($experiences as $experience) {
-            $flattern_experience = CHARMING_PORTFOLIO_flattern_array($experience);
-            if (!is_array($flattern_experience) || empty($flattern_experience)) continue;
-            if (!array_key_exists('institution', $flattern_experience)) continue;
-            $experience_institutions[] = $flattern_experience['institution'];
+            if (!is_array($experience) || empty($experience)) continue;
+            if (!array_key_exists('institution', $experience)) continue;
+            $experience_institutions[] = $experience['institution'];
         }
         return $experience_institutions;
     }

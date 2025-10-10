@@ -22,7 +22,7 @@ if( ! defined( 'ABSPATH' ) ) {
 				);
 				?>
 			</p>
-			<p>
+			<p class="portfolio-fields-has-image">
 				<?php
 				printf(
 					wp_kses(
@@ -32,7 +32,7 @@ if( ! defined( 'ABSPATH' ) ) {
 				);
 				?>
 			</p>
-			<p>
+			<p class="portfolio-fields-has-image">
 				<?php
 				printf(
 					wp_kses(
@@ -92,7 +92,7 @@ if( ! defined( 'ABSPATH' ) ) {
 				printf(
 					// translators: is available for new projects. true or false
 				    esc_html__( 'Available: %s.', 'charming-portfolio' ),
-				    esc_html($args['available'])
+				    esc_html(intval($args['available']) === 1 ? 'Yes' : 'No')
 				);
 				?>
 			</p>
@@ -110,6 +110,40 @@ if( ! defined( 'ABSPATH' ) ) {
 				]);
 			?>
 
+			</p>
+            <p>
+				<?php
+                    $header_links = $args['header_links'];
+                    $header_links_output = '';
+                    foreach ($header_links as $header_link) {
+                            $header_links_output .= '<a href="' . esc_attr(is_array($header_link['url']) ? implode('', $header_link['url']) : $header_link['url']) . '" target="_blank">' . esc_attr(is_array($header_link['name']) ? implode('', $header_link['name']) : $header_link['name']) . '</a> ';
+                        }
+				esc_html_e("Header Links:- ", "charming-portfolio");
+				echo wp_kses($header_links_output,[
+					'a' => [
+						'href' => [],
+						'target' => []
+					]
+				]);
+
+				?>
+			</p>
+            <p>
+				<?php
+                    $footer_links = $args['footer_links'];
+                    $footer_links_output = '';
+                    foreach ($footer_links as $footer_link) {
+                            $footer_links_output .= '<a href="' . esc_attr(is_array($footer_link['url']) ? implode('', $footer_link['url']) : $footer_link['url']) . '" target="_blank">' . esc_attr(is_array($footer_link['name']) ? implode('', $footer_link['name']) : $footer_link['name']) . '</a> ';
+                        }
+				esc_html_e("Header Links:- ", "charming-portfolio");
+				echo wp_kses($footer_links_output,[
+					'a' => [
+						'href' => [],
+						'target' => []
+					]
+				]);
+
+				?>
 			</p>
 			<p>
 				<?php
