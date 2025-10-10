@@ -17,7 +17,7 @@ if( ! defined( 'ABSPATH' ) ) {
 if (is_array($args) && array_key_exists("skills", $args)):
         foreach ($args['skills'] as $key => $skill):
         ?>
-        <tr class="flex skill">
+        <tr class="flex flex-wrap skill">
           <td>
             <label for="<?php echo esc_attr("skill-name-" . $key); ?>"></label>
 				<input type="text" class="name" data-queue="<?php echo esc_attr($key); ?>" placeholder="<?php esc_attr_e("Skill Name","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[skills][<?php echo esc_attr($key); ?>][][name]" value="<?php echo esc_attr($skill['name']); ?>" id="<?php echo esc_attr("skill-name-" . $key); ?>" maxlength="25" /></td>
@@ -26,7 +26,6 @@ if (is_array($args) && array_key_exists("skills", $args)):
 
 						<input type="hidden" value="<?php echo esc_attr($skill['image']); ?>" class="image" name="CHARMING_PORTFOLIO[skills][<?php echo esc_attr($key) ?>][][image]" data-queue="<?php echo esc_attr($key)?>" />
 
-				<td>
           <td><a class="button charming_portfolio_skills_remove" href="#1"><?php esc_html_e("Remove","charming-portfolio"); ?></a></td>
         </tr>
     <?php

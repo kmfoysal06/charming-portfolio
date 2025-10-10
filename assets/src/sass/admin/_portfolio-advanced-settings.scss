@@ -1,7 +1,46 @@
-.single-experience {
-  display: flex;
-  flex-flow: row wrap;
+//@use "variables.scss" as * ;
+//@use "sass:color";
 
+/* Inline | http://localhost/wp-admin/admin.php?page=charming_portfolio_additional_menu */
+
+.portfolio_page_charming_portfolio_additional_menu {
+
+  .single-experience,
+  .single-project {
+    display: flex;
+    flex-direction: column;
+    box-shadow:
+      rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+      rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    padding: 16px;
+    border-radius: 6px;
+    margin-block: 8px;
+
+    td {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      font-size: 16px;
+      width: 100%;
+    }
+  }
 }
-.single-experience td:first-child {
+
+@media screen and (max-width: 760px) {
+  .portfolio_page_charming_portfolio_additional_menu {
+    textarea {
+      width: 100%;
+    }
+
+    .charming-portfolio-skills {
+
+      tr td:first-child {
+        flex-shrink: 1;
+      }
+      tr td:last-child {
+        flex-basis: 100%;
+      }
+    }
+
+  }
 }

@@ -1,33 +1,17 @@
 // Charming Portfolio Settings Page - Light Mode
-
-$section-bg: #fff;
-$card-bg: #fff;
-$border: #e6e8ec;
-$input-bg: #f2f3f7;
-$input-bg-darker: #e9ebf0;
-$input-focus-bg: #fff;
-$color-danger: #fa2222;
-$color-success: #22c55e;
-$text-main: #222;
-$text-muted: #777;
-$accent-pink: #ff2eab;
-$accent-purple: #a259ff;
-$button-bg: $accent-pink;
-$button-hover-bg: $accent-purple;
-$transition: all 0.2s cubic-bezier(0.4, 0.1, 0.7, 1);
-
+@use "variables.scss" as * ;
 .portfolio_page_CHARMING_PORTFOLIO_menu ,
 .portfolio_page_charming_portfolio_additional_menu
 {
-
   .page-contents {
-    max-width: 740px;
+    max-width: 1080px;
     margin: 40px auto;
     background: $section-bg;
     padding: 32px 28px 44px;
     box-shadow: 0 2px 24px rgba(162, 89, 255, 0.05);
     border-radius: 0;
     border: 1px solid $border;
+    font-family: "Outfit", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   }
 
   .portfolio-section-wrapper {
@@ -204,6 +188,9 @@ $transition: all 0.2s cubic-bezier(0.4, 0.1, 0.7, 1);
       box-shadow: 0 4px 24px rgba(162, 89, 255, 0.10);
       outline: none;
     }
+  }
+  input[type="submit"].charming-portfolio-save-data {
+    padding: 10px 0;
   }
 
   .btn-fullwidth {

@@ -256,13 +256,14 @@
 }
 .portfolio_page_CHARMING_PORTFOLIO_menu .page-contents,
 .portfolio_page_charming_portfolio_additional_menu .page-contents {
-  max-width: 740px;
+  max-width: 1080px;
   margin: 40px auto;
   background: #fff;
   padding: 32px 28px 44px;
   box-shadow: 0 2px 24px rgba(162, 89, 255, 0.05);
   border-radius: 0;
   border: 1px solid #e6e8ec;
+  font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 .portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-wrapper,
 .portfolio_page_charming_portfolio_additional_menu .portfolio-section-wrapper {
@@ -467,6 +468,10 @@
   box-shadow: 0 4px 24px rgba(162, 89, 255, 0.1);
   outline: none;
 }
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=submit].charming-portfolio-save-data,
+.portfolio_page_charming_portfolio_additional_menu input[type=submit].charming-portfolio-save-data {
+  padding: 10px 0;
+}
 .portfolio_page_CHARMING_PORTFOLIO_menu .btn-fullwidth,
 .portfolio_page_charming_portfolio_additional_menu .btn-fullwidth {
   width: 100%;
@@ -606,9 +611,58 @@
     padding: 12px 4px 8px;
   }
 }
-.single-experience {
+/* Inline | http://localhost/wp-admin/admin.php?page=charming_portfolio_additional_menu */
+.portfolio_page_charming_portfolio_additional_menu .single-experience,
+.portfolio_page_charming_portfolio_additional_menu .single-project {
   display: flex;
-  flex-flow: row wrap;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  padding: 16px;
+  border-radius: 6px;
+  margin-block: 8px;
 }
+.portfolio_page_charming_portfolio_additional_menu .single-experience td,
+.portfolio_page_charming_portfolio_additional_menu .single-project td {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: 16px;
+  width: 100%;
+}
+
+@media screen and (max-width: 760px) {
+  .portfolio_page_charming_portfolio_additional_menu textarea {
+    width: 100%;
+  }
+  .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tr td:first-child {
+    flex-shrink: 1;
+  }
+  .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tr td:last-child {
+    flex-basis: 100%;
+  }
+}
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+/**
+ * Admin Styles
+ */
 
 /*# sourceMappingURL=admin.css.map*/

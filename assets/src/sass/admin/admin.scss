@@ -2,4 +2,236 @@
 @forward "./portfolio-preview";
 @forward "./portfolio-basic-settings"; 
 @forward "./portfolio-advanced-settings"; 
+@forward "./utilities"; 
 
+//@forward "../components/fonts"; 
+
+/**
+ * Admin Styles
+ */
+//.portfolio-section {
+//    display: grid;
+//    grid-template-columns: 1fr 1fr;
+//    padding: 10px 20px;
+//    gap: 10px;
+//    width: 80%;
+//    border: 1px solid #ddd; // Additional styles for all elements with class 'portfolio-section'
+//}
+//.portfolio-section-toggle{
+//    cursor: pointer;
+//}
+//.portfolio-section-toggle-wrapper {
+//  display: flex;
+//  justify-content: space-between;
+//  margin-top: 4px;
+//  flex-wrap: wrap;
+//}
+//.portfolio-fields-has-image {
+//  display: flex;
+//  gap: 10px;
+//}
+//
+//.portfolio-section-toggle-wrapper input {
+//  width: 270px;
+//  margin-right: 8px;
+//  font-size: 14px;
+//  color: #000;
+//  padding: 5px 10px;
+//
+//}
+//.portfolio-section-toggle::before{
+//    // making a collapse icon with css
+//    content: '';
+//    height: 5px;
+//    width: 5px;
+//    border-top: 2px solid #000;
+//    border-right: 2px solid #000;
+//    display: inline-block;
+//    transform: rotate(45deg);
+//    margin-right: 5px;
+//    margin-bottom: 2px;
+//}
+//.portfolio-section-wrapper td {
+//    display: grid;
+//    grid-template-columns: repeat(2,1fr);
+//
+//}
+////remove grid from skills customization section
+//.charming-portfolio-skills td, .charming-portfolio-social td{
+//    grid-template-columns: 1fr;
+//}
+//.portfolio-section-wrapper td textarea {
+//    width: 100%;
+//    margin: 0!important;
+//}
+//
+//.portfolio-section-wrapper td a {
+//    width: fit-content;
+//}
+//.portfolio-section-wrapper td a.button{
+//    display: flex;
+//    align-items: center;
+//}
+//.portfolio-section-wrapper td input{
+//    padding: 0 20px;
+//} 
+//
+//.portfolio-section input.shortcode {
+//  color: #333;
+//}
+//
+//.portfolio-intro {
+//    // Additional styles specific to elements with class 'portfolio-intro'
+//}
+//.portfolio-aboutme {
+//    // Additional styles specific to elements with class 'portfolio-aboutme'
+//}
+//.portfolio-section-content{
+//    .responsibility{
+//        margin-left: 15px;
+//    }
+//}
+////Switch Button
+//.switch-btn {
+//    width: 42px;
+//    height: 20px;
+//    background: #f00;
+//    border-radius: 10px;
+//    position: relative;
+//    cursor: pointer;
+//}
+//
+//.switch-btn span {
+//    width: 18px;
+//    height: 18px;
+//    background: #fff;
+//    display: block;
+//    border-radius: 50%;
+//    position: absolute;
+//    top: 50%;
+//    left: 1px;
+//    transform: translate(0,-50%);
+//    transition: transform 200ms;
+//}
+//.switch-btn-wrapper.on span{
+//    transform: translate(calc(100% + 3px),-50%);
+//}
+//.switch-btn-wrapper input[type=checkbox]{
+//    opacity: 0;
+//    pointer-events: none;
+//}
+//.switch-btn-wrapper.on .switch-btn{
+//    background: #00f;
+//}
+//// Custom Checkbox in Admin
+//.still-working-wrapper.checkbox-wrapper {
+//    position: relative;
+//    margin-top:10px;
+//}
+//
+//.still-working-wrapper.checkbox-wrapper span {
+//    position: absolute;
+//    height: 1.05rem;
+//    width: 1.05rem;
+//    border:1px solid #000;
+//    background: #fff;
+//    top: 0;
+//    left: 0;
+//}
+//.still-working-wrapper.checkbox-wrapper span::after{
+//    content:'';
+//    height: 0.75rem;
+//    width: 0.75rem;
+//    background:#000;
+//    position:absolute;
+//    top:50%;
+//    left:50%;
+//    translate: -50% -50%;
+//    scale: 0;
+//}
+//.still-working-wrapper.checkbox-wrapper input:checked ~ span::after{
+//    scale: 1;
+//}
+//.still-working-wrapper.checkbox-wrapper label {
+//    margin-left: calc(26px + 0.8rem);
+//    display: block;
+//    cursor: pointer;
+//}
+//
+//.still-working-wrapper.checkbox-wrapper input {
+//    font-size: 1rem;
+//    line-height: 1.375rem;
+//    font-weight: 400;
+//    position: absolute;
+//    z-index: 2;
+//    opacity: 0;
+//    width: 35px;
+//    height: 35px;
+//    cursor: pointer;
+//}
+//.footer_links,
+//.header_links,
+//.social_links {
+//  display: flex;
+//  flex-wrap: wrap;
+//  margin: 10px;
+//  background: #fff;
+//  padding: 8px;
+//  border-radius: 4px;
+//  border: 1px solid #000;
+//  width: fit-content;
+//}
+//.footer_links td,
+//.header_links td,
+//.social_links td
+//{
+//  grid-template-columns: unset;
+//}
+//.portfolio-section-wrapper .btn-wrapper {
+//  width: calc(100% - 10px);
+//}
+////Utilities
+//.flex{
+//    display: flex!important;
+//}
+//.flex-col{
+//    flex-direction: column!important;
+//}
+//.button-disabled {
+//    cursor: not-allowed;
+//    pointer-events: none;
+//    opacity: 0.5;
+//}
+//.simplecharm-basic-border{
+//    border: 1px solid #004004;
+//}
+//.simplecharm-basic-padding{
+//    padding: 10px;
+//}
+//.btn {
+//    padding: 10px 20px;
+//    cursor: pointer;
+//    background: #fff;
+//    font-weight: 600;
+//    font-size: 1rem;
+//    outline: none;
+//    border: 1px solid #000;
+//    display: block;
+//    margin: 10px auto;
+//    transition: 200ms;
+//}
+//.btn-fullwidth{
+//    padding: 10px 0;
+//    width: 100%;
+//}
+//.btn:hover {
+//    border: 1px solid #0000fa;
+//    color: #0000fa;
+//}
+//// Define styles for other elements and classes as needed
+//@media screen and (max-width: 500px) {
+//    .admin-portfolio-modify .portfolio-intro {
+//        grid-template-columns: 1fr!important;
+//    }
+//}
+//

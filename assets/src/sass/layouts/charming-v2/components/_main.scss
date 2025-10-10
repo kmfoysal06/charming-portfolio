@@ -9,15 +9,33 @@
 body {
   background-color: #55008047;
   color: #000;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
-.charming-portfolio-container .section-header {
-  text-align: center;
-}
+.charming-portfolio-container {
+  max-inline-size: 1080px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  margin-top: 50px;
+  font-family: 'Poppins', sans-serif;
 
-.screen-reader-text {
-  display: none;
+  .section-header {
+    text-align: center;
+  }
+
+  .badge {
+    display: block;
+    padding: 4px 8px;
+    background-color: #27003a;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 4px;
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 8px;
+  }
 }
 
 .cp-d-none {
@@ -25,17 +43,7 @@ body {
 }
 
 /** badge **/
-.charming-portfolio-container .badge {
-  display: block;
-  padding: 4px 8px;
-  background-color: #27003a;
-  color: #fff;
-  font-size: 14px;
-  border-radius: 4px;
-  width: fit-content;
-  margin: auto;
-  margin-bottom: 8px;
-}
+
 .section-header-note {
   font-size: 14px;
 }
@@ -61,14 +69,7 @@ body {
 }
 
 /** social links end **/
-.charming-portfolio-container {
-  max-inline-size: 1080px;
-  margin: 0 auto;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 8px;
-  margin-top: 50px;
-}
+
 
 
 /** hero section **/
