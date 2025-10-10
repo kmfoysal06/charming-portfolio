@@ -107,7 +107,7 @@
                                 updateBtnWrapper.find(".charming-portfolio-save-data").prop("disabled", false);
                                 updateBtnWrapper.find(".charming-portfolio-save-data").text(charming_portfolio_admin.save);
 
-                                CharmAlert.showAlert("Error updating", 'error');
+                                CharmAlert.showAlert(`Error: ${response.message}`, 'error');
                             }
                         },
                         error: function () {
@@ -209,13 +209,13 @@
                             processData: false,
                             success: function (response) {
                                 if (response.success) {
-                                    CharmAlert.showAlert("Skills saved successfully", 'success');
+                                    CharmAlert.showAlert("Informations updated successfully", 'success');
                                     // this.resetUpdateBtn(updateBtnWrapper);
                                     updateBtnWrapper.removeClass("loading");
                                     updateBtnWrapper.find(".charming-portfolio-save-additional-data").prop("disabled", false);
                                     
                                 } else {
-                                    CharmAlert.showAlert("Error saving skills", 'error');
+                                    CharmAlert.showAlert(response.message, 'error');
                                     // this.resetUpdateBtn(updateBtnWrapper);
                                     updateBtnWrapper.removeClass("loading");
                                     updateBtnWrapper.find(".charming-portfolio-save-additional-data").prop("disabled", false);
@@ -229,14 +229,9 @@
                             }
                         }
                     )
-                    console.log(skillsData)
                 })
             }
         }
-        // resetUpdateBtn(updateBtnWrapper) {
-        //     updateBtnWrapper.removeClass("loading");
-        //     updateBtnWrapper.find(".charming-portfolio-save-additional-data").prop("disabled", false);
-        // }
     }
     new Save_Data();
 })(jQuery);

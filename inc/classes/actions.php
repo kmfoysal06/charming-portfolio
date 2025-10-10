@@ -52,7 +52,7 @@ class Actions
         if(!preg_match("/^[a-zA-Z\s\.\,\-]{2,50}$/", $modified_data['designation'])) {
             wp_send_json([
                 'success' => false,
-                'message' => 'designation invalid'
+                'message' => 'Designation is required! Please make sure you only use letters and some special characters like . , -'
             ]);
         }
         // validation for email and phone
@@ -66,7 +66,7 @@ class Actions
         if (!preg_match("/^\+?[0-9]{11,18}$/", $modified_data['phone'])) {
             wp_send_json([
                 'success' => false,
-                'message' => 'phone invalid'
+                'message' => 'phone number invalid'
             ]);
         }
 
@@ -119,7 +119,7 @@ class Actions
         if (isset($modified_data['image_2']) && !filter_var($modified_data['image_2'], FILTER_VALIDATE_URL)) {
             wp_send_json([
                 'success' => false,
-                'message' => 'Invalid Image 2 URL!'
+                'message' => 'Invalid Secondary Image URL!'
             ]);
         }
         if (isset($modified_data['address']) && strlen($modified_data['address']) > 100) {
@@ -133,7 +133,6 @@ class Actions
         wp_send_json([
             'success' => true,
             'message' => 'Data saved successfully',
-             'data' => $modified_data
         ]);
     }
     public function save_data_additional() {
@@ -209,7 +208,6 @@ class Actions
             wp_send_json([
                 'success' => true,
                 'message' => 'Skills data saved successfully',
-                'data' => [$modified_data]
             ]);
 
         }
@@ -271,7 +269,11 @@ class Actions
             $subject = "New Enquiry from " . ($portfolio_settings['name'] ?? 'Your Portfolio');
             $headers = ['Content-Type: text/plain; charset=UTF-8'];
             if($portfolio_owner_email) {
-                wp_mail($portfolio_owner_email, $subject, $message, $headers);
+                try {
+                    wp_mail($portfolio_owner_email, $subject, $message, $headers);
+                }catch(Exception $e) {
+                    error_log("Error sending enquiry email from charming portfolio plugin: " . $e->getMessage());
+                }
             }
         }
 

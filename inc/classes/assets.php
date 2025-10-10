@@ -87,20 +87,34 @@ class Assets
     }
     public function admin_enqueue_styles()
     {
+        $portfolio_pages = [
+            "CHARMING_PORTFOLIO_page",
+            "CHARMING_PORTFOLIO_menu",
+            "CHARMING_PORTFOLIO_additional_menu",
+        ];
         wp_register_style('CHARMING_PORTFOLIO_admin', CHARMING_PORTFOLIO_DIR_URI . '/assets/build/css/admin.css',[], filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/css/admin.css'), 'all');
-        if (is_admin()) {
+        
+        if(is_admin() && isset($_GET) && isset($_GET['page']) && in_array($_GET['page'], $portfolio_pages)){
             wp_enqueue_style("CHARMING_PORTFOLIO_admin");
             wp_enqueue_style('dashicons');
         }
     }
     public function admin_enqueue_scripts()
     {
+        $portfolio_pages = [
+            "CHARMING_PORTFOLIO_page",
+            "CHARMING_PORTFOLIO_menu",
+            "CHARMING_PORTFOLIO_additional_menu",
+        ];
         wp_register_script("CHARMING_PORTFOLIO_admin", CHARMING_PORTFOLIO_DIR_URI . '/assets/build/js/admin.js', [], filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/js/admin.js'), true);
         wp_localize_script("CHARMING_PORTFOLIO_admin", "charming_portfolio_admin", [
             'ajax_url' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('charming_portfolio_save_data'),
         ]);
         //admin only scripts
-        if (is_admin()) { wp_enqueue_script("CHARMING_PORTFOLIO_admin"); } }
-
+//        if (is_admin()) {  } }
+        if(is_admin() && isset($_GET) && isset($_GET['page']) && in_array($_GET['page'], $portfolio_pages)){
+            wp_enqueue_script("CHARMING_PORTFOLIO_admin");
+        }
+    }
 }

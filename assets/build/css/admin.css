@@ -28,6 +28,178 @@
     transform: translate(-50%, -50%) rotate(360deg);
   }
 }
+.charming-portfolio-dashboard-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08);
+  padding: 32px;
+}
+.charming-portfolio-dashboard-container .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+.charming-portfolio-dashboard-container .header-images {
+  display: flex;
+  gap: 20px;
+}
+.charming-portfolio-dashboard-container .header-images img {
+  width: 90px;
+  height: 90px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #222;
+  background: #f4f4f4;
+}
+.charming-portfolio-dashboard-container .header-info {
+  flex: 1;
+  padding-left: 32px;
+}
+.charming-portfolio-dashboard-container .header-info h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #222;
+}
+.charming-portfolio-dashboard-container .header-info .header-links {
+  display: flex;
+  gap: 18px;
+  margin-top: 10px;
+}
+.charming-portfolio-dashboard-container .header-info .header-links a {
+  text-decoration: none;
+  color: #222;
+  background: #fafafa;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 0.98rem;
+  border: 1px solid #eee;
+  transition: background 0.2s;
+}
+.charming-portfolio-dashboard-container .header-info .header-links a:hover {
+  background: #e5e5e5;
+}
+.charming-portfolio-dashboard-container .dashboard-row {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 32px;
+}
+.charming-portfolio-dashboard-container .dashboard-stats {
+  display: flex;
+  gap: 18px;
+}
+.charming-portfolio-dashboard-container .dashboard-stats .dashboard-stat {
+  flex: 1;
+  background: linear-gradient(135deg, #e0f7fa 0%, #fffde4 100%);
+  color: #444;
+  border-radius: 10px;
+  padding: 22px 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: 1px solid #eee;
+}
+.charming-portfolio-dashboard-container .dashboard-stats .dashboard-stat span {
+  display: block;
+}
+.charming-portfolio-dashboard-container .dashboard-stats .dashboard-stat div {
+  font-size: 1.5rem;
+  margin-top: 8px;
+}
+.charming-portfolio-dashboard-container .dashboard-main {
+  flex: 2;
+}
+.charming-portfolio-dashboard-container .dashboard-sidebar {
+  flex: 1;
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 18px;
+  border: 1px solid #eee;
+}
+.charming-portfolio-dashboard-container .dashboard-sidebar h3 {
+  font-size: 1.1rem;
+  margin-top: 0;
+  color: #222;
+  margin-bottom: 10px;
+}
+.charming-portfolio-dashboard-container .dashboard-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px 0;
+}
+.charming-portfolio-dashboard-container .dashboard-sidebar ul li {
+  margin-bottom: 7px;
+  font-size: 0.97rem;
+}
+.charming-portfolio-dashboard-container .profile-info {
+  margin-bottom: 24px;
+}
+.charming-portfolio-dashboard-container .profile-info p {
+  margin: 9px 0;
+}
+.charming-portfolio-dashboard-container .social-links {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.charming-portfolio-dashboard-container .social-links a {
+  display: inline-block;
+  color: #fff;
+  background: #222;
+  border-radius: 3px;
+  padding: 3px 11px;
+  font-size: 0.97rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.charming-portfolio-dashboard-container .social-links a:hover {
+  background: #0077ff;
+}
+.charming-portfolio-dashboard-container .available-yes {
+  display: inline-block;
+  background: #e0ffe0;
+  color: #007700;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 2px 12px;
+  font-size: 0.99rem;
+  border: 1px solid #b7ffb7;
+}
+.charming-portfolio-dashboard-container .available-no {
+  display: inline-block;
+  background: #ffe0e0;
+  color: #cc0000;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 2px 12px;
+  font-size: 0.99rem;
+  border: 1px solid #ffb7ff;
+}
+.charming-portfolio-dashboard-container .section-title {
+  font-weight: 600;
+  margin-bottom: 9px;
+  color: #222;
+  font-size: 1.13rem;
+  border-left: 3px solid #222;
+  padding-left: 9px;
+}
+.charming-portfolio-dashboard-container .footer-links {
+  margin-top: 32px;
+  padding: 10px;
+  background: #fafafa;
+  border: 1px solid #eee;
+}
+.charming-portfolio-dashboard-container .footer-links a {
+  font-size: 16px;
+  color: #222;
+  margin-left: 8px;
+}
+
 /**
  * Admin Styles
  */
