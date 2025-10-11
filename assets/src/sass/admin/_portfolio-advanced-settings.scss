@@ -3,7 +3,67 @@
 
 /* Inline | http://localhost/wp-admin/admin.php?page=charming_portfolio_additional_menu */
 
+@use "variables.scss" as *;
+
 .portfolio_page_charming_portfolio_additional_menu {
+  .charming-portfolio-skills {
+    background: $input-bg-darker;
+    padding: 10px;
+
+    .button {
+      min-height: revert;
+      line-height: 1.5;
+      padding-block: 4px;
+    }
+
+    tbody {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+
+      .skill {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        background: #fff;
+        border-radius: 4px;
+
+        td {
+          width: 100%;
+          &:last-child {
+            display: flex;
+            justify-content: end;
+            align-items: end;
+            flex-direction: column;
+          }
+          input {
+            width: 100%;
+          }
+          img {
+            width: 80%;
+            display: block;
+            margin: auto;
+            height: auto;
+            object-fit: contain;
+          }
+
+          .button {
+            display: block;
+            width: fit-content;
+            margin-left: auto;
+          }
+        }
+      }
+    }
+
+    .charming-portfolio-projects,
+    .charming-portfolio-experience {
+      a.button {
+        min-height: revert;
+        line-height: 1.5;
+      }
+    }
+  }
 
   .single-experience,
   .single-project {
@@ -33,14 +93,13 @@
     }
 
     .charming-portfolio-skills {
-
       tr td:first-child {
         flex-shrink: 1;
       }
+
       tr td:last-child {
         flex-basis: 100%;
       }
     }
-
   }
 }

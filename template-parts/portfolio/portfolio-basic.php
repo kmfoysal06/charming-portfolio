@@ -65,19 +65,29 @@ if( ! defined( 'ABSPATH' ) ) {
             </div>
 
 	<span></span>
+        <div class="flex justify-between">
+            <label for="image">Primary Image 
+                <span class="dashicons dashicons-editor-help charming-portfolio-help-icon" data-title="<?php esc_attr_e("Click The image next, to change it.", "charming-portfolio"); ?>"></span>
+            </label>
 	<input id="image" class="CHARMING_PORTFOLIO_user_image" type="hidden" name="CHARMING_PORTFOLIO[image]" value="<?php echo esc_url($args["user_image"]);  ?>">
 	<img class="simplecharm-portfolio-user-image" id="simplecharm-portfolio-user-image" src="<?php echo esc_url($args["user_image"]);  ?>" width="100%" tabindex="0">
+</div>
 
 	<label for="short-description"><?php esc_html_e("Short Description:",'charming-portfolio'); ?></label>
 	<textarea id="short-description" class="short-description" name="CHARMING_PORTFOLIO[short_description]" maxlength="200"><?php echo esc_textarea($args["short_description"])  ?></textarea>
-	<label for="address"><?php esc_html_e("Address:",'charming-portfolio'); ?></label>
-	<input type="text" id="address" class="user-address" name="CHARMING_PORTFOLIO[address]" value="<?php echo esc_html($args["address"])  ?>" autocomplete="false">
-	<label for="available"><?php esc_html_e("Available:",'charming-portfolio'); ?></label>
-	<div class="switch-btn-wrapper">
-		<input type="checkbox" id="available" class="user-available" name="CHARMING_PORTFOLIO[available]" <?php echo esc_html(checked($args["available"], '1'));  ?>>
-		<div class="switch-btn">
-            <span></span>
-		</div>
+        <div class="flex justify-between">
+	        <label for="address"><?php esc_html_e("Address:",'charming-portfolio'); ?></label>
+	        <input type="text" id="address" class="user-address" name="CHARMING_PORTFOLIO[address]" value="<?php echo esc_html($args["address"])  ?>" autocomplete="false">
+
+        </div>
+        <div class="flex justify-between">
+            <label for="available"><?php esc_html_e("Available:",'charming-portfolio'); ?></label>
+            <div class="switch-btn-wrapper">
+                <input type="checkbox" id="available" class="user-available" name="CHARMING_PORTFOLIO[available]" <?php echo esc_html(checked($args["available"], '1'));  ?>>
+                <div class="switch-btn">
+                    <span></span>
+                </div>
+            </div>
+        </div>
 	</div>
-</div>
 </div>

@@ -440,7 +440,7 @@
   padding: 0 12px;
   border-radius: 6px;
   border: none;
-  background: #ff2eab;
+  background: #a259ff;
   color: #fff;
   font-weight: 600;
   font-size: 14px;
@@ -498,6 +498,67 @@
   padding: 18px 16px 12px;
   margin-bottom: 8px;
   box-shadow: none;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody {
+  display: grid;
+  gap: 10px;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody tr,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody tr,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody tr,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody tr,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody tr,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody tr {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: #fff;
+  margin-bottom: 10px;
+  flex-direction: column;
+  padding: 16px;
+  border-radius: 4px;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody tr input,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody tr input,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody tr input,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody tr input,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody tr input,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody tr input {
+  width: 100%;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody tr .button,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody tr .button,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody tr .button,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody tr .button,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody tr .button,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody tr .button {
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: auto;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody tr td,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody tr td,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody tr td,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody tr td,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody tr td,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody tr td {
+  width: 100%;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody tr td:last-child,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody tr td:last-child,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody tr td:last-child,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody tr td:last-child,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody tr td:last-child,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody tr td:last-child {
+  align-self: end;
 }
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social table,
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links table,
@@ -590,6 +651,9 @@
   .portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-content {
     padding: 0 9px;
   }
+  .portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-content.charming-portfolio-layout {
+    padding: 10px 8px;
+  }
   .portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-toggle {
     padding: 13px 10px 0 10px;
   }
@@ -612,6 +676,58 @@
   }
 }
 /* Inline | http://localhost/wp-admin/admin.php?page=charming_portfolio_additional_menu */
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills {
+  background: #e9ebf0;
+  padding: 10px;
+}
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills .button {
+  min-height: revert;
+  line-height: 1.5;
+  padding-block: 4px;
+}
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody .skill {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background: #fff;
+  border-radius: 4px;
+}
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody .skill td {
+  width: 100%;
+}
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody .skill td:last-child {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  flex-direction: column;
+}
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody .skill td input {
+  width: 100%;
+}
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody .skill td img {
+  width: 80%;
+  display: block;
+  margin: auto;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody .skill td .button {
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: auto;
+}
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills .charming-portfolio-projects a.button,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills .charming-portfolio-experience a.button {
+  min-height: revert;
+  line-height: 1.5;
+}
 .portfolio_page_charming_portfolio_additional_menu .single-experience,
 .portfolio_page_charming_portfolio_additional_menu .single-project {
   display: flex;
