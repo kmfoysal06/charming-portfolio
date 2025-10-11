@@ -226,7 +226,7 @@ body {
 .charming-portfolio-hero-section .hero-text .short-description::before {
   content: "";
   position: absolute;
-  width: 10px;
+  width: 4px;
   left: -18px;
   top: 50%;
   transform: translateY(-50%);
@@ -581,8 +581,10 @@ body {
   color: #fff;
   background-color: #666;
   margin-top: 0;
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
+  border-radius: 0;
+  /**  border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  **/
 }
 
 /** footer section end **/
