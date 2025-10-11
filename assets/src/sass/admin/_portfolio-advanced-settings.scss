@@ -18,7 +18,7 @@
 
     tbody {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
       gap: 10px;
 
       .skill {
@@ -30,17 +30,20 @@
 
         td {
           width: 100%;
+
           &:last-child {
             display: flex;
             justify-content: end;
             align-items: end;
             flex-direction: column;
           }
+
           input {
             width: 100%;
           }
+
           img {
-            width: 80%;
+            width: 50%;
             display: block;
             margin: auto;
             height: auto;
@@ -54,6 +57,10 @@
           }
         }
       }
+    }
+
+    .cp__add-another-btn-wrapper {
+      text-align: right;
     }
 
     .charming-portfolio-projects,
@@ -92,14 +99,5 @@
       width: 100%;
     }
 
-    .charming-portfolio-skills {
-      tr td:first-child {
-        flex-shrink: 1;
-      }
-
-      tr td:last-child {
-        flex-basis: 100%;
-      }
-    }
   }
 }

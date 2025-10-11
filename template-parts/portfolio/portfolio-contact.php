@@ -13,7 +13,7 @@ if( ! defined( 'ABSPATH' ) ) {
     
         <div class="flex justify-between">
             <label for="email"><?php esc_html_e("Email",'charming-portfolio'); ?>
-                <span class="dashicons dashicons-editor-help" title="<?php esc_attr_e("This email will also be used to send you enquiry mails from contact form in you portfolio if you have Contact Mailing enabled.", "charming-portfolio"); ?>"></span>
+                <span class="dashicons dashicons-editor-help charming-portfolio-help-icon" data-title="<?php esc_attr_e("This email will also be used to send you enquiry mails from contact form in you portfolio if you have Contact Mailing enabled.", "charming-portfolio"); ?>"></span>
             </label>
         	<input type="email" id="email" class="email" name="CHARMING_PORTFOLIO[email]" value="<?php echo esc_attr($args["email"]);  ?>" autocomplete="false">
 

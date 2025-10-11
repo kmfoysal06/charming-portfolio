@@ -227,6 +227,21 @@
     box-shadow: none;
   }
 
+  .charming-portfolio-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 8px;
+
+    label {
+      cursor: pointer;
+      display: flex;
+      padding: 14px 10px;
+      background: #fff;
+      flex-direction: column;
+      border-radius: 4px;
+    }
+  }
+
   .charming-portfolio-social,
   .charming-portfolio-header-links,
   .charming-portfolio-footer-links {
@@ -257,6 +272,7 @@
 
         padding: 16px;
         border-radius: 4px;
+
         td {
           width: 100%;
 
@@ -299,8 +315,7 @@
 
   .social_links,
   .header_links,
-  .footer_links {
-      }
+  .footer_links {}
 
   td {
     flex: 1;

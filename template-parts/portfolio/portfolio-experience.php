@@ -28,7 +28,10 @@ if (is_array($args) && array_key_exists("experiences", $args)):
  <tr class="single-experience">
     <td>
 
-            <label for="<?php echo esc_attr("experience-image-" . $key); ?>"><?php esc_html_e("Experience Image","charming-portfolio"); ?></label>
+                        <label for="<?php echo esc_attr("experience-image-" . $key); ?>"><?php esc_html_e("Experience Image","charming-portfolio"); ?>
+
+                            <span class="dashicons dashicons-editor-help charming-portfolio-help-icon" data-title="<?php esc_attr_e("Click the image next to change it.", "charming-portfolio"); ?>"></span>
+                        </label>
             <img width="200px" height="auto" src="<?php echo esc_url($logo) ?>" class="image" />
                         <input type="hidden" name="" value="<?php echo esc_url($logo) ?>" class="image-url" data-queue="<?php echo esc_attr($key); ?>" id="<?php echo esc_attr("experience-image-" . $key); ?>"/>
 		</td>

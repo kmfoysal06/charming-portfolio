@@ -499,6 +499,21 @@
   margin-bottom: 8px;
   box-shadow: none;
 }
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-layout,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 8px;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-layout label,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-layout label {
+  cursor: pointer;
+  display: flex;
+  padding: 14px 10px;
+  background: #fff;
+  flex-direction: column;
+  border-radius: 4px;
+}
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody,
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody,
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody,
@@ -687,7 +702,7 @@
 }
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 10px;
 }
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody .skill {
@@ -710,7 +725,7 @@
   width: 100%;
 }
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody .skill td img {
-  width: 80%;
+  width: 50%;
   display: block;
   margin: auto;
   height: auto;
@@ -722,6 +737,9 @@
   width: -moz-fit-content;
   width: fit-content;
   margin-left: auto;
+}
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills .cp__add-another-btn-wrapper {
+  text-align: right;
 }
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills .charming-portfolio-projects a.button,
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills .charming-portfolio-experience a.button {
@@ -750,12 +768,6 @@
   .portfolio_page_charming_portfolio_additional_menu textarea {
     width: 100%;
   }
-  .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tr td:first-child {
-    flex-shrink: 1;
-  }
-  .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tr td:last-child {
-    flex-basis: 100%;
-  }
 }
 .flex {
   display: flex;
@@ -775,6 +787,10 @@
 
 .flex-wrap {
   flex-wrap: wrap;
+}
+
+.gap-1 {
+  gap: 4px;
 }
 
 /**

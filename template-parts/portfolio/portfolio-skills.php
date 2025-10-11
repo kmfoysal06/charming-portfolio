@@ -48,6 +48,6 @@ endforeach;
     </tr>
   </tbody>
 </table>
-<p><a id="charming_portfolio_skill_link_add" class="button" href="#"><?php esc_html_e("Add Another","charming-portfolio"); ?></a></p>
+<p class="cp__add-another-btn-wrapper"><a id="charming_portfolio_skill_link_add" class="button" href="#"><?php esc_html_e("Add Another","charming-portfolio"); ?></a></p>
 </div>
 </div>
