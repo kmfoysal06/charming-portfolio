@@ -58,8 +58,14 @@ if (is_array($args) && array_key_exists("experiences", $args)):
     <td>
         <label for="<?php echo esc_attr("working-now-" . $key,'charming-portfolio'); ?>" title="<?php esc_attr_e("Are You Still Working Here?",'charming-portfolio'); ?>"><?php esc_html_e("Still Working?",'charming-portfolio'); ?></label>
        <div class="still-working-wrapper checkbox-wrapper">
+                            <div class="switch-btn-wrapper">
             <input type="checkbox" id="<?php echo esc_attr("working-now-" . $key); ?>" class="working" data-queue="<?php echo esc_attr($key); ?>" <?php checked($working_now,'1'); ?>>
+
+                                <div class="switch-btn">
             <span></span>
+                                    </div>
+
+                                    </div>
        </div>
     </td>
     <td>

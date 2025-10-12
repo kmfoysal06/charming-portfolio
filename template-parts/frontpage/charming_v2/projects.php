@@ -24,10 +24,12 @@ if(is_array($projects) && !empty($projects)):
                 <?php endif; ?>
                 <div class="project-details">
                     <h3><?php echo esc_html($project['title']); ?></h3>
-                    <p><?php echo wp_kses(CHARMING_PORTFOLIO_special_tag($project['description']), array(
+                    <div class="charming-portfolio-has-see-more">
+                    <p class="see-more-text"><?php echo wp_kses(CHARMING_PORTFOLIO_special_tag($project['description']), array(
                         'b' => [],
                         'br' => [],
                     )); ?></p>
+                    </div>
                     <small><?php echo esc_html($project['tags']); ?></small>
                 </div>
             </div>

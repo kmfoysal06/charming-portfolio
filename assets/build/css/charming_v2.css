@@ -299,10 +299,6 @@ body {
   transition: transform 0.3s ease;
 }
 
-.charming-portfolio-projects-section .single-project:hover {
-  transform: translateY(-4px) scale(1.02);
-}
-
 .charming-portfolio-projects-section .single-project .project-details {
   padding: 8px 16px;
 }
@@ -657,6 +653,21 @@ body {
   100% {
     background-position: 200% center;
   }
+}
+.charming-portfolio-has-see-more .see-more-text {
+  margin-bottom: 0;
+  display: inline;
+  margin-right: 10px;
+}
+
+.charming-portfolio-has-see-more .see-more {
+  color: #00f;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.charming-portfolio-has-see-more .see-more:hover {
+  text-decoration: underline;
 }
 
 /*# sourceMappingURL=charming_v2.css.map*/

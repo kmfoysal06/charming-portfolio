@@ -30,12 +30,15 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
                         <p class="timerange"><?php echo esc_html($portfolio->get_experience_timerange($experience)); ?></p>
                     </div>
                     <p class="designation"><?php echo esc_html($experience['post-title']); ?></p>
-                    <p><?php echo 
+
+                    <div class="charming-portfolio-has-see-more">
+                    <p class="see-more-text"><?php echo 
                         wp_kses(CHARMING_PORTFOLIO_special_tag($experience['responsibility']), array(
                             'b' => [],
                             'br' => [],
                         ));
                     ?></p>
+                    </div>
                 </div>
             </div>
             <?php endforeach; ?>

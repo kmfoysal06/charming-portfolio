@@ -110,6 +110,41 @@ jQuery(document).ready(function ($) {
 
 /***/ }),
 
+/***/ "./src/js/components/see-more-btn.js":
+/*!*******************************************!*\
+  !*** ./src/js/components/see-more-btn.js ***!
+  \*******************************************/
+/***/ (function() {
+
+const allP = document.querySelectorAll(".charming-portfolio-has-see-more .see-more-text");
+allP.forEach(p => {
+  if (p) {
+    const pVal = p.innerText;
+    if (pVal.length > 120) {
+      let hidden = true;
+      const shownValue = pVal.slice(0, 120);
+      p.innerText = shownValue;
+      const a = document.createElement("span");
+      a.classList.add("see-more");
+      a.innerText = "See More";
+      a.addEventListener("click", e => {
+        if (hidden) {
+          hidden = false;
+          p.innerText = pVal;
+          a.innerText = "See Less";
+        } else {
+          hidden = true;
+          p.innerText = shownValue;
+          a.innerText = "See More";
+        }
+      });
+      p.insertAdjacentElement("afterend", a);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./src/js/components/v2-nav.js":
 /*!*************************************!*\
   !*** ./src/js/components/v2-nav.js ***!
@@ -119,7 +154,8 @@ jQuery(document).ready(function ($) {
 document.addEventListener("DOMContentLoaded", function () {
   const menuIcon = document.querySelector('.menu-toggle');
   menuIcon.addEventListener('click', function (e) {
-    const header = document.querySelector('.charming-portfolio-header');
+    const header = e.target.closest('.charming-portfolio-header');
+    console.log(header.classList);
     if (header.classList.contains('mobile-menu-open')) {
       header.classList.remove('mobile-menu-open');
       menuIcon.classList.remove('fa-xmark');
@@ -230,6 +266,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_contact_form_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_components_contact_form_js__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_v2_nav_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/v2-nav.js */ "./src/js/components/v2-nav.js");
 /* harmony import */ var _components_v2_nav_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_components_v2_nav_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_see_more_btn_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/see-more-btn.js */ "./src/js/components/see-more-btn.js");
+/* harmony import */ var _components_see_more_btn_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_components_see_more_btn_js__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 

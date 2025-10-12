@@ -33,4 +33,3 @@ if(!defined("ABSPATH")) {
 
 </main>
 <?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/charming_v2/footer", "", $args);?>
-<script src="http://kmfoysal06.github.io/css-practice/baler-portfolio/nav.js"></script>
