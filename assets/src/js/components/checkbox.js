@@ -1,11 +1,9 @@
 (function(){
-    const switchBtns = document.querySelectorAll(".switch-btn-wrapper")
-    switchBtns.forEach((btn) => {
-        const checkBox = btn.querySelector("input")
-        const switchBtn = btn.querySelector(".switch-btn")
-        checkBox.checked ? btn.classList.add('on') : btn.classList.remove('on')
-        
-        switchBtn.addEventListener("click", () => {
+    document.addEventListener("click", (e) => {
+        if(e.target.closest(".switch-btn-wrapper")) {
+            const btn = e.target.closest(".switch-btn-wrapper")
+            const checkBox = btn.querySelector("input")
+            const switchBtn = btn.querySelector(".switch-btn")
             checkBox.checked = !checkBox.checked
             checkBox.checked ? btn.classList.add('on') : btn.classList.remove('on')
             //trigger change to the checkbox
@@ -13,6 +11,6 @@
                 bubbles: true
             });
             checkBox.dispatchEvent(changeEvent);
-        })
+        }
     })
 })()

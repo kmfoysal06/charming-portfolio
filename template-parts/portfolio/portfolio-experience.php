@@ -110,9 +110,13 @@ endif;
     <td>
         <label for="working-now" title="<?php esc_attr_e('Are You Still Working Here','charming-portfolio'); ?>"><?php esc_html_e('Still Working?','charming-portfolio'); ?></label>
         <div class="still-working-wrapper checkbox-wrapper">
-            <input type="checkbox" id="working-now" name="charming_portfolio[experiences][0][working]" class="working" data-queue="0">
-            <span></span>
-        </div>
+            <div class="switch-btn-wrapper">
+                <input type="checkbox" id="working-now" name="charming_portfolio[experiences][0][working]" class="working" data-queue="0">
+                <div class="switch-btn">
+                    <span></span>
+                </div>
+            </div>
+       </div>
     </td>
     <td>
         <a class="button charming_portfolio_experience_remove" href="#1"><?php esc_html_e('Remove','charming-portfolio'); ?></a>

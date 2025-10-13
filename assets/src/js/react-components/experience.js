@@ -37,7 +37,7 @@ const Experience = ({ specialTag, experiences }) => {
   }
 
   return (
-    <section className="experience min-h-max p-6 my-2 flex flex-col">
+    <section className="experience min-h-max p-6 my-2 flex flex-col charming-portfolio-container-w">
       <div className="section-title simrev-up" ref={(el) => el && thisDivs.current.push(el)}>
             <Badge badgeTitle={"Experience"} />
         <p>Here is a quick summary of my most recent experiences:</p>

@@ -63,7 +63,11 @@ const Portfolio = () => {
             <Skills skills={portfolio_data.skills} />
             <Experience specialTag={specialTag} experiences={portfolio_data.experiences} />
             <Projects specialTag={specialTag} projects={portfolio_data.works} splitTags={splitTags} />
-            <Blogs blogs={charming_portfolio_latest_blogs} />
+           {
+                /**
+                 *<Blogs blogs={charming_portfolio_latest_blogs} />
+                 */
+            } 
             <Footer portfolio={portfolio_data} />
         </>
     );

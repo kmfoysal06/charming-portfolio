@@ -10,9 +10,9 @@ const Intro = ({ portfolio, specialTag }) => {
 
   return (
     <>
-      <section className="min-h-screen min-h-lvh grid items-center mb-2">
+      <section className="min-h-screen min-h-lvh grid items-center mb-2 charming-portfolio-container-w">
         <div
-          className="grid grid-cols-1 text-center lg:text-justify lg:grid-cols-2 lg:grid-flow-col-reverse cp-p4 intro cp-mt5"
+          className="grid grid-cols-1 lg:grid-cols-2 lg:grid-flow-col-reverse cp-p4 intro cp-mt5"
           tabIndex="0"
         >
           <div className="CHARMING_PORTFOLIO_primary-image-container">
@@ -48,13 +48,13 @@ const Intro = ({ portfolio, specialTag }) => {
                 <span className="mr-3">
                   <i
                     className={
-                      portfolio.available
+                      parseInt(portfolio.available) === 1
                         ? "simplecharm-portfolio-available"
                         : "simplecharm-portfolio-available-false"
                     }
                   ></i>
                 </span>
-                {portfolio.available
+                {parseInt(portfolio.available) === 1
                   ? "Available for New Projects"
                   : "Currently Not Available for New Projects"}
               </p>

@@ -26,3 +26,6 @@
   margin-block: 12px 48px;
   row-gap: 1rem;
 }
+.charming-portfolio-skills-grid{
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr))
+}

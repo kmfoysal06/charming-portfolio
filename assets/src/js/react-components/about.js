@@ -11,7 +11,7 @@ const About = ({ specialTag, portfolio }) => {
   ScrollAnimate(thisDivs);
   return (
     <>
-      <section className="about-me min-h-screen min-h-max cp-my2 flex justify-center">
+      <section className="about-me min-h-screen min-h-max cp-my2 flex justify-center charming-portfolio-container-w">
         <div className="flex flex-col" tabIndex="0">
           <div
             className="section-title simrev-up-delay"
@@ -24,7 +24,7 @@ const About = ({ specialTag, portfolio }) => {
           <div className="aboutme hero-content sm:flex-col md:flex-row lg:flex-row  sm:justify-between md:justify-between lg:justify-between">
             <img
               src={portfolio.user_image2}
-              className="sm:w-full md:w-2/4 lg:w-2/4 rounded-lg simrev-up-delay"
+              className="w-full rounded-lg simrev-up-delay"
               style={{ "--delay": "50ms" }}
             alt={portfolio.name}
               ref={(el) => el && thisDivs.current.push(el)}

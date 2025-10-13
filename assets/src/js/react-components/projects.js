@@ -14,7 +14,7 @@ const Projects = ({ projects, specialTag, splitTags }) => {
     ScrollAnimate(thisDivs);
 
     return (
-        <section className="projects min-h-max p-6 my-2 flex flex-col">
+        <section className="projects min-h-max p-6 my-2 flex flex-col charming-portfolio-container-w">
             <div className="section-title simrev-up" ref={(el) => el && thisDivs.current.push(el)}>
 
             <Badge badgeTitle={"Works"} />

@@ -25,7 +25,7 @@ const Skills = ({ skills }) => {
     const thisDivs = useRef([]);
     ScrollAnimate(thisDivs);
     return (
-        <section className="skills min-h-max p-6 my-2 flex flex-col">
+        <section className="skills min-h-max p-6 my-2 flex flex-col charming-portfolio-container-w">
             {skills && Object.keys(skills).length > 0 ? (
                 <>
                     <div
@@ -42,13 +42,13 @@ const Skills = ({ skills }) => {
                         </p>
                     </div>
                     <div
-                        className="skills-container simrev-up-delay"
+                        className="skills-container charming-portfolio-skills-grid simrev-up-delay"
                         ref={(el) => el && thisDivs.current.push(el)}
                         style={{ "--delay": "70ms" }}
                     >
                         {Object.keys(skills).map((skillKey, index) => {
                             const skill = skills[skillKey];
-                            return <Skill key={skillKey || index} skill={skill} id={index} refDivs={thisDivs} />;
+                            return <Skill key={index} skill={skill} id={index} refDivs={thisDivs} />;
                         })}
                     </div>
                 </>

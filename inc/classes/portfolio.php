@@ -323,6 +323,20 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
     {
         $option_value            = get_option("CHARMING_PORTFOLIO_v2");
         $additional_option_value = get_option("CHARMING_PORTFOLIO_additional_v2");
+
+            $saved_values      = [
+                'enabled'           => false,
+                'name'              => "Mr. Charm",
+                'designation'       => "Unemployed",
+                'user_image'        => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg",
+                'user_image2'       => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg",
+                'email'             => "abc@def.com",
+                'phone'             => "01345678910",
+                'short_description' => "Hello, I am rare skilled genius and introvert person",
+                'address'           => "Earth",
+                'available'         => false,
+                'layout'            => 'charming_v2',
+            ];
         // return $additional_option_value;
 
 		if (is_array($option_value)) {
