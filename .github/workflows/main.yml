@@ -18,7 +18,7 @@ jobs:
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.6
       with:
-        server: kmfoysal06.com
+        server: 94.130.22.223
         server-dir: /cp.kmfoysal06.com/wp-content/plugins/charming-portfolio/
         local-dir: ./
         username: kmfoysa1
