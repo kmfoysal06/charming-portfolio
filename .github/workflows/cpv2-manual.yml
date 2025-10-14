@@ -1,5 +1,5 @@
 on: workflow_dispatch 
-name: Deploy website on push
+name: Manual Deploy website cpv2
 jobs:
   web-deploy:
   
