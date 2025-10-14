@@ -24,8 +24,7 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
                             class="searchform charming-portfolio-search" action="/">
                             <div>
                                 <label class="screen-reader-text" for="s">Search for Blogs:</label>
-                                <input type="text" placeholder="Search" value="" name="s" id="s">
-                                <button type="submit" class="submit charming-portfolio-header-search"
+                                <input type="text" placeholder="Search" value="" name="s" id="s"><button type="submit" class="submit charming-portfolio-header-search"
                                     aria-label="Search">
                                     <span class="dashicons dashicons-search"><span>
                                 </button>

@@ -23,6 +23,8 @@ const Experience = ({ specialTag, experiences }) => {
   // Check if experiences exist and are not empty
   const hasExperiences =
     experiences && Array.isArray(experiences) && experiences.length > 0;
+    console.log(experiences)
+    window.xxx  = experiences
 
   const formatDate = (dateString) => {
     if (!dateString) return "";
@@ -43,7 +45,8 @@ const Experience = ({ specialTag, experiences }) => {
         <p>Here is a quick summary of my most recent experiences:</p>
       </div>
       {experiences.map((singleExperience, index) => {
-        const flattenedExperience = flattenArray(singleExperience);
+        //const flattenedExperience = flattenArray(singleExperience);
+        const flattenedExperience = singleExperience;
 
         // Skip if empty after flattening
         if (
