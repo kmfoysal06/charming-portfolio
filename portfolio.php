@@ -4,13 +4,13 @@
  * @since 1.0
  * Plugin Name: Charming Portfolio
  * Description: A simple portfolio plugin for WordPress.
- * Version: 1.5
+ * Version: 2.9
  * Author: kmfoysal06
  * Author URI: https://profiles.wordpress.org/kmfoysal06
  * Tags: charming-portfolio, portfolio-plugin, simple-portfolio
  * Requires at least: 5.0
  * Tested up to: 6.8
- * Requires PHP: 7.0
+ * Requires PHP: 8.0
  * Text Domain: charming-portfolio
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html

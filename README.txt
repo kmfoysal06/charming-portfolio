@@ -3,8 +3,8 @@ Contributors: kmfoysal06
 Tags: charming-portfolio, simplecharm-portfolio, portfolio-plugin, simple-portfolio
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 1.5
-Requires PHP: 7.0
+Stable tag: 2.0
+Requires PHP: 8.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 

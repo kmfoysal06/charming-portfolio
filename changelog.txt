@@ -49,6 +49,8 @@
 -Bug Fixes
 ==v2.0==
 -New UI
--New Theme Selecting Avility
+-New Theme Selecting Ability
 -Updating Data With Ajax in Admin
+-Contact Form and Submissions
 -Bug Fixes
+-Easy Automated DB Migration from V1
