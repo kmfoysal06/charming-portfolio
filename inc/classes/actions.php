@@ -272,7 +272,7 @@ class Actions
                 try {
                     wp_mail($portfolio_owner_email, $subject, $message, $headers);
                 }catch(Exception $e) {
-                    error_log("Error sending enquiry email from charming portfolio plugin: " . $e->getMessage());
+                    //error_log("Error sending enquiry email from charming portfolio plugin: " . $e->getMessage());
                 }
             }
         }

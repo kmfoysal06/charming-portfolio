@@ -75,7 +75,23 @@ class Portfolio
 
 	    $outline .= '<input type="text" name="mail" id="mail" class="mail" value="'. esc_attr($mail) .'" style="width:300px;"/>';
 
-        echo $outline;
+        echo wp_kses(
+            $outline,
+            [
+                "label" => [
+                    "for" => [],
+                    "style" => []
+                ],
+                "input" => [
+                    "type" => [],
+                    "name" => [],
+                    "id"   => [],
+                    "class" => [],
+                    "value" => [],
+                    "style" => []
+                ]
+            ]
+        );
     }
 public function charming_portfolio_e_columns( $columns ) {
     // Add your new column after the 'title' column, for example
@@ -425,17 +441,26 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
     public function get_social_icon_classes($name)
     {
         $name = strtolower($name);
+//        $mapping = [
+//            'facebook'  => 'fab fa-facebook-f',
+//            'twitter'   => 'fab fa-twitter',
+//            'instagram' => 'fab fa-instagram',
+//            'linkedin'  => 'fab fa-linkedin-in',
+//            'github'    => 'fab fa-github',
+//            'youtube'   => 'fab fa-youtube',
+//            'pinterest' => 'fab fa-pinterest',
+//            'tiktok'    => 'fab fa-tiktok'
+//        ];
         $mapping = [
-            'facebook'  => 'fab fa-facebook-f',
-            'twitter'   => 'fab fa-twitter',
-            'instagram' => 'fab fa-instagram',
-            'linkedin'  => 'fab fa-linkedin-in',
-            'github'    => 'fab fa-github',
-            'youtube'   => 'fab fa-youtube',
-            'pinterest' => 'fab fa-pinterest',
-            'tiktok'    => 'fab fa-tiktok'
+            'facebook'  => 'dashicons dashicons-facebook-alt',
+            'twitter'   => 'dashicons dashicons-twitter',
+            'instagram' => 'dashicons dashicons-instagram',
+            'linkedin'  => 'dashicons dashicons-linkedin',
+            'youtube'   => 'dashicons dashicons-youtube',
+            'pinterest' => 'dashicons dashicons-pinterest',
         ];
-        return isset($mapping[$name]) ? $mapping[$name] : 'fas fa-link';
+
+        return isset($mapping[$name]) ? $mapping[$name] : 'dashicons dashicons-external';
     }
     /**
      * Get Experience Timerange
@@ -445,10 +470,10 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
         $end_date = $experience['end_date'] ?? '';
         $is_working = $experience['working'] ?? "0";
         if(!empty($start_date)) {
-            $start_date = date("M Y", strtotime($start_date));
+            $start_date = gmdate("M Y", strtotime($start_date));
         }
         if(!empty($end_date)) {
-            $end_date = date("M Y", strtotime($end_date));
+            $end_date = gmdate("M Y", strtotime($end_date));
         }
 
         if (intval($is_working) === 1) {
