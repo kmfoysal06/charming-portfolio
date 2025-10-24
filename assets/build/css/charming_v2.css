@@ -295,6 +295,9 @@ body {
   cursor: pointer;
   transition: transform 0.3s ease;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 .charming-portfolio-projects-section .single-project .single-project-link {
   opacity: 0;
@@ -319,8 +322,18 @@ body {
   padding: 16px;
   font-size: 20px;
 }
-.charming-portfolio-projects-section .single-project .project-details {
+.charming-portfolio-projects-section .single-project .primary-project-details {
+  background: #fff;
+  padding: 8px 16px;
+}
+.charming-portfolio-projects-section .single-project .primary-project-details h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+}
+.charming-portfolio-projects-section .single-project .secondary-project-details {
   position: absolute;
+  top: 100%;
   left: 0;
   transform: translateY(-20px) scaleY(0.8);
   transform-origin: top;
@@ -329,34 +342,28 @@ body {
   transition: opacity 0.3s ease, transform 0.3s ease;
   background-color: #fff;
 }
-.charming-portfolio-projects-section .single-project .project-details p {
+.charming-portfolio-projects-section .single-project .secondary-project-details p {
   font-size: 14px;
   color: #222;
   margin-bottom: 0;
   display: inline-block;
 }
-.charming-portfolio-projects-section .single-project .project-details h3 {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: #000;
-}
-.charming-portfolio-projects-section .single-project .project-details small {
+.charming-portfolio-projects-section .single-project .secondary-project-details small {
   font-size: 14px;
   color: #222;
   margin-bottom: 4px;
 }
-.charming-portfolio-projects-section .single-project .project-details .charming-portfolio-has-see-more {
+.charming-portfolio-projects-section .single-project .secondary-project-details .charming-portfolio-has-see-more {
   display: flex;
   flex-direction: column;
 }
-.charming-portfolio-projects-section .single-project:hover .project-details, .charming-portfolio-projects-section .single-project:focus .project-details {
+.charming-portfolio-projects-section .single-project:hover .secondary-project-details, .charming-portfolio-projects-section .single-project:focus .secondary-project-details {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0) scaleY(1);
 }
 
-.charming-portfolio-projects-section .single-project .project-details {
+.charming-portfolio-projects-section .single-project .secondary-project-details {
   padding: 8px 16px;
 }
 

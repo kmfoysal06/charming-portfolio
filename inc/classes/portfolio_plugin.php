@@ -170,13 +170,11 @@ class PORTFOLIO_PLUGIN{
                 if (empty($project['title']) && empty($project['description']) && empty($project['tags']) && empty($project['link'])) {
                     continue;
                 }
-
-                $output['projects'][] = [
-                    'name' => $project['title'] ?? '',
+                $output['works'][] = [
+                    'title' => $project['title'] ?? '',
                     'description' => $project['description'] ?? '',
                     'tags' => $project['tags'] ?? '',
                     'link' => $project['link'] ?? '',
-                    'title' => '', // keeping it for structure match
                 ];
             }
         }

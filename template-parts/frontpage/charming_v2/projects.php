@@ -27,8 +27,10 @@ if(is_array($projects) && !empty($projects)):
                 <?php if(isset($project['thumbnail']) && !empty($project['thumbnail'])): ?>
                     <img src="<?php echo esc_url($project['thumbnail']); ?>" width="300px" height="auto" alt="<?php echo esc_attr($project['title']); ?>" />
                 <?php endif; ?>
-                <div class="project-details">
+                <div class="primary-project-details">
                     <h3><?php echo esc_html($project['title']); ?></h3>
+                </div>
+                <div class="secondary-project-details">
                     <div class="charming-portfolio-has-see-more">
                     <p class="see-more-text"><?php echo wp_kses(CHARMING_PORTFOLIO_special_tag($project['description']), array(
                         'b' => [],

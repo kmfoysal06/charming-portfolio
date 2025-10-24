@@ -200,6 +200,9 @@ body {
   cursor: pointer;
   transition: transform 0.3s ease;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 
   .single-project-link {
     opacity: 0;
@@ -225,8 +228,18 @@ body {
       padding: 16px;
       font-size: 20px;
   }
-  .project-details {
+  .primary-project-details {
+    background: #fff;
+    padding: 8px 16px;
+    h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #000;
+    }
+  }
+  .secondary-project-details {
     position: absolute;
+    top: 100%;
     left: 0;
     transform: translateY(-20px) scaleY(0.8);
     transform-origin: top;
@@ -240,12 +253,7 @@ body {
       margin-bottom: 0;
       display: inline-block;
     }
-    h3 {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: #000;
-    }
+    
     small {
       font-size: 14px;
       color: #222;
@@ -256,20 +264,16 @@ body {
       flex-direction: column;
     }
   }
-  &:hover .project-details,
-  &:focus .project-details {
+  &:hover .secondary-project-details,
+  &:focus .secondary-project-details {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0) scaleY(1);
   }
 }
 
-.charming-portfolio-projects-section .single-project:hover {
-  //transform: translateY(-4px) scale(1.02);
-}
 
-
-.charming-portfolio-projects-section .single-project .project-details {
+.charming-portfolio-projects-section .single-project .secondary-project-details {
   padding: 8px 16px;
 }
 
