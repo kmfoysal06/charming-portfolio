@@ -28,6 +28,9 @@ class Actions
         add_action('wp_ajax_charming_portfolio_save_data_additional', [$this, 'save_data_additional']);
         add_action("wp_ajax_charming_portfolio_add_enquiry", [$this, "add_enquiry"]);
         add_action("wp_ajax_nopriv_charming_portfolio_add_enquiry", [$this, "add_enquiry"]);
+
+        // erase all data action
+        add_action("wp_ajax_charming_portfolio_erase_data", [$this, "erase_all_data"]);
     }
     public function save_data() {
         if ( ! check_ajax_referer( 'charming_portfolio_save_data', 'nonce', false ) ) {
@@ -147,11 +150,11 @@ class Actions
 
             $modified_data = PORTFOLIO::get_instance()->sanitize_array(wp_unslash($_POST));
             $skills = $modified_data['skills'] ?? "[]";
-            $skills = json_decode(wp_unslash($skills), true);
+            $skills = json_decode(($skills), true);
             $projects = $modified_data['works'] ?? "[]";
-            $projects = json_decode(wp_unslash($projects), true);
+            $projects = json_decode($projects, true);
             $experiences = $modified_data['experiences'] ?? "[]";
-            $experiences = json_decode(wp_unslash($experiences), true);
+            $experiences = json_decode($experiences, true);
 
 
 
@@ -171,6 +174,7 @@ class Actions
                 unset($experience['post_title']);
                 // sanitize responsibility
                 $experience['responsibility'] = sanitize_textarea_field(wp_unslash($experience['responsibility']));
+                $still_working = boolval($experience['working']) ?? false;
                 // validate start date
                 if (isset($experience['start_date']) && !preg_match("/[0-9]{4}-[0-9]{2}-[0-9]{2}/", $experience['start_date'])) {
                     wp_send_json([
@@ -178,12 +182,14 @@ class Actions
                         'message' => 'Invalid Start Date!'
                     ]);
                 }
-                // validate end date
-                if (isset($experience['end_date']) && !preg_match("/[0-9]{4}-[0-9]{2}-[0-9]{2}/", $experience['end_date'])) {
-                    wp_send_json([
-                        'success' => false,
-                        'message' => 'Invalid End Date!'
-                    ]);
+                if(!$still_working) {
+                    // validate end date
+                    if (isset($experience['end_date']) && !preg_match("/[0-9]{4}-[0-9]{2}-[0-9]{2}/", $experience['end_date'])) {
+                        wp_send_json([
+                            'success' => false,
+                            'message' => 'Invalid End Date!'
+                        ]);
+                    }
                 }
                 return $experience;
             }, $experiences);
@@ -290,5 +296,38 @@ class Actions
         }
 
         wp_die();
+    }
+
+    /**
+     * Erase all portfolio data
+     */
+    public function erase_all_data() {
+        if ( ! check_ajax_referer( 'charming_portfolio_erase_data', 'nonce', false ) ) {
+            wp_send_json([
+                'success' => false,
+                'message' => 'Bot Detected! Please try again later.'
+            ]);
+        }
+        
+        // delete portfolio options
+        delete_option('CHARMING_PORTFOLIO_v2');
+        delete_option('CHARMING_PORTFOLIO_additional_v2');
+        delete_option('CHARMING_PORTFOLIO_data');
+        delete_option('CHARMING_PORTFOLIO_additional_data');
+
+        // delete all enquiries
+        $enquiries = get_posts([
+            'post_type' => 'charming_portfolio_e',
+            'numberposts' => -1,
+            'post_status' => 'any',
+        ]);
+        foreach($enquiries as $enquiry) {
+            wp_delete_post($enquiry->ID, true);
+        }
+
+        wp_send_json([
+            'success' => true,
+            'message' => 'All portfolio data erased successfully.'
+        ]);
     }
 }

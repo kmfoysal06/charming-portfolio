@@ -14,3 +14,6 @@ import "./components/save-data.js";
 import "./components/media/skills-images.js";
 import "./components/media/project-images.js";
 import "./components/media/experience-images.js";
+
+// danger zone
+import "./components/danger-zone.js";

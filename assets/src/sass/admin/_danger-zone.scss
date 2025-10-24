@@ -1,0 +1,177 @@
+/* ===== Charming Portfolio - Danger Zone UI ===== */
+
+.portfolio-section-wrapper.section-danger-zone {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-left: 4px solid #d63638;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    max-width: 800px;
+    margin-top: 20px;
+    font-family: "Inter", "Segoe UI", sans-serif;
+
+    .portfolio-section-toggle {
+        color: #d63638;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .portfolio-section-content {
+        background: #fff6f6;
+        border: 1px solid #f3caca;
+        border-radius: 6px;
+        padding: 16px 20px;
+        margin-bottom: 20px;
+        line-height: 1.6;
+        color: #4a0000;
+    }
+
+    .portfolio-section-content p {
+        margin: 0 0 10px;
+    }
+
+    .flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    /* ===== Buttons ===== */
+
+    .button-danger {
+        background: #d63638 !important;
+        border-color: #b91c1c !important;
+        color: #fff !important;
+        font-weight: 500;
+        padding: 2px 14px;
+        border-radius: 4px;
+        transition: background 0.2s, transform 0.1s;
+    }
+
+    .button-danger:hover {
+        background: #b91c1c !important;
+        transform: translateY(-1px);
+    }
+
+    .button-secondary {
+        background: #f6f7f7 !important;
+        color: #1e1e1e !important;
+        border: 1px solid #ccc !important;
+    }
+
+    .button-secondary:hover {
+        background: #e0e0e0 !important;
+    }
+
+    .button-primary:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    /* ===== Input Challenge ===== */
+
+    .erase-data-challange {
+        background: #fffaf9;
+        border: 1px solid #f5d5d0;
+        padding: 20px;
+        margin-block: 16px;
+        border-radius: 6px;
+        display: none;
+    }
+
+    .cp-modal-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .erase-data-challange-input {
+        width: 100%;
+        max-width: 400px;
+        padding: 2px 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+    .erase-data-challange-input:focus {
+        border-color: #d63638;
+        box-shadow: 0 0 0 2px rgba(214, 54, 56, 0.15);
+        outline: none;
+    }
+
+    /* ===== Modal ===== */
+
+    .final-erase-data-modal {
+        display: none;
+        /* Hidden by default, show via JS */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(10, 10, 10, 0.6);
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    .final-erase-data-modal-content {
+        background: #fff;
+        border-radius: 8px;
+        padding: 24px;
+        max-width: 480px;
+        width: 90%;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .final-erase-data-modal-content h3 {
+        color: #d63638;
+        font-weight: 600;
+        margin-bottom: 12px;
+    }
+
+    .final-erase-data-modal-content p {
+        color: #444;
+        margin-bottom: 20px;
+        line-height: 1.5;
+    }
+
+    .final-erase-data-modal-footer p {
+        font-size: 13px;
+        color: #888;
+        text-align: center;
+    }
+
+
+
+    /* ===== Confirmation Message ===== */
+
+    .erase-data-challange-message {
+        font-size: 13px;
+        color: #b91c1c;
+        margin-top: 4px;
+        font-weight: 500;
+    }
+}
+
+
+
+/* Responsive */
+@media (max-width: 600px) {
+    .portfolio-section-wrapper.section-danger-zone {
+        padding: 16px;
+
+        .final-erase-data-modal-content {
+            padding: 18px;
+        }
+    }
+
+}

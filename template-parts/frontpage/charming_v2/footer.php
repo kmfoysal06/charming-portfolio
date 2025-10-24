@@ -39,8 +39,9 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
         </div>
         <?php
             $latest_blogs = CHARMING_PORTFOLIO_get_latest_posts();
+            $blog_enabled = isset($args['enabled_blog']) ? $args['enabled_blog'] : false;
         ?>
-        <?php if(is_array($latest_blogs) && !empty($latest_blogs)): ?>
+        <?php if($blog_enabled && is_array($latest_blogs) && !empty($latest_blogs)): ?>
             <div class="footer-section footer-section-menus">
                 <div class="footer-subsection">
                     <h3>Latest Blogs:</h3>

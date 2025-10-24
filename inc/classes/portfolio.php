@@ -25,6 +25,7 @@ class Portfolio
         add_action('admin_enqueue_scripts', [$this, "load_media"]);
         add_action('init', [$this, 'enquiries']);
         add_action('add_meta_boxes', [$this, 'mail_meta_box']);
+        add_action('admin_head', [$this, 'change_submenu_color']);
 
         add_filter( 'manage_charming_portfolio_e_posts_columns', [$this, 'charming_portfolio_e_columns'] );
 
@@ -149,6 +150,15 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
             "charming_portfolio_additional_menu",
             [$this, "portfolio_additional_submenu_html"],
         );
+
+        add_submenu_page(
+            "CHARMING_PORTFOLIO_page",
+            "Danger Zone",
+            "Danger Zone",
+            "manage_options",
+            "charming_portfolio_danger_zone",
+            [$this, "portfolio_danger_zone_submenu_html"]
+        );
     }
 
     /**
@@ -258,7 +268,32 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
         <?php
     }
 
+    public function portfolio_danger_zone_submenu_html()
+    {
+        ?>
+    <div class="admin-portfolio-dangerzone__container">
+        <div class="admin-portfolio-dangerzone">
+            <div class="page-title">
+                <h2><?php esc_html__("Danger Zone","charming-portfolio"); ?></h2>
+            </div>
+            <form method="POST" class="page-contents">
+                <?php  CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'danger-zone', $this->display_saved_value());?>
+                <input type="hidden" name="charming-portfolio__nonce" value="<?php echo esc_attr(wp_create_nonce("CHARMING_PORTFOLIO_danger_zone__nonce")) ?>">
+        </div>
+    </div>
+        <?php
+    }
 
+    public function change_submenu_color() {
+        ?>
+        <style>
+            #toplevel_page_CHARMING_PORTFOLIO_page .wp-submenu li a[href="admin.php?page=charming_portfolio_danger_zone"] {
+                color: #ff0000 !important; /* Change to your desired color */
+                font-weight: 500;
+            }
+        </style>
+        <?php
+    }
 
     /**
      * This Function Will Return The Saved Value
@@ -342,13 +377,14 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
 
             $saved_values      = [
                 'enabled'           => false,
-                'name'              => "Mr. Charm",
+                'name'              => "Mr Charm",
                 'designation'       => "Unemployed",
                 'user_image'        => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg",
                 'user_image2'       => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg",
                 'email'             => "abc@def.com",
                 'phone'             => "01345678910",
-                'short_description' => "Hello, I am rare skilled genius and introvert person",
+                'short_description' => "Hello, I am rare skilled !genius and introvert person",
+                'description'       => "Hello, I am rare skilled !genius and introvert person and this is not a copy of short description.",
                 'address'           => "Earth",
                 'available'         => false,
                 'layout'            => 'charming_v2',

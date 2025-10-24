@@ -222,7 +222,7 @@
                                 }
                             },
                             error: function () {
-                                CharmAlert.showAlert("Error saving skills", 'error');
+                                CharmAlert.showAlert("Error Updating Information. Please Try Again", 'error');
                                 // this.resetUpdateBtn(updateBtnWrapper);
                                 updateBtnWrapper.removeClass("loading");
                                     updateBtnWrapper.find(".charming-portfolio-save-additional-data").prop("disabled", false);

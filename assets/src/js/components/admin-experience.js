@@ -14,6 +14,7 @@
                 $(element).on("change", function(e) {
                     $(this).parents("tr").find('.end_date').prop('disabled', e.target.checked);
                 });
+                $(element).trigger("change");
             });
         }
     }

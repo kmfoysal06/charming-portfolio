@@ -1,3 +1,943 @@
-.btn-wrapper{position:relative}.btn-wrapper.loading span{width:25px;height:25px;display:block;position:absolute;border:2px solid rgba(0,0,0,0);top:50%;transform:translate(-50%, -50%);left:50%;border-radius:50%;border-top-color:#000;border-bottom-color:#000;animation:spin 400ms linear infinite}@keyframes spin{0%{transform:translate(-50%, -50%) rotate(0deg)}100%{transform:translate(-50%, -50%) rotate(360deg)}}.charming-portfolio-dashboard-container{max-width:900px;margin:40px auto;background:#fff;border-radius:10px;box-shadow:0 4px 32px rgba(0,0,0,.08);padding:32px}.charming-portfolio-dashboard-container .header{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap}.charming-portfolio-dashboard-container .header-images{display:flex;gap:20px}.charming-portfolio-dashboard-container .header-images img{width:90px;height:90px;-o-object-fit:cover;object-fit:cover;border-radius:50%;border:2px solid #222;background:#f4f4f4}.charming-portfolio-dashboard-container .header-info{flex:1;padding-left:32px;min-width:200px}.charming-portfolio-dashboard-container .header-info h1{margin:0;font-size:2.2rem;font-weight:700;color:#222}.charming-portfolio-dashboard-container .header-info .header-links{display:flex;gap:18px;margin-top:10px;flex-wrap:wrap}.charming-portfolio-dashboard-container .header-info .header-links a{text-decoration:none;color:#222;background:#fafafa;border-radius:4px;padding:4px 10px;font-size:.98rem;border:1px solid #eee;transition:background .2s}.charming-portfolio-dashboard-container .header-info .header-links a:hover{background:#e5e5e5}.charming-portfolio-dashboard-container .dashboard-row{display:flex;gap:30px;margin-bottom:32px}@media(max-width: 900px){.charming-portfolio-dashboard-container .dashboard-row{flex-direction:column;gap:24px}}.charming-portfolio-dashboard-container .dashboard-stats{display:flex;gap:18px}.charming-portfolio-dashboard-container .dashboard-stats .dashboard-stat:first-child{background:#e0f7fa}.charming-portfolio-dashboard-container .dashboard-stats .dashboard-stat{flex:1;background:#fffde4;color:#444;border-radius:10px;padding:22px 18px;box-shadow:0 2px 8px rgba(0,0,0,.07);text-align:center;font-size:1.1rem;font-weight:600;border:1px solid #eee}.charming-portfolio-dashboard-container .dashboard-stats .dashboard-stat span{display:block}.charming-portfolio-dashboard-container .dashboard-stats .dashboard-stat div{font-size:1.5rem;margin-top:8px}@media(max-width: 600px){.charming-portfolio-dashboard-container .dashboard-stats{flex-direction:column;gap:12px}.charming-portfolio-dashboard-container .dashboard-stats .dashboard-stat{padding:16px 10px;font-size:1rem}.charming-portfolio-dashboard-container .dashboard-stats .dashboard-stat div{font-size:1.2rem}}.charming-portfolio-dashboard-container .dashboard-main{flex:2}.charming-portfolio-dashboard-container .dashboard-sidebar{flex:1;background:#f9f9f9;border-radius:8px;padding:18px;border:1px solid #eee}.charming-portfolio-dashboard-container .dashboard-sidebar h3{font-size:1.1rem;margin-top:0;color:#222;margin-bottom:10px}.charming-portfolio-dashboard-container .dashboard-sidebar ul{list-style:none;padding:0;margin:0 0 18px 0}.charming-portfolio-dashboard-container .dashboard-sidebar ul li{margin-bottom:7px;font-size:.97rem}.charming-portfolio-dashboard-container .profile-info{margin-bottom:24px}.charming-portfolio-dashboard-container .profile-info p{margin:9px 0}.charming-portfolio-dashboard-container .social-links{display:flex;gap:12px;margin-bottom:10px;flex-wrap:wrap}.charming-portfolio-dashboard-container .social-links a{display:inline-block;color:#fff;background:#222;border-radius:3px;padding:3px 11px;font-size:.97rem;text-decoration:none;transition:background .2s}.charming-portfolio-dashboard-container .social-links a:hover{background:#07f}.charming-portfolio-dashboard-container .available-yes{display:inline-block;background:#e0ffe0;color:#070;font-weight:700;border-radius:4px;padding:2px 12px;font-size:.99rem;border:1px solid #b7ffb7}.charming-portfolio-dashboard-container .available-no{display:inline-block;background:#ffe0e0;color:#c00;font-weight:700;border-radius:4px;padding:2px 12px;font-size:.99rem;border:1px solid #ffb7ff}.charming-portfolio-dashboard-container .section-title{font-weight:600;margin-bottom:9px;color:#222;font-size:1.13rem;border-left:3px solid #222;padding-left:9px}.charming-portfolio-dashboard-container .footer-links{margin-top:32px;padding:10px;background:#fafafa;border:1px solid #eee}.charming-portfolio-dashboard-container .footer-links a{font-size:16px;color:#222;margin-left:8px}@media(max-width: 700px){.charming-portfolio-dashboard-container{padding:16px}.charming-portfolio-dashboard-container .header{flex-direction:column;align-items:flex-start;gap:18px}.charming-portfolio-dashboard-container .header-info{padding-left:0}.charming-portfolio-dashboard-container .header-info h1{font-size:1.4rem}.charming-portfolio-dashboard-container .header-images img{width:62px;height:62px}}.portfolio_page_CHARMING_PORTFOLIO_menu .page-contents,.portfolio_page_charming_portfolio_additional_menu .page-contents{max-width:1080px;margin:40px auto;background:#fff;padding:32px 28px 44px;box-shadow:0 2px 24px rgba(162,89,255,.05);border-radius:0;border:1px solid #e6e8ec;font-family:"Outfit",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}.portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-wrapper,.portfolio_page_charming_portfolio_additional_menu .portfolio-section-wrapper{background:#fff;border-radius:0;margin-bottom:28px;box-shadow:none;padding:0 0 20px 0;border-bottom:1px solid #e6e8ec;overflow:hidden;overflow-x:auto}.portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-wrapper:last-child,.portfolio_page_charming_portfolio_additional_menu .portfolio-section-wrapper:last-child{margin-bottom:0;border-bottom:none}.portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-toggle,.portfolio_page_charming_portfolio_additional_menu .portfolio-section-toggle{font-size:1.19rem;font-weight:500;letter-spacing:.02em;margin:0 0 8px 0;padding:18px 24px 0 24px;color:#ff2eab;background:none;border:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-content,.portfolio_page_charming_portfolio_additional_menu .portfolio-section-content{padding:0 24px 0 24px;display:flex;flex-direction:column;gap:14px}.portfolio_page_CHARMING_PORTFOLIO_menu label,.portfolio_page_charming_portfolio_additional_menu label{font-size:.97rem;font-weight:450;color:#222;margin-bottom:3px;display:flex;align-items:center;gap:5px}.portfolio_page_CHARMING_PORTFOLIO_menu input[type=text],.portfolio_page_CHARMING_PORTFOLIO_menu input[type=email],.portfolio_page_CHARMING_PORTFOLIO_menu input[type=tel],.portfolio_page_CHARMING_PORTFOLIO_menu textarea,.portfolio_page_charming_portfolio_additional_menu input[type=text],.portfolio_page_charming_portfolio_additional_menu input[type=email],.portfolio_page_charming_portfolio_additional_menu input[type=tel],.portfolio_page_charming_portfolio_additional_menu textarea{background:#f2f3f7;color:#222;border:1px solid #e6e8ec;border-radius:6px;padding:8px 12px;font-size:1rem;margin-top:2px;margin-bottom:2px;transition:all .2s cubic-bezier(0.4, 0.1, 0.7, 1)}.portfolio_page_CHARMING_PORTFOLIO_menu input[type=text]:focus,.portfolio_page_CHARMING_PORTFOLIO_menu input[type=email]:focus,.portfolio_page_CHARMING_PORTFOLIO_menu input[type=tel]:focus,.portfolio_page_CHARMING_PORTFOLIO_menu textarea:focus,.portfolio_page_charming_portfolio_additional_menu input[type=text]:focus,.portfolio_page_charming_portfolio_additional_menu input[type=email]:focus,.portfolio_page_charming_portfolio_additional_menu input[type=tel]:focus,.portfolio_page_charming_portfolio_additional_menu textarea:focus{background:#fff;border-color:#ff2eab;outline:none;box-shadow:0 0 0 2px rgba(255,46,171,.08)}.portfolio_page_CHARMING_PORTFOLIO_menu input[type=text]:disabled,.portfolio_page_CHARMING_PORTFOLIO_menu input[type=email]:disabled,.portfolio_page_CHARMING_PORTFOLIO_menu input[type=tel]:disabled,.portfolio_page_CHARMING_PORTFOLIO_menu textarea:disabled,.portfolio_page_charming_portfolio_additional_menu input[type=text]:disabled,.portfolio_page_charming_portfolio_additional_menu input[type=email]:disabled,.portfolio_page_charming_portfolio_additional_menu input[type=tel]:disabled,.portfolio_page_charming_portfolio_additional_menu textarea:disabled{opacity:.6;color:#777;background:#fff;cursor:not-allowed}.portfolio_page_CHARMING_PORTFOLIO_menu textarea,.portfolio_page_charming_portfolio_additional_menu textarea{min-height:60px;resize:vertical;font-size:1rem;line-height:1.6}.portfolio_page_CHARMING_PORTFOLIO_menu .switch-btn-wrapper,.portfolio_page_charming_portfolio_additional_menu .switch-btn-wrapper{display:flex;align-items:center;gap:10px;margin:2px 0 8px 0}.portfolio_page_CHARMING_PORTFOLIO_menu .switch-btn,.portfolio_page_charming_portfolio_additional_menu .switch-btn{position:relative;width:44px;height:24px;background:#e6e8ec;border-radius:12px;transition:all .2s cubic-bezier(0.4, 0.1, 0.7, 1);box-shadow:none}.portfolio_page_CHARMING_PORTFOLIO_menu .switch-btn span,.portfolio_page_charming_portfolio_additional_menu .switch-btn span{position:absolute;left:2px;top:2px;width:20px;height:20px;border-radius:50%;background:#fa2222;transition:all .2s cubic-bezier(0.4, 0.1, 0.7, 1);box-shadow:0 1px 5px rgba(255,46,171,.11)}.portfolio_page_CHARMING_PORTFOLIO_menu input[type=checkbox],.portfolio_page_charming_portfolio_additional_menu input[type=checkbox]{display:none}.portfolio_page_CHARMING_PORTFOLIO_menu input[type=checkbox]:checked+.switch-btn span,.portfolio_page_charming_portfolio_additional_menu input[type=checkbox]:checked+.switch-btn span{left:22px;background:#22c55e;box-shadow:0 1px 5px rgba(162,89,255,.13)}.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-help-icon,.portfolio_page_CHARMING_PORTFOLIO_menu .dashicons-editor-help,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-help-icon,.portfolio_page_charming_portfolio_additional_menu .dashicons-editor-help{font-size:1.09em;color:#a259ff;margin-left:4px;cursor:pointer;transition:color .2s}.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-help-icon:hover,.portfolio_page_CHARMING_PORTFOLIO_menu .dashicons-editor-help:hover,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-help-icon:hover,.portfolio_page_charming_portfolio_additional_menu .dashicons-editor-help:hover{color:#ff2eab}.portfolio_page_CHARMING_PORTFOLIO_menu .simplecharm-portfolio-user-image,.portfolio_page_CHARMING_PORTFOLIO_menu .simplecharm-portfolio-user-image2,.portfolio_page_charming_portfolio_additional_menu .simplecharm-portfolio-user-image,.portfolio_page_charming_portfolio_additional_menu .simplecharm-portfolio-user-image2{display:block;margin:10px 0 4px 0;border-radius:6px;border:1px solid #e6e8ec;max-width:140px;box-shadow:none;background:#f2f3f7}.portfolio_page_CHARMING_PORTFOLIO_menu .button,.portfolio_page_CHARMING_PORTFOLIO_menu .btn,.portfolio_page_CHARMING_PORTFOLIO_menu input[type=submit].charming-portfolio-save-data,.portfolio_page_charming_portfolio_additional_menu .button,.portfolio_page_charming_portfolio_additional_menu .btn,.portfolio_page_charming_portfolio_additional_menu input[type=submit].charming-portfolio-save-data{display:inline-block;padding:0 12px;border-radius:6px;border:none;background:#a259ff;color:#fff;font-weight:600;font-size:14px;letter-spacing:.02em;text-transform:uppercase;cursor:pointer;box-shadow:0 2px 12px rgba(255,46,171,.07);transition:all .2s cubic-bezier(0.4, 0.1, 0.7, 1);margin-top:7px;margin-bottom:7px}.portfolio_page_CHARMING_PORTFOLIO_menu .button:hover,.portfolio_page_CHARMING_PORTFOLIO_menu .button:focus,.portfolio_page_CHARMING_PORTFOLIO_menu .btn:hover,.portfolio_page_CHARMING_PORTFOLIO_menu .btn:focus,.portfolio_page_CHARMING_PORTFOLIO_menu input[type=submit].charming-portfolio-save-data:hover,.portfolio_page_CHARMING_PORTFOLIO_menu input[type=submit].charming-portfolio-save-data:focus,.portfolio_page_charming_portfolio_additional_menu .button:hover,.portfolio_page_charming_portfolio_additional_menu .button:focus,.portfolio_page_charming_portfolio_additional_menu .btn:hover,.portfolio_page_charming_portfolio_additional_menu .btn:focus,.portfolio_page_charming_portfolio_additional_menu input[type=submit].charming-portfolio-save-data:hover,.portfolio_page_charming_portfolio_additional_menu input[type=submit].charming-portfolio-save-data:focus{background:#a259ff;color:#fff;box-shadow:0 4px 24px rgba(162,89,255,.1);outline:none}.portfolio_page_CHARMING_PORTFOLIO_menu input[type=submit].charming-portfolio-save-data,.portfolio_page_charming_portfolio_additional_menu input[type=submit].charming-portfolio-save-data{padding:10px 0}.portfolio_page_CHARMING_PORTFOLIO_menu .btn-fullwidth,.portfolio_page_charming_portfolio_additional_menu .btn-fullwidth{width:100%;padding:8px 0}.portfolio_page_CHARMING_PORTFOLIO_menu .btn-wrapper,.portfolio_page_charming_portfolio_additional_menu .btn-wrapper{display:flex;flex-direction:column;gap:8px;margin-top:32px}.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social,.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links,.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-layout,.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-layout,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links{background:#e9ebf0;border:1px solid #e6e8ec;border-radius:6px;padding:18px 16px 12px;margin-bottom:8px;box-shadow:none}.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-layout,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-layout{display:grid;grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));gap:8px}.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-layout label,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-layout label{cursor:pointer;display:flex;padding:14px 10px;background:#fff;flex-direction:column;border-radius:4px}.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody,.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody,.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody{display:grid;gap:10px;justify-content:center;grid-template-columns:repeat(auto-fill, minmax(250px, 1fr))}.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody tr,.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody tr,.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody tr,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody tr,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody tr,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody tr{display:flex;gap:8px;align-items:center;background:#fff;margin-bottom:10px;flex-direction:column;padding:16px;border-radius:4px}.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody tr input,.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody tr input,.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody tr input,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody tr input,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody tr input,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody tr input{width:100%}.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody tr .button,.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody tr .button,.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody tr .button,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody tr .button,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody tr .button,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody tr .button{display:block;width:-moz-fit-content;width:fit-content;margin-left:auto}.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody tr td,.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody tr td,.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody tr td,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody tr td,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody tr td,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody tr td{width:100%}.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody tr td:last-child,.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody tr td:last-child,.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody tr td:last-child,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody tr td:last-child,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody tr td:last-child,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody tr td:last-child{align-self:end}.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social table,.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links table,.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links table,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social table,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links table,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links table{background:none}.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social p,.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links p,.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links p,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social p,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links p,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links p{margin:6px 0 0 0}.portfolio_page_CHARMING_PORTFOLIO_menu table,.portfolio_page_charming_portfolio_additional_menu table{width:100%;border-collapse:separate;border-spacing:0;background:none}.portfolio_page_CHARMING_PORTFOLIO_menu tbody,.portfolio_page_charming_portfolio_additional_menu tbody{width:100%}.portfolio_page_CHARMING_PORTFOLIO_menu tr.flex,.portfolio_page_charming_portfolio_additional_menu tr.flex{display:flex;gap:12px;align-items:center}.portfolio_page_CHARMING_PORTFOLIO_menu td,.portfolio_page_charming_portfolio_additional_menu td{flex:1;padding:5px 0}.portfolio_page_CHARMING_PORTFOLIO_menu tr .button,.portfolio_page_charming_portfolio_additional_menu tr .button{margin-left:6px;font-size:14px;padding:0 12px}.portfolio_page_CHARMING_PORTFOLIO_menu .screen-reader-text,.portfolio_page_charming_portfolio_additional_menu .screen-reader-text{position:absolute !important;height:1px;width:1px;overflow:hidden;clip:rect(1px, 1px, 1px, 1px);white-space:nowrap}.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-layout label,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-layout label{display:flex;align-items:center;gap:7px;font-size:1.03rem;font-weight:500;margin-right:18px;margin-bottom:0}.portfolio_page_CHARMING_PORTFOLIO_menu input[type=radio],.portfolio_page_charming_portfolio_additional_menu input[type=radio]{accent-color:#ff2eab;width:16px;height:16px;margin-right:0;margin-top:0;margin-bottom:0;position:relative}.portfolio_page_CHARMING_PORTFOLIO_menu input[type=radio]::before,.portfolio_page_charming_portfolio_additional_menu input[type=radio]::before{transform:translate(-50%, -50%);top:50%;left:50%;position:absolute;display:block;margin:0}@media(max-width: 600px){.portfolio_page_CHARMING_PORTFOLIO_menu .page-contents{padding:16px 6px}.portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-content{padding:0 9px}.portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-content.charming-portfolio-layout{padding:10px 8px}.portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-toggle{padding:13px 10px 0 10px}.portfolio_page_CHARMING_PORTFOLIO_menu tr.flex{flex-direction:column;gap:4px;align-items:stretch}.portfolio_page_CHARMING_PORTFOLIO_menu td{padding:4px 0}.portfolio_page_CHARMING_PORTFOLIO_menu .simplecharm-portfolio-user-image,.portfolio_page_CHARMING_PORTFOLIO_menu .simplecharm-portfolio-user-image2{max-width:100px}.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social,.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links,.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links{padding:12px 4px 8px}}.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills{background:#e9ebf0;padding:10px}.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills .button{min-height:revert;line-height:1.5;padding-block:4px}.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody{display:grid;grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));gap:10px}.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody .skill{display:flex;flex-direction:column;padding:10px;background:#fff;border-radius:4px}.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody .skill td{width:100%}.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody .skill td:last-child{display:flex;justify-content:end;align-items:end;flex-direction:column}.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody .skill td input{width:100%}.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody .skill td img{width:50%;display:block;margin:auto;height:auto;-o-object-fit:contain;object-fit:contain}.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody .skill td .button{display:block;width:-moz-fit-content;width:fit-content;margin-left:auto}.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills .cp__add-another-btn-wrapper{text-align:right}.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills .charming-portfolio-projects a.button,.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills .charming-portfolio-experience a.button{min-height:revert;line-height:1.5}.portfolio_page_charming_portfolio_additional_menu .single-experience,.portfolio_page_charming_portfolio_additional_menu .single-project{display:flex;flex-direction:column;box-shadow:rgba(0,0,0,.05) 0px 0px 0px 1px,#d1d5db 0px 0px 0px 1px inset;padding:16px;border-radius:6px;margin-block:8px}.portfolio_page_charming_portfolio_additional_menu .single-experience td,.portfolio_page_charming_portfolio_additional_menu .single-project td{display:flex;justify-content:space-between;flex-wrap:wrap;font-size:16px;width:100%}@media screen and (max-width: 760px){.portfolio_page_charming_portfolio_additional_menu textarea{width:100%}}.flex{display:flex}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.items-center{align-items:center}.flex-wrap{flex-wrap:wrap}.gap-1{gap:4px}
+/*!**************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/admin/admin.scss ***!
+  \**************************************************************************************************************************************************************/
+.btn-wrapper {
+  position: relative;
+}
+
+.btn-wrapper.loading span {
+  width: 25px;
+  height: 25px;
+  display: block;
+  position: absolute;
+  border: 2px solid transparent;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  border-radius: 50%;
+  border-top-color: black;
+  border-bottom-color: black;
+  animation: spin 400ms linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+.charming-portfolio-dashboard-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08);
+  padding: 32px;
+}
+.charming-portfolio-dashboard-container .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.charming-portfolio-dashboard-container .header-images {
+  display: flex;
+  gap: 20px;
+}
+.charming-portfolio-dashboard-container .header-images img {
+  width: 90px;
+  height: 90px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #222;
+  background: #f4f4f4;
+}
+.charming-portfolio-dashboard-container .header-info {
+  flex: 1;
+  padding-left: 32px;
+  min-width: 200px;
+}
+.charming-portfolio-dashboard-container .header-info h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #222;
+}
+.charming-portfolio-dashboard-container .header-info .header-links {
+  display: flex;
+  gap: 18px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.charming-portfolio-dashboard-container .header-info .header-links a {
+  text-decoration: none;
+  color: #222;
+  background: #fafafa;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 0.98rem;
+  border: 1px solid #eee;
+  transition: background 0.2s;
+}
+.charming-portfolio-dashboard-container .header-info .header-links a:hover {
+  background: #e5e5e5;
+}
+.charming-portfolio-dashboard-container .dashboard-row {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 32px;
+}
+@media (max-width: 900px) {
+  .charming-portfolio-dashboard-container .dashboard-row {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+.charming-portfolio-dashboard-container .dashboard-stats {
+  display: flex;
+  gap: 18px;
+}
+.charming-portfolio-dashboard-container .dashboard-stats .dashboard-stat:first-child {
+  background: #e0f7fa;
+}
+.charming-portfolio-dashboard-container .dashboard-stats .dashboard-stat {
+  flex: 1;
+  background: #fffde4;
+  color: #444;
+  border-radius: 10px;
+  padding: 22px 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: 1px solid #eee;
+}
+.charming-portfolio-dashboard-container .dashboard-stats .dashboard-stat span {
+  display: block;
+}
+.charming-portfolio-dashboard-container .dashboard-stats .dashboard-stat div {
+  font-size: 1.5rem;
+  margin-top: 8px;
+}
+@media (max-width: 600px) {
+  .charming-portfolio-dashboard-container .dashboard-stats {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .charming-portfolio-dashboard-container .dashboard-stats .dashboard-stat {
+    padding: 16px 10px;
+    font-size: 1rem;
+  }
+  .charming-portfolio-dashboard-container .dashboard-stats .dashboard-stat div {
+    font-size: 1.2rem;
+  }
+}
+.charming-portfolio-dashboard-container .dashboard-main {
+  flex: 2;
+}
+.charming-portfolio-dashboard-container .dashboard-sidebar {
+  flex: 1;
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 18px;
+  border: 1px solid #eee;
+}
+.charming-portfolio-dashboard-container .dashboard-sidebar h3 {
+  font-size: 1.1rem;
+  margin-top: 0;
+  color: #222;
+  margin-bottom: 10px;
+}
+.charming-portfolio-dashboard-container .dashboard-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px 0;
+}
+.charming-portfolio-dashboard-container .dashboard-sidebar ul li {
+  margin-bottom: 7px;
+  font-size: 0.97rem;
+}
+.charming-portfolio-dashboard-container .profile-info {
+  margin-bottom: 24px;
+}
+.charming-portfolio-dashboard-container .profile-info p {
+  margin: 9px 0;
+}
+.charming-portfolio-dashboard-container .social-links {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.charming-portfolio-dashboard-container .social-links a {
+  display: inline-block;
+  color: #fff;
+  background: #222;
+  border-radius: 3px;
+  padding: 3px 11px;
+  font-size: 0.97rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.charming-portfolio-dashboard-container .social-links a:hover {
+  background: #0077ff;
+}
+.charming-portfolio-dashboard-container .available-yes {
+  display: inline-block;
+  background: #e0ffe0;
+  color: #007700;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 2px 12px;
+  font-size: 0.99rem;
+  border: 1px solid #b7ffb7;
+}
+.charming-portfolio-dashboard-container .available-no {
+  display: inline-block;
+  background: #ffe0e0;
+  color: #cc0000;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 2px 12px;
+  font-size: 0.99rem;
+  border: 1px solid #ffb7ff;
+}
+.charming-portfolio-dashboard-container .section-title {
+  font-weight: 600;
+  margin-bottom: 9px;
+  color: #222;
+  font-size: 1.13rem;
+  border-left: 3px solid #222;
+  padding-left: 9px;
+}
+.charming-portfolio-dashboard-container .footer-links {
+  margin-top: 32px;
+  padding: 10px;
+  background: #fafafa;
+  border: 1px solid #eee;
+}
+.charming-portfolio-dashboard-container .footer-links a {
+  font-size: 16px;
+  color: #222;
+  margin-left: 8px;
+}
+
+@media (max-width: 700px) {
+  .charming-portfolio-dashboard-container {
+    padding: 16px;
+  }
+  .charming-portfolio-dashboard-container .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  .charming-portfolio-dashboard-container .header-info {
+    padding-left: 0;
+  }
+  .charming-portfolio-dashboard-container .header-info h1 {
+    font-size: 1.4rem;
+  }
+  .charming-portfolio-dashboard-container .header-images img {
+    width: 62px;
+    height: 62px;
+  }
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu,
+.portfolio_page_charming_portfolio_additional_menu {
+  /* Help Icons */
+  /* Images */
+  /* Buttons */
+  /* Repeatable Table Styles - Unified Field Groups */
+  /* Section Specifics */
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .page-contents,
+.portfolio_page_charming_portfolio_additional_menu .page-contents {
+  max-width: 1080px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 32px 28px 44px;
+  box-shadow: 0 2px 24px rgba(162, 89, 255, 0.05);
+  border-radius: 0;
+  border: 1px solid #e6e8ec;
+  font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-wrapper,
+.portfolio_page_charming_portfolio_additional_menu .portfolio-section-wrapper {
+  background: #fff;
+  border-radius: 0;
+  margin-bottom: 28px;
+  box-shadow: none;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid #e6e8ec;
+  overflow: hidden;
+  overflow-x: auto;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-wrapper:last-child,
+.portfolio_page_charming_portfolio_additional_menu .portfolio-section-wrapper:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-toggle,
+.portfolio_page_charming_portfolio_additional_menu .portfolio-section-toggle {
+  font-size: 1.19rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin: 0 0 8px 0;
+  padding: 18px 24px 0 24px;
+  color: #ff2eab;
+  background: none;
+  border: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-content,
+.portfolio_page_charming_portfolio_additional_menu .portfolio-section-content {
+  padding: 0 24px 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu label,
+.portfolio_page_charming_portfolio_additional_menu label {
+  font-size: 0.97rem;
+  font-weight: 450;
+  color: #222;
+  margin-bottom: 3px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=text],
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=email],
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=tel],
+.portfolio_page_CHARMING_PORTFOLIO_menu textarea,
+.portfolio_page_charming_portfolio_additional_menu input[type=text],
+.portfolio_page_charming_portfolio_additional_menu input[type=email],
+.portfolio_page_charming_portfolio_additional_menu input[type=tel],
+.portfolio_page_charming_portfolio_additional_menu textarea {
+  background: #f2f3f7;
+  color: #222;
+  border: 1px solid #e6e8ec;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 1rem;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  transition: all 0.2s cubic-bezier(0.4, 0.1, 0.7, 1);
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=text]:focus,
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=email]:focus,
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=tel]:focus,
+.portfolio_page_CHARMING_PORTFOLIO_menu textarea:focus,
+.portfolio_page_charming_portfolio_additional_menu input[type=text]:focus,
+.portfolio_page_charming_portfolio_additional_menu input[type=email]:focus,
+.portfolio_page_charming_portfolio_additional_menu input[type=tel]:focus,
+.portfolio_page_charming_portfolio_additional_menu textarea:focus {
+  background: #fff;
+  border-color: #ff2eab;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 46, 171, 0.08);
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=text]:disabled,
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=email]:disabled,
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=tel]:disabled,
+.portfolio_page_CHARMING_PORTFOLIO_menu textarea:disabled,
+.portfolio_page_charming_portfolio_additional_menu input[type=text]:disabled,
+.portfolio_page_charming_portfolio_additional_menu input[type=email]:disabled,
+.portfolio_page_charming_portfolio_additional_menu input[type=tel]:disabled,
+.portfolio_page_charming_portfolio_additional_menu textarea:disabled {
+  opacity: 0.6;
+  color: #777;
+  background: #fff;
+  cursor: not-allowed;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu textarea,
+.portfolio_page_charming_portfolio_additional_menu textarea {
+  min-height: 60px;
+  resize: vertical;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .switch-btn-wrapper,
+.portfolio_page_charming_portfolio_additional_menu .switch-btn-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 2px 0 8px 0;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .switch-btn,
+.portfolio_page_charming_portfolio_additional_menu .switch-btn {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background: #e6e8ec;
+  border-radius: 12px;
+  transition: all 0.2s cubic-bezier(0.4, 0.1, 0.7, 1);
+  box-shadow: none;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .switch-btn span,
+.portfolio_page_charming_portfolio_additional_menu .switch-btn span {
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fa2222;
+  transition: all 0.2s cubic-bezier(0.4, 0.1, 0.7, 1);
+  box-shadow: 0 1px 5px rgba(255, 46, 171, 0.11);
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=checkbox],
+.portfolio_page_charming_portfolio_additional_menu input[type=checkbox] {
+  display: none;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=checkbox]:checked + .switch-btn span,
+.portfolio_page_charming_portfolio_additional_menu input[type=checkbox]:checked + .switch-btn span {
+  left: 22px;
+  background: #22c55e;
+  box-shadow: 0 1px 5px rgba(162, 89, 255, 0.13);
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-help-icon,
+.portfolio_page_CHARMING_PORTFOLIO_menu .dashicons-editor-help,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-help-icon,
+.portfolio_page_charming_portfolio_additional_menu .dashicons-editor-help {
+  font-size: 1.09em;
+  color: #a259ff;
+  margin-left: 4px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-help-icon:hover,
+.portfolio_page_CHARMING_PORTFOLIO_menu .dashicons-editor-help:hover,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-help-icon:hover,
+.portfolio_page_charming_portfolio_additional_menu .dashicons-editor-help:hover {
+  color: #ff2eab;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .simplecharm-portfolio-user-image,
+.portfolio_page_CHARMING_PORTFOLIO_menu .simplecharm-portfolio-user-image2,
+.portfolio_page_charming_portfolio_additional_menu .simplecharm-portfolio-user-image,
+.portfolio_page_charming_portfolio_additional_menu .simplecharm-portfolio-user-image2 {
+  display: block;
+  margin: 10px 0 4px 0;
+  border-radius: 6px;
+  border: 1px solid #e6e8ec;
+  max-width: 140px;
+  box-shadow: none;
+  background: #f2f3f7;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .button,
+.portfolio_page_CHARMING_PORTFOLIO_menu .btn,
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=submit].charming-portfolio-save-data,
+.portfolio_page_charming_portfolio_additional_menu .button,
+.portfolio_page_charming_portfolio_additional_menu .btn,
+.portfolio_page_charming_portfolio_additional_menu input[type=submit].charming-portfolio-save-data {
+  display: inline-block;
+  padding: 0 12px;
+  border-radius: 6px;
+  border: none;
+  background: #a259ff;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(255, 46, 171, 0.07);
+  transition: all 0.2s cubic-bezier(0.4, 0.1, 0.7, 1);
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .button:hover, .portfolio_page_CHARMING_PORTFOLIO_menu .button:focus,
+.portfolio_page_CHARMING_PORTFOLIO_menu .btn:hover,
+.portfolio_page_CHARMING_PORTFOLIO_menu .btn:focus,
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=submit].charming-portfolio-save-data:hover,
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=submit].charming-portfolio-save-data:focus,
+.portfolio_page_charming_portfolio_additional_menu .button:hover,
+.portfolio_page_charming_portfolio_additional_menu .button:focus,
+.portfolio_page_charming_portfolio_additional_menu .btn:hover,
+.portfolio_page_charming_portfolio_additional_menu .btn:focus,
+.portfolio_page_charming_portfolio_additional_menu input[type=submit].charming-portfolio-save-data:hover,
+.portfolio_page_charming_portfolio_additional_menu input[type=submit].charming-portfolio-save-data:focus {
+  background: #a259ff;
+  color: #fff;
+  box-shadow: 0 4px 24px rgba(162, 89, 255, 0.1);
+  outline: none;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=submit].charming-portfolio-save-data,
+.portfolio_page_charming_portfolio_additional_menu input[type=submit].charming-portfolio-save-data {
+  padding: 10px 0;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .btn-fullwidth,
+.portfolio_page_charming_portfolio_additional_menu .btn-fullwidth {
+  width: 100%;
+  padding: 8px 0;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .btn-wrapper,
+.portfolio_page_charming_portfolio_additional_menu .btn-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 32px;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-layout,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-layout,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links {
+  background: #e9ebf0;
+  border: 1px solid #e6e8ec;
+  border-radius: 6px;
+  padding: 18px 16px 12px;
+  margin-bottom: 8px;
+  box-shadow: none;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-layout,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 8px;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-layout label,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-layout label {
+  cursor: pointer;
+  display: flex;
+  padding: 14px 10px;
+  background: #fff;
+  flex-direction: column;
+  border-radius: 4px;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody {
+  display: grid;
+  gap: 10px;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody tr,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody tr,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody tr,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody tr,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody tr,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody tr {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: #fff;
+  margin-bottom: 10px;
+  flex-direction: column;
+  padding: 16px;
+  border-radius: 4px;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody tr input,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody tr input,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody tr input,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody tr input,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody tr input,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody tr input {
+  width: 100%;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody tr .button,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody tr .button,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody tr .button,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody tr .button,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody tr .button,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody tr .button {
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: auto;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody tr td,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody tr td,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody tr td,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody tr td,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody tr td,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody tr td {
+  width: 100%;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody tr td:last-child,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody tr td:last-child,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody tr td:last-child,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody tr td:last-child,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody tr td:last-child,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody tr td:last-child {
+  align-self: end;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social table,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links table,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links table,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social table,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links table,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links table {
+  background: none;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social p,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links p,
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links p,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social p,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links p,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links p {
+  margin: 6px 0 0 0;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu table,
+.portfolio_page_charming_portfolio_additional_menu table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: none;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu tbody,
+.portfolio_page_charming_portfolio_additional_menu tbody {
+  width: 100%;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu tr.flex,
+.portfolio_page_charming_portfolio_additional_menu tr.flex {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu td,
+.portfolio_page_charming_portfolio_additional_menu td {
+  flex: 1;
+  padding: 5px 0;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu tr .button,
+.portfolio_page_charming_portfolio_additional_menu tr .button {
+  margin-left: 6px;
+  font-size: 14px;
+  padding: 0 12px;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .screen-reader-text,
+.portfolio_page_charming_portfolio_additional_menu .screen-reader-text {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-layout label,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-layout label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 1.03rem;
+  font-weight: 500;
+  margin-right: 18px;
+  margin-bottom: 0;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=radio],
+.portfolio_page_charming_portfolio_additional_menu input[type=radio] {
+  accent-color: #ff2eab;
+  width: 16px;
+  height: 16px;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  position: relative;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu input[type=radio]::before,
+.portfolio_page_charming_portfolio_additional_menu input[type=radio]::before {
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  display: block;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .portfolio_page_CHARMING_PORTFOLIO_menu .page-contents {
+    padding: 16px 6px;
+  }
+  .portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-content {
+    padding: 0 9px;
+  }
+  .portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-content.charming-portfolio-layout {
+    padding: 10px 8px;
+  }
+  .portfolio_page_CHARMING_PORTFOLIO_menu .portfolio-section-toggle {
+    padding: 13px 10px 0 10px;
+  }
+  .portfolio_page_CHARMING_PORTFOLIO_menu tr.flex {
+    flex-direction: column;
+    gap: 4px;
+    align-items: stretch;
+  }
+  .portfolio_page_CHARMING_PORTFOLIO_menu td {
+    padding: 4px 0;
+  }
+  .portfolio_page_CHARMING_PORTFOLIO_menu .simplecharm-portfolio-user-image,
+  .portfolio_page_CHARMING_PORTFOLIO_menu .simplecharm-portfolio-user-image2 {
+    max-width: 100px;
+  }
+  .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social,
+  .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links,
+  .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links {
+    padding: 12px 4px 8px;
+  }
+}
+/* Inline | http://localhost/wp-admin/admin.php?page=charming_portfolio_additional_menu */
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills {
+  background: #e9ebf0;
+  padding: 10px;
+}
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills .button {
+  min-height: revert;
+  line-height: 1.5;
+  padding-block: 4px;
+}
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
+}
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody .skill {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background: #fff;
+  border-radius: 4px;
+}
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody .skill td {
+  width: 100%;
+}
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody .skill td:last-child {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  flex-direction: column;
+}
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody .skill td input {
+  width: 100%;
+}
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody .skill td img {
+  width: 50%;
+  display: block;
+  margin: auto;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody .skill td .button {
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: auto;
+}
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills .cp__add-another-btn-wrapper {
+  text-align: right;
+}
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills .charming-portfolio-projects a.button,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills .charming-portfolio-experience a.button {
+  min-height: revert;
+  line-height: 1.5;
+}
+.portfolio_page_charming_portfolio_additional_menu .single-experience,
+.portfolio_page_charming_portfolio_additional_menu .single-project {
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  padding: 16px;
+  border-radius: 6px;
+  margin-block: 8px;
+}
+.portfolio_page_charming_portfolio_additional_menu .single-experience td,
+.portfolio_page_charming_portfolio_additional_menu .single-project td {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: 16px;
+  width: 100%;
+}
+
+@media screen and (max-width: 760px) {
+  .portfolio_page_charming_portfolio_additional_menu textarea {
+    width: 100%;
+  }
+}
+/* ===== Charming Portfolio - Danger Zone UI ===== */
+.portfolio-section-wrapper.section-danger-zone {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-left: 4px solid #d63638;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  max-width: 800px;
+  margin-top: 20px;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  /* ===== Buttons ===== */
+  /* ===== Input Challenge ===== */
+  /* ===== Modal ===== */
+  /* ===== Confirmation Message ===== */
+}
+.portfolio-section-wrapper.section-danger-zone .portfolio-section-toggle {
+  color: #d63638;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.portfolio-section-wrapper.section-danger-zone .portfolio-section-content {
+  background: #fff6f6;
+  border: 1px solid #f3caca;
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  color: #4a0000;
+}
+.portfolio-section-wrapper.section-danger-zone .portfolio-section-content p {
+  margin: 0 0 10px;
+}
+.portfolio-section-wrapper.section-danger-zone .flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.portfolio-section-wrapper.section-danger-zone .button-danger {
+  background: #d63638 !important;
+  border-color: #b91c1c !important;
+  color: #fff !important;
+  font-weight: 500;
+  padding: 2px 14px;
+  border-radius: 4px;
+  transition: background 0.2s, transform 0.1s;
+}
+.portfolio-section-wrapper.section-danger-zone .button-danger:hover {
+  background: #b91c1c !important;
+  transform: translateY(-1px);
+}
+.portfolio-section-wrapper.section-danger-zone .button-secondary {
+  background: #f6f7f7 !important;
+  color: #1e1e1e !important;
+  border: 1px solid #ccc !important;
+}
+.portfolio-section-wrapper.section-danger-zone .button-secondary:hover {
+  background: #e0e0e0 !important;
+}
+.portfolio-section-wrapper.section-danger-zone .button-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.portfolio-section-wrapper.section-danger-zone .erase-data-challange {
+  background: #fffaf9;
+  border: 1px solid #f5d5d0;
+  padding: 20px;
+  margin-block: 16px;
+  border-radius: 6px;
+  display: none;
+}
+.portfolio-section-wrapper.section-danger-zone .cp-modal-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.portfolio-section-wrapper.section-danger-zone .erase-data-challange-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 2px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.portfolio-section-wrapper.section-danger-zone .erase-data-challange-input:focus {
+  border-color: #d63638;
+  box-shadow: 0 0 0 2px rgba(214, 54, 56, 0.15);
+  outline: none;
+}
+.portfolio-section-wrapper.section-danger-zone .final-erase-data-modal {
+  display: none;
+  /* Hidden by default, show via JS */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.portfolio-section-wrapper.section-danger-zone .final-erase-data-modal-content {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  max-width: 480px;
+  width: 90%;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+.portfolio-section-wrapper.section-danger-zone .final-erase-data-modal-content h3 {
+  color: #d63638;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.portfolio-section-wrapper.section-danger-zone .final-erase-data-modal-content p {
+  color: #444;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+.portfolio-section-wrapper.section-danger-zone .final-erase-data-modal-footer p {
+  font-size: 13px;
+  color: #888;
+  text-align: center;
+}
+.portfolio-section-wrapper.section-danger-zone .erase-data-challange-message {
+  font-size: 13px;
+  color: #b91c1c;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .portfolio-section-wrapper.section-danger-zone {
+    padding: 16px;
+  }
+  .portfolio-section-wrapper.section-danger-zone .final-erase-data-modal-content {
+    padding: 18px;
+  }
+}
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.gap-1 {
+  gap: 4px;
+}
 
 /*# sourceMappingURL=admin.css.map*/

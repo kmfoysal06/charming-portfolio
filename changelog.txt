@@ -54,3 +54,8 @@
 -Contact Form and Submissions
 -Bug Fixes
 -Easy Automated DB Migration from V1
+==v2.0.1==
+-UI Improvement
+-Erase Data Functionality
+-Bug Fixes
+-Live Link for Project

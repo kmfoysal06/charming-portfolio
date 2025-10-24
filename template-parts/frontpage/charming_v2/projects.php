@@ -19,6 +19,11 @@ if(is_array($projects) && !empty($projects)):
     <div class="section-content">
         <?php foreach($projects as $project): ?>
             <div class="single-project">
+                <?php if(isset($project['link']) && !empty($project['link'])): ?>
+                    <a href="<?php echo esc_url($project['link']); ?>" target="_blank" class="single-project-link-wrapper" aria-label="<?php echo esc_attr($project['title']); ?>">
+                        <span class="dashicons dashicons-external single-project-link"></span>
+                    </a>
+                <?php endif; ?>
                 <?php if(isset($project['thumbnail']) && !empty($project['thumbnail'])): ?>
                     <img src="<?php echo esc_url($project['thumbnail']); ?>" width="300px" height="auto" alt="<?php echo esc_attr($project['title']); ?>" />
                 <?php endif; ?>

@@ -11,7 +11,7 @@ if( ! defined( 'ABSPATH' ) ) {
 	<h3 class="portfolio-section-toggle"><?php esc_html_e("About Me:",'charming-portfolio'); ?></h3>
 <div class="portfolio-section portfolio-aboutme portfolio-section-content">
 	<label for="description"><?php esc_html_e("Description:",'charming-portfolio'); ?></label>
-	<textarea id="description" class="description" name="CHARMING_PORTFOLIO[description]" maxlength="800" rows="4"><?php echo esc_textarea($args["description"]) ?></textarea>
+	<textarea id="description" class="description" name="CHARMING_PORTFOLIO[description]" maxlength="800" rows="4"><?php echo esc_textarea(isset($args["description"]) ? $args["description"] : '') ?></textarea>
 	<span></span>
         <div class="flex justify-between">
             <label for="image2">Secondary Image
