@@ -156,10 +156,12 @@ body {
 .charming-portfolio-social-links a {
   color: #000;
   font-size: 20px;
-  padding: 8px;
-  border-radius: 8px;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  padding: 6px;
+  border-radius: 4px;
   text-decoration: none;
+  display: inline-block;
+  line-height: 1;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
 }
 
 .charming-portfolio-social-links {
@@ -202,7 +204,7 @@ body {
 
 .charming-portfolio-hero-section .hero-text .highlight {
   font-size: 56px;
-  line-height: 1.5;
+  line-height: 1;
   display: block;
   background-image: linear-gradient(60deg, #550080, #ff66f6, #550080);
   -webkit-background-clip: text;
@@ -210,6 +212,8 @@ body {
   background-size: 200%;
   animation: highlight-name 4s ease infinite;
   -webkit-text-fill-color: transparent;
+  margin-top: 6px;
+  margin-bottom: 14px;
 }
 
 .charming-portfolio-hero-section .hero-text .short-description {
@@ -343,13 +347,13 @@ body {
   background-color: #fff;
 }
 .charming-portfolio-projects-section .single-project .secondary-project-details p {
-  font-size: 14px;
+  font-size: 13px;
   color: #222;
   margin-bottom: 0;
   display: inline-block;
 }
 .charming-portfolio-projects-section .single-project .secondary-project-details small {
-  font-size: 14px;
+  font-size: 13px;
   color: #222;
   margin-bottom: 4px;
 }
@@ -397,6 +401,32 @@ body {
   cursor: pointer;
   position: relative;
 }
+.charming-portfolio-experience-section .single-experience h3 {
+  line-height: 18px;
+}
+.charming-portfolio-experience-section .single-experience p {
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 0;
+  display: inline-block;
+  color: #222;
+}
+.charming-portfolio-experience-section .single-experience .designation {
+  font-size: 13px;
+  font-weight: 600;
+  color: #550080;
+  margin-bottom: 10px;
+}
+.charming-portfolio-experience-section .single-experience .charming-portfolio-has-see-more {
+  display: flex;
+  flex-direction: column;
+}
+.charming-portfolio-experience-section .single-experience .single-experience img {
+  width: min(100%, 200px);
+  border-radius: 8px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
 
 .charming-portfolio-experience-section .single-experience .experience-details {
   padding: 8px 16px;
@@ -427,15 +457,9 @@ body {
   color: #000;
 }
 
-.charming-portfolio-experience-section .single-experience .experience-details p {
-  font-size: 14px;
-  color: #222;
-  margin-bottom: 0;
-}
-
 .charming-portfolio-experience-section .single-experience .experience-details .timerange {
   font-size: 12px;
-  margin-bottom: 4px;
+  margin-bottom: 0;
 }
 
 .charming-portfolio-experience-section .single-experience .experience-details small {
@@ -450,19 +474,6 @@ body {
   gap: 4px;
   align-items: center;
   flex-flow: row wrap;
-}
-
-.charming-portfolio-experience-section .single-experience .experience-details .designation {
-  font-weight: 600;
-  color: #550080;
-  margin-bottom: 8px;
-}
-
-.charming-portfolio-experience-section .single-experience img {
-  width: min(100%, 200px);
-  border-radius: 8px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
 }
 
 /** experience section end **/
@@ -569,7 +580,8 @@ body {
   row-gap: 8px;
   justify-content: space-around;
   align-items: center;
-  background: rgba(175, 175, 175, 0.72);
+  background: #000;
+  color: #fff;
   margin-bottom: 0;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
@@ -586,11 +598,15 @@ body {
 }
 
 .charming-portfolio-footer .footer-section.footer-section-menus a {
-  color: #000000;
+  color: #00a;
   font-size: 14px;
   text-decoration: underline;
   text-underline-offset: 4px;
   transition: color 0.3s ease;
+}
+
+.footer-socials .charming-portfolio-social-links a {
+  color: #fff;
 }
 
 .charming-portfolio-footer .footer-section.footer-section-menus a:hover {
@@ -622,32 +638,35 @@ body {
 .charming-portfolio-footer .footer-section.footer-owner-data p {
   font-size: 14px;
   margin-bottom: 2px;
-  color: #000;
+  color: #fff;
   line-height: 18px;
+}
+
+.charming-portfolio-footer .footer-section .footer-search {
+  margin-top: 12px;
 }
 
 .charming-portfolio-footer .footer-section .footer-search input {
   padding: 8px;
   border: 1px solid #ccc;
-  margin-top: 4px;
 }
 
 .charming-portfolio-footer .footer-section .footer-search button {
   padding: 8px 12px;
   background-color: #444;
+  border: 1px solid #444;
   color: #fff;
   border: none;
   cursor: pointer;
   font-size: 14px;
-  margin-top: 4px;
 }
 
 .charming-portfolio-footer .copyright {
   text-align: center;
   padding: 8px 0;
-  font-size: 16px;
-  color: #fff;
-  background-color: #666;
+  font-size: 14px;
+  color: #7777b7;
+  background-color: #232323;
   margin-top: 0;
   border-radius: 0;
   /**  border-top-right-radius: 0;

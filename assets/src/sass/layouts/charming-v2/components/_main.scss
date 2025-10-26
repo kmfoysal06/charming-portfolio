@@ -9,7 +9,7 @@
 body {
   background-color: #55008047;
   color: #000;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .charming-portfolio-container {
@@ -19,7 +19,7 @@ body {
   background: rgba(255, 255, 255, 0.4);
   border-radius: 8px;
   margin-top: 50px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 
   .section-header {
     text-align: center;
@@ -54,10 +54,15 @@ body {
 .charming-portfolio-social-links a {
   color: #000;
   font-size: 20px;
-  padding: 8px;
-  border-radius: 8px;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  padding: 6px;
+  border-radius: 4px;
   text-decoration: none;
+  display: inline-block;
+  line-height: 1;
+  box-shadow:
+    rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
+
 }
 
 .charming-portfolio-social-links {
@@ -70,8 +75,6 @@ body {
 }
 
 /** social links end **/
-
-
 
 /** hero section **/
 .charming-portfolio-hero-section {
@@ -102,7 +105,7 @@ body {
 
 .charming-portfolio-hero-section .hero-text .highlight {
   font-size: 56px;
-  line-height: 1.5;
+  line-height: 1;
   display: block;
   background-image: linear-gradient(60deg, #550080, #ff66f6, #550080);
   -webkit-background-clip: text;
@@ -110,6 +113,8 @@ body {
   background-size: 200%;
   animation: highlight-name 4s ease infinite;
   -webkit-text-fill-color: transparent;
+  margin-top: 6px;
+  margin-bottom: 14px;
 }
 
 .charming-portfolio-hero-section .hero-text .short-description {
@@ -121,7 +126,7 @@ body {
 }
 
 .charming-portfolio-hero-section .hero-text .short-description::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 4px;
   left: -18px;
@@ -142,8 +147,6 @@ body {
 /** hero section end **/
 /** skills section **/
 
-
-
 .charming-portfolio-skills-section .section-content {
   display: flex;
   flex-wrap: wrap;
@@ -152,10 +155,11 @@ body {
   margin-top: 8px;
 }
 
-
 .charming-portfolio-skills-section .single-skill {
   width: 150px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  box-shadow:
+    rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -169,7 +173,6 @@ body {
 .charming-portfolio-skills-section .single-skill:hover {
   transform: translateY(-4px);
 }
-
 
 .charming-portfolio-skills-section .single-skill h3 {
   font-weight: 500;
@@ -196,7 +199,9 @@ body {
 .charming-portfolio-projects-section .single-project {
   width: 300px;
   border-radius: 8px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  box-shadow:
+    rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
   cursor: pointer;
   transition: transform 0.3s ease;
   position: relative;
@@ -208,35 +213,41 @@ body {
     opacity: 0;
     pointer-events: none;
     position: absolute;
+  }
 
-  }
   &:hover .single-project-link {
-      opacity: 1;
-      pointer-events: auto;
-      top: 8px;
-      right: 8px;
-      background: #fff;
-      color: #000;
-      box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px;
-      transition: background 0.3s ease, color 0.3s ease, opacity 0.3s ease;
-      text-decoration: none;
-      display: grid;
-      width: 26px;
-      height: 26px;
-      place-content: center;
-      border-radius: 50%;
-      padding: 16px;
-      font-size: 20px;
+    opacity: 1;
+    pointer-events: auto;
+    top: 8px;
+    right: 8px;
+    background: #fff;
+    color: #000;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px;
+    transition:
+      background 0.3s ease,
+      color 0.3s ease,
+      opacity 0.3s ease;
+    text-decoration: none;
+    display: grid;
+    width: 26px;
+    height: 26px;
+    place-content: center;
+    border-radius: 50%;
+    padding: 16px;
+    font-size: 20px;
   }
+
   .primary-project-details {
     background: #fff;
     padding: 8px 16px;
+
     h3 {
       font-size: 18px;
       font-weight: 600;
       color: #000;
     }
   }
+
   .secondary-project-details {
     position: absolute;
     top: 100%;
@@ -245,25 +256,30 @@ body {
     transform-origin: top;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
     background-color: #fff;
+
     p {
-      font-size: 14px;
+      font-size: 13px;
       color: #222;
       margin-bottom: 0;
       display: inline-block;
     }
-    
+
     small {
-      font-size: 14px;
+      font-size: 13px;
       color: #222;
       margin-bottom: 4px;
     }
+
     .charming-portfolio-has-see-more {
       display: flex;
       flex-direction: column;
     }
   }
+
   &:hover .secondary-project-details,
   &:focus .secondary-project-details {
     opacity: 1;
@@ -271,7 +287,6 @@ body {
     transform: translateY(0) scaleY(1);
   }
 }
-
 
 .charming-portfolio-projects-section .single-project .secondary-project-details {
   padding: 8px 16px;
@@ -299,7 +314,9 @@ body {
 .charming-portfolio-experience-section .single-experience {
   width: 300px;
   border-radius: 8px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  box-shadow:
+    rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -308,8 +325,38 @@ body {
   padding: 10px;
   cursor: pointer;
   position: relative;
-}
 
+  h3 {
+    line-height: 18px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 0;
+    display: inline-block;
+    color: #222;
+  }
+
+  .designation {
+    font-size: 13px;
+    font-weight: 600;
+    color: #550080;
+    margin-bottom: 10px;
+  }
+
+  .charming-portfolio-has-see-more {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .single-experience img {
+    width: min(100%, 200px);
+    border-radius: 8px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
 
 .charming-portfolio-experience-section .single-experience .experience-details {
   padding: 8px 16px;
@@ -323,7 +370,9 @@ body {
   transform-origin: top;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .charming-portfolio-experience-section .single-experience:hover .experience-details,
@@ -340,17 +389,12 @@ body {
   color: #000;
 }
 
-.charming-portfolio-experience-section .single-experience .experience-details p {
-  font-size: 14px;
-  color: #222;
-  margin-bottom: 0;
-}
+.charming-portfolio-experience-section .single-experience .experience-details p {}
 
 .charming-portfolio-experience-section .single-experience .experience-details .timerange {
   font-size: 12px;
-  margin-bottom: 4px;
+  margin-bottom: 0;
 }
-
 
 .charming-portfolio-experience-section .single-experience .experience-details small {
   font-size: 12px;
@@ -366,24 +410,7 @@ body {
   flex-flow: row wrap;
 }
 
-.charming-portfolio-experience-section .single-experience .experience-details .designation {
-  font-weight: 600;
-  color: #550080;
-  margin-bottom: 8px;
-}
-
-
-
-.charming-portfolio-experience-section .single-experience img {
-  width: min(100%, 200px);
-  border-radius: 8px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
 /** experience section end **/
-
-
 
 /** contact section **/
 
@@ -400,6 +427,7 @@ body {
   margin-top: 8px;
   margin-bottom: 8px;
 }
+
 .charming-portfolio-contact-section .section-content .contact-header h3 {
   font-size: 18px;
   font-weight: 600;
@@ -415,6 +443,7 @@ body {
 .charming-portfolio-contact-section .section-content .contact-header .contact-info {
   font-size: 16px;
 }
+
 .charming-portfolio-contact-section .section-content .contact-header .contact-info span {
   color: #550080;
 }
@@ -470,9 +499,6 @@ body {
   margin-top: 6px;
 }
 
-
-
-
 /** contact section end **/
 /** footer section **/
 .charming-portfolio-footer {
@@ -490,7 +516,8 @@ body {
   row-gap: 8px;
   justify-content: space-around;
   align-items: center;
-  background: rgb(175 175 175 / 72%);
+  background: #000;
+  color: #fff;
   margin-bottom: 0;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
@@ -507,11 +534,14 @@ body {
 }
 
 .charming-portfolio-footer .footer-section.footer-section-menus a {
-  color: #000000;
+  color: #00a;
   font-size: 14px;
   text-decoration: underline;
   text-underline-offset: 4px;
   transition: color 0.3s ease;
+}
+.footer-socials .charming-portfolio-social-links a {
+  color: #fff;
 }
 
 .charming-portfolio-footer .footer-section.footer-section-menus a:hover {
@@ -523,15 +553,16 @@ body {
     h3 {
       margin-bottom: 8px;
     }
+
     p {
       color: #777;
       font-size: 14px;
     }
+
     i {
       font-size: 12px;
     }
   }
-
 }
 
 .charming-portfolio-footer .footer-subsection .charming-portfolio-footer .footer-section.footer-owner-data {
@@ -548,32 +579,34 @@ body {
 .charming-portfolio-footer .footer-section.footer-owner-data p {
   font-size: 14px;
   margin-bottom: 2px;
-  color: #000;
+  color: #fff;
   line-height: 18px;
 }
 
+.charming-portfolio-footer .footer-section .footer-search {
+  margin-top: 12px;
+}
 .charming-portfolio-footer .footer-section .footer-search input {
   padding: 8px;
   border: 1px solid #ccc;
-  margin-top: 4px;
 }
 
 .charming-portfolio-footer .footer-section .footer-search button {
   padding: 8px 12px;
   background-color: #444;
+  border: 1px solid #444;
   color: #fff;
   border: none;
   cursor: pointer;
   font-size: 14px;
-  margin-top: 4px;
 }
 
 .charming-portfolio-footer .copyright {
   text-align: center;
   padding: 8px 0;
-  font-size: 16px;
-  color: #fff;
-  background-color: #666;
+  font-size: 14px;
+  color: #7777b7;
+  background-color: #232323;
   margin-top: 0;
   border-radius: 0;
   /**  border-top-right-radius: 0;
@@ -594,7 +627,6 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-
   .charming-portfolio-hero-section {
     flex-direction: column-reverse;
   }
@@ -610,7 +642,6 @@ body {
   .charming-portfolio-hero-section .hero-text .short-description {
     font-size: 16px;
   }
-
 
   .charming-portfolio-hero-section .hero-text {
     max-width: 100%;
@@ -643,12 +674,9 @@ body {
   .charming-portfolio-contact-section .section-content .contact-form {
     grid-template-columns: 1fr;
   }
-
 }
 
-
 @media screen and (max-width: 500px) {
-
   .charming-portfolio-contact-section .section-content .contact-header {
     text-align: center;
   }

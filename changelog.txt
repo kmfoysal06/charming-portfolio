@@ -60,3 +60,6 @@
 -Bug Fixes
 -Live Link for Project
 -Migration from v1 projects bug fixes
+==v2.0.1==
+-UI Improved
+-Bug Fixes
