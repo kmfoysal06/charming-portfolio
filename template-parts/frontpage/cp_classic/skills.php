@@ -10,7 +10,7 @@ if (! defined('ABSPATH')) {
 if (is_array($args['skills']) && !empty($args['skills'])) {
 ?>
     <div class="skills-title flex flex-col items-center">
-        <div class="badge badge-neutral py-3 px-4"><?php esc_html_e("Skills", "charming-portfolio"); ?></div>
+        <div class="badge-base py-3 px-4"><?php esc_html_e("Skills", "charming-portfolio"); ?></div>
         <p><?php esc_html_e("The skills, tools and technologies I am really good at:", "charming-portfolio"); ?></p>
     </div>
     <div class="skills-container">

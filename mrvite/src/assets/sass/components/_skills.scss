@@ -4,7 +4,7 @@
  --skill-box-width: 120px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(var(--skill-box-width), 100%), 1fr));
-  width: 100%;
+//  width: 100%;
   align-items: center;
   .charming-portfolio-skill-card {
       font-family: "Inter";

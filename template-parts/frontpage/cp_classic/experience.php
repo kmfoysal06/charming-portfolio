@@ -1,54 +1,62 @@
 <?php
 
 /**
- * Footer Template For Front Page
+ * Experience Template For Frontpage
  * @package Charming Portfolio
  */
-if (!defined('ABSPATH')) {
+if (! defined('ABSPATH')) {
     exit;
 }
+if (is_array($args) && array_key_exists("experiences", $args) && !empty($args['experiences']) && !empty(array_merge(...$args['experiences']))):
 ?>
-<section class="home-footer w-full bg-gray-400 text-white py-3 text-center shadow-2xl mt-2">
-    <footer role="contentinfo" class="charming-portfolio-footer footer-inner flex flex-col justify-center gap-3">
-        <div class="badge badge-neutral self-center py-3 px-4 mb-6"><?php esc_html_e("Get in Touch", "charming-portfolio"); ?></div>
-        <div class="footer-text">
-            <p>
-                <?php
-                printf(
-                    wp_kses(
-                        __("What’s next? Feel free to reach out to me if you're looking for <br> a developer, have a query, or simply want to connect.", 'charming-portfolio'),
-                        [
-                            'br' => []
-                        ]
-                    )
-                );
-                ?>
+    <div class="experience-title my-3 flex flex-col items-center">
+        <div class="badge-base py-3 px-4"><?php esc_html_e("Experience", "charming-portfolio"); ?></div>
+        <p><?php esc_html_e("Here is a quick summary of my most recent experiences:", "charming-portfolio"); ?></p>
+    </div>
+    <div class="experience-content charming_portfolio_shadow_thin gap-y-3" tab-index="0">
+        <?php
 
-            </p>
-        </div>
-        <div class="footer-mail flex justify-center items-center gap-x-3">
-            <span class="dashicons dashicons-email"></span>
-            <h2 class="text-lg md:text-xl lg:text-xl line-break-anywhere"><?php echo esc_html($args["email"]); ?></h2>
-            <button class="simplecharm-portfolio-copy-mail simplecharm-portfolio-button-hover"><span class="dashicons dashicons-clipboard cursor-pointer"></span></button>
-        </div>
-        <div class="footer-phone flex justify-center items-center gap-x-3">
-            <span class="dashicons dashicons-smartphone"></span>
-            <h2 class="text-lg md:text-xl lg:text-xl line-break-anywhere"> <?php echo esc_html($args["phone"]); ?> </h2>
-            <button class="simplecharm-portfolio-copy-phone simplecharm-portfolio-button-hover"><span class="dashicons dashicons-clipboard cursor-pointer"></span></button>
-        </div>
-        <div class="footer-social-links">
-            <p><?php esc_html_e("You may also find me on these platforms!", "charming-portfolio"); ?></p>
-            <div class="social-link flex gap-3 my-2 justify-center">
-                <?php CHARMING_PORTFOLIO_link_social_frontend($args['social_links'], 10); ?>
+        $experiences = $args['experiences'];
+        foreach ($experiences as $single_experience):
+            if (is_array($single_experience) && isset($single_experience[0]) && is_array($single_experience[0])) {
+                $single_experience = CHARMING_PORTFOLIO_flattern_array($single_experience);
+            }
+
+            if (empty($single_experience)) continue;
+            $start_date = array_key_exists('start_date', $single_experience) && !empty($single_experience['start_date']) ? gmdate('M o', strtotime($single_experience['start_date'])) : '';
+            $working_now = array_key_exists('working', $single_experience) ? $single_experience['working'] : 'off';
+            $end_date = array_key_exists('end_date', $single_experience) && !empty($single_experience['end_date']) ? gmdate('M o', strtotime($single_experience['end_date'])) : '';
+            $end_date_status = strtolower($working_now) === 'on' ? __("Present", "charming-portfolio") : $end_date;
+        ?>
+
+            <div class="experience-name flex justify-center items-center">
+                <h2 class="text-3xl"><?php echo esc_html($single_experience['institution']); ?></h2>
             </div>
-        </div>
-    </footer>
-</section>
-</div>
-<div class="simplecharm-portfolio-bottom-alert" id="simplecharm-portfolio-bottom-alert"></div>
+            <div class="experience-info experience-name flex flex-col justify-center gap-y-1">
+                <h3 class="text-xl text-left"><?php echo esc_html($single_experience['post-title']); ?></h3>
+                <p>
+                    <?php
 
-</main>
-<?php wp_footer(); ?>
-</body>
 
-</html>
+                    printf(wp_kses(
+                        isset($single_experience['responsibility']) ? CHARMING_PORTFOLIO_special_tag($single_experience['responsibility']) : '',
+                        [
+                            'b' => [],
+                            'br' => [],
+                            'ul' => [
+                                'li' => []
+                            ]
+                        ]
+                    ))
+                    ?>
+                </p>
+                <?php
+                if (!empty($start_date)):
+                ?>
+                    <h4 class="experience-time"><?php echo esc_html($start_date . ' - ' . $end_date_status); ?></h4>
+                <?php endif; ?>
+
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>

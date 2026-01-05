@@ -13,7 +13,7 @@ $portfolio_saved_value = $args;
     <!-- about me section -->
     <section class="about-me min-h-screen min-h-max my-2 flex justify-center">
         <?php
-        CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/cp_classic/aboutme", "", $portfolio_saved_value);
+        CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/cp_classic/about", "", $portfolio_saved_value);
         ?>
     </section>
 

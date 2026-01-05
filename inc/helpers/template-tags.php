@@ -1,4 +1,5 @@
 <?php
+
 /**
  * All functions for plugin functionality
  * @package Charming Portfolio
@@ -6,14 +7,15 @@
 
 // Exit if accessed directly
 if (!defined('ABSPATH')) {
-	exit;
+    exit;
 }
 
 /**
  * Get Template Part For Plugin
  */
 if (!function_exists('CHARMING_PORTFOLIO_get_template_part')) {
-    function CHARMING_PORTFOLIO_get_template_part($slug, $name = null, $args = []) {
+    function CHARMING_PORTFOLIO_get_template_part($slug, $name = null, $args = [])
+    {
         // Define the template path
         $template_path = plugin_dir_path(__FILE__);
         $plugin_root_path = dirname(dirname($template_path)) . '/';
@@ -36,7 +38,8 @@ if (!function_exists('CHARMING_PORTFOLIO_get_template_part')) {
  * Return Template Part For Plugin
  */
 if (!function_exists('CHARMING_PORTFOLIO_return_template_part')) {
-    function CHARMING_PORTFOLIO_return_template_part($slug, $name = null, $args = []) {
+    function CHARMING_PORTFOLIO_return_template_part($slug, $name = null, $args = [])
+    {
         ob_start();
         charming_portfolio_get_template_part($slug, $name, $args);
         $output = ob_get_clean();
@@ -51,7 +54,8 @@ if (!function_exists('CHARMING_PORTFOLIO_return_template_part')) {
  * @return array
  */
 if (!function_exists("CHARMING_PORTFOLIO_load_social")) {
-    function CHARMING_PORTFOLIO_load_social($social_links) {
+    function CHARMING_PORTFOLIO_load_social($social_links)
+    {
         if (isset($social_links) && is_array($social_links) && !empty($social_links)) {
             $social_links_array = [];
             foreach ($social_links as $link) {
@@ -85,7 +89,8 @@ if (!function_exists("CHARMING_PORTFOLIO_load_social")) {
  * @return void
  */
 if (!function_exists("CHARMING_PORTFOLIO_link_social")) {
-    function CHARMING_PORTFOLIO_link_social($social_links) {
+    function CHARMING_PORTFOLIO_link_social($social_links)
+    {
         foreach ($social_links as $social_link) {
             echo '<a href="' . esc_attr(is_array($social_link['url']) ? implode('', $social_link['url']) : $social_link['url']) . '" target="_blank">' . esc_attr(is_array($social_link['name']) ? implode('', $social_link['name']) : $social_link['name']) . '</a> ';
         }
@@ -98,14 +103,28 @@ if (!function_exists("CHARMING_PORTFOLIO_link_social")) {
  * @return void
  */
 if (!function_exists("CHARMING_PORTFOLIO_link_social_frontend")) {
-    function CHARMING_PORTFOLIO_link_social_frontend($social_links) {
+    function CHARMING_PORTFOLIO_link_social_frontend($social_links)
+    {
         /**
          * The $allowed_icons array contains the list of icons that available on dashicons.
          * The $svgs array contains the list of icons that available on svgs folder.
          */
 
         $allowed_icons = array(
-            'twitter', 'facebook', 'instagram', 'youtube', 'linkedin', 'pinterest', 'podio', 'google', 'reddit', 'wordpress', 'rss', 'whatsapp', 'xing', 'twitch',
+            'twitter',
+            'facebook',
+            'instagram',
+            'youtube',
+            'linkedin',
+            'pinterest',
+            'podio',
+            'google',
+            'reddit',
+            'wordpress',
+            'rss',
+            'whatsapp',
+            'xing',
+            'twitch',
         );
         $svgs = array(
             'github'
@@ -114,15 +133,14 @@ if (!function_exists("CHARMING_PORTFOLIO_link_social_frontend")) {
             $icon = strtolower(is_array($social_link['name']) ? implode('', $social_link['name']) : $social_link['name']);
             if (in_array($icon, $allowed_icons)) {
                 echo '<a class="simplecharm-portfolio-button-hover" href="' . esc_attr(is_array($social_link['url']) ? implode('', $social_link['url']) : $social_link['url']) . '" target="_blank"><span class="' . esc_attr('dashicons dashicons-' . $icon) . '"></span></a> ';
-            }elseif(in_array($icon, $svgs)){
+            } elseif (in_array($icon, $svgs)) {
                 echo svg_escape(
-                        CHARMING_PORTFOLIO_return_template_part(
-                            "template-parts/svgs/" . sanitize_file_name( $icon ),
-                            null,
-                            ['url' => esc_url( $social_link['url'] )]
-                        ),
-                    );
-
+                    CHARMING_PORTFOLIO_return_template_part(
+                        "template-parts/svgs/" . sanitize_file_name($icon),
+                        null,
+                        ['url' => esc_url($social_link['url'])]
+                    ),
+                );
             } else {
                 echo '<a class="simplecharm-portfolio-button-hover" href="' . esc_attr(is_array($social_link['url']) ? implode('', $social_link['url']) : $social_link['url']) . '" target="_blank"><span class="dashicons dashicons-admin-links"></span></a> ';
             }
@@ -136,28 +154,29 @@ if (!function_exists("CHARMING_PORTFOLIO_link_social_frontend")) {
  * @param string $svg_content
  * @return string
  */
-if(!function_exists("svg_escape")){
-    function svg_escape( $svg_content ) {
+if (!function_exists("svg_escape")) {
+    function svg_escape($svg_content)
+    {
         // Load SVG as an XML document.
         $dom = new DOMDocument();
-        libxml_use_internal_errors( true ); // Suppress XML errors for invalid SVG.
+        libxml_use_internal_errors(true); // Suppress XML errors for invalid SVG.
 
-        $dom->loadXML( $svg_content, LIBXML_NOENT | LIBXML_DTDLOAD | LIBXML_NOERROR | LIBXML_NOWARNING );
+        $dom->loadXML($svg_content, LIBXML_NOENT | LIBXML_DTDLOAD | LIBXML_NOERROR | LIBXML_NOWARNING);
         libxml_clear_errors();
 
         // Basic security: Remove script tags and on* attributes.
-        $xpath = new DOMXPath( $dom );
+        $xpath = new DOMXPath($dom);
 
         // Remove <script> tags.
-        foreach ( $xpath->query( '//script' ) as $script ) {
-            $script->parentNode->removeChild( $script );
+        foreach ($xpath->query('//script') as $script) {
+            $script->parentNode->removeChild($script);
         }
 
         // Remove attributes that start with "on" (e.g., onmouseover).
-        foreach ( $xpath->query( '//*[@*[starts-with(name(), "on")]]' ) as $el ) {
-            foreach ( iterator_to_array( $el->attributes ) as $attr ) {
-                if ( stripos( $attr->nodeName, 'on' ) === 0 ) {
-                    $el->removeAttribute( $attr->nodeName );
+        foreach ($xpath->query('//*[@*[starts-with(name(), "on")]]') as $el) {
+            foreach (iterator_to_array($el->attributes) as $attr) {
+                if (stripos($attr->nodeName, 'on') === 0) {
+                    $el->removeAttribute($attr->nodeName);
                 }
             }
         }
@@ -175,15 +194,16 @@ if(!function_exists("svg_escape")){
  * @return array
  */
 if (!function_exists("CHARMING_PORTFOLIO_load_skills")) {
-	function CHARMING_PORTFOLIO_load_skills($all_skills) {
-          $skillsArray = [];
-          foreach($all_skills as $key => $single_skill) {
-            foreach($single_skill as $single_data) {
-              foreach($single_data as $index => $value){
-                $skillsArray[$key][$index] = $value;
-              }
+    function CHARMING_PORTFOLIO_load_skills($all_skills)
+    {
+        $skillsArray = [];
+        foreach ($all_skills as $key => $single_skill) {
+            foreach ($single_skill as $single_data) {
+                foreach ($single_data as $index => $value) {
+                    $skillsArray[$key][$index] = $value;
+                }
             }
-		}
+        }
         return $skillsArray;
     }
 }
@@ -195,7 +215,8 @@ if (!function_exists("CHARMING_PORTFOLIO_load_skills")) {
  * @return array
  */
 if (!function_exists("CHARMING_PORTFOLIO_load_experience")) {
-    function CHARMING_PORTFOLIO_load_experience($experiences) {
+    function CHARMING_PORTFOLIO_load_experience($experiences)
+    {
         $sanitized_experiences = [];
         foreach ($experiences as $experience) {
             $temp_experience = [];
@@ -216,7 +237,8 @@ if (!function_exists("CHARMING_PORTFOLIO_load_experience")) {
  * @return array
  */
 if (!function_exists("CHARMING_PORTFOLIO_flattern_array")) {
-    function CHARMING_PORTFOLIO_flattern_array($arr) {
+    function CHARMING_PORTFOLIO_flattern_array($arr)
+    {
         return array_merge(...$arr);
     }
 }
@@ -227,7 +249,8 @@ if (!function_exists("CHARMING_PORTFOLIO_flattern_array")) {
  * @return array
  */
 if (!function_exists("CHARMING_PORTFOLIO_experience_admin")) {
-    function CHARMING_PORTFOLIO_experience_admin($experiences) {
+    function CHARMING_PORTFOLIO_experience_admin($experiences)
+    {
         $experience_institutions = [];
         foreach ($experiences as $experience) {
             if (!is_array($experience) || empty($experience)) continue;
@@ -246,7 +269,8 @@ if (!function_exists("CHARMING_PORTFOLIO_experience_admin")) {
  * TODO: Make this function more easy to use.
  */
 if (!function_exists("CHARMING_PORTFOLIO_experience_responsibility_list")) {
-    function CHARMING_PORTFOLIO_experience_responsibility_list($responsibilities) {
+    function CHARMING_PORTFOLIO_experience_responsibility_list($responsibilities)
+    {
         $html = '';
         $responsibility_array = explode('---', $responsibilities);
         $html .= '<ul class="list-disc">';
@@ -265,13 +289,14 @@ if (!function_exists("CHARMING_PORTFOLIO_experience_responsibility_list")) {
  * @return string
  */
 if (!function_exists("CHARMING_PORTFOLIO_split_tags")) {
-    function CHARMING_PORTFOLIO_split_tags($tags) {
+    function CHARMING_PORTFOLIO_split_tags($tags)
+    {
         $html = '';
-        $tags_array = (!empty($tags) && explode(', ', $tags) !== null) ? explode(', ',$tags) : [];
-        $html .= '<div class="work-tags">';
+        $tags_array = (!empty($tags) && explode(', ', $tags) !== null) ? explode(', ', $tags) : [];
+        $html .= '<div class="work-tags flex gap-1">';
         foreach ($tags_array as $single_tag) {
             if (empty($single_tag)) continue;
-            $html .= '<div class="min-w-max badge badge-neutral p-4 mx-2 my-2" tabindex="0">' . $single_tag . '</div>';
+            $html .= '<div class="badge-base" tabindex="0">' . $single_tag . '</div>';
         }
         $html .= '</div>';
         return $html;
@@ -285,7 +310,8 @@ if (!function_exists("CHARMING_PORTFOLIO_split_tags")) {
  * @return array
  */
 if (!function_exists("CHARMING_PORTFOLIO_load_works")) {
-    function CHARMING_PORTFOLIO_load_works($works) {
+    function CHARMING_PORTFOLIO_load_works($works)
+    {
         foreach ($works as $work_index => &$work) {
             foreach ($work as $work_data_index => $work_data) {
                 if (!is_array($work_data) || empty($work_data)) continue;
@@ -305,7 +331,8 @@ if (!function_exists("CHARMING_PORTFOLIO_load_works")) {
  * @return array
  */
 if (!function_exists("CHARMING_PORTFOLIO_works_admin")) {
-    function CHARMING_PORTFOLIO_works_admin($works) {
+    function CHARMING_PORTFOLIO_works_admin($works)
+    {
         $works_array = [];
         foreach ($works as $work) {
             $works_array[] = $work['title'];
@@ -329,10 +356,11 @@ if (!function_exists("CHARMING_PORTFOLIO_works_admin")) {
  * [break] for line break
  */
 if (!function_exists("CHARMING_PORTFOLIO_special_tag")) {
-    function CHARMING_PORTFOLIO_special_tag($textarea_value) {
-        if(empty($textarea_value)) return ;
-        $bold_text = str_replace("[bold]", "<b>",$textarea_value);
-        $bold_text_end = str_replace("[/bold]", "</b>",$bold_text);
+    function CHARMING_PORTFOLIO_special_tag($textarea_value)
+    {
+        if (empty($textarea_value)) return;
+        $bold_text = str_replace("[bold]", "<b>", $textarea_value);
+        $bold_text_end = str_replace("[/bold]", "</b>", $bold_text);
         $quote_text = str_replace("[quote]", "\"", $bold_text_end);
         $single_quote_text = str_replace("[squote]", "'", $quote_text);
         $line_break_text = str_replace("[break]", "<br />", $single_quote_text);
@@ -346,7 +374,8 @@ if (!function_exists("CHARMING_PORTFOLIO_special_tag")) {
  * @return bool
  */
 if (!function_exists("CHARMING_PORTFOLIO_works_blank")) {
-    function CHARMING_PORTFOLIO_works_blank($works) {
+    function CHARMING_PORTFOLIO_works_blank($works)
+    {
         $projects_count = 0;
         foreach ($works as $work_index => $work) {
             if (is_array($work) && !empty($work)) {
@@ -362,32 +391,35 @@ if (!function_exists("CHARMING_PORTFOLIO_works_blank")) {
  * Check if Portfolio is Enabled
  * @return bool
  */
-if(!function_exists("CHARMING_PORTFOLIO_enabled")) {
-	function CHARMING_PORTFOLIO_enabled():bool {
-		$portfolio_data = \CHARMING_PORTFOLIO\Inc\Classes\Portfolio::get_instance()->display_saved_value();
-		if($portfolio_data){
-			$portfolio_enabled = $portfolio_data['enabled'] ?? false;
-			return $portfolio_enabled;
-		}
-		return false;
-	}
+if (!function_exists("CHARMING_PORTFOLIO_enabled")) {
+    function CHARMING_PORTFOLIO_enabled(): bool
+    {
+        $portfolio_data = \CHARMING_PORTFOLIO\Inc\Classes\Portfolio::get_instance()->display_saved_value();
+        if ($portfolio_data) {
+            $portfolio_enabled = $portfolio_data['enabled'] ?? false;
+            return $portfolio_enabled;
+        }
+        return false;
+    }
 }
 
 /**
  * Check if Portfolio Client Side Render Enabled
  * @return bool
  */
-if(!function_exists("CHARMING_PORTFOLIO_CLIENT_RENDER")) {
-	function CHARMING_PORTFOLIO_CLIENT_RENDER():bool {
-	    return true;	
-	}
+if (!function_exists("CHARMING_PORTFOLIO_CLIENT_RENDER")) {
+    function CHARMING_PORTFOLIO_CLIENT_RENDER(): bool
+    {
+        return true;
+    }
 }
 
 /**
  * Get Latest $n Posts
  */
 if (!function_exists("CHARMING_PORTFOLIO_get_latest_posts")) {
-    function CHARMING_PORTFOLIO_get_latest_posts($n = 5) {
+    function CHARMING_PORTFOLIO_get_latest_posts($n = 5)
+    {
         $args = [
             'posts_per_page' => $n,
             'post_status' => 'publish',

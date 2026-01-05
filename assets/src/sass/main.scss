@@ -25,6 +25,8 @@
 #CHARMING_PORTFOLIO-content {
   font-family: "Poppins", sans-serif;
   background-color: $background-color;
+  width: 100%;
+  max-width: 1280px;
 }
 .CHARMING_PORTFOLIO-welcome-emoji{
 	display: contents;
@@ -57,4 +59,11 @@ foorer{
 	h1,h2,h3,h4,h5,h6{
 		// color: #F9FAFB;
 	}
+}
+
+
+@media screen and (max-width: 1280px) {
+ #CHARMING_PORTFOLIO-content {
+   padding-inline: 20px;
+ }
 }

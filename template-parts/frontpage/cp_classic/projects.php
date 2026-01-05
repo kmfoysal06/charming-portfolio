@@ -14,7 +14,7 @@ if (is_array($args) && array_key_exists("works", $args) && !empty($args['works']
 
 ?>
     <div class="project-title my-3 flex flex-col items-center">
-        <div class="badge badge-neutral py-3 px-4"><?php esc_html_e("Work", "charming-portfolio"); ?></div>
+        <div class="badge-base py-3 px-4"><?php esc_html_e("Work", "charming-portfolio"); ?></div>
         <p><?php esc_html_e("Some of the noteworthy projects I have built:", "charming-portfolio"); ?></p>
     </div>
     <div class="single-work-info grid lg:grid-cols-2 md:grid-cols-2 gap-x-4 my-3">

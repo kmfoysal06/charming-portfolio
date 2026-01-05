@@ -22,7 +22,7 @@ $CHARMING_PORTFOLIO_dashicons_css_url = includes_url('css/dashicons.min.css');
     /**
      * Slot for React loaded only if user allows client side rendering 
      **/
-    if (CHARMING_PORTFOLIO_CLIENT_RENDER === true && $charming_portfolio_saved_value['layout'] === 'classic'): ?>
+    if ($charming_portfolio_saved_value['layout'] === 'classic'): ?>
         <!-- Load Classic Theme -->
         <?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/cp_classic/index", "", $charming_portfolio_saved_value); ?>
 
