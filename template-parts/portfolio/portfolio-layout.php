@@ -8,7 +8,7 @@ if( ! defined( 'ABSPATH' ) ) {
 }
 $layout = $args['layout'] ?? 'charming_v2';
 if(!is_array($layout) || !in_array($layout, ['classic', 'charming_v2'])) {
-    $layout = 'charming_v2';
+    $layout = 'charming_v3';
 }
 
 ?>
@@ -32,6 +32,14 @@ if(!is_array($layout) || !in_array($layout, ['classic', 'charming_v2'])) {
             <?php esc_html_e("Charming V2 Layout","charming-portfolio"); ?>
             </div>
 
-                    </label>
+        </label>
+        <label>
+            <img src="<?php echo esc_url(CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/cp-v3.webp") ?>" width="200px" />
+            <div class="flex gap-1 items-center">
+<input type="radio" name="portfolio_layout" value="charming_v3" <?php checked($layout, 'charming_v3'); ?>>
+            <?php esc_html_e("Charming V3 Layout","charming-portfolio"); ?>
+            </div>
+
+        </label>
     </div>
 </div>
