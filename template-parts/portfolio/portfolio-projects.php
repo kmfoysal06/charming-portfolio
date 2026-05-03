@@ -60,7 +60,7 @@ if( ! defined( 'ABSPATH' ) ) {
     <tr class="charming_portfolio_empty-row__works screen-reader-text flex simplecharm-basic-border simplecharm-basic-padding flex flex-col single-project">
         <td>
 
-            <label for="<?php echo esc_attr("project-image-" . $key); ?>"><?php esc_html_e("Title","charming-portfolio"); ?></label>
+            <label for="<?php echo esc_attr("project-image-" . $key); ?>"><?php esc_html_e("Project Image","charming-portfolio"); ?></label>
             <img width="200px" height="auto" src="<?php echo esc_url(CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/code.png") ?>" class="image" />
                         <input type="hidden" name="" value="<?php echo esc_url(CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/code.png") ?>" class="image-url" data-queue="0" id="0"/>
 		</td>
