@@ -28,7 +28,7 @@ if(!defined("ABSPATH")) {
 
 
     <!-- contact form -->
-    <?php // CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/charming_v3/contact", "", $args);?>
+    <?php  CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/charming_v3/contact", "", $args);?>
 
 </main>
 <?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/charming_v3/footer", "", $args);?>

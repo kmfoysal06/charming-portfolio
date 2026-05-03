@@ -8,48 +8,50 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
 ?>
-<div class="charming-portfolio-container charming-portfolio-contact-section">
-        <div class="section-header">
-            <h2 class="badge">Contact Me</h2>
-            <p class="section-header-note">Want to know something else? Let me know:</p>
-        </div>
-        <div class="section-content">
-            <div class="contact-header">
-                <div class="name">
-                    <h3><?php echo esc_html($args['name']) ?? "Charm"?></h3>
-                    <p><?php echo esc_html($args['designation']) ?? "Ununemployed"?></p>
-                </div>
-                <div class="contact-info">
-                    <p>Phone: <span><?php echo esc_html($args['phone']) ?></span></p>
-                    <p>Email: <span><?php echo esc_html($args['email']) ?></span></p>
-                </div>
-            </div>
-            <form class="contact-form" method="post">
-                <div class="form-image">
-                    <img src="<?php echo esc_url($args['user_image2']); ?>" width="300px" height="auto" alt="<?php echo esc_html($args['name']) ?>" loading="lazy" />
-                </div>
-
-                <div class="form-container">
-                    <div class="form-field">
-                        <label for="charming-portfolio-contact-name">Name:</label>
-                        <input type="text" name="name" id="charming-portfolio-contact-name" placeholder="Your Name" class="name"
-                            required>
-                    </div>
-                    <div class="form-field">
-                        <label for="charming-portfolio-contact-email">Email:</label>
-                        <input type="text" name="email" id="charming-portfolio-contact-email" class="email"
-                            placeholder="Your Email" required>
-                    </div>
-                    <div class="form-field">
-                        <label for="charming-portfolio-contact-message">Message:</label>
-                        <textarea name="message" id="charming-portfolio-contact-message" placeholder="Your Message" maxlength="500" class="message"
-                            rows="10" required></textarea>
-                    </div>
-                    <div class="form-field">
-                        <button type="submit" class="submit_charming_portfolio_enquiry" name="submit"> Submit </button>
-                    </div>
-
-                </div>
-            </form>
-        </div>
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-left">
+    <div class="section-header" style="margin-bottom:32px;">
+      <span class="section-number">04</span>
+      <h2 class="section-title">Contact</h2>
     </div>
+    <p class="contact-tagline">Have a project in mind or want to collaborate? I am open to new opportunities and freelance work.</p>
+
+    <?php $social_links = $args['social_links'] ?? false; ?>
+
+    <div class="contact-social-links">
+    <?php if(is_array($social_links) && !empty($social_links)): ?>
+      <?php foreach($social_links as $social_link): ?>
+
+        <a href="<?php  echo esc_url($social_link['url']); ?>" class="contact-link" target="_blank" rel="noopener">
+          <i class="<?php  echo esc_attr($portfolio->get_social_icon_classes(strtolower($social_link['name']))); ?>"></i>
+            <?php echo esc_html($social_link['name']); ?>
+        </a>
+      <?php endforeach; ?>
+    <?php endif; ?>
+</div>
+  </div>
+
+  <div class="contact-right">
+    <div class="contact-form">
+      <div class="form-group">
+        <label class="form-label" for="charming-portfolio-contact-name">Your Name</label>
+        <input type="text" id="charming-portfolio-contact-name" class="form-input" placeholder="John Doe">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="charming-portfolio-contact-email">Email Address</label>
+        <input type="email" id="charming-portfolio-contact-email" class="form-input" placeholder="john@example.com">
+      </div>
+      <div class="form-group">
+        <label for="charming-portfolio-contact-message" class="form-label">Message</label>
+        <textarea class="form-input" id="charming-portfolio-contact-message" placeholder="Tell me about your project..."></textarea>
+      </div>
+      <button class="form-submit submit_charming_portfolio_enquiry" type="submit" name="submit">
+        Send Message
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
