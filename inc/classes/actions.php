@@ -161,6 +161,8 @@ class Actions
             $skills = array_map(function($skill){
                 // sanitize skill name
                 $skill['name'] = sanitize_text_field(wp_unslash($skill['name']));
+                $skill['desecription'] = sanitize_textarea_field(wp_unslash($skill['description']));
+                $skill['tags'] = sanitize_text_field(wp_unslash($skill['tags']));
                 return $skill;
             }, $skills);
 

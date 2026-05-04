@@ -654,10 +654,14 @@ window.CharmAlert = CharmAlert.getInstance();
           skills.each(function () {
             const skillName = $(this).find(".name").val();
             const skillImageUrl = $(this).find(".image-url").val();
+            const skillDescription = $(this).find(".description").val();
+            const skillTags = $(this).find(".tags").val();
             if (skillName && skillImageUrl) {
               skillsData.push({
                 name: skillName,
-                image: skillImageUrl
+                image: skillImageUrl,
+                description: skillDescription,
+                tags: skillTags
               });
             }
           });
@@ -703,7 +707,7 @@ window.CharmAlert = CharmAlert.getInstance();
             // console.log(projectTags);
             // console.log(projectLink);
           });
-          console.log(projectsData);
+          //console.log(projectsData)
           const data = new FormData();
           data.append('action', 'charming_portfolio_save_data_additional');
           data.append('nonce', charming_portfolio_admin.nonce);

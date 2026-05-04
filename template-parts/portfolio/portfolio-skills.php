@@ -14,8 +14,10 @@ if( ! defined( 'ABSPATH' ) ) {
     <table id="repeatable-fieldset-one" width="100%">
       <tbody>
 	<?php
+var_dump($args['skills']);
 if (is_array($args) && array_key_exists("skills", $args)):
         foreach ($args['skills'] as $key => $skill):
+        $key = $key + 1;
         $skill_info = isset($skill['description']) ? $skill['description'] : '';
         $skill_tags = isset($skill['tags']) ? $skill['tags'] : '';
         ?>
@@ -31,7 +33,7 @@ if (is_array($args) && array_key_exists("skills", $args)):
             <img width="50px" src="<?php echo esc_attr($skill['image']); ?>" class="image" data-queue="<?php echo esc_attr($key)?>"/>
 <td>
 <label for="<?php echo esc_attr("skill-info-" . $key); ?>"><?php esc_html_e("Description (highly recommended to fill in to use if you are using v3 theme)","charming-portfolio"); ?></label>
-<textarea class="info" placeholder="<?php esc_attr_e("Description","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[skills][<?php echo esc_attr($key); ?>][][description]" id="<?php echo esc_attr("skill-info-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" cols="50" rows="5" maxlength="800"><?php echo esc_textarea($skill_info); ?></textarea>
+<textarea class="description" placeholder="<?php esc_attr_e("Description","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[skills][<?php echo esc_attr($key); ?>][][description]" id="<?php echo esc_attr("skill-info-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" cols="50" rows="5" maxlength="800"><?php echo esc_textarea($skill_info); ?></textarea>
 </td>
 <td>
 <label for="skill-tags-<?php echo esc_attr($key); ?>"><?php esc_html_e("Tags (comma separated - highly recommended to fill in to use if you are using v3 theme)","charming-portfolio"); ?></label>
@@ -60,7 +62,7 @@ endforeach;
 			</td>
 <td>
 <label for="skill-info"><?php esc_html_e("Description (highly recommended to fill in to use if you are using v3 theme)","charming-portfolio"); ?></label>
-<textarea class="info" placeholder="<?php esc_attr_e("Description","charming-portfolio"); ?>" name="" id="skill-info" data-queue="0" cols="50" rows="5" maxlength="800"></textarea>
+<textarea class="description" placeholder="<?php esc_attr_e("Description","charming-portfolio"); ?>" name="" id="skill-info" data-queue="0" cols="50" rows="5" maxlength="800"></textarea>
 </td>
 <td>
 <label for="skill-tags"><?php esc_html_e("Tags (comma separated - highly recommended to fill in to use if you are using v3 theme)","charming-portfolio"); ?></label>
