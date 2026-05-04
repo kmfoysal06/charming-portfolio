@@ -17,20 +17,23 @@
     }
 
     tbody {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      display: flex;
+      flex-direction: column;
       gap: 10px;
 
       .skill {
         display: flex;
         flex-direction: column;
-        padding: 10px;
+        padding: 10px 12px;
         background: #fff;
         border-radius: 4px;
 
         td {
           width: 100%;
 
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
           &:last-child {
             display: flex;
             justify-content: end;
@@ -39,13 +42,13 @@
           }
 
           input {
-            width: 100%;
+            //width: 100%;
+            width: min(100%, 300px);
           }
 
           img {
-            width: 50%;
+            width: 50px;
             display: block;
-            margin: auto;
             height: auto;
             object-fit: contain;
           }
@@ -54,6 +57,9 @@
             display: block;
             width: fit-content;
             margin-left: auto;
+          }
+          label {
+            max-width: 50%;
           }
         }
       }
