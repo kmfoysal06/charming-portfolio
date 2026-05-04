@@ -65,4 +65,4 @@
 -Bug Fixes
 ==v3.0=
 -New portfolio theme
--Servaral bug fixes
+-New Fields to show off

@@ -23,7 +23,6 @@
                 let newInputs = row.find('input, textarea');
                 newInputs.each(function() {
                     $(this).attr('data-queue', queue);
-                    let name = $(this).attr('name');
                     let inputType = $(this)[0].className;                    
                     $(this).attr('name', `CHARMING_PORTFOLIO[${dataName}][${queue}][][${inputType}]`);
                     let inputId = $(this).attr("id");
@@ -31,7 +30,6 @@
                     $(this).attr("id",`${inputId}-${queue}`);
                     $(this).siblings('label').attr("for",`${LabelFor}-${queue}`);
                 });
-                // row.removeClass(hiddenFields.join(" "));
                 row.insertBefore(`${insertBefore}:last-child`);
                 return false;
             });

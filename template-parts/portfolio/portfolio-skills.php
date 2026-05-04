@@ -14,7 +14,6 @@ if( ! defined( 'ABSPATH' ) ) {
     <table id="repeatable-fieldset-one" width="100%">
       <tbody>
 	<?php
-var_dump($args['skills']);
 if (is_array($args) && array_key_exists("skills", $args)):
         foreach ($args['skills'] as $key => $skill):
         $key = $key + 1;
