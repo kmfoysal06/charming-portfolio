@@ -654,17 +654,12 @@ window.CharmAlert = CharmAlert.getInstance();
 
           const skillsData = [];
           skills.each(function (index) {
-            console.log("empty bluprint lenght", $(this).closest(".empty_blueprint").length);
-            console.log('index', index);
-            console.log('this', $(this));
             if (!$(this).hasClass("empty_blueprint")) {
               console.log("not empty blueprint");
               const skillName = $(this).find(".name").val();
               const skillImageUrl = $(this).find(".image-url").val();
               const skillDescription = $(this).find(".description").val();
               const skillTags = $(this).find(".tags").val();
-              console.log(skillImageUrl);
-              console.log(skillName);
               if (skillName && skillImageUrl) {
                 skillsData.push({
                   name: skillName,
@@ -672,10 +667,8 @@ window.CharmAlert = CharmAlert.getInstance();
                   description: skillDescription,
                   tags: skillTags
                 });
-                console.log(skillName);
               }
             }
-            console.log('skills data arr', skillsData);
           });
           const experiencesData = [];
           experiences.each(function () {
@@ -705,13 +698,15 @@ window.CharmAlert = CharmAlert.getInstance();
             const projectDescription = $(this).find(".description").val();
             const projectTags = $(this).find(".tags").val();
             const projectLink = $(this).find(".link").val();
+            const projectCategory = $(this).find(".category").val();
             if (projectName && projectDescription && projectTags && projectLink) {
               projectsData.push({
                 image_url: imageUrl,
                 title: projectName,
                 description: projectDescription,
                 tags: projectTags,
-                link: projectLink
+                link: projectLink,
+                category: projectCategory
               });
             }
             // console.log(projectName);
