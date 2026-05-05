@@ -10,21 +10,6 @@ $skills = $args['skills'] ?? false;
 $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
 ?>
 <?php if(is_array($skills) && !empty($skills)): ?>
-<div class="charming-portfolio-container charming-portfolio-skills-section">
-    <div class="section-header">
-        <h2 class="badge">Skills</h2>
-        <p class="section-header-note">The skills, tools and technologies I am really good at:</p>
-    </div>
-    <div class="section-content">
-        <?php foreach($skills as $skill): ?>
-            <div class="single-skill">
-                <img src="" width="100px"
-                    height="100px" alt="<?php echo esc_attr($skill['name']); ?>" />
-                <h3></h3>
-            </div>
-        <?php endforeach; ?>
-    </div>
-</div>
 <section class="skills-section" id="skills">
   <div class="section-header">
     <span class="section-number">01</span>
@@ -41,12 +26,19 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
       </div>
       <div class="skill-name"><?php echo esc_html($skill['name']); ?></div>
       <div class="skill-desc"><?php echo esc_html($skill['description']); ?></div>
-      <div class="skill-tags">
-        <span class="skill-tag">PHP</span>
-        <span class="skill-tag">WP Hooks</span>
-        <span class="skill-tag">REST API</span>
-        <span class="skill-tag">Gutenberg</span>
-      </div>
+        <?php if(isset($skill['tags']) && !empty($skill['tags'])): ?>
+            <?php
+                $tags = explode("," ,$skill['tags']);
+                $tags = array_map(function($tag) {
+                    return trim($tag);
+                }, $tags);
+            ?>
+            <div class="skill-tags">
+                <?php foreach($tags as $tag): ?>
+                    <span class="skill-tag"><?php echo esc_html($tag); ?></span>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
     </div>
 <?php endforeach; ?>
   </div>
