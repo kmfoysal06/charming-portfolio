@@ -16,7 +16,7 @@ if(!defined("ABSPATH")) {
      <?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/charming_v3/hero_section", "", $args);?>
     
     <!-- skills section -->
-    <?php // CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/charming_v3/skills", "", $args);?>
+    <?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/charming_v3/skills", "", $args);?>
 
     <!-- projects -->
     <?php // CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/charming_v3/projects", "", $args);?>

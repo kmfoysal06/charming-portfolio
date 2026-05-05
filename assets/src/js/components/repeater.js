@@ -20,6 +20,10 @@
                 queue++;
                 queue = isNaN(queue) ? 1 : queue ;
                 let row = $(`.${hiddenFields.join(".")}`).clone(true).removeClass(hiddenFields.join(" "));
+                if(row.hasClass("empty_blueprint")){
+                    console.log("empty-blueprint removed");
+                    row.removeClass("empty_blueprint");
+                }
                 let newInputs = row.find('input, textarea');
                 newInputs.each(function() {
                     $(this).attr('data-queue', queue);

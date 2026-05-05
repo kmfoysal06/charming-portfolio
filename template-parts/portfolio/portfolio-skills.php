@@ -27,7 +27,7 @@ if (is_array($args) && array_key_exists("skills", $args)):
 			<td>
             <label for="<?php echo esc_attr("skill-image-" . $key); ?>"><?php esc_html_e("Skill Relevent Image (1:1)","charming-portfolio"); ?></label>
 
-            <input type="hidden" value="<?php echo esc_attr($skill['image']); ?>" class="image" name="CHARMING_PORTFOLIO[skills][<?php echo esc_attr($key) ?>][][image]" data-queue="<?php echo esc_attr($key)?>" />
+            <input type="hidden" value="<?php echo esc_attr($skill['image']); ?>" class="image-url" name="CHARMING_PORTFOLIO[skills][<?php echo esc_attr($key) ?>][][image]" data-queue="<?php echo esc_attr($key)?>" />
 
             <img width="50px" src="<?php echo esc_attr($skill['image']); ?>" class="image" data-queue="<?php echo esc_attr($key)?>"/>
 <td>
@@ -47,7 +47,7 @@ endforeach;
         ?>
 
     <!-- empty hidden one for jQuery -->
-    <tr class="charming_portfolio_empty-row__skills_link screen-reader-text flex skill">
+    <tr class="charming_portfolio_empty-row__skills_link screen-reader-text flex flex-wrap skill empty_blueprint">
 	    <td>
         <label for="skill-name"><?php esc_attr_e("Skill","charming-portfolio"); ?> </label>
 	    <input type="text" class="name" data-queue="0" placeholder="<?php esc_attr_e("Skill","charming-portfolio"); ?>" name="" value="" id="skill-name" />

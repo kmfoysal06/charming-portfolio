@@ -129,20 +129,31 @@
                     // console.log(skills)
                     
                     const skillsData = [];
-                    skills.each(function() {
-                        const skillName = $(this).find(".name").val();
-                        const skillImageUrl = $(this).find(".image-url").val();
-                        const skillDescription = $(this).find(".description").val();
-                        const skillTags = $(this).find(".tags").val();
-                        
-                        if(skillName && skillImageUrl) {
-                            skillsData.push({
-                                name: skillName,
-                                image: skillImageUrl,
-                                description: skillDescription,
-                                tags: skillTags
-                            });
+                    skills.each(function(index) {
+                        console.log("empty bluprint lenght" , $(this).closest(".empty_blueprint").length);
+                    console.log('index', index);
+
+                    console.log('this', $(this));
+                        if(!$(this).hasClass("empty_blueprint")) {
+                            console.log("not empty blueprint");
+                            const skillName = $(this).find(".name").val();
+                            const skillImageUrl = $(this).find(".image-url").val();
+                            const skillDescription = $(this).find(".description").val();
+                            const skillTags = $(this).find(".tags").val();
+                            
+                            console.log(skillImageUrl);
+                            console.log(skillName);
+                            if(skillName && skillImageUrl) {
+                                skillsData.push({
+                                    name: skillName,
+                                    image: skillImageUrl,
+                                    description: skillDescription,
+                                    tags: skillTags
+                                });
+                                console.log(skillName);
+                            }
                         }
+                        console.log('skills data arr', skillsData);
                     });
 
                     const experiencesData = [];

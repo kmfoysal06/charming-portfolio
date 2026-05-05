@@ -497,10 +497,13 @@ window.CharmAlert = CharmAlert.getInstance();
         queue++;
         queue = isNaN(queue) ? 1 : queue;
         let row = $(`.${hiddenFields.join(".")}`).clone(true).removeClass(hiddenFields.join(" "));
+        if (row.hasClass("empty_blueprint")) {
+          console.log("empty-blueprint removed");
+          row.removeClass("empty_blueprint");
+        }
         let newInputs = row.find('input, textarea');
         newInputs.each(function () {
           $(this).attr('data-queue', queue);
-          let name = $(this).attr('name');
           let inputType = $(this)[0].className;
           $(this).attr('name', `CHARMING_PORTFOLIO[${dataName}][${queue}][][${inputType}]`);
           let inputId = $(this).attr("id");
@@ -508,7 +511,6 @@ window.CharmAlert = CharmAlert.getInstance();
           $(this).attr("id", `${inputId}-${queue}`);
           $(this).siblings('label').attr("for", `${LabelFor}-${queue}`);
         });
-        // row.removeClass(hiddenFields.join(" "));
         row.insertBefore(`${insertBefore}:last-child`);
         return false;
       });
@@ -651,19 +653,29 @@ window.CharmAlert = CharmAlert.getInstance();
           // console.log(skills)
 
           const skillsData = [];
-          skills.each(function () {
-            const skillName = $(this).find(".name").val();
-            const skillImageUrl = $(this).find(".image-url").val();
-            const skillDescription = $(this).find(".description").val();
-            const skillTags = $(this).find(".tags").val();
-            if (skillName && skillImageUrl) {
-              skillsData.push({
-                name: skillName,
-                image: skillImageUrl,
-                description: skillDescription,
-                tags: skillTags
-              });
+          skills.each(function (index) {
+            console.log("empty bluprint lenght", $(this).closest(".empty_blueprint").length);
+            console.log('index', index);
+            console.log('this', $(this));
+            if (!$(this).hasClass("empty_blueprint")) {
+              console.log("not empty blueprint");
+              const skillName = $(this).find(".name").val();
+              const skillImageUrl = $(this).find(".image-url").val();
+              const skillDescription = $(this).find(".description").val();
+              const skillTags = $(this).find(".tags").val();
+              console.log(skillImageUrl);
+              console.log(skillName);
+              if (skillName && skillImageUrl) {
+                skillsData.push({
+                  name: skillName,
+                  image: skillImageUrl,
+                  description: skillDescription,
+                  tags: skillTags
+                });
+                console.log(skillName);
+              }
             }
+            console.log('skills data arr', skillsData);
           });
           const experiencesData = [];
           experiences.each(function () {
