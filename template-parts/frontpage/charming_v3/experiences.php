@@ -13,8 +13,8 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
 <!-- EXPERIENCE -->
 <section class="experience-section">
   <div class="section-header">
-    <span class="section-number">03</span>
-    <h2 class="section-title">Experience</h2>
+    <span class="section-number"><?php _e("03", "charming-portfolio") ?></span>
+    <h2 class="section-title"><?php _e("Experience", "charming-portfolio") ?></h2>
     <div class="section-line"></div>
   </div>
 
@@ -23,7 +23,10 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
     <?php foreach($experiences as $exp): ?>
       <div class="timeline-item">
         <div class="timeline-year">
-          <?php echo esc_html($exp['start_date']); ?>
+            <?php
+                $end_date = $exp['working'] ? __("Present") : $exp['end_date'];
+            ?>
+          <?php echo esc_html($exp['start_date']); ?>-<?php echo esc_html($end_date); ?>
         </div>
 
         <div class="timeline-role">
