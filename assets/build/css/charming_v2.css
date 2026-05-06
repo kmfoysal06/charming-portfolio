@@ -30,6 +30,30 @@
   font-weight: 400;
   src: url(../405055dd680fa1dcdfa2.woff2) format("woff2"), url(../80946c0880373b223d9c.ttf) format("truetype"); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
 }
+/* dm-mono-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "DM Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../2df1e3bdddc7cc72866f.woff2) format("woff2"), url(../4344366efaa5d018fbec.ttf) format("truetype"); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+/* bebas-neue-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Bebas Neue";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../73eeab1715ee2cd16fc6.woff2) format("woff2"), url(../4475c84ad700a76d4035.ttf) format("truetype"); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+/* dm-mono-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "DM Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../2df1e3bdddc7cc72866f.woff2) format("woff2"), url(../4344366efaa5d018fbec.ttf) format("truetype"); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
 header.charming-portfolio-header {
   display: flex;
   justify-content: space-between;

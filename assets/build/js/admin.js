@@ -647,110 +647,131 @@ window.CharmAlert = CharmAlert.getInstance();
       if (additionalSaveButton.length) {
         additionalSaveButton.on('click', function (e) {
           e.preventDefault();
-          const skills = $(".charming-portfolio-skills .skill");
-          const experiences = $(".charming-portfolio-experience .single-experience");
-          const projects = $(".charming-portfolio-projects .single-project");
-          // console.log(skills)
-
-          const skillsData = [];
-          skills.each(function (index) {
-            if (!$(this).hasClass("empty_blueprint")) {
-              console.log("not empty blueprint");
-              const skillName = $(this).find(".name").val();
-              const skillImageUrl = $(this).find(".image-url").val();
-              const skillDescription = $(this).find(".description").val();
-              const skillTags = $(this).find(".tags").val();
-              if (skillName && skillImageUrl) {
-                skillsData.push({
-                  name: skillName,
-                  image: skillImageUrl,
-                  description: skillDescription,
-                  tags: skillTags
+          try {
+            const skills = $(".charming-portfolio-skills .skill");
+            const experiences = $(".charming-portfolio-experience .single-experience");
+            const projects = $(".charming-portfolio-projects .single-project");
+            const skillsData = [];
+            skills.each(function (index) {
+              if ($(this).hasClass("empty_blueprint")) {
+                console.log("skipping empty blueprint");
+                return;
+              }
+              if (!$(this).hasClass("empty_blueprint")) {
+                console.log("not empty blueprint");
+                const skillName = $(this).find(".name").val();
+                const skillImageUrl = $(this).find(".image-url").val();
+                const skillDescription = $(this).find(".description").val();
+                const skillTags = $(this).find(".tags").val();
+                if (skillName && skillImageUrl) {
+                  skillsData.push({
+                    name: skillName,
+                    image: skillImageUrl,
+                    description: skillDescription,
+                    tags: skillTags
+                  });
+                } else {
+                  throw new Error(`Skill ${index + 1}: Please fill all required fields (Name, Image URL)`);
+                }
+              }
+            });
+            const experiencesData = [];
+            experiences.each(function () {
+              const logo = $(this).find(".image-url").val();
+              const institution = $(this).find(".institution").val();
+              const postTitle = $(this).find(".post-title").val();
+              const responsibility = $(this).find(".responsibility").val();
+              const startDate = $(this).find(".start_date").val();
+              const endDate = $(this).find(".end_date").val();
+              const stillWorking = $(this).find(".working").is(':checked') ? '1' : '0';
+              if ($(this).hasClass("empty_blueprint")) {
+                console.log("skipping empty blueprint");
+                return;
+              }
+              if (institution && postTitle && responsibility && startDate) {
+                experiencesData.push({
+                  logo: logo,
+                  institution: institution,
+                  post_title: postTitle,
+                  responsibility: responsibility,
+                  start_date: startDate,
+                  end_date: endDate,
+                  working: stillWorking
                 });
-              }
-            }
-          });
-          const experiencesData = [];
-          experiences.each(function () {
-            const logo = $(this).find(".image-url").val();
-            const institution = $(this).find(".institution").val();
-            const postTitle = $(this).find(".post-title").val();
-            const responsibility = $(this).find(".responsibility").val();
-            const startDate = $(this).find(".start_date").val();
-            const endDate = $(this).find(".end_date").val();
-            const stillWorking = $(this).find(".working").is(':checked') ? '1' : '0';
-            if (institution && postTitle && responsibility && startDate) {
-              experiencesData.push({
-                logo: logo,
-                institution: institution,
-                post_title: postTitle,
-                responsibility: responsibility,
-                start_date: startDate,
-                end_date: endDate,
-                working: stillWorking
-              });
-            }
-          });
-          const projectsData = [];
-          projects.each(function () {
-            const projectName = $(this).find(".title").val();
-            const imageUrl = $(this).find(".image-url").val();
-            const projectDescription = $(this).find(".description").val();
-            const projectTags = $(this).find(".tags").val();
-            const projectLink = $(this).find(".link").val();
-            const projectCategory = $(this).find(".category").val();
-            if (projectName && projectDescription && projectTags && projectLink) {
-              projectsData.push({
-                image_url: imageUrl,
-                title: projectName,
-                description: projectDescription,
-                tags: projectTags,
-                link: projectLink,
-                category: projectCategory
-              });
-            }
-            // console.log(projectName);
-            // console.log(projectDescription);
-            // console.log(projectTags);
-            // console.log(projectLink);
-          });
-          //console.log(projectsData)
-          const data = new FormData();
-          data.append('action', 'charming_portfolio_save_data_additional');
-          data.append('nonce', charming_portfolio_admin.nonce);
-          data.append('skills', JSON.stringify(skillsData));
-          data.append("experiences", JSON.stringify(experiencesData));
-          data.append("works", JSON.stringify(projectsData));
-          const updateBtnWrapper = $(".btn-wrapper");
-          updateBtnWrapper.addClass("loading");
-          updateBtnWrapper.find(".charming-portfolio-save-additional-data").prop("disabled", true);
-          updateBtnWrapper.find(".charming-portfolio-save-additional-data").text(charming_portfolio_admin.saving);
-          const response = $.ajax({
-            url: charming_portfolio_admin.ajax_url,
-            type: 'POST',
-            data: data,
-            contentType: false,
-            processData: false,
-            success: function (response) {
-              if (response.success) {
-                CharmAlert.showAlert("Informations updated successfully", 'success');
-                // this.resetUpdateBtn(updateBtnWrapper);
-                updateBtnWrapper.removeClass("loading");
-                updateBtnWrapper.find(".charming-portfolio-save-additional-data").prop("disabled", false);
               } else {
-                CharmAlert.showAlert(response.message, 'error');
+                console.log("Experience data missing", {
+                  institution,
+                  postTitle,
+                  responsibility,
+                  startDate
+                });
+                throw new Error(`Experience ${institution || postTitle || responsibility || startDate}: Please fill all required fields (Institution, Post Title, Responsibility, Start Date)`);
+              }
+            });
+            const projectsData = [];
+            projects.each(function () {
+              if ($(this).hasClass("empty_blueprint")) {
+                console.log("skipping empty blueprint");
+                return;
+              }
+              const projectName = $(this).find(".title").val();
+              const imageUrl = $(this).find(".image-url").val();
+              const projectDescription = $(this).find(".description").val();
+              const projectTags = $(this).find(".tags").val();
+              const projectLink = $(this).find(".link").val();
+              const projectCategory = $(this).find(".category").val();
+              if (projectName && projectDescription && projectLink) {
+                projectsData.push({
+                  image_url: imageUrl,
+                  title: projectName,
+                  description: projectDescription,
+                  tags: projectTags,
+                  link: projectLink,
+                  category: projectCategory
+                });
+              } else {
+                throw new Error(`Project ${projectName || projectDescription || projectLink}: Please fill all required fields (Name, Description, Link)`);
+              }
+            });
+            const data = new FormData();
+            data.append('action', 'charming_portfolio_save_data_additional');
+            data.append('nonce', charming_portfolio_admin.nonce);
+            data.append('skills', JSON.stringify(skillsData));
+            data.append("experiences", JSON.stringify(experiencesData));
+            data.append("works", JSON.stringify(projectsData));
+            const updateBtnWrapper = $(".btn-wrapper");
+            updateBtnWrapper.addClass("loading");
+            updateBtnWrapper.find(".charming-portfolio-save-additional-data").prop("disabled", true);
+            updateBtnWrapper.find(".charming-portfolio-save-additional-data").text(charming_portfolio_admin.saving);
+            const response = $.ajax({
+              url: charming_portfolio_admin.ajax_url,
+              type: 'POST',
+              data: data,
+              contentType: false,
+              processData: false,
+              success: function (response) {
+                if (response.success) {
+                  CharmAlert.showAlert("Informations updated successfully", 'success');
+                  // this.resetUpdateBtn(updateBtnWrapper);
+                  updateBtnWrapper.removeClass("loading");
+                  updateBtnWrapper.find(".charming-portfolio-save-additional-data").prop("disabled", false);
+                } else {
+                  CharmAlert.showAlert(response.message, 'error');
+                  // this.resetUpdateBtn(updateBtnWrapper);
+                  updateBtnWrapper.removeClass("loading");
+                  updateBtnWrapper.find(".charming-portfolio-save-additional-data").prop("disabled", false);
+                }
+              },
+              error: function () {
+                CharmAlert.showAlert("Error Updating Information. Please Try Again", 'error');
                 // this.resetUpdateBtn(updateBtnWrapper);
                 updateBtnWrapper.removeClass("loading");
                 updateBtnWrapper.find(".charming-portfolio-save-additional-data").prop("disabled", false);
               }
-            },
-            error: function () {
-              CharmAlert.showAlert("Error Updating Information. Please Try Again", 'error');
-              // this.resetUpdateBtn(updateBtnWrapper);
-              updateBtnWrapper.removeClass("loading");
-              updateBtnWrapper.find(".charming-portfolio-save-additional-data").prop("disabled", false);
-            }
-          });
+            });
+          } catch (err) {
+            CharmAlert.showAlert(err, 'error');
+          }
         });
       }
     }

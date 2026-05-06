@@ -34,7 +34,7 @@ if( ! defined( 'ABSPATH' ) ) {
 		</td>
         <td>
             <label for="<?php echo esc_attr("project-title-" . $key); ?>"><?php esc_html_e("Title","charming-portfolio"); ?></label>
-            <input type="text" class="title" placeholder="<?php esc_attr_e("Project Title","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][title]" value="<?php echo esc_attr($work['title']); ?>" id="<?php echo esc_attr("project-title-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" maxlength="30">
+            <input type="text" class="title" placeholder="<?php esc_attr_e("Project Title","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][title]" value="<?php echo esc_attr($work['title']); ?>" id="<?php echo esc_attr("project-title-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" maxlength="40">
         </td>
         <td>
                         <label for="<?php echo esc_attr("project-description-" . $key); ?>"><?php esc_html_e("Description","charming-portfolio"); ?>
@@ -66,7 +66,7 @@ if( ! defined( 'ABSPATH' ) ) {
         <?php endforeach; ?>
         <?php endif?>
     <!-- empty hidden one for jQuery -->
-    <tr class="charming_portfolio_empty-row__works screen-reader-text flex simplecharm-basic-border simplecharm-basic-padding flex flex-col single-project">
+    <tr class="charming_portfolio_empty-row__works screen-reader-text flex simplecharm-basic-border simplecharm-basic-padding flex flex-col single-project empty_blueprint">
         <td>
 
             <label for="<?php echo esc_attr("project-image-" . $key); ?>"><?php esc_html_e("Project Image","charming-portfolio"); ?></label>
