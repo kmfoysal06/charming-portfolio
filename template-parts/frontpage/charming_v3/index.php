@@ -14,7 +14,11 @@ if(!defined("ABSPATH")) {
 <main role="main">
     <!-- hero section -->
      <?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/charming_v3/hero_section", "", $args);?>
-    
+
+    <!-- stat boxes section -->
+     <?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/charming_v3/stat-boxes-section.php", "", $args);?>
+
+     
     <!-- skills section -->
     <?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/charming_v3/skills", "", $args);?>
 

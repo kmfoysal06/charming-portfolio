@@ -509,16 +509,41 @@
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-layout label {
   cursor: pointer;
   display: flex;
+  border: 4px solid transparent;
   padding: 14px 10px;
   background: #fff;
   flex-direction: column;
   border-radius: 4px;
+  justify-content: space-between;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-layout label:has(input[type=radio]:checked),
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-layout label:has(input[type=radio]:checked) {
+  border-color: #a259ff;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-layout label .checkbox-wrapper,
+.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-layout label .checkbox-wrapper {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  pointer-events: none;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu table.stat-boxes-table,
+.portfolio_page_charming_portfolio_additional_menu table.stat-boxes-table {
+  background: #e9ebf0;
+  padding: 18px 16px 12px;
+  border: 1px solid #e6e8ec;
+}
+.portfolio_page_CHARMING_PORTFOLIO_menu table.stat-boxes-table tbody,
+.portfolio_page_charming_portfolio_additional_menu table.stat-boxes-table tbody {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody,
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody,
+.portfolio_page_CHARMING_PORTFOLIO_menu .stat-boxes-table tbody,
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody,
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody,
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody,
+.portfolio_page_charming_portfolio_additional_menu .stat-boxes-table tbody,
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody {
   display: grid;
   gap: 10px;
@@ -527,9 +552,11 @@
 }
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody tr,
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody tr,
+.portfolio_page_CHARMING_PORTFOLIO_menu .stat-boxes-table tbody tr,
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody tr,
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody tr,
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody tr,
+.portfolio_page_charming_portfolio_additional_menu .stat-boxes-table tbody tr,
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody tr {
   display: flex;
   gap: 8px;
@@ -542,17 +569,21 @@
 }
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody tr input,
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody tr input,
+.portfolio_page_CHARMING_PORTFOLIO_menu .stat-boxes-table tbody tr input,
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody tr input,
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody tr input,
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody tr input,
+.portfolio_page_charming_portfolio_additional_menu .stat-boxes-table tbody tr input,
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody tr input {
   width: 100%;
 }
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody tr .button,
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody tr .button,
+.portfolio_page_CHARMING_PORTFOLIO_menu .stat-boxes-table tbody tr .button,
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody tr .button,
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody tr .button,
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody tr .button,
+.portfolio_page_charming_portfolio_additional_menu .stat-boxes-table tbody tr .button,
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody tr .button {
   display: block;
   width: -moz-fit-content;
@@ -561,17 +592,21 @@
 }
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody tr td,
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody tr td,
+.portfolio_page_CHARMING_PORTFOLIO_menu .stat-boxes-table tbody tr td,
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody tr td,
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody tr td,
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody tr td,
+.portfolio_page_charming_portfolio_additional_menu .stat-boxes-table tbody tr td,
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody tr td {
   width: 100%;
 }
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-social tbody tr td:last-child,
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-header-links tbody tr td:last-child,
+.portfolio_page_CHARMING_PORTFOLIO_menu .stat-boxes-table tbody tr td:last-child,
 .portfolio_page_CHARMING_PORTFOLIO_menu .charming-portfolio-footer-links tbody tr td:last-child,
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-social tbody tr td:last-child,
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-header-links tbody tr td:last-child,
+.portfolio_page_charming_portfolio_additional_menu .stat-boxes-table tbody tr td:last-child,
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-footer-links tbody tr td:last-child {
   align-self: end;
 }

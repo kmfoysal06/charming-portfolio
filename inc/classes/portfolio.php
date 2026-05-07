@@ -219,8 +219,12 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
                         <?php CHARMING_PORTFOLIO_get_template_part('template-parts/portfolio/portfolio','basic', $portfolio_saved_data); ?>
                         <!-- About Me  -->
                         <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "aboutme", $portfolio_saved_data);?>
-                        <!-- Stat Boxes  -->
+                        <!-- Floating box of hero image -->
+                        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "hero-img-floating-box", $portfolio_saved_data);?>
+
+                        <!-- Stat Boxes Section (v3+) -->
                         <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "stat-boxes", $portfolio_saved_data);?>
+
 
                         <!-- Contact Options -->
                         <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "contact", $portfolio_saved_data);?>
@@ -435,6 +439,7 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
                 'social_links'      => $social_links,
                 'header_links'      => $header_links,
                 'footer_links'      => $footer_links,
+                'stat_boxes'        => array_key_exists('stat_boxes', $option_value) ? $option_value['stat_boxes'] : [],
                 'layout'            => $layout,
                 'skills'            => [],
                 'experiences'       => [],

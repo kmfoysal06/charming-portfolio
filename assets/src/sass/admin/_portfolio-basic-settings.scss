@@ -232,18 +232,41 @@
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 8px;
 
+
     label {
+    &:has(input[type="radio"]:checked) {
+      border-color: $accent-purple;
+    }
       cursor: pointer;
       display: flex;
+      border: 4px solid transparent;
       padding: 14px 10px;
       background: #fff;
       flex-direction: column;
       border-radius: 4px;
+      justify-content: space-between;
+      
+      .checkbox-wrapper {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        pointer-events: none;
+      }
     }
   }
 
+
+  table.stat-boxes-table {
+    background: $input-bg-darker;
+    padding: 18px 16px 12px;
+     border: 1px solid $border;
+      tbody {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+  }
   .charming-portfolio-social,
   .charming-portfolio-header-links,
+  .stat-boxes-table,
   .charming-portfolio-footer-links {
     tbody {
       display: grid;

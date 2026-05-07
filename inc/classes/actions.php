@@ -100,6 +100,16 @@ class Actions
         }, $footer_links);
         $modified_data['footer_links'] = $footer_links;
 
+        $stat_boxes = json_decode(wp_unslash($modified_data['stat_boxes']), true);
+        $stat_boxes = array_map(function($single_box){
+            // wp_unslash and sanitize 
+            $single_box['content'] = sanitize_text_field(wp_unslash($single_box['content']));
+            $single_box['label'] = sanitize_text_field(wp_unslash($single_box['label']));
+            return $single_box;
+        }, $stat_boxes);
+        $modified_data['stat_boxes'] = $stat_boxes;
+
+
         if (isset($modified_data['short_description']) && strlen($modified_data['short_description']) > 200) {
             wp_send_json([
                 'success' => false,

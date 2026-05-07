@@ -7,6 +7,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
 $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
+$primary_statbox_label = isset($args['primary_statbox_label']) ? $args['primary_statbox_label'] : '';
+$primary_statbox_content = isset($args['primary_statbox_content']) ? $args['primary_statbox_content'] : '';
 ?>
 <!-- HERO -->
 <section class="hero" id="about">
@@ -31,8 +33,10 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
         <img src="<?php echo esc_url($args['user_image']); ?>" alt="<?php echo esc_attr($args['name']); ?>" class="hero-image">
       </div>
       <div class="hero-badge">
-        <strong>4+</strong>
-        <span>Years Exp.</span>
+        <?php if($primary_statbox_content && $primary_statbox_label) : ?>
+          <strong><?php echo esc_html($primary_statbox_content); ?></strong>
+          <span><?php echo esc_html($primary_statbox_label); ?></span>
+        <?php endif; ?>
       </div>
     </div>
   </div>

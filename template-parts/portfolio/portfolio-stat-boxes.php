@@ -7,19 +7,40 @@
 if( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+// hardcoded to 4 as per the design
+$stat_boxes_count = 4;
+$stat_boxes_saved = isset($args['stat_boxes']) ? $args['stat_boxes'] : [];
+$stat_boxes = array_fill(0, $stat_boxes_count, array('content' => '', 'label' => ''));
+// loop through empty stat_boxes and fill if data exists in saved $args
+for($i=0;$i < 4; $i++) {
+    if(isset($stat_boxes_saved[$i])) {
+        $stat_boxes[$i] =  $stat_boxes_saved[$i];
+    }
+}
 ?>
 <div class="portfolio-section-wrapper">
-	<h3 class="portfolio-section-toggle"><?php esc_html_e("Stat Boxes",'charming-portfolio'); ?></h3>
-    <div class="portfolio-section portfolio-statboxes portfolio-section-content flex flex-row justify-between">
-    	<div class="portfolio-section portfolio-statboxes portfolio-section-content column-half p-0">
-    	    <label for="primary-statbox-content"><?php esc_html_e("Primary State Box Content:",'charming-portfolio'); ?></label>
-            <input id="primary-statbox-content" class="primary-statbox-content" name="CHARMING_PORTFOLIO[primary-statbox-content]" maxlength="6" placeholder="<?php _e("eg: 2+, 200+ etc", "charming-portfolio"); ?>" value="<?php echo esc_attr(isset($args["primary_statbox_content"]) ? $args["primary_statbox_content"] : '') ?>">
-        </div>
-    	<div class="portfolio-section portfolio-statboxes portfolio-section-content column-half p-0">
-    	    <label for="primary-statbox-label"><?php esc_html_e("Primary State Box Label:",'charming-portfolio'); ?></label>
-            <input id="primary-statbox-label" class="primary-statbox-label" name="CHARMING_PORTFOLIO[primary-statbox-label]" maxlength="20" placeholder="<?php _e("eg: Years Exp, Project Completed etc.", "charming-portfolio"); ?>" value="<?php echo esc_attr(isset($args["primary_statbox_label"]) ? $args["primary_statbox_label"] : '') ?>">
-        </div>
-
+	<h3 class="portfolio-section-toggle"><?php esc_html_e("State Boxs Section (Recommended For Layout v3+)",'charming-portfolio'); ?></h3>
+    <div class="portfolio-section portfolio-section-content">
+        <table class="stat-boxes-table">
+        <tbody>
+        <?php foreach($stat_boxes as $index => $stat_box) : ?>
+<?php
+$content = isset($stat_box['content']) ? $stat_box['content'] : '';
+$label = isset($stat_box['label']) ? $stat_box['label'] : '';
+?>
+        <tr class="single_stat_box flex">
+            <td>
+            <label for="stat-box-content-<?php echo esc_attr($index); ?>"></label>
+                  <input type="text" class="content" data-queue="0" placeholder="100+" name="CHARMING_PORTFOLIO[stat_boxes][<?php echo esc_attr($index); ?>][content]" value="<?php echo esc_attr($content); ?>" id="stat-box-content-<?php echo esc_attr($index); ?>" />
+            </td>
+            <td>
+                  <label for="stat-box-label-<?php echo esc_attr($index); ?>"></label>
+                  <input type="text" class="label" placeholder="eg: Project Delivered" name="CHARMING_PORTFOLIO[stat_boxes][0<?php echo esc_attr($index); ?>][label]" value="<?php echo esc_attr($label); ?>" id="stat-box-label-<?php echo esc_attr($index); ?>" />            
+            </td>
+        </tr>
+        <?php endforeach; ?>
+        </tbody>
+        </table>
 
     </div>
 </div>

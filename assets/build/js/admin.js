@@ -590,6 +590,19 @@ window.CharmAlert = CharmAlert.getInstance();
               });
             }
           });
+
+          // get stat boxes 
+          const statBoxes = [];
+          $(".stat-boxes-table tr").each(function () {
+            const content = $(this).find(".content").val();
+            const label = $(this).find(".label").val();
+            if (content || label) {
+              statBoxes.push({
+                content: content,
+                label: label
+              });
+            }
+          });
           const headerLinks = [];
           $(".header_links").each(function () {
             const name = $(this).find(".name").val();
@@ -615,6 +628,7 @@ window.CharmAlert = CharmAlert.getInstance();
           data.append('social_links', JSON.stringify(socialLinks));
           data.append('header_links', JSON.stringify(headerLinks));
           data.append('footer_links', JSON.stringify(footerLinks));
+          data.append('stat_boxes', JSON.stringify(statBoxes));
           const updateBtnWrapper = $(".btn-wrapper");
           updateBtnWrapper.addClass("loading");
           updateBtnWrapper.find(".charming-portfolio-save-data").prop("disabled", true);
