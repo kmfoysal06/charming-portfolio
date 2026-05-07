@@ -10,16 +10,28 @@ $stat_boxes = $args['stat_boxes'] ?? false;
 ?>
 
 <!-- STATS BAR -->
-<?php if($stat_boxes && is_array($stat_boxes): ?>
+<?php if($stat_boxes && is_array($stat_boxes)): ?>
+<?php
+?>
 <div class="stats-bar">
 
     <?php foreach($stat_boxes as $box): ?>
+    <?php
+    $content = isset($box['content']) ? $box['content'] : '';
+    $label = isset($box['label']) ? $box['label'] : '';
+    $postfix_allowed_signs = ["+", "%"];
+    ?>
     <div class="stat-item">
-        <?php if(substr($box['content'], -1) === "+"): ?>
-        great
+        <?php if(strlen($content) > 1 && in_array(substr($content, -1), $postfix_allowed_signs)): ?>
+            <?php
+                $first_part = substr($content, 0, -1);
+                $last_part = substr($content, -1); 
+            ?>
+                <div class="stat-number"><?php echo esc_html($first_part); ?><span><?php echo esc_html($last_part); ?></span></div>
+        <?php else: ?>
+        <div class="stat-number"><?php echo esc_html($content) ?></div>
         <?php endif; ?>
-      <div class="stat-number">15<span>+</span></div>
-      <div class="stat-label">Projects Delivered</div>
+      <div class="stat-label"><?php echo esc_html($label) ?></div>
     </div>
     <?php endforeach; ?>
 </div>
