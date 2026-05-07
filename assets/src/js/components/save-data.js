@@ -19,6 +19,10 @@
                     const userAddress = $(".user-address");
                     const userAvailable = $(".user-available");
                     const description = $(".description");
+                    const primaryStateboxContent = $(".primary-statbox-content");
+                    const primaryStateboxLabel = $(".primary-statbox-label");
+
+
                     const imageSecondary = $(".CHARMING_PORTFOLIO_user_image_2");
                     const mail = $(".email");
                     const phone = $(".phone");
@@ -38,6 +42,8 @@
                     data.append('address', userAddress.val());
                     data.append('available', userAvailable.is(':checked') ? '1' : '0');
                     data.append('description', description.val());
+                    data.append('primary_statbox_content', primaryStateboxContent.val());
+                    data.append('primary_statbox_label', primaryStateboxLabel.val());
                     data.append('image2', imageSecondary.val());
                     data.append('email', mail.val());
                     data.append('phone', phone.val());

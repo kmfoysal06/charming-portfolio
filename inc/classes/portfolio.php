@@ -219,6 +219,9 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
                         <?php CHARMING_PORTFOLIO_get_template_part('template-parts/portfolio/portfolio','basic', $portfolio_saved_data); ?>
                         <!-- About Me  -->
                         <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "aboutme", $portfolio_saved_data);?>
+                        <!-- Stat Boxes  -->
+                        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "stat-boxes", $portfolio_saved_data);?>
+
                         <!-- Contact Options -->
                         <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "contact", $portfolio_saved_data);?>
                         <!-- social links -->
@@ -288,7 +291,7 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
         ?>
         <style>
             #toplevel_page_CHARMING_PORTFOLIO_page .wp-submenu li a[href="admin.php?page=charming_portfolio_danger_zone"] {
-                color: #ff0000 !important; /* Change to your desired color */
+                color: #ff0000 !important; 
                 font-weight: 500;
             }
         </style>
@@ -425,6 +428,8 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
                 'phone'             => $phone,
                 'short_description' => $short_description,
                 'description'       => $description,
+                'primary_statbox_content' => array_key_exists("primary_statbox_content", $option_value) ? $option_value["primary_statbox_content"] : "",
+                'primary_statbox_label' => array_key_exists("primary_statbox_label", $option_value) ? $option_value["primary_statbox_label"] : "",
                 'address'           => $address,
                 'available'         => $available,
                 'social_links'      => $social_links,
