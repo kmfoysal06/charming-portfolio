@@ -6,6 +6,7 @@ import "./components/admin-experience.js";
 import "./components/admin-help-icon.js";
 import "./components/checkbox.js";
 import "./components/updateBtn.js";
+import "./components/admin-tab.js";
 
 import "./components/charm-alert.js";
 import "./components/save-data.js";

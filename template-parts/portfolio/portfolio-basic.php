@@ -25,21 +25,6 @@ if( ! defined( 'ABSPATH' ) ) {
 
         </div>
 
-        <div class="flex justify-between flex-wrap">
-            <label for="enable-blog">
-                <?php esc_html_e("Show Blogs Section (Beta)",'charming-portfolio'); ?>
-                <span class="dashicons dashicons-editor-help charming-portfolio-help-icon"
-                    data-title="<?php esc_attr_e("It will prevent showing blogs section in classic theme and hide recent blogs section in footer", "charming-portfolio"); ?>"></span>
-            </label>
-            <div class="switch-btn-wrapper">
-                <input type="checkbox" id="enable-blog" class="portfolio-enabled-blog"
-                    name="CHARMING_PORTFOLIO[enabled_blog]"
-                    <?php echo esc_html(checked($args["enabled_blog"] ?? '0', '1'));  ?>>
-                <div class="switch-btn">
-                    <span></span>
-                </div>
-            </div>
-        </div>
 
 
         <div class="flex justify-between flex-wrap">

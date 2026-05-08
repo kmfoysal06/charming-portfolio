@@ -131,7 +131,7 @@ nav {
   display: flex;
   flex-direction: column;
   position: absolute;
-  background: #000;
+  background: var(--white);
   width: 100%;
   padding: 0;
   margin: 0;
@@ -149,23 +149,30 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  list-style: none;
 }
 
 .nav-links-mobile-wrapper li a {
   font-family: "DM Sans";
   font-size: 28px;
   font-weight: 400;
-  color: #fff;
+  color: var(--black);
   text-decoration: none;
   text-align: left;
   padding: 14px 0;
 }
+.nav-links-mobile-wrapper li a:hover {
+  color: var(--orange);
+}
 
 .nav-links-mobile-wrapper li {
   padding: 14px 0;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid var(--black);
   width: calc(100% - 40px);
   margin-inline: auto;
+}
+.nav-links-mobile-wrapper li:has(a:hover) {
+  border-color: var(--orange);
 }
 
 .header-social-icons {
@@ -556,21 +563,6 @@ section {
   transition: background 0.2s;
   position: relative;
   overflow: hidden;
-}
-
-.project-card::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 3px;
-  background: var(--orange);
-  transition: width 0.3s ease;
-}
-
-.project-card:hover::before {
-  width: 100%;
 }
 
 .project-card:hover {

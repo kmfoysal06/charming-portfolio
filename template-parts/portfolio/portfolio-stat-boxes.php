@@ -19,7 +19,7 @@ for($i=0;$i < 4; $i++) {
 }
 ?>
 <div class="portfolio-section-wrapper">
-	<h3 class="portfolio-section-toggle"><?php esc_html_e("State Boxs Section (Recommended For Layout v3+)",'charming-portfolio'); ?></h3>
+	<h3 class="portfolio-section-toggle"><?php esc_html_e("State Boxes Section (Recommended For Layout v3+)",'charming-portfolio'); ?></h3>
     <div class="portfolio-section portfolio-section-content">
         <table class="stat-boxes-table">
         <tbody>

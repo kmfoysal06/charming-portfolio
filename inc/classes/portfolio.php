@@ -215,27 +215,9 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
                     <h2><?php esc_html__("Modify Your Informations Here:-","charming-portfolio"); ?></h2>
                 </div>
                 <form class="page-contents" method="POST">
-                        <!-- basic settings -->
-                        <?php CHARMING_PORTFOLIO_get_template_part('template-parts/portfolio/portfolio','basic', $portfolio_saved_data); ?>
-                        <!-- About Me  -->
-                        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "aboutme", $portfolio_saved_data);?>
-                        <!-- Floating box of hero image -->
-                        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "hero-img-floating-box", $portfolio_saved_data);?>
+                        <!-- tabs -->
+                        <?php CHARMING_PORTFOLIO_get_template_part('template-parts/portfolio/portfolio','index', $portfolio_saved_data); ?>
 
-                        <!-- Stat Boxes Section (v3+) -->
-                        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "stat-boxes", $portfolio_saved_data);?>
-
-
-                        <!-- Contact Options -->
-                        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "contact", $portfolio_saved_data);?>
-                        <!-- social links -->
-                        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "social-links", $portfolio_saved_data);?>
-                        <!-- links to show on header menu -->
-                        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "header-links", $portfolio_saved_data);?>
-                        <!-- links to show on footer -->
-                        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "footer-links", $portfolio_saved_data);?>
-                        <!-- choose layout -->
-                        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "layout", $portfolio_saved_data);?>
 
                         <input type="hidden" name="charming-portfolio__nonce" value="<?php echo esc_attr(wp_create_nonce("CHARMING_PORTFOLIO_modify_page__nonce")) ?>">
                         <div class="btn-wrapper">

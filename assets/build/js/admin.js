@@ -71,6 +71,48 @@ function showPopover(content, target) {
 
 /***/ }),
 
+/***/ "./src/js/components/admin-tab.js":
+/*!****************************************!*\
+  !*** ./src/js/components/admin-tab.js ***!
+  \****************************************/
+/***/ (function() {
+
+(function () {
+  document.addEventListener("click", e => {
+    if (e.target.closest(".charming-portfolio-tab")) {
+      e.preventDefault();
+      const allTabs = document.querySelectorAll(".charming-portfolio-tab");
+      const allTabContents = document.querySelectorAll(".charming-portfolio-tabs .tab-content");
+      const currTab = e.target.closest("li");
+      const currTarget = e.target.closest("li");
+      let currTargetID = 'basic-settings';
+      if (currTarget && currTarget.querySelector("a")) {
+        console.log('cur target', currTarget.querySelector("a").getAttribute("data-target"));
+        if (currTarget.querySelector("a").getAttribute("data-target")) {
+          currTargetID = currTarget.querySelector("a").getAttribute("data-target");
+        }
+      }
+      console.log("currTarget ID", currTargetID);
+      allTabs.forEach(function (tab) {
+        if (tab.classList.contains("active")) {
+          tab.classList.remove("active");
+        }
+      });
+      currTab.classList.add("active");
+      allTabContents.forEach(function (tab) {
+        if (tab.classList.contains("active")) {
+          tab.classList.remove("active");
+        }
+        if (tab.id === currTargetID) {
+          tab.classList.add("active");
+        }
+      });
+    }
+  });
+})();
+
+/***/ }),
+
 /***/ "./src/js/components/charm-alert.js":
 /*!******************************************!*\
   !*** ./src/js/components/charm-alert.js ***!
@@ -937,18 +979,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_checkbox_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_components_checkbox_js__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _components_updateBtn_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/updateBtn.js */ "./src/js/components/updateBtn.js");
 /* harmony import */ var _components_updateBtn_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_components_updateBtn_js__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _components_charm_alert_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/charm-alert.js */ "./src/js/components/charm-alert.js");
-/* harmony import */ var _components_charm_alert_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_components_charm_alert_js__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _components_save_data_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/save-data.js */ "./src/js/components/save-data.js");
-/* harmony import */ var _components_save_data_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_components_save_data_js__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _components_media_skills_images_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/media/skills-images.js */ "./src/js/components/media/skills-images.js");
-/* harmony import */ var _components_media_skills_images_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_components_media_skills_images_js__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _components_media_project_images_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/media/project-images.js */ "./src/js/components/media/project-images.js");
-/* harmony import */ var _components_media_project_images_js__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_components_media_project_images_js__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _components_media_experience_images_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/media/experience-images.js */ "./src/js/components/media/experience-images.js");
-/* harmony import */ var _components_media_experience_images_js__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_components_media_experience_images_js__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _components_danger_zone_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/danger-zone.js */ "./src/js/components/danger-zone.js");
-/* harmony import */ var _components_danger_zone_js__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_components_danger_zone_js__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _components_admin_tab_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/admin-tab.js */ "./src/js/components/admin-tab.js");
+/* harmony import */ var _components_admin_tab_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_components_admin_tab_js__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _components_charm_alert_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/charm-alert.js */ "./src/js/components/charm-alert.js");
+/* harmony import */ var _components_charm_alert_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_components_charm_alert_js__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _components_save_data_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/save-data.js */ "./src/js/components/save-data.js");
+/* harmony import */ var _components_save_data_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_components_save_data_js__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _components_media_skills_images_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/media/skills-images.js */ "./src/js/components/media/skills-images.js");
+/* harmony import */ var _components_media_skills_images_js__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_components_media_skills_images_js__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _components_media_project_images_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/media/project-images.js */ "./src/js/components/media/project-images.js");
+/* harmony import */ var _components_media_project_images_js__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_components_media_project_images_js__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _components_media_experience_images_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/media/experience-images.js */ "./src/js/components/media/experience-images.js");
+/* harmony import */ var _components_media_experience_images_js__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_components_media_experience_images_js__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _components_danger_zone_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/danger-zone.js */ "./src/js/components/danger-zone.js");
+/* harmony import */ var _components_danger_zone_js__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_components_danger_zone_js__WEBPACK_IMPORTED_MODULE_14__);
+
 
 
 

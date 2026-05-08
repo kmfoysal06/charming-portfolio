@@ -1000,4 +1000,41 @@
   width: 50%;
 }
 
+.charming-portfolio-tabs .tab-content {
+  display: none;
+}
+.charming-portfolio-tabs .tab-content.active {
+  display: block;
+}
+
+.charming-portfolio-tab-list {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 8px;
+}
+
+.charming-portfolio-tab-list .charming-portfolio-tab a {
+  padding: 8px 12px;
+  background: transparent;
+  color: #e9630a;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 4px;
+  text-decoration: none;
+  border: 1px solid rgba(233, 99, 10, 0.2666666667);
+}
+
+.charming-portfolio-tab-list .charming-portfolio-tab.active a {
+  background: #e9630a;
+  color: #fff;
+}
+
+.charming-portfolio-tab-list .charming-portfolio-tab:not(.active) a:hover,
+.charming-portfolio-tab-list .charming-portfolio-tab a:focus,
+.charming-portfolio-tab-list .charming-portfolio-tab a:active {
+  border-color: #e9630a;
+  outline: none;
+  box-shadow: none;
+}
+
 /*# sourceMappingURL=admin.css.map*/
