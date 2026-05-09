@@ -1013,7 +1013,8 @@
   gap: 8px;
 }
 
-.charming-portfolio-tab-list .charming-portfolio-tab a {
+.charming-portfolio-tab-list .charming-portfolio-tab a,
+.charming-portfolio-tab-list .charming-portfolio-tab-link a {
   padding: 8px 12px;
   background: transparent;
   color: #e9630a;
@@ -1024,14 +1025,18 @@
   border: 1px solid rgba(233, 99, 10, 0.2666666667);
 }
 
-.charming-portfolio-tab-list .charming-portfolio-tab.active a {
+.charming-portfolio-tab-list .charming-portfolio-tab.active a,
+.charming-portfolio-tab-list .charming-portfolio-tab-link.active a {
   background: #e9630a;
   color: #fff;
 }
 
 .charming-portfolio-tab-list .charming-portfolio-tab:not(.active) a:hover,
 .charming-portfolio-tab-list .charming-portfolio-tab a:focus,
-.charming-portfolio-tab-list .charming-portfolio-tab a:active {
+.charming-portfolio-tab-list .charming-portfolio-tab a:active,
+.charming-portfolio-tab-list .charming-portfolio-tab-link:not(.active) a:hover,
+.charming-portfolio-tab-list .charming-portfolio-tab-link a:focus,
+.charming-portfolio-tab-list .charming-portfolio-tab-link a:active {
   border-color: #e9630a;
   outline: none;
   box-shadow: none;
