@@ -242,15 +242,7 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
                 <h2><?php esc_html__("Customize Your Additional Informations Here:","charming-portfolio"); ?></h2>
             </div>
             <form class="page-contents" method="POST">
-                <?php  CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'skills', $this->display_saved_value());?>
-                <?php  CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'experience', $this->display_saved_value());?>
-                <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'projects', $this->display_saved_value());?>
-                <input type="hidden" name="charming-portfolio__nonce" value="<?php echo esc_attr(wp_create_nonce("CHARMING_PORTFOLIO_modify_additionals__nonce")) ?>">
-                <div class="btn-wrapper">
-                    <input type="button" name="update_portfolio_data" value="Update" class="btn btn-fullwidth charming-portfolio-save-additional-data">
-                    <span></span>
-                </div>
-
+                <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio-additional", 'index', $this->display_saved_value()); ?>
             </form>
         </div>
     </div>

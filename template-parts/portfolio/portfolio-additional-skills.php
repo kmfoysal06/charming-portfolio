@@ -6,6 +6,7 @@
 if( ! defined( 'ABSPATH' ) ) {
   exit;
 }
+
 ?>
 <!-- skills setting -->
 <div class="portfolio-section-wrapper">

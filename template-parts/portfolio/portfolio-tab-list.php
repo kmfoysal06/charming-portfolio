@@ -6,6 +6,9 @@
 if( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+CHARMING_PORTFOLIO_get_template_part('template-parts/portfolio/portfolio','global-tab');
+
 ?>
 <div class="portfolio-section-wrapper">
     <nav class="tablist">

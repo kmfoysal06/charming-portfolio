@@ -6,10 +6,14 @@
 if( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
 ?>
 <!-- HTML and CSS for a simple black & white dashboard with slight accent colors for stats boxes -->
 
-<div class="charming-portfolio-dashboard-container">
+<div class="page-contents charming-portfolio-dashboard-container">
+    <?php
+        CHARMING_PORTFOLIO_get_template_part('template-parts/portfolio/portfolio','global-tab');
+    ?>
     <div class="header">
         <div class="header-images">
             <?php if(isset($args['user_image']) && !empty($args['user_image'])): ?>
@@ -66,7 +70,7 @@ if( ! defined( 'ABSPATH' ) ) {
                     <?php if(!isset($args['skills']) || empty($args['skills'])) {
                         echo "<li>No skills added.</li>";
                     } else {
-                        echo implode(", ", array_map(function($skill){
+                        echo implode("", array_map(function($skill){
                             return "<li>". esc_html($skill['name'] ?? "") ."</li>";
                           }, $args['skills']));
                     }
@@ -78,7 +82,7 @@ if( ! defined( 'ABSPATH' ) ) {
                 <?php if(!isset($args['experiences']) || empty($args['experiences'])) {
                         echo "<li>No experiences added.</li>";
                     } else {
-                        echo implode(", ", array_map(function($experience){
+                        echo implode("", array_map(function($experience){
                             return "<li>". esc_html($experience['institution'] ?? "") ."</li>";
                           }, $args['experiences']));
                     }
@@ -91,7 +95,7 @@ if( ! defined( 'ABSPATH' ) ) {
                 <?php if(!isset($args['works']) || empty($args['works'])) {
                         echo "<li>No works added.</li>";
                     } else {
-                        echo implode(", ", array_map(function($work){
+                        echo implode("", array_map(function($work){
                             return "<li>". esc_html($work['title'] ?? "") ."</li>";
                           }, $args['works']));
                     }
