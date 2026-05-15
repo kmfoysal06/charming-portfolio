@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
 ?>
 <!-- CONTACT -->
-<section class="contact-section" id="contact">
+<section class="charming-portfolio-contact-section" id="contact">
   <div class="contact-left">
     <div class="section-header" style="margin-bottom:32px;">
       <span class="section-number">04</span>

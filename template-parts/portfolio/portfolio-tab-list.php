@@ -18,7 +18,7 @@ CHARMING_PORTFOLIO_get_template_part('template-parts/portfolio/portfolio','globa
             <li class="charming-portfolio-tab"><a href="#stat-boxes-section" data-target="stat-boxes-section">Stat Boxes</a></li>
             <li class="charming-portfolio-tab"><a href="#contact-informations" data-target="contact-informations">Contact Informations</a></li>
             <li class="charming-portfolio-tab"><a href="#links" data-target="links">Links</a></li>
-            <li class="charming-portfolio-tab"><a href="#choose-theme" data-target="choose-theme">Choose Theme</a></li>
+            <li class="charming-portfolio-tab"><a href="#choose-theme" data-target="choose-theme">Themes</a></li>
         </ul>
     </nav>
 </div>

@@ -4,6 +4,8 @@
             this.init();
         }
         init() {
+            console.log("Initializing Save_Data", window.is_cp_input_updated);
+
             const saveButton = $(".charming-portfolio-save-data");
             const additionalSaveButton = $(".charming-portfolio-save-additional-data");
             if (saveButton.length) {
@@ -122,7 +124,9 @@
                                 updateBtnWrapper.removeClass("loading");
                                 updateBtnWrapper.find(".charming-portfolio-save-data").prop("disabled", false);
                                 updateBtnWrapper.find(".charming-portfolio-save-data").text(charming_portfolio_admin.save);
-                                CharmAlert.showAlert("Updated", 'success');
+                                charming_portfolio_input_update(false);
+                                console.log("is input updated?", window.is_cp_input_updated);
+                                CharmAlert.showAlert("Updated New Informations!", 'success');
                             } else {
                                 updateBtnWrapper.removeClass("loading");
                                 updateBtnWrapper.find(".charming-portfolio-save-data").prop("disabled", false);
@@ -259,6 +263,7 @@
                                         updateBtnWrapper.removeClass("loading");
                                         updateBtnWrapper.find(".charming-portfolio-save-additional-data").prop("disabled", false);
                                         
+                                        charming_portfolio_input_update(false);
                                     } else {
                                         CharmAlert.showAlert(response.message, 'error');
                                         // this.resetUpdateBtn(updateBtnWrapper);

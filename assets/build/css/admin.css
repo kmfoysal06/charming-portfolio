@@ -297,8 +297,8 @@
   font-weight: 500;
   letter-spacing: 0.02em;
   margin: 0 0 8px 0;
-  padding: 18px 24px 0 24px;
-  color: #ff2eab;
+  padding: 8px 0;
+  color: #000;
   background: none;
   border: none;
   -webkit-user-select: none;
@@ -309,7 +309,6 @@
 .toplevel_page_CHARMING_PORTFOLIO_page .portfolio-section-content,
 .portfolio_page_charming_portfolio_danger_zone .portfolio-section-content,
 .portfolio_page_charming_portfolio_additional_menu .portfolio-section-content {
-  padding: 0 24px 0 24px;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -461,7 +460,7 @@
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-help-icon,
 .portfolio_page_charming_portfolio_additional_menu .dashicons-editor-help {
   font-size: 1.09em;
-  color: #a259ff;
+  color: #000;
   margin-left: 4px;
   cursor: pointer;
   transition: color 0.2s;
@@ -474,7 +473,7 @@
 .portfolio_page_charming_portfolio_danger_zone .dashicons-editor-help:hover,
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-help-icon:hover,
 .portfolio_page_charming_portfolio_additional_menu .dashicons-editor-help:hover {
-  color: #ff2eab;
+  color: #000;
 }
 .portfolio_page_CHARMING_PORTFOLIO_menu .simplecharm-portfolio-user-image,
 .portfolio_page_CHARMING_PORTFOLIO_menu .simplecharm-portfolio-user-image2,
@@ -508,7 +507,7 @@
   padding: 0 12px;
   border-radius: 6px;
   border: none;
-  background: #a259ff;
+  background: #e9630a;
   color: #fff;
   font-weight: 600;
   font-size: 14px;
@@ -543,7 +542,7 @@
 .portfolio_page_charming_portfolio_additional_menu .btn:focus,
 .portfolio_page_charming_portfolio_additional_menu input[type=submit].charming-portfolio-save-data:hover,
 .portfolio_page_charming_portfolio_additional_menu input[type=submit].charming-portfolio-save-data:focus {
-  background: #a259ff;
+  background: #e9630a;
   color: #fff;
   box-shadow: 0 4px 24px rgba(162, 89, 255, 0.1);
   outline: none;
@@ -910,10 +909,6 @@
   }
 }
 /* Inline | http://localhost/wp-admin/admin.php?page=charming_portfolio_additional_menu */
-.portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills {
-  background: #e9ebf0;
-  padding: 10px;
-}
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills .button {
   min-height: revert;
   line-height: 1.5;
@@ -927,9 +922,10 @@
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody .skill {
   display: flex;
   flex-direction: column;
-  padding: 10px 12px;
+  padding: 10px 16px;
   background: #fff;
   border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
 }
 .portfolio_page_charming_portfolio_additional_menu .charming-portfolio-skills tbody .skill td {
   width: 100%;
@@ -999,9 +995,7 @@
   border: 1px solid #e0e0e0;
   border-left: 4px solid #d63638;
   padding: 24px;
-  border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  max-width: 800px;
   margin-top: 20px;
   font-family: "Inter", "Segoe UI", sans-serif;
   /* ===== Buttons ===== */
@@ -1195,22 +1189,29 @@
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
+  row-gap: 4px;
+}
+
+.charming-portfolio-tab-list .charming-portfolio-tab,
+.charming-portfolio-tab-list .charming-portfolio-tab-link {
+  padding: 8px 12px;
+  border: 1px solid rgba(233, 99, 10, 0.2666666667);
+  color: #e9630a;
+  background: transparent;
+  border-radius: 4px;
 }
 
 .charming-portfolio-tab-list .charming-portfolio-tab a,
 .charming-portfolio-tab-list .charming-portfolio-tab-link a {
-  padding: 8px 12px;
-  background: transparent;
-  color: #e9630a;
+  color: inherit;
+  background: inherit;
   font-size: 14px;
   font-weight: 600;
-  border-radius: 4px;
   text-decoration: none;
-  border: 1px solid rgba(233, 99, 10, 0.2666666667);
 }
 
-.charming-portfolio-tab-list .charming-portfolio-tab.active a,
-.charming-portfolio-tab-list .charming-portfolio-tab-link.active a {
+.charming-portfolio-tab-list .charming-portfolio-tab.active,
+.charming-portfolio-tab-list .charming-portfolio-tab-link.active {
   background: #e9630a;
   color: #fff;
 }

@@ -274,6 +274,35 @@ window.CharmAlert = CharmAlert.getInstance();
 
 /***/ }),
 
+/***/ "./src/js/components/leave-alert.js":
+/*!******************************************!*\
+  !*** ./src/js/components/leave-alert.js ***!
+  \******************************************/
+/***/ (function() {
+
+document.addEventListener("input", e => charming_portfolio_input_update(true, e));
+document.addEventListener("change", e => charming_portfolio_input_update(true, e));
+window.is_cp_input_updated = false;
+window.addEventListener("beforeunload", e => {
+  console.log("beforeunload", window.is_cp_input_updated);
+  if (window.is_cp_input_updated) {
+    e.preventDefault();
+    e.returnValue = '';
+  }
+});
+(function () {
+  window.charming_portfolio_input_update = function (state = true, e = null) {
+    console.log("input updated", state);
+    if (e) {
+      if (!e.target.closest(".portfolio-section-wrapper")) return;
+    }
+    if (window.is_cp_input_updated === state) return;
+    window.is_cp_input_updated = state;
+  };
+})();
+
+/***/ }),
+
 /***/ "./src/js/components/media.js":
 /*!************************************!*\
   !*** ./src/js/components/media.js ***!
@@ -579,6 +608,7 @@ window.CharmAlert = CharmAlert.getInstance();
       this.init();
     }
     init() {
+      console.log("Initializing Save_Data", window.is_cp_input_updated);
       const saveButton = $(".charming-portfolio-save-data");
       const additionalSaveButton = $(".charming-portfolio-save-additional-data");
       if (saveButton.length) {
@@ -687,7 +717,9 @@ window.CharmAlert = CharmAlert.getInstance();
                 updateBtnWrapper.removeClass("loading");
                 updateBtnWrapper.find(".charming-portfolio-save-data").prop("disabled", false);
                 updateBtnWrapper.find(".charming-portfolio-save-data").text(charming_portfolio_admin.save);
-                CharmAlert.showAlert("Updated", 'success');
+                charming_portfolio_input_update(false);
+                console.log("is input updated?", window.is_cp_input_updated);
+                CharmAlert.showAlert("Updated New Informations!", 'success');
               } else {
                 updateBtnWrapper.removeClass("loading");
                 updateBtnWrapper.find(".charming-portfolio-save-data").prop("disabled", false);
@@ -815,6 +847,7 @@ window.CharmAlert = CharmAlert.getInstance();
                   // this.resetUpdateBtn(updateBtnWrapper);
                   updateBtnWrapper.removeClass("loading");
                   updateBtnWrapper.find(".charming-portfolio-save-additional-data").prop("disabled", false);
+                  charming_portfolio_input_update(false);
                 } else {
                   CharmAlert.showAlert(response.message, 'error');
                   // this.resetUpdateBtn(updateBtnWrapper);
@@ -837,23 +870,6 @@ window.CharmAlert = CharmAlert.getInstance();
     }
   }
   new Save_Data();
-})(jQuery);
-
-/***/ }),
-
-/***/ "./src/js/components/toggler.js":
-/*!**************************************!*\
-  !*** ./src/js/components/toggler.js ***!
-  \**************************************/
-/***/ (function() {
-
-/**
- * Toggle Portfolio Customization Section Template
- */
-(function ($) {
-  $('.portfolio-section-toggle').click(function () {
-    $(this).siblings('.portfolio-section-content').slideToggle('slow');
-  });
 })(jQuery);
 
 /***/ }),
@@ -969,18 +985,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_media_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_components_media_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_repeater_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/repeater.js */ "./src/js/components/repeater.js");
 /* harmony import */ var _components_repeater_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_components_repeater_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_toggler_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/toggler.js */ "./src/js/components/toggler.js");
-/* harmony import */ var _components_toggler_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_components_toggler_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_admin_experience_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/admin-experience.js */ "./src/js/components/admin-experience.js");
-/* harmony import */ var _components_admin_experience_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_components_admin_experience_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _components_admin_help_icon_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/admin-help-icon.js */ "./src/js/components/admin-help-icon.js");
-/* harmony import */ var _components_admin_help_icon_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_components_admin_help_icon_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _components_checkbox_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/checkbox.js */ "./src/js/components/checkbox.js");
-/* harmony import */ var _components_checkbox_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_components_checkbox_js__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _components_updateBtn_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/updateBtn.js */ "./src/js/components/updateBtn.js");
-/* harmony import */ var _components_updateBtn_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_components_updateBtn_js__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _components_admin_tab_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/admin-tab.js */ "./src/js/components/admin-tab.js");
-/* harmony import */ var _components_admin_tab_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_components_admin_tab_js__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _components_admin_experience_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/admin-experience.js */ "./src/js/components/admin-experience.js");
+/* harmony import */ var _components_admin_experience_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_components_admin_experience_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_admin_help_icon_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/admin-help-icon.js */ "./src/js/components/admin-help-icon.js");
+/* harmony import */ var _components_admin_help_icon_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_components_admin_help_icon_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components_checkbox_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/checkbox.js */ "./src/js/components/checkbox.js");
+/* harmony import */ var _components_checkbox_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_components_checkbox_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_updateBtn_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/updateBtn.js */ "./src/js/components/updateBtn.js");
+/* harmony import */ var _components_updateBtn_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_components_updateBtn_js__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _components_admin_tab_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/admin-tab.js */ "./src/js/components/admin-tab.js");
+/* harmony import */ var _components_admin_tab_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_components_admin_tab_js__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _components_leave_alert_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/leave-alert.js */ "./src/js/components/leave-alert.js");
+/* harmony import */ var _components_leave_alert_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_components_leave_alert_js__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _components_charm_alert_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/charm-alert.js */ "./src/js/components/charm-alert.js");
 /* harmony import */ var _components_charm_alert_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_components_charm_alert_js__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _components_save_data_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/save-data.js */ "./src/js/components/save-data.js");

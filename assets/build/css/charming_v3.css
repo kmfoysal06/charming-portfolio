@@ -671,182 +671,6 @@ section {
   font-weight: 300;
 }
 
-/* ── CONTACT ── */
-.contact-section {
-  background: var(--black);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  padding: 0;
-}
-
-.contact-left {
-  padding: 96px 48px;
-  border-right: 1px solid #222;
-}
-
-.contact-left .section-title {
-  color: var(--white);
-}
-
-.contact-left .section-number {
-  color: var(--orange);
-}
-
-.contact-tagline {
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--gray-400);
-  margin-bottom: 48px;
-  max-width: 400px;
-  font-weight: 300;
-}
-
-.contact-links {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.contact-link {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  color: var(--white);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 300;
-  padding: 16px 0;
-  border-bottom: 1px solid #1a1a1a;
-  transition: color 0.2s;
-}
-
-.contact-link:hover {
-  color: var(--orange);
-}
-
-.contact-link svg {
-  color: var(--orange);
-  flex-shrink: 0;
-}
-
-.contact-right {
-  padding: 96px 48px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.form-label {
-  font-family: "DM Mono", monospace;
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--gray-400);
-}
-
-.form-input {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #333;
-  padding: 12px 0;
-  color: var(--white);
-  font-family: "DM Sans", sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.form-input:focus {
-  border-color: var(--orange);
-}
-
-.form-input::-moz-placeholder {
-  color: #444;
-}
-
-.form-input::placeholder {
-  color: #444;
-}
-
-textarea.form-input {
-  resize: none;
-  height: 100px;
-}
-
-.form-submit {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px 32px;
-  background: var(--orange);
-  color: var(--white);
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border: none;
-  cursor: pointer;
-  font-family: "DM Sans", sans-serif;
-  transition: background 0.2s;
-  align-self: flex-start;
-}
-
-.form-submit:hover {
-  background: #c95508;
-}
-
-/* ── FOOTER ── */
-footer {
-  background: var(--black);
-  border-top: 1px solid #111;
-  padding: 24px 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.footer-copy {
-  font-family: "DM Mono", monospace;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: #444;
-}
-
-.footer-copy span {
-  color: var(--orange);
-}
-
-.footer-back {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  font-family: "DM Mono", monospace;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #444;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.footer-back:hover {
-  color: var(--white);
-}
-
 /* ── ANIMATIONS ── */
 @keyframes fadeUp {
   from {
@@ -975,6 +799,162 @@ footer {
     gap: 12px;
     text-align: center;
   }
+}
+/* ── FOOTER ── */
+footer {
+  background: var(--black);
+  border-top: 1px solid #111;
+  padding: 24px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-copy {
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: #444;
+}
+
+.footer-copy span {
+  color: var(--orange);
+}
+
+.footer-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-family: "DM Mono", monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #444;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-back:hover {
+  color: var(--white);
+}
+
+/* ── CONTACT ── */
+.charming-portfolio-contact-section {
+  background: var(--black);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 0;
+}
+.charming-portfolio-contact-section .contact-left {
+  padding: 96px 48px;
+  border-right: 1px solid #222;
+}
+.charming-portfolio-contact-section .contact-left .section-title {
+  color: var(--white);
+}
+.charming-portfolio-contact-section .contact-left .section-number {
+  color: var(--orange);
+}
+.charming-portfolio-contact-section .contact-tagline {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--gray-400);
+  margin-bottom: 48px;
+  max-width: 400px;
+  font-weight: 300;
+}
+.charming-portfolio-contact-section .contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.charming-portfolio-contact-section .contact-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 300;
+  padding: 16px 0;
+  border-bottom: 1px solid #1a1a1a;
+  transition: color 0.2s;
+}
+.charming-portfolio-contact-section .contact-link:hover {
+  color: var(--orange);
+}
+.charming-portfolio-contact-section .contact-link svg {
+  color: var(--orange);
+  flex-shrink: 0;
+}
+.charming-portfolio-contact-section .contact-right {
+  padding: 96px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.charming-portfolio-contact-section .contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.charming-portfolio-contact-section .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.charming-portfolio-contact-section .form-label {
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+}
+.charming-portfolio-contact-section .form-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #333;
+  padding: 12px 0;
+  color: var(--white);
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.charming-portfolio-contact-section .form-input:focus {
+  border-color: var(--orange);
+}
+.charming-portfolio-contact-section .form-input::-moz-placeholder {
+  color: #444;
+}
+.charming-portfolio-contact-section .form-input::placeholder {
+  color: #444;
+}
+.charming-portfolio-contact-section textarea.form-input {
+  resize: none;
+  height: 100px;
+}
+.charming-portfolio-contact-section .form-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background: var(--orange);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  font-family: "DM Sans", sans-serif;
+  transition: background 0.2s;
+  align-self: flex-start;
+}
+.charming-portfolio-contact-section .form-submit:hover {
+  background: #c95508;
 }
 
 /*# sourceMappingURL=charming_v3.css.map*/

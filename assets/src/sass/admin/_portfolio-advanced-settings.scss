@@ -7,8 +7,8 @@
 
 .portfolio_page_charming_portfolio_additional_menu {
   .charming-portfolio-skills {
-    background: $input-bg-darker;
-    padding: 10px;
+//    background: $input-bg-darker;
+//    padding: 10px;
 
     .button {
       min-height: revert;
@@ -24,9 +24,10 @@
       .skill {
         display: flex;
         flex-direction: column;
-        padding: 10px 12px;
+        padding: 10px 16px;
         background: #fff;
         border-radius: 4px;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset; 
 
         td {
           width: 100%;
