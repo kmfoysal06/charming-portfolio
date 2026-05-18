@@ -6,25 +6,24 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
-$experiences = $args['experiences'] ?? false;
-$portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
+$charming_portfolio_experiences = $args['experiences'] ?? false;
 ?>
-<?php if(is_array($experiences) && !empty($experiences)): ?>
+<?php if(is_array($charming_portfolio_experiences) && !empty($charming_portfolio_experiences)): ?>
 <!-- EXPERIENCE -->
 <section class="experience-section">
   <div class="section-header">
-    <span class="section-number"><?php _e("03", "charming-portfolio") ?></span>
-    <h2 class="section-title"><?php _e("Experience", "charming-portfolio") ?></h2>
+    <span class="section-number"><?php echo esc_html_e("03", "charming-portfolio") ?></span>
+    <h2 class="section-title"><?php echo _esc_html_e("Experience", "charming-portfolio") ?></h2>
     <div class="section-line"></div>
   </div>
 
   <div class="timeline">
 
-    <?php foreach($experiences as $exp): ?>
+    <?php foreach($charming_portfolio_experiences as $exp): ?>
       <div class="timeline-item">
         <div class="timeline-year">
             <?php
-                $end_date = $exp['working'] ? __("Present") : $exp['end_date'];
+                $end_date = $exp['working'] ? __("Present", "charming-portfolio") : $exp['end_date'];
             ?>
           <?php echo esc_html($exp['start_date']); ?>-<?php echo esc_html($end_date); ?>
         </div>

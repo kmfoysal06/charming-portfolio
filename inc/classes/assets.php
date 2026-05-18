@@ -45,10 +45,14 @@ class Assets
         wp_localize_script("CHARMING_PORTFOLIO_portofolio_react", "portfolio_data", $portfolio_saved_value);
 
 
-        wp_localize_script("CHARMING_PORTFOLIO_portofolio_layout_v2", "charming_portfolio_v2", [
+        $contact_form_ajax_data = [
             'ajax_url' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('charming_portfolio_enquiry'),
-        ]);
+        ];
+        
+        wp_localize_script("CHARMING_PORTFOLIO_portofolio_layout_v2", "charming_portfolio_v2", $contact_form_ajax_data);
+        wp_localize_script("CHARMING_PORTFOLIO_portofolio_layout_v3", "charming_portfolio_v2", $contact_form_ajax_data);
+
 
         // enqueue scripts
 		if(is_front_page() || $is_shortcode){

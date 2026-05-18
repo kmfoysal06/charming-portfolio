@@ -9,7 +9,7 @@
  * Author URI: https://profiles.wordpress.org/kmfoysal06
  * Tags: charming-portfolio, portfolio-plugin, simple-portfolio
  * Requires at least: 5.0
- * Tested up to: 6.8
+ * Tested up to: 6.9
  * Requires PHP: 8.0
  * Text Domain: charming-portfolio
  * License: GPLv3

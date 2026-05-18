@@ -6,19 +6,21 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
-$site_icon = get_site_icon_url();
-$site_title = get_bloginfo('name');
-$portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
-// var_dump($args['header_links']);
-// die;
+$charming_portfolio_site_icon = get_site_icon_url();
+$charming_portfolio_site_title = get_bloginfo('name');
 ?>
 <header class="charming-portfolio-header charming-portfolio-container" role="banner">
+<a href="#about" class="skip-link screen-reader-text">Skip to About Me</a>
+<a href="#skills" class="skip-link screen-reader-text">Skip to Skills</a>
+<a href="#projects" class="skip-link screen-reader-text">Skip to Projects</a>
+<a href="#contact" class="skip-link screen-reader-text">Skip to Contact</a>
+
 <nav>
 <a href="#" class="nav-logo">
 <?php if($site_icon): ?>
-    <img src="<?php echo esc_url( $site_icon ); ?>" class="site-icon" alt="site logo" width="auto" height="50px" />
+    <img src="<?php echo esc_url( $charming_portfolio_site_icon ); ?>" class="site-icon" alt="site logo" width="auto" height="50px" />
     <?php else: ?>
-        <h3><?php echo esc_html( $site_title ); ?></h3>
+        <h3><?php echo esc_html( $charming_portfolio_site_title ); ?></h3>
     <?php endif; ?>
 </a>
 

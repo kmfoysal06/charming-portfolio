@@ -6,8 +6,8 @@
 if( ! defined( 'ABSPATH' ) ) {
     exit;
 }
-$layout = $args['layout'] ?? 'charming_v2';
-if(!is_array($layout) || !in_array($layout, ['classic', 'charming_v2'])) {
+$layout = $args['layout'] ?? 'charming_v3';
+if(!in_array($layout, ['classic', 'charming_v2', 'charming_v3'])) {
     $layout = 'charming_v3';
 }
 

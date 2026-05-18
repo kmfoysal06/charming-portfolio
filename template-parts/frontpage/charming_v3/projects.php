@@ -7,15 +7,14 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
 $projects = $args['works'] ?? false;
-$portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
 if(is_array($projects) && !empty($projects)):
 ?>
 <!-- EXPERIENCE -->
 <!-- PROJECTS -->
 <section id="projects">
   <div class="section-header">
-  <span class="section-number"><?php echo _e("02", "charming-portfolio"); ?></span>
-    <h2 class="section-title"><?php echo _e("Projects", "charming-portfolio"); ?></h2>
+  <span class="section-number"><?php echo esc_html_e("02", "charming-portfolio"); ?></span>
+    <h2 class="section-title"><?php echo esc_html_e("Projects", "charming-portfolio"); ?></h2>
     <div class="section-line"></div>
   </div>
 

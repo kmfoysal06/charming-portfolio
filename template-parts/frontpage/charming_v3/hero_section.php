@@ -6,7 +6,6 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
-$portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
 $primary_statbox_label = isset($args['primary_statbox_label']) ? $args['primary_statbox_label'] : '';
 $primary_statbox_content = isset($args['primary_statbox_content']) ? $args['primary_statbox_content'] : '';
 ?>

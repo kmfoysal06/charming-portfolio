@@ -22,7 +22,7 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
         <?php foreach($skills as $skill): ?>
     <div class="skill-card">
       <div class="skill-icon">
-        <img src="<?php echo esc_url($skill['image']); ?>" width="44" height=44" />
+      <img src="<?php echo esc_url($skill['image']); ?>" width="44" height=44" alt="<?php echo esc_html($skill['name']); ?>" />
       </div>
       <div class="skill-name"><?php echo esc_html($skill['name']); ?></div>
       <div class="skill-desc"><?php echo esc_html($skill['description']); ?></div>

@@ -64,8 +64,8 @@ CHARMING_PORTFOLIO_get_template_part('template-parts/portfolio/portfolio','tab-l
     
     <div class="tab-content" id="choose-theme" data-tab="choose-theme">
     <?php
-    // choose layout 
-    CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "layout", $portfolio_saved_data);
+    // choose theme 
+    CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "themes", $portfolio_saved_data);
     ?>
     </div>
 </div>

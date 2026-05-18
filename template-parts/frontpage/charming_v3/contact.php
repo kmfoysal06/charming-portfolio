@@ -6,7 +6,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
-$portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
+$charming_portfolio_portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
 ?>
 <!-- CONTACT -->
 <section class="charming-portfolio-contact-section" id="contact">
@@ -24,7 +24,7 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
       <?php foreach($social_links as $social_link): ?>
 
         <a href="<?php  echo esc_url($social_link['url']); ?>" class="contact-link" target="_blank" rel="noopener">
-          <i class="<?php  echo esc_attr($portfolio->get_social_icon_classes(strtolower($social_link['name']))); ?>"></i>
+          <i class="<?php  echo esc_attr($charming_portfolio_portfolio->get_social_icon_classes(strtolower($social_link['name']))); ?>"></i>
             <?php echo esc_html($social_link['name']); ?>
         </a>
       <?php endforeach; ?>
@@ -33,18 +33,18 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
   </div>
 
   <div class="contact-right">
-    <div class="contact-form">
+    <form class="contact-form">
       <div class="form-group">
         <label class="form-label" for="charming-portfolio-contact-name">Your Name</label>
-        <input type="text" id="charming-portfolio-contact-name" class="form-input" placeholder="John Doe">
+        <input type="text" id="charming-portfolio-contact-name" class="form-input" placeholder="John Doe" name="name">
       </div>
       <div class="form-group">
         <label class="form-label" for="charming-portfolio-contact-email">Email Address</label>
-        <input type="email" id="charming-portfolio-contact-email" class="form-input" placeholder="john@example.com">
+        <input type="email" id="charming-portfolio-contact-email" class="form-input" placeholder="john@example.com" name="email">
       </div>
       <div class="form-group">
         <label for="charming-portfolio-contact-message" class="form-label">Message</label>
-        <textarea class="form-input" id="charming-portfolio-contact-message" placeholder="Tell me about your project..."></textarea>
+        <textarea class="form-input" id="charming-portfolio-contact-message" placeholder="Tell me about your project..." name="message"></textarea>
       </div>
       <button class="form-submit submit_charming_portfolio_enquiry" type="submit" name="submit">
         Send Message
@@ -52,6 +52,6 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
           <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
         </svg>
       </button>
-    </div>
+    </form>
   </div>
 </section>

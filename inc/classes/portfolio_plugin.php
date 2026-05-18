@@ -29,7 +29,6 @@ class PORTFOLIO_PLUGIN{
     }
     public function set_migrated() {
         update_option($this->is_migrated_option, true);
-        error_log('Charming Portfolio: Migration to v2 completed successfully.');
     }
     public function migrate() {
         if ($this->is_migrated()) {

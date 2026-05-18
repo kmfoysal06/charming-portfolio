@@ -3,6 +3,9 @@
  * Additional Data Template For Portfolio Customization Option
  * @package Charming Portfolio
  */
+if( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 $portfolio             = \CHARMING_PORTFOLIO\Inc\Classes\Portfolio::get_instance();
 $portfolio_saved_data = $portfolio->display_saved_value();
 
