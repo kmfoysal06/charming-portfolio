@@ -33,7 +33,6 @@ class Assets
         global $post;
         $is_shortcode = (is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'charming_portfolio_render_portfolio' ));
       $portfolio_saved_value = Portfolio::get_instance()->display_saved_value();
-      $latest_blogs = Blogs::get_instance()->load_latest_blogs(5);
 
       // register scripts
         wp_register_script("CHARMING_PORTFOLIO_main", CHARMING_PORTFOLIO_DIR_URI . '/assets/build/js/main.js', ['jquery'], filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/js/main.js'), true);
@@ -45,7 +44,6 @@ class Assets
 
         wp_localize_script("CHARMING_PORTFOLIO_portofolio_react", "portfolio_data", $portfolio_saved_value);
 
-        wp_localize_script("CHARMING_PORTFOLIO_portofolio_react", "charming_portfolio_latest_blogs", $latest_blogs);
 
         wp_localize_script("CHARMING_PORTFOLIO_portofolio_layout_v2", "charming_portfolio_v2", [
             'ajax_url' => admin_url('admin-ajax.php'),

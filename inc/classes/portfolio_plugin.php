@@ -56,7 +56,6 @@ class PORTFOLIO_PLUGIN{
     public function migrate_data($input) {
         $output = [
             'enabled' => $input['enabled'] === 'on' ? 1 : 0,
-            'enabled_blog' => 1,
             'name' => $input['name'] ?? '',
             'image' => $input['image'] ?? '',
             'short_description' => $input['short_description'] ?? '',
