@@ -18,8 +18,8 @@ jobs:
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.6
       with:
-        server: 94.130.22.223
-        server-dir: /cp.kmfoysal06.com/wp-content/plugins/charming-portfolio/
+        server: 198.23.142.86
+        server-dir: /wp-content/plugins/charming-portfolio/
         local-dir: ./
-        username: kmfoysa1
-        password: ${{ secrets.password }}
+        username: portfolio@portfolio.kmfoysal06.com
+        password: ${{ secrets.dev_password }}
