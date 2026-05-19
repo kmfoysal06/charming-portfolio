@@ -6,17 +6,17 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
-$experiences = $args['experiences'] ?? false;
-$portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
+$charming_portfolio_experiences = $args['experiences'] ?? false;
+$charming_portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
 ?>
-<?php if(is_array($experiences)): ?>
+<?php if(is_array($charming_portfolio_experiences)): ?>
     <div class="charming-portfolio-container charming-portfolio-experience-section">
         <div class="section-header">
             <h2 class="badge">Experience</h2>
             <p class="section-header-note">Here is a quick summary of my most recent experiences:</p>
         </div>
         <div class="section-content">
-            <?php foreach($experiences as $experience): ?>
+            <?php foreach($charming_portfolio_experiences as $experience): ?>
             <div class="single-experience" tabindex="0">
                 <?php if(isset($experience['logo']) && !empty($experience['logo'])): ?>
                 <img src="<?php echo esc_url($experience['logo']); ?>" width="300px" height="50px" style="object-fit: contain;" alt="<?php echo esc_html($experience['institution']); ?>" />
@@ -27,7 +27,7 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
                 <div class="experience-details">
                     <div class="primary-details">
                         <h3><?php echo esc_html($experience['institution'] ?? ''); ?></h3>
-                        <p class="timerange"><?php echo esc_html($portfolio->get_experience_timerange($experience)); ?></p>
+                        <p class="timerange"><?php echo esc_html($charming_portfolio->get_experience_timerange($experience)); ?></p>
                     </div>
                     <p class="designation"><?php echo esc_html($experience['post-title']); ?></p>
 

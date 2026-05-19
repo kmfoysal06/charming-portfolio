@@ -6,6 +6,8 @@
 if( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+CHARMING_PORTFOLIO_get_template_part('template-parts/portfolio/portfolio','global-tab');
 ?>
 <div class="portfolio-section-wrapper section-danger-zone">
     <h3 class="portfolio-section-toggle"><?php esc_html_e("Erase Portfolio Data:",'charming-portfolio'); ?></h3>

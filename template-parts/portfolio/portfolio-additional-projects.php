@@ -17,10 +17,11 @@ if( ! defined( 'ABSPATH' ) ) {
     <table id="repeatable-fieldset-three" width="100%">
       <tbody>
         <?php if(is_array($args) && array_key_exists('works', $args)): 
-        $works = $args['works']; ?>
-        <?php foreach( $works as $key => $work ):
+        $charming_portfolio_works = $args['works']; ?>
+        <?php foreach( $charming_portfolio_works as $key => $work ):
             $key = $key + 1;
             if(empty($work['title'])) continue; 
+            $category = isset($work['category']) ? $work['category'] : '';
             $thumbnail = isset($work['thumbnail']) ? $work['thumbnail'] : CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/code.png";
                 
                 ?>
@@ -33,7 +34,7 @@ if( ! defined( 'ABSPATH' ) ) {
 		</td>
         <td>
             <label for="<?php echo esc_attr("project-title-" . $key); ?>"><?php esc_html_e("Title","charming-portfolio"); ?></label>
-            <input type="text" class="title" placeholder="<?php esc_attr_e("Project Title","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][title]" value="<?php echo esc_attr($work['title']); ?>" id="<?php echo esc_attr("project-title-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" maxlength="30">
+            <input type="text" class="title" placeholder="<?php esc_attr_e("Project Title","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][title]" value="<?php echo esc_attr($work['title']); ?>" id="<?php echo esc_attr("project-title-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" maxlength="40">
         </td>
         <td>
                         <label for="<?php echo esc_attr("project-description-" . $key); ?>"><?php esc_html_e("Description","charming-portfolio"); ?>
@@ -41,6 +42,14 @@ if( ! defined( 'ABSPATH' ) ) {
                             <span class="dashicons dashicons-editor-help charming-portfolio-help-icon" data-title="<?php esc_attr_e("You Can Not Use Quotation (\"\" and '') so You Can Use [quote], [squote] and [bold][/bold] for Adding Double and Single Quotation and Make Any Text Bold.", "charming-portfolio"); ?>"></span>
                         </label>
             <textarea class="description" placeholder="<?php esc_attr_e("Project Description","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][description]" id="<?php echo esc_attr("project-description-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" cols="50" rows="5" maxlength='800'><?php echo esc_textarea($work['description']); ?></textarea>
+        </td>
+        <td>
+            <label for="<?php echo esc_attr("project-category-" . $key); ?>"><?php esc_html_e("Project Category","charming-portfolio"); ?>
+
+                <span class="dashicons dashicons-editor-help charming-portfolio-help-icon" data-title="<?php esc_attr_e("eg: 'Plugin Development', 'UI/UX Design', 'SEO Consultation', etc. This field is necessary for v3 and upper.", "charming-portfolio"); ?>"></span>
+            </label>
+
+            <input type="text" class="category" placeholder="<?php esc_attr_e("Project Category","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][category]" value="<?php echo esc_attr($category); ?>" id="<?php echo esc_attr("project-category-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" maxlength="40">
         </td>
         <td>
             <label for="<?php echo esc_attr("project-tags-" . $key); ?>"><?php esc_html_e("Tags","charming-portfolio"); ?></label>
@@ -57,10 +66,10 @@ if( ! defined( 'ABSPATH' ) ) {
         <?php endforeach; ?>
         <?php endif?>
     <!-- empty hidden one for jQuery -->
-    <tr class="charming_portfolio_empty-row__works screen-reader-text flex simplecharm-basic-border simplecharm-basic-padding flex flex-col single-project">
+    <tr class="charming_portfolio_empty-row__works screen-reader-text flex simplecharm-basic-border simplecharm-basic-padding flex flex-col single-project empty_blueprint">
         <td>
 
-            <label for="<?php echo esc_attr("project-image-" . $key); ?>"><?php esc_html_e("Title","charming-portfolio"); ?></label>
+            <label for="<?php echo esc_attr("project-image-" . $key); ?>"><?php esc_html_e("Project Image","charming-portfolio"); ?></label>
             <img width="200px" height="auto" src="<?php echo esc_url(CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/code.png") ?>" class="image" />
                         <input type="hidden" name="" value="<?php echo esc_url(CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/code.png") ?>" class="image-url" data-queue="0" id="0"/>
 		</td>
@@ -71,6 +80,14 @@ if( ! defined( 'ABSPATH' ) ) {
     <td>
         <label for="project-description"><?php esc_html_e("Description","charming-portfolio"); ?></label>
         <textarea class="description" placeholder="<?php esc_attr_e("Project Description","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][0][description]" value="" id="project-description" data-queue="0" cols="50" rows="5"></textarea>
+    </td>
+    <td>
+        <label for="project-category-0"><?php esc_html_e("Project Category","charming-portfolio"); ?>
+
+            <span class="dashicons dashicons-editor-help charming-portfolio-help-icon" data-title="<?php esc_attr_e("eg: 'Plugin Development', 'UI/UX Design', 'SEO Consultation', etc. This field is necessary for v3 and upper.", "charming-portfolio"); ?>"></span>
+        </label>
+
+        <input type="text" class="category" placeholder="<?php esc_attr_e("Project Category","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][0][category]" value="" id="project-category-0" data-queue="0" maxlength="40">
     </td>
     <td>
         <label for="project-tags"><?php esc_html_e("Tags","charming-portfolio"); ?></label>

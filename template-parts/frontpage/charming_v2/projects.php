@@ -6,9 +6,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
-$projects = $args['works'] ?? false;
-$portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
-if(is_array($projects) && !empty($projects)):
+$charming_portfolio_projects = $args['works'] ?? false;
+if(is_array($charming_portfolio_projects) && !empty($charming_portfolio_projects)):
 ?>
 
 <div class="charming-portfolio-container charming-portfolio-projects-section">
@@ -17,7 +16,7 @@ if(is_array($projects) && !empty($projects)):
         <p class="section-header-note">Some of the noteworthy projects I have built:</p>
     </div>
     <div class="section-content">
-        <?php foreach($projects as $project): ?>
+        <?php foreach($charming_portfolio_projects as $project): ?>
             <div class="single-project">
                 <?php if(isset($project['link']) && !empty($project['link'])): ?>
                     <a href="<?php echo esc_url($project['link']); ?>" target="_blank" class="single-project-link-wrapper" aria-label="<?php echo esc_attr($project['title']); ?>">

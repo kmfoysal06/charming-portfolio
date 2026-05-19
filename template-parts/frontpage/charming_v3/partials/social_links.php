@@ -1,0 +1,17 @@
+<?php
+/**
+ * social links template
+ * @package Charming Portfolio
+ */
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
+$charming_portfolio_social_links = $args['social_links'] ?? false;
+?>
+<?php if(is_array($charming_portfolio_social_links)): ?>
+    <ul class="charming-portfolio-social-links">
+        <?php foreach($charming_portfolio_social_links as $social_link): ?>
+        <li><a href="<?php  echo esc_url($social_link['url']); ?>"><i class="<?php  echo esc_attr($charming_portfolio_data->get_social_icon_classes($social_link['name'])); ?>"></i></a></li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>

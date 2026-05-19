@@ -215,20 +215,9 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
                     <h2><?php esc_html__("Modify Your Informations Here:-","charming-portfolio"); ?></h2>
                 </div>
                 <form class="page-contents" method="POST">
-                        <!-- basic settings -->
-                        <?php CHARMING_PORTFOLIO_get_template_part('template-parts/portfolio/portfolio','basic', $portfolio_saved_data); ?>
-                        <!-- About Me  -->
-                        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "aboutme", $portfolio_saved_data);?>
-                        <!-- Contact Options -->
-                        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "contact", $portfolio_saved_data);?>
-                        <!-- social links -->
-                        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "social-links", $portfolio_saved_data);?>
-                        <!-- links to show on header menu -->
-                        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "header-links", $portfolio_saved_data);?>
-                        <!-- links to show on footer -->
-                        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "footer-links", $portfolio_saved_data);?>
-                        <!-- choose layout -->
-                        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", "layout", $portfolio_saved_data);?>
+                        <!-- tabs -->
+                        <?php CHARMING_PORTFOLIO_get_template_part('template-parts/portfolio/portfolio','index', $portfolio_saved_data); ?>
+
 
                         <input type="hidden" name="charming-portfolio__nonce" value="<?php echo esc_attr(wp_create_nonce("CHARMING_PORTFOLIO_modify_page__nonce")) ?>">
                         <div class="btn-wrapper">
@@ -253,15 +242,7 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
                 <h2><?php esc_html__("Customize Your Additional Informations Here:","charming-portfolio"); ?></h2>
             </div>
             <form class="page-contents" method="POST">
-                <?php  CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'skills', $this->display_saved_value());?>
-                <?php  CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'experience', $this->display_saved_value());?>
-                <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'projects', $this->display_saved_value());?>
-                <input type="hidden" name="charming-portfolio__nonce" value="<?php echo esc_attr(wp_create_nonce("CHARMING_PORTFOLIO_modify_additionals__nonce")) ?>">
-                <div class="btn-wrapper">
-                    <input type="button" name="update_portfolio_data" value="Update" class="btn btn-fullwidth charming-portfolio-save-additional-data">
-                    <span></span>
-                </div>
-
+                <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio-additional", 'index', $this->display_saved_value()); ?>
             </form>
         </div>
     </div>
@@ -288,7 +269,7 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
         ?>
         <style>
             #toplevel_page_CHARMING_PORTFOLIO_page .wp-submenu li a[href="admin.php?page=charming_portfolio_danger_zone"] {
-                color: #ff0000 !important; /* Change to your desired color */
+                color: #ff0000 !important; 
                 font-weight: 500;
             }
         </style>
@@ -304,7 +285,6 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
         $additional_option_value = get_option("CHARMING_PORTFOLIO_additional_data");
 		$saved_values            = [
             'enabled'  		=> false,
-            'enabled_blog' => false,
             'client_render'     => true,
             'name'              => 'Charm',
             'user_image'        => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg",
@@ -321,7 +301,7 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
 		if (is_array($option_value)) {
 	    $enabled 	       = array_key_exists("enabled", $option_value) ? $option_value["enabled"] : false;
 
-	    $enabled_blog 	       = array_key_exists("enabled_blog", $option_value) ? $option_value["enabled_blog"] : false;
+
             $client_render     = true;
             $name              = array_key_exists("name", $option_value) ? $option_value["name"] : "";
             $image             = (array_key_exists("image", $option_value) && !empty($option_value['image'])) ? $option_value["image"] : CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg";
@@ -335,7 +315,6 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
             $social_links      = array_key_exists("social_link", $option_value) ? CHARMING_PORTFOLIO_load_social($option_value['social_link']) : [];
 	$saved_values      = [
                 'enabled' => $enabled,
-                'enabled_blog' => $enabled_blog,
                 'client_render' => $client_render,
                 'name'              => $name,
                 'user_image'        => $image,
@@ -394,7 +373,6 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
 		if (is_array($option_value)) {
 	        $enabled 	       = array_key_exists("enabled", $option_value) ? $option_value["enabled"] : false;
 
-	        $enabled_blog 	       = array_key_exists("enabled_blog", $option_value) ? $option_value["enabled_blog"] : false;
 
 	        $contact_mailing_enabled 	       = array_key_exists("enabled_contact_mailing", $option_value) ? $option_value["enabled_contact_mailing"] : false;
             $client_render     = true;
@@ -414,7 +392,6 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
             $layout            = array_key_exists("layout", $option_value) ? $option_value['layout'] : 'charming_v2';
         	$saved_values      = [
                 'enabled'           => $enabled,
-                'enabled_blog'      => $enabled_blog,
                 'contact_mailing_enabled' => $contact_mailing_enabled,
                 'client_render'     => $client_render,
                 'name'              => $name,
@@ -425,11 +402,14 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
                 'phone'             => $phone,
                 'short_description' => $short_description,
                 'description'       => $description,
+                'primary_statbox_content' => array_key_exists("primary_statbox_content", $option_value) ? $option_value["primary_statbox_content"] : "",
+                'primary_statbox_label' => array_key_exists("primary_statbox_label", $option_value) ? $option_value["primary_statbox_label"] : "",
                 'address'           => $address,
                 'available'         => $available,
                 'social_links'      => $social_links,
                 'header_links'      => $header_links,
                 'footer_links'      => $footer_links,
+                'stat_boxes'        => array_key_exists('stat_boxes', $option_value) ? $option_value['stat_boxes'] : [],
                 'layout'            => $layout,
                 'skills'            => [],
                 'experiences'       => [],

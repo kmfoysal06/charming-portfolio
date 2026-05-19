@@ -63,3 +63,7 @@
 ==v2.0.1==
 -UI Improved
 -Bug Fixes
+==v3.0=
+-New portfolio theme
+-New Fields to show off
+-Fixed sevaral bugs

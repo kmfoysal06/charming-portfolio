@@ -1,5 +1,7 @@
 $section-bg: #fff;
 $card-bg: #fff;
+$brand-color: #e9630a;
+$dark-color: #000;
 $border: #e6e8ec;
 $input-bg: #f2f3f7;
 $input-bg-darker: #e9ebf0;
@@ -10,8 +12,8 @@ $text-main: #222;
 $text-muted: #777;
 $accent-pink: #ff2eab;
 $accent-purple: #a259ff;
-$button-bg: $accent-purple;
-$button-hover-bg: $accent-purple;
+$button-bg: $brand-color;
+$button-hover-bg: $brand-color;
 $transition: all 0.2s cubic-bezier(0.4, 0.1, 0.7, 1);
 
 

@@ -1,0 +1,53 @@
+.charming-portfolio-tabs {
+    .tab-content {
+      display: none;
+      &.active {
+        display: block;
+      }
+    }
+}
+
+.charming-portfolio-tab-list {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 8px;
+  row-gap: 4px;
+}
+.charming-portfolio-tab-list .charming-portfolio-tab a,
+.charming-portfolio-tab-list .charming-portfolio-tab-link a{
+  padding: 8px 12px; 
+  border: 1px solid #e9630a44;
+  color: #e9630a;
+  background: transparent;
+
+  border-radius: 4px;
+}
+.charming-portfolio-tab-list .charming-portfolio-tab a,
+.charming-portfolio-tab-list .charming-portfolio-tab-link a
+{
+  color: inherit;
+  background: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  height: 100%;
+}
+.charming-portfolio-tab-list .charming-portfolio-tab.active a,
+.charming-portfolio-tab-list .charming-portfolio-tab-link.active a 
+{
+  background: #e9630a;
+  color: #fff;
+}
+.charming-portfolio-tab-list .charming-portfolio-tab:not(.active) a:hover,
+.charming-portfolio-tab-list .charming-portfolio-tab a:focus,
+.charming-portfolio-tab-list .charming-portfolio-tab a:active,
+
+.charming-portfolio-tab-list .charming-portfolio-tab-link:not(.active) a:hover,
+.charming-portfolio-tab-list .charming-portfolio-tab-link a:focus,
+.charming-portfolio-tab-list .charming-portfolio-tab-link a:active
+
+{
+  border-color: #e9630a;
+  outline: none;
+  box-shadow: none;
+}

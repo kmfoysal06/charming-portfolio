@@ -6,8 +6,8 @@
 if( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-$portfolio             = \CHARMING_PORTFOLIO\Inc\Classes\Portfolio::get_instance();
-$portfolio_saved_value = $portfolio->display_saved_value();
+$charming_portfolio             = \CHARMING_PORTFOLIO\Inc\Classes\Portfolio::get_instance();
+$charming_portfolio_saved_value = $charming_portfolio->display_saved_value();
 $CHARMING_PORTFOLIO_css_url = plugins_url('assets/build/css/main.css', __FILE__);
 $CHARMING_PORTFOLIO_dashicons_css_url = includes_url('css/dashicons.min.css');
 
@@ -21,16 +21,20 @@ $CHARMING_PORTFOLIO_dashicons_css_url = includes_url('css/dashicons.min.css');
     /**
     * Slot for React loaded only if user allows client side rendering 
     **/
-    if(CHARMING_PORTFOLIO_CLIENT_RENDER === true && $portfolio_saved_value['layout'] === 'classic'):?>
+    if(CHARMING_PORTFOLIO_CLIENT_RENDER === true && $charming_portfolio_saved_value['layout'] === 'classic'):?>
         <!-- Slot To Load Portfolio Components -->
         <div id="charming-portfolio-react-root">
         </div>
     <?php endif; ?>
-    <?php if($portfolio_saved_value['layout'] === 'charming_v2'):?>
+    <?php if($charming_portfolio_saved_value['layout'] === 'charming_v2'):?>
         <!-- Charming V2 Layout -->
-        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/charming_v2/index", "", $portfolio_saved_value);?>
+        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/charming_v2/index", "", $charming_portfolio_saved_value);?>
+    <?php endif; ?>
+    <?php if($charming_portfolio_saved_value['layout'] === 'charming_v3'):?>
+        <!-- Charming V2 Layout -->
+        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/charming_v3/index", "", $charming_portfolio_saved_value);?>
     <?php endif; ?>
 
 <!-- Contact and Footer -->
-<?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/footer", "", $portfolio_saved_value);?>
+<?php CHARMING_PORTFOLIO_get_template_part("template-parts/frontpage/footer", "", $charming_portfolio_saved_value);?>
 

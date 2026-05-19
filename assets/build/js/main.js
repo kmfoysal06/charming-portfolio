@@ -1,19 +1,6 @@
 /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./node_modules/swiper/swiper.css":
-/*!****************************************!*\
-  !*** ./node_modules/swiper/swiper.css ***!
-  \****************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
 /***/ "./src/js/components/copybtn.js":
 /*!**************************************!*\
   !*** ./src/js/components/copybtn.js ***!
@@ -177,13 +164,11 @@ var __webpack_exports__ = {};
   \************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sass_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../sass/main.scss */ "./src/sass/main.scss");
-/* harmony import */ var _node_modules_swiper_swiper_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/swiper/swiper.css */ "./node_modules/swiper/swiper.css");
-/* harmony import */ var _components_copybtn_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/copybtn.js */ "./src/js/components/copybtn.js");
-/* harmony import */ var _components_copybtn_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_components_copybtn_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_scrollReveal_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/scrollReveal.js */ "./src/js/components/scrollReveal.js");
-/* harmony import */ var _components_scrollReveal_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_components_scrollReveal_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_copybtn_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/copybtn.js */ "./src/js/components/copybtn.js");
+/* harmony import */ var _components_copybtn_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_components_copybtn_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_scrollReveal_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/scrollReveal.js */ "./src/js/components/scrollReveal.js");
+/* harmony import */ var _components_scrollReveal_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_components_scrollReveal_js__WEBPACK_IMPORTED_MODULE_2__);
 //import sass
-
 
 
 

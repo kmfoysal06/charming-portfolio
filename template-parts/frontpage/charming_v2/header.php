@@ -6,17 +6,14 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
-$site_icon = get_site_icon_url();
-$site_title = get_bloginfo('name');
-$portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
-// var_dump($args['header_links']);
-// die;
+$charming_portfolio_site_icon = get_site_icon_url();
+$charming_portfolio_site_title = get_bloginfo('name');
 ?>
 <header class="charming-portfolio-header charming-portfolio-container" role="banner">
-    <?php if($site_icon): ?>
-    <img src="<?php echo esc_url( $site_icon ); ?>" class="site-icon" alt="site logo" width="auto" height="50px" />
+    <?php if($charming_portfolio_site_icon): ?>
+    <img src="<?php echo esc_url( $charming_portfolio_site_icon ); ?>" class="site-icon" alt="site logo" width="auto" height="50px" />
     <?php else: ?>
-        <h3><?php echo esc_html( $site_title ); ?></h3>
+        <h3><?php echo esc_html( $charming_portfolio_site_title ); ?></h3>
     <?php endif; ?>
     <?php if(array_key_exists('header_links', $args) && is_array($args['header_links'])): ?>
         <ul class="header-nav">

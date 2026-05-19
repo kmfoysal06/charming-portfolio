@@ -101,7 +101,9 @@ jQuery(document).ready(function ($) {
         form[0].reset();
       }
     } catch (e) {
+      console.log('the error is', e);
       CharmAlert.showAlert("Error adding enquiry! Please try again", 'error');
+      return false;
     } finally {
       submitButton.prop('disabled', false).text('Submit');
     }

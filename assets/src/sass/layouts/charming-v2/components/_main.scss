@@ -260,6 +260,7 @@ body {
       opacity 0.3s ease,
       transform 0.3s ease;
     background-color: #fff;
+    z-index: 1;
 
     p {
       font-size: 13px;
@@ -370,6 +371,7 @@ body {
   transform-origin: top;
   opacity: 0;
   pointer-events: none;
+  z-index: 1;
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;

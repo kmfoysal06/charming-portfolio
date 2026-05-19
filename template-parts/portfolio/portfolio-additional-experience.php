@@ -79,7 +79,7 @@ endif;
 ?>
 
     <!-- empty hidden one for jQuery -->
-    <tr class="charming_portfolio_empty-row__experience screen-reader-text single-experience">
+    <tr class="charming_portfolio_empty-row__experience screen-reader-text single-experience empty_blueprint">
         <td>
 
             <label for="<?php echo esc_attr("experience-image-" . $key); ?>"><?php esc_html_e("Brand Logo","charming-portfolio"); ?></label>
