@@ -6,7 +6,6 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
-$portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
 ?>
 <div class="charming-portfolio-container charming-portfolio-contact-section">
         <div class="section-header">

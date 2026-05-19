@@ -6,14 +6,13 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
-$portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
 ?>
 <div class="charming-portfolio-container charming-portfolio-hero-section">
     <div class="hero-text hero__inner">
         <h2>Hello, I am <span class="highlight"><?php echo esc_html($args['name']) ?></span></h2>
         <p class="short-description"><?php 
-            $description = (is_array($args) && isset($args['description'])) ? $args['description'] : 'hello';
-            echo wp_kses(CHARMING_PORTFOLIO_special_tag($description), array(
+            $charming_portfolio_description = (is_array($args) && isset($args['description'])) ? $args['description'] : 'hello';
+            echo wp_kses(CHARMING_PORTFOLIO_special_tag($charming_portfolio_description), array(
                 'b' => [],
                 'br' => [],
             ));

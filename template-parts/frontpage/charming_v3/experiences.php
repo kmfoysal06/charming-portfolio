@@ -13,7 +13,7 @@ $charming_portfolio_experiences = $args['experiences'] ?? false;
 <section class="experience-section">
   <div class="section-header">
     <span class="section-number"><?php echo esc_html_e("03", "charming-portfolio") ?></span>
-    <h2 class="section-title"><?php echo _esc_html_e("Experience", "charming-portfolio") ?></h2>
+    <h2 class="section-title"><?php echo esc_html_e("Experience", "charming-portfolio") ?></h2>
     <div class="section-line"></div>
   </div>
 

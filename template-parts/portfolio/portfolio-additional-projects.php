@@ -17,8 +17,8 @@ if( ! defined( 'ABSPATH' ) ) {
     <table id="repeatable-fieldset-three" width="100%">
       <tbody>
         <?php if(is_array($args) && array_key_exists('works', $args)): 
-        $works = $args['works']; ?>
-        <?php foreach( $works as $key => $work ):
+        $charming_portfolio_works = $args['works']; ?>
+        <?php foreach( $charming_portfolio_works as $key => $work ):
             $key = $key + 1;
             if(empty($work['title'])) continue; 
             $category = isset($work['category']) ? $work['category'] : '';

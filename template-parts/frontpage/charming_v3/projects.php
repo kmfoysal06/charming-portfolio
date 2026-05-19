@@ -6,8 +6,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
-$projects = $args['works'] ?? false;
-if(is_array($projects) && !empty($projects)):
+$charming_portfolio_projects = $args['works'] ?? false;
+if(is_array($charming_portfolio_projects) && !empty($projects)):
 ?>
 <!-- EXPERIENCE -->
 <!-- PROJECTS -->
@@ -19,7 +19,7 @@ if(is_array($projects) && !empty($projects)):
   </div>
 
   <div class="projects-grid">
-<?php foreach($projects as $project): ?>
+<?php foreach($charming_portfolio_projects as $project): ?>
 <?php
 $project_name = isset($project['title']) ? $project['title'] : '';
 $project_desc = isset($project['description']) ? $project['description'] : '';

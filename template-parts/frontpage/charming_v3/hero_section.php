@@ -6,8 +6,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
-$primary_statbox_label = isset($args['primary_statbox_label']) ? $args['primary_statbox_label'] : '';
-$primary_statbox_content = isset($args['primary_statbox_content']) ? $args['primary_statbox_content'] : '';
+$charming_portfolio_statbox_label = isset($args['primary_statbox_label']) ? $args['primary_statbox_label'] : '';
+$charming_portfolio_statbox_content = isset($args['primary_statbox_content']) ? $args['primary_statbox_content'] : '';
 ?>
 <!-- HERO -->
 <section class="hero" id="about">
@@ -32,9 +32,9 @@ $primary_statbox_content = isset($args['primary_statbox_content']) ? $args['prim
         <img src="<?php echo esc_url($args['user_image']); ?>" alt="<?php echo esc_attr($args['name']); ?>" class="hero-image">
       </div>
       <div class="hero-badge">
-        <?php if($primary_statbox_content && $primary_statbox_label) : ?>
-          <strong><?php echo esc_html($primary_statbox_content); ?></strong>
-          <span><?php echo esc_html($primary_statbox_label); ?></span>
+        <?php if($charming_portfolio_statbox_content && $charming_portfolio_statbox_label) : ?>
+          <strong><?php echo esc_html($charming_portfolio_statbox_content); ?></strong>
+          <span><?php echo esc_html($charming_portfolio_statbox_label); ?></span>
         <?php endif; ?>
       </div>
     </div>

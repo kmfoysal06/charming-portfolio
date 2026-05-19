@@ -6,16 +6,16 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
-$stat_boxes = $args['stat_boxes'] ?? false;
+$charming_portfolio_stat_boxes = $args['stat_boxes'] ?? false;
 ?>
 
 <!-- STATS BAR -->
-<?php if($stat_boxes && is_array($stat_boxes)): ?>
+<?php if($charming_portfolio_stat_boxes && is_array($charming_portfolio_stat_boxes)): ?>
 <?php
 ?>
 <div class="stats-bar">
 
-    <?php foreach($stat_boxes as $box): ?>
+    <?php foreach($charming_portfolio_stat_boxes as $box): ?>
     <?php
     $content = isset($box['content']) ? $box['content'] : '';
     $label = isset($box['label']) ? $box['label'] : '';

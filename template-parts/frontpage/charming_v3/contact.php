@@ -17,11 +17,11 @@ $charming_portfolio_portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_i
     </div>
     <p class="contact-tagline">Have a project in mind or want to collaborate? I am open to new opportunities and freelance work.</p>
 
-    <?php $social_links = $args['social_links'] ?? false; ?>
+    <?php $charming_portfolio_social_links = $args['social_links'] ?? false; ?>
 
     <div class="contact-social-links">
-    <?php if(is_array($social_links) && !empty($social_links)): ?>
-      <?php foreach($social_links as $social_link): ?>
+    <?php if(is_array($charming_portfolio_social_links) && !empty($social_links)): ?>
+      <?php foreach($charming_portfolio_social_links as $social_link): ?>
 
         <a href="<?php  echo esc_url($social_link['url']); ?>" class="contact-link" target="_blank" rel="noopener">
           <i class="<?php  echo esc_attr($charming_portfolio_portfolio->get_social_icon_classes(strtolower($social_link['name']))); ?>"></i>

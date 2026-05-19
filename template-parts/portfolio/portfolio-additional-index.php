@@ -6,25 +6,25 @@
 if( ! defined( 'ABSPATH' ) ) {
     exit;
 }
-$portfolio             = \CHARMING_PORTFOLIO\Inc\Classes\Portfolio::get_instance();
-$portfolio_saved_data = $portfolio->display_saved_value();
+$charming_portfolio             = \CHARMING_PORTFOLIO\Inc\Classes\Portfolio::get_instance();
+$charming_portfolio_saved_data = $charming_portfolio->display_saved_value();
 
 
-CHARMING_PORTFOLIO_get_template_part('template-parts/portfolio/portfolio-additional','tab-list', $portfolio_saved_data);
+CHARMING_PORTFOLIO_get_template_part('template-parts/portfolio/portfolio-additional','tab-list', $charming_portfolio_saved_data);
 ?>
 <div class="charming-portfolio-tabs">
     <div class="tab-content active" id="skills" data-tab="skills">
-        <?php  CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio-additional", 'skills', $portfolio_saved_data);?>
+        <?php  CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio-additional", 'skills', $charming_portfolio_saved_data);?>
     </div>
 
 
     <div class="tab-content" id="experience" data-tab="experience">
-        <?php  CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio-additional", 'experience', $portfolio_saved_data);?>
+        <?php  CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio-additional", 'experience', $charming_portfolio_saved_data);?>
 
     </div>
 
     <div class="tab-content" id="projects" data-tab="projects">
-        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio-additional", 'projects', $portfolio_saved_data);?>
+        <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio-additional", 'projects', $charming_portfolio_saved_data);?>
 
     </div>
 

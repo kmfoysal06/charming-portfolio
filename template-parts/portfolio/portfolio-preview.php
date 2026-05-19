@@ -28,8 +28,8 @@ if( ! defined( 'ABSPATH' ) ) {
             <h1><?php echo esc_html($args['name'] ?? "Charm")?></h1>
             <div class="header-links">
                 <?php
-                    $header_links = isset($args['header_links']) ? $args['header_links'] : [];
-                    foreach ($header_links as $header_link): ?>
+                    $charming_portfolio_header_links = isset($args['header_links']) ? $args['header_links'] : [];
+                    foreach ($charming_portfolio_header_links as $header_link): ?>
                         <a href="<?php echo esc_attr(isset($header_link['url']) && is_array($header_link['url']) ? implode('', $header_link['url']) : ($header_link['url'] ?? '')); ?>" target="_blank">
                             <?php echo esc_html(isset($header_link['name']) && is_array($header_link['name']) ? implode('', $header_link['name']) : ($header_link['name'] ?? '')); ?>
                         </a>
@@ -54,8 +54,8 @@ if( ! defined( 'ABSPATH' ) ) {
             <p><?php echo esc_html($args['description'] ?? "") ?></p>
             <div class="social-links">
                 <?php
-                    $social_links = isset($args['social_links']) ? $args['social_links'] : [];
-                    foreach ($social_links as $link): ?>
+                    $charming_portfolio_social_links = isset($args['social_links']) ? $args['social_links'] : [];
+                    foreach ($charming_portfolio_social_links as $link): ?>
                         <a href="<?php echo esc_attr(isset($link['url']) && is_array($link['url']) ? implode('', $link['url']) : ($link['url'] ?? '')); ?>" target="_blank">
                             <?php echo esc_html(isset($link['name']) && is_array($link['name']) ? implode('', $link['name']) : ($link['name'] ?? "")); ?>
                         </a>
@@ -110,8 +110,8 @@ if( ! defined( 'ABSPATH' ) ) {
             <span>Skills</span>
             <div style="font-size:1.5rem;margin-top:8px;">
                 <?php
-                    $skills = isset($args['skills']) ? $args['skills'] : [];
-                    echo count($skills); 
+                    $charming_portfolio_skills = isset($args['skills']) ? $args['skills'] : [];
+                    echo count($charming_portfolio_skills); 
                 ?>
             </div>
         </div>
@@ -119,8 +119,8 @@ if( ! defined( 'ABSPATH' ) ) {
             <span>Experience</span>
             <div style="font-size:1.5rem;margin-top:8px;">
                 <?php
-                    $experiences = isset($args['experiences']) ? $args['experiences'] : [];
-                    echo count($experiences); 
+                    $charming_portfolio_experiences = isset($args['experiences']) ? $args['experiences'] : [];
+                    echo count($charming_portfolio_experiences); 
                 ?>
             </div>
         </div>
@@ -128,16 +128,16 @@ if( ! defined( 'ABSPATH' ) ) {
             <span>Works</span>
             <div style="font-size:1.5rem;margin-top:8px;">
                 <?php
-                    $works = isset($args['works']) ? $args['works'] : [];
-                    echo count($works); 
+                    $charming_portfolio_works = isset($args['works']) ? $args['works'] : [];
+                    echo count($charming_portfolio_works); 
                 ?>
             </div>
         </div>
     </div>
             <div class="footer-links">
                 <?php
-                    $footer_links = isset($args['footer_links']) ? $args['footer_links'] : [];
-                    foreach ($footer_links as $footer_link): ?>
+                    $charming_portfolio_footer_links = isset($args['footer_links']) ? $args['footer_links'] : [];
+                    foreach ($charming_portfolio_footer_links as $footer_link): ?>
                         <a href="<?php echo esc_attr(isset($footer_link['url']) && is_array($footer_link['url']) ? implode('', $footer_link['url']) : ($footer_link['url'] ?? '')); ?>" target="_blank">
                             <?php echo esc_html(isset($footer_link['name']) && is_array($footer_link['name']) ? implode('', $footer_link['name']) : ($footer_link['name'] ?? '')); ?>
                         </a>

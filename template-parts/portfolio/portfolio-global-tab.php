@@ -2,23 +2,23 @@
 if( ! defined( 'ABSPATH' ) ) {
     exit;
 }
-$current_page = isset($_SERVER['REQUEST_URI']) ? wp_unslash($_SERVER['REQUEST_URI']) : '';
+$charming_portfolio_current_page = isset($_SERVER['REQUEST_URI']) ? sanitize_text_field(wp_unslash($_SERVER['REQUEST_URI'])) : '';
 
 
 global $submenu;
-$cp_submenus = isset($submenu['CHARMING_PORTFOLIO_page']) ? $submenu['CHARMING_PORTFOLIO_page'] : [];
-if( ! empty( $cp_submenus ) ) :
+$charming_portfolio_submenus = isset($submenu['CHARMING_PORTFOLIO_page']) ? $submenu['CHARMING_PORTFOLIO_page'] : [];
+if( ! empty( $charming_portfolio_submenus ) ) :
 ?>
 
 <div class="portfolio-section-wrapper">
     <nav class="tablist">
         <ul class="charming-portfolio-tab-list">
             <?php
-                foreach ( $cp_submenus as $index => $single_submenu ) {
+                foreach ( $charming_portfolio_submenus as $index => $single_submenu ) {
                     if($index === 0) {
                         continue; // Skip the first submenu item
                     }
-                    $parsed_current_page = wp_parse_url( $current_page );
+                    $parsed_current_page = wp_parse_url( $charming_portfolio_current_page );
                     $query = isset( $parsed_current_page['query'] ) ? $parsed_current_page['query'] : '';
 
                     $submenu_query = isset( $single_submenu[2] ) ? $single_submenu[2] : '';

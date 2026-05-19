@@ -8,13 +8,13 @@ if( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 // hardcoded to 4 as per the design
-$stat_boxes_count = 4;
-$stat_boxes_saved = isset($args['stat_boxes']) ? $args['stat_boxes'] : [];
-$stat_boxes = array_fill(0, $stat_boxes_count, array('content' => '', 'label' => ''));
+$charming_portfolio_stat_boxes_count = 4;
+$charming_portfolio_stat_boxes_saved = isset($args['stat_boxes']) ? $args['stat_boxes'] : [];
+$charming_portfolio_stat_boxes = array_fill(0, $charming_portfolio_stat_boxes_count, array('content' => '', 'label' => ''));
 // loop through empty stat_boxes and fill if data exists in saved $args
 for($i=0;$i < 4; $i++) {
-    if(isset($stat_boxes_saved[$i])) {
-        $stat_boxes[$i] =  $stat_boxes_saved[$i];
+    if(isset($charming_portfolio_stat_boxes_saved[$i])) {
+        $charming_portfolio_stat_boxes[$i] =  $stat_boxes_saved[$i];
     }
 }
 ?>
@@ -23,7 +23,7 @@ for($i=0;$i < 4; $i++) {
     <div class="portfolio-section portfolio-section-content">
         <table class="stat-boxes-table">
         <tbody>
-        <?php foreach($stat_boxes as $index => $stat_box) : ?>
+        <?php foreach($charming_portfolio_stat_boxes as $index => $stat_box) : ?>
 <?php
 $content = isset($stat_box['content']) ? $stat_box['content'] : '';
 $label = isset($stat_box['label']) ? $stat_box['label'] : '';

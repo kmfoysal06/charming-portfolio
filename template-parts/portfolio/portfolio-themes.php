@@ -6,9 +6,9 @@
 if( ! defined( 'ABSPATH' ) ) {
     exit;
 }
-$layout = $args['layout'] ?? 'charming_v3';
-if(!in_array($layout, ['classic', 'charming_v2', 'charming_v3'])) {
-    $layout = 'charming_v3';
+$charming_portfolio_layout = $args['layout'] ?? 'charming_v3';
+if(!in_array($charming_portfolio_layout, ['classic', 'charming_v2', 'charming_v3'])) {
+    $charming_portfolio_layout = 'charming_v3';
 }
 
 ?>
@@ -20,7 +20,7 @@ if(!in_array($layout, ['classic', 'charming_v2', 'charming_v3'])) {
             <img src="<?php echo esc_url(CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/cp-classic.png") ?>" width="200px" />
 
             <div class="flex gap-1 items-center checkbox-wrapper">
-            <input type="radio" name="portfolio_layout" value="classic" <?php checked($layout, 'classic'); ?>>
+            <input type="radio" name="portfolio_layout" value="classic" <?php checked($charming_portfolio_layout, 'classic'); ?>>
             <?php esc_html_e("Classic Theme","charming-portfolio"); ?>
             </div>
         </label>
@@ -28,7 +28,7 @@ if(!in_array($layout, ['classic', 'charming_v2', 'charming_v3'])) {
         <label>
             <img src="<?php echo esc_url(CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/cp-v2.png") ?>" width="200px" />
             <div class="flex gap-1 items-center checkbox-wrapper">
-<input type="radio" name="portfolio_layout" value="charming_v2" <?php checked($layout, 'charming_v2'); ?>>
+<input type="radio" name="portfolio_layout" value="charming_v2" <?php checked($charming_portfolio_layout, 'charming_v2'); ?>>
             <?php esc_html_e("Charming V2 Theme","charming-portfolio"); ?>
             </div>
 
@@ -36,7 +36,7 @@ if(!in_array($layout, ['classic', 'charming_v2', 'charming_v3'])) {
         <label>
             <img src="<?php echo esc_url(CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/cp-v3.webp") ?>" width="200px" />
             <div class="flex gap-1 items-center checkbox-wrapper">
-<input type="radio" name="portfolio_layout" value="charming_v3" <?php checked($layout, 'charming_v3'); ?>>
+<input type="radio" name="portfolio_layout" value="charming_v3" <?php checked($charming_portfolio_layout, 'charming_v3'); ?>>
             <?php esc_html_e("Charming V3 Theme","charming-portfolio"); ?>
             </div>
 

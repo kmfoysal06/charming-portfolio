@@ -6,10 +6,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
-$skills = $args['skills'] ?? false;
-$portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
+$charming_portfolio_skills = $args['skills'] ?? false;
 ?>
-<?php if(is_array($skills) && !empty($skills)): ?>
+<?php if(is_array($charming_portfolio_skills) && !empty($skills)): ?>
 <section class="skills-section" id="skills">
   <div class="section-header">
     <span class="section-number">01</span>
@@ -19,7 +18,7 @@ $portfolio = \CHARMING_PORTFOLIO\Inc\Classes\PORTFOLIO::get_instance();
 
   <div class="skills-grid">
 
-        <?php foreach($skills as $skill): ?>
+        <?php foreach($charming_portfolio_skills as $skill): ?>
     <div class="skill-card">
       <div class="skill-icon">
       <img src="<?php echo esc_url($skill['image']); ?>" width="44" height=44" alt="<?php echo esc_html($skill['name']); ?>" />

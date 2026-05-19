@@ -17,7 +17,7 @@ $charming_portfolio_site_title = get_bloginfo('name');
 
 <nav>
 <a href="#" class="nav-logo">
-<?php if($site_icon): ?>
+<?php if($charming_portfolio_site_icon): ?>
     <img src="<?php echo esc_url( $charming_portfolio_site_icon ); ?>" class="site-icon" alt="site logo" width="auto" height="50px" />
     <?php else: ?>
         <h3><?php echo esc_html( $charming_portfolio_site_title ); ?></h3>
