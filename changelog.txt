@@ -67,3 +67,4 @@
 -New portfolio theme
 -New Fields to show off
 -Fixed sevaral bugs
+-Organized Admin UI

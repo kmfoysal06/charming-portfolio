@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
 $charming_portfolio_projects = $args['works'] ?? false;
-if(is_array($charming_portfolio_projects) && !empty($projects)):
+if(is_array($charming_portfolio_projects) && !empty($charming_portfolio_projects)):
 ?>
 <!-- EXPERIENCE -->
 <!-- PROJECTS -->

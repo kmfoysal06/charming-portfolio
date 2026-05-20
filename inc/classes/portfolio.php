@@ -366,7 +366,7 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
                 'description'       => "Hello, I am rare skilled !genius and introvert person and this is not a copy of short description.",
                 'address'           => "Earth",
                 'available'         => false,
-                'layout'            => 'charming_v2',
+                'layout'            => 'charming_v3',
             ];
         // return $additional_option_value;
 
@@ -389,7 +389,7 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
             $social_links      = array_key_exists("social_links", $option_value) ? $option_value['social_links'] : [];
             $header_links      = array_key_exists("header_links", $option_value) ? $option_value['header_links'] : [];
             $footer_links      = array_key_exists("footer_links", $option_value) ? $option_value['footer_links'] : [];
-            $layout            = array_key_exists("layout", $option_value) ? $option_value['layout'] : 'charming_v2';
+            $layout            = array_key_exists("layout", $option_value) ? $option_value['layout'] : 'charming_v3';
         	$saved_values      = [
                 'enabled'           => $enabled,
                 'contact_mailing_enabled' => $contact_mailing_enabled,
