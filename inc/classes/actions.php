@@ -141,6 +141,7 @@ class Actions
                 'message' => 'Address is too long! It should be less than 100 words'
             ]);
         }
+        $modified_data['description'] = isset($_POST['description']) ? wp_kses_post($_POST['description']) : $modified_data['description'];
 
         update_option('CHARMING_PORTFOLIO_v2', $modified_data);
         wp_send_json([
@@ -163,7 +164,9 @@ class Actions
             $skills = json_decode(($skills), true);
             $projects = $modified_data['works'] ?? "[]";
             $projects = json_decode($projects, true);
-            $experiences = $modified_data['experiences'] ?? "[]";
+            $experiences = $_POST['experiences'] ?? "[]";
+            $experiences = wp_unslash($experiences);
+
             $experiences = json_decode($experiences, true);
 
 
@@ -185,7 +188,7 @@ class Actions
                 $experience['post-title'] = sanitize_text_field(wp_unslash($experience['post_title']));
                 unset($experience['post_title']);
                 // sanitize responsibility
-                $experience['responsibility'] = sanitize_textarea_field(wp_unslash($experience['responsibility']));
+                $experience['responsibility'] = wp_kses_post($experience['responsibility']);
                 $still_working = boolval($experience['working']) ?? false;
                 // validate start date
                 if (isset($experience['start_date']) && !preg_match("/[0-9]{4}-[0-9]{2}-[0-9]{2}/", $experience['start_date'])) {

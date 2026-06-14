@@ -10,7 +10,10 @@ jQuery(document).ready(function($) {
     ];
 
     function initQuillEditor(textareaRoot) {
-        const $items = $(textareaRoot);
+        let $items = textareaRoot instanceof jQuery ? textareaRoot : $(textareaRoot);
+        $items = $items.filter(function() {
+            return !$(this).hasClass('noquill');
+        });
 
         if (!$items.length) return;
 
@@ -40,33 +43,31 @@ jQuery(document).ready(function($) {
             });
         });
     }
-    // distroy all quill editor before init
-    function destroyQuillEditors() {
-        $('.quill-editor-slot.ql-container').each(function() {
-            const quillInstance = Quill.find(this);
-            if (quillInstance) {
-                quillInstance.disable();
-                quillInstance.off('text-change');
-                $(this).removeClass('ql-container').empty();
-            }
-        });
-    }
-    document.addEventListener("click", function(event) {
-        if ($(event.target).closest('#charming_portfolio_experience_add').length) { 
-            console.log(' Add Experience button clicked, reinitializing Quill editors...');
-            destroyQuillEditors();
-            setTimeout(function() {
-                initQuillEditor(".portfolio-aboutme.portfolio-section-content");
-                initQuillEditor(".charming-portfolio-experience .responsibilities");
-            }, 100);
-        }
-    });
 
-    $(document).on('charming-portfolio-repeater-add', function(event, dataName, queue) {
-        // todo; make this expeirience repeater add and remove reinnitialzation of quill editor work
-            console.log(`Repeater added: ${dataName} with queue ${queue}`);
+    $(document).on('charming-portfolio-repeater-add', function(event, dataName, queue, row) {
+        console.log(dataName);
+        let nthRow;
+        if(dataName === 'experiences') {
+            const responsibilities = row.find('.responsibilities');
+            responsibilities.removeClass('noquill');
+
+            nthRow = $(`.charming-portfolio-experience .responsibilities`)[queue - 1];
+        }
+        if(dataName === 'skills') {
+            const skills = row.find('.skill-description');
+            skills.removeClass('noquill');
+            console.log('editke hatle' , row);
+
+            console.log('raw' , row);
+            nthRow = $(`.charming-portfolio-skills .skill-description`)[queue - 1];
+        }
+        if (nthRow) {
+            initQuillEditor(nthRow);
+        }
     })
     initQuillEditor(".portfolio-aboutme.portfolio-section-content");
     initQuillEditor(".charming-portfolio-experience .responsibilities");
+    initQuillEditor(".charming-portfolio-skills .skill-description");
+
 
  });

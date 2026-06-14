@@ -559,7 +559,10 @@ jQuery(document).ready(function ($) {
     'list': 'bullet'
   }], ['link', 'clean']];
   function initQuillEditor(textareaRoot) {
-    const $items = $(textareaRoot);
+    let $items = textareaRoot instanceof jQuery ? textareaRoot : $(textareaRoot);
+    $items = $items.filter(function () {
+      return !$(this).hasClass('noquill');
+    });
     if (!$items.length) return;
     $items.each(function ($idx) {
       const $item = $($items[$idx]);
@@ -583,33 +586,28 @@ jQuery(document).ready(function ($) {
       });
     });
   }
-  // distroy all quill editor before init
-  function destroyQuillEditors() {
-    $('.quill-editor-slot.ql-container').each(function () {
-      const quillInstance = quill__WEBPACK_IMPORTED_MODULE_0__["default"].find(this);
-      if (quillInstance) {
-        quillInstance.disable();
-        quillInstance.off('text-change');
-        $(this).removeClass('ql-container').empty();
-      }
-    });
-  }
-  document.addEventListener("click", function (event) {
-    if ($(event.target).closest('#charming_portfolio_experience_add').length) {
-      console.log(' Add Experience button clicked, reinitializing Quill editors...');
-      destroyQuillEditors();
-      setTimeout(function () {
-        initQuillEditor(".portfolio-aboutme.portfolio-section-content");
-        initQuillEditor(".charming-portfolio-experience .responsibilities");
-      }, 100);
+  $(document).on('charming-portfolio-repeater-add', function (event, dataName, queue, row) {
+    console.log(dataName);
+    let nthRow;
+    if (dataName === 'experiences') {
+      const responsibilities = row.find('.responsibilities');
+      responsibilities.removeClass('noquill');
+      nthRow = $(`.charming-portfolio-experience .responsibilities`)[queue - 1];
     }
-  });
-  $(document).on('charming-portfolio-repeater-add', function (event, dataName, queue) {
-    // todo; make this expeirience repeater add and remove reinnitialzation of quill editor work
-    console.log(`Repeater added: ${dataName} with queue ${queue}`);
+    if (dataName === 'skills') {
+      const skills = row.find('.skill-description');
+      skills.removeClass('noquill');
+      console.log('editke hatle', row);
+      console.log('raw', row);
+      nthRow = $(`.charming-portfolio-skills .skill-description`)[queue - 1];
+    }
+    if (nthRow) {
+      initQuillEditor(nthRow);
+    }
   });
   initQuillEditor(".portfolio-aboutme.portfolio-section-content");
   initQuillEditor(".charming-portfolio-experience .responsibilities");
+  initQuillEditor(".charming-portfolio-skills .skill-description");
 });
 
 /***/ }),
@@ -657,7 +655,7 @@ jQuery(document).ready(function ($) {
           $(this).siblings('label').attr("for", `${LabelFor}-${queue}`);
         });
         row.insertBefore(`${insertBefore}:last-child`);
-        $(document).trigger('charming-portfolio-repeater-add', [dataName, queue]);
+        $(document).trigger('charming-portfolio-repeater-add', [dataName, queue, row]);
         return false;
       });
       $(`.${removeBtn}`).on('click', function () {
@@ -871,7 +869,7 @@ jQuery(document).ready(function ($) {
                   responsibility,
                   startDate
                 });
-                throw new Error(`Experience ${institution || postTitle || responsibility || startDate}: Please fill all required fields (Institution, Post Title, Responsibility, Start Date)`);
+                throw new Error(`Experience ${institution || postTitle || startDate}: Please fill all required fields (Institution, Post Title, Responsibility, Start Date)`);
               }
             });
             const projectsData = [];

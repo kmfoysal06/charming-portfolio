@@ -1185,6 +1185,8 @@
 .quill-container-slot {
   height: -moz-max-content;
   height: max-content;
+  width: 100%;
+  margin-top: 6px;
 }
 
 .charming-portfolio-tabs .tab-content {

@@ -37,10 +37,7 @@ $charming_portfolio_experiences = $args['experiences'] ?? false;
         </div>
 
         <div class="timeline-desc">
-          <?php echo wp_kses(CHARMING_PORTFOLIO_special_tag($exp['responsibility']), array(
-            'b' => [],
-            'br' => [],
-          )); ?>
+            <?php echo wp_kses_post($exp['responsibility']); ?>
         </div>
       </div>
     <?php endforeach; ?>

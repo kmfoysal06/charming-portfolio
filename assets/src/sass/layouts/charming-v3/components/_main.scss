@@ -551,6 +551,14 @@
     max-width: 640px;
     font-weight: 300;
   }
+.timeline-desc strong, 
+.timeline-desc b {
+    font-weight: 500;
+    color: var(--black);
+}
+.timeline-desc li[data-list="bullet"] {
+  list-style-type: disc;
+}
 
 
   /* ── ANIMATIONS ── */

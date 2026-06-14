@@ -35,7 +35,7 @@
                     $(this).siblings('label').attr("for",`${LabelFor}-${queue}`);
                 });
                 row.insertBefore(`${insertBefore}:last-child`);
-                $(document).trigger('charming-portfolio-repeater-add', [dataName, queue]);
+                $(document).trigger('charming-portfolio-repeater-add', [dataName, queue, row]);
                 return false;
             });
 

@@ -68,3 +68,5 @@
 -New Fields to show off
 -Fixed sevaral bugs
 -Organized Admin UI
+==v3.0.2==
+- Added WSYIWYG Support with quill.js

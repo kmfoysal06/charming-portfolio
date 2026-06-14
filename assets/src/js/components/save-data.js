@@ -204,7 +204,7 @@
                                 });
                             }else{
                                 console.log("Experience data missing", { institution, postTitle, responsibility, startDate });
-                                throw new Error(`Experience ${institution || postTitle || responsibility || startDate}: Please fill all required fields (Institution, Post Title, Responsibility, Start Date)`);
+                                throw new Error(`Experience ${institution || postTitle || startDate}: Please fill all required fields (Institution, Post Title, Responsibility, Start Date)`);
                             }
                         });
                         const projectsData = [];

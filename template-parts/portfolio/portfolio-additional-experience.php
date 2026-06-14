@@ -44,11 +44,11 @@ if (is_array($args) && array_key_exists("experiences", $args)):
         <input type="text" class="post-title" placeholder="<?php esc_html_e('Post Title','charming-portfolio'); ?>" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][post-title]" value="<?php echo (array_key_exists("post-title",$experience)) ? esc_attr($experience['post-title']) : '' ;?>" id="<?php echo esc_attr("experience-post-title-" . $key,'charming-portfolio'); ?>" data-queue="<?php echo esc_attr($key); ?>" maxlength="30">
     </td>
     <td class="responsibilities" id="repeatable-fieldset-three">
-        <label for="<?php echo esc_attr("responsibilities-" . $key); ?>" title="<?php esc_attr_e('You Can Not Use Quotation ("" and \'\') so You Can Use [quote], [squote] and [bold][/bold] for Adding Double and Single Quotation and Make Any Text Bold.Also You Have to Use [break] instead of Adding Enter.','charming-portfolio'); ?>"><?php esc_html_e('Responsibilities','charming-portfolio'); ?></label>
+        <label for="<?php echo esc_attr("responsibilities-" . $key); ?>" title="<?php esc_attr_e('What was your responsibilities here?.','charming-portfolio'); ?>"><?php esc_html_e('Responsibilities','charming-portfolio'); ?></label>
         <div class="quill-container-slot">
             <div class="quill-editor-slot"></div>
         </div>
-        <textarea name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key,'charming-portfolio'); ?>][][responsibility]" id="<?php echo esc_attr("responsibilities-" . $key); ?>" cols="50" rows="5" class="responsibility quill-textarea-slot" data-queue="<?php echo esc_attr($key); ?>" maxlength="800"><?php echo esc_textarea((array_key_exists("responsibility",$experience)) ? $experience['responsibility'] : '') ;?></textarea>
+        <textarea name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key,'charming-portfolio'); ?>][][responsibility]" id="<?php echo esc_attr("responsibilities-" . $key); ?>" cols="50" rows="5" class="responsibility quill-textarea-slot" data-queue="<?php echo esc_attr($key); ?>" maxlength="800"><?php echo wp_kses_post((array_key_exists("responsibility",$experience)) ? $experience['responsibility'] : '') ;?></textarea>
     </td>
     <td>
         <label for="<?php echo esc_attr("start-date-" . $key); ?>"><?php esc_html_e("Start Date",'charming-portfolio'); ?></label>
@@ -98,7 +98,7 @@ endif;
         <label for="experience-post-title" title="<?php esc_attr_e('enter your job post title eg:- Sr. Laravel Developer etc.','charming-portfolio'); ?>"><?php esc_html_e("Post Title",'charming-portfolio'); ?></label>
         <input type="text" class="post-title" placeholder="<?php esc_attr_e("Post Title",'charming-portfolio'); ?>" name="charming_portfolio[experiences][0][post-title]" value="" id="experience-post-title" data-queue="0">
     </td>
-    <td class="responsibilities" id="repeatable-fieldset-three">
+    <td class="responsibilities noquill" id="repeatable-fieldset-three">
 
         <label for="responsibilities" title="<?php esc_attr_e('enter list separated by three dash (---) eg:- ---first responsibility --- second responsibility ---third responsibility etc.','charming-portfolio'); ?>"><?php esc_html_e("Responsibilities",'charming-portfolio'); ?></label>
         <div class="quill-container-slot">
