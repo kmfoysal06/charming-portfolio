@@ -31,3 +31,9 @@
 .column-half {
   width: min(100%, 50%);
 }
+.quill-textarea-slot {
+  display: none;
+}
+.quill-container-slot {
+  height: max-content;
+}

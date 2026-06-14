@@ -400,6 +400,11 @@
     margin-bottom: 24px;
     color: var(--orange);
   }
+ .skill-icon img{
+    width: 100%; height: 100%;
+    object-fit: contain;
+    filter: invert(100%) sepia(100%) grayscale(100%) brightness(200%) brightness(80%);
+ }
 
   .skill-name {
     font-family: 'Bebas Neue', sans-serif;

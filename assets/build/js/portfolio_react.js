@@ -345,734 +345,6 @@ function postfix( expression ) {
 
 /***/ }),
 
-/***/ "./node_modules/@wordpress/dom-ready/build-module/index.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/@wordpress/dom-ready/build-module/index.js ***!
-  \*****************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ domReady; }
-/* harmony export */ });
-/**
- * @typedef {() => void} Callback
- *
- * TODO: Remove this typedef and inline `() => void` type.
- *
- * This typedef is used so that a descriptive type is provided in our
- * automatically generated documentation.
- *
- * An in-line type `() => void` would be preferable, but the generated
- * documentation is `null` in that case.
- *
- * @see https://github.com/WordPress/gutenberg/issues/18045
- */
-
-/**
- * Specify a function to execute when the DOM is fully loaded.
- *
- * @param {Callback} callback A function to execute after the DOM is ready.
- *
- * @example
- * ```js
- * import domReady from '@wordpress/dom-ready';
- *
- * domReady( function() {
- * 	//do something after DOM loads.
- * } );
- * ```
- *
- * @return {void}
- */
-function domReady(callback) {
-  if (typeof document === 'undefined') {
-    return;
-  }
-  if (document.readyState === 'complete' ||
-  // DOMContentLoaded + Images/Styles/etc loaded, so we call directly.
-  document.readyState === 'interactive' // DOMContentLoaded fires at this point, so we call directly.
-  ) {
-    return void callback();
-  }
-
-  // DOMContentLoaded has not fired yet, delay callback until then.
-  document.addEventListener('DOMContentLoaded', callback);
-}
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ "./node_modules/@wordpress/hooks/build-module/createAddHook.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/@wordpress/hooks/build-module/createAddHook.js ***!
-  \*********************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _validateNamespace__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./validateNamespace */ "./node_modules/@wordpress/hooks/build-module/validateNamespace.js");
-/* harmony import */ var _validateHookName__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./validateHookName */ "./node_modules/@wordpress/hooks/build-module/validateHookName.js");
-/**
- * Internal dependencies
- */
-
-
-
-/**
- *
- * Adds the hook to the appropriate hooks container.
- */
-
-/**
- * Returns a function which, when invoked, will add a hook.
- *
- * @param hooks    Hooks instance.
- * @param storeKey
- *
- * @return  Function that adds a new hook.
- */
-function createAddHook(hooks, storeKey) {
-  return function addHook(hookName, namespace, callback, priority = 10) {
-    const hooksStore = hooks[storeKey];
-    if (!(0,_validateHookName__WEBPACK_IMPORTED_MODULE_1__["default"])(hookName)) {
-      return;
-    }
-    if (!(0,_validateNamespace__WEBPACK_IMPORTED_MODULE_0__["default"])(namespace)) {
-      return;
-    }
-    if ('function' !== typeof callback) {
-      // eslint-disable-next-line no-console
-      console.error('The hook callback must be a function.');
-      return;
-    }
-
-    // Validate numeric priority
-    if ('number' !== typeof priority) {
-      // eslint-disable-next-line no-console
-      console.error('If specified, the hook priority must be a number.');
-      return;
-    }
-    const handler = {
-      callback,
-      priority,
-      namespace
-    };
-    if (hooksStore[hookName]) {
-      // Find the correct insert index of the new hook.
-      const handlers = hooksStore[hookName].handlers;
-      let i;
-      for (i = handlers.length; i > 0; i--) {
-        if (priority >= handlers[i - 1].priority) {
-          break;
-        }
-      }
-      if (i === handlers.length) {
-        // If append, operate via direct assignment.
-        handlers[i] = handler;
-      } else {
-        // Otherwise, insert before index via splice.
-        handlers.splice(i, 0, handler);
-      }
-
-      // We may also be currently executing this hook.  If the callback
-      // we're adding would come after the current callback, there's no
-      // problem; otherwise we need to increase the execution index of
-      // any other runs by 1 to account for the added element.
-      hooksStore.__current.forEach(hookInfo => {
-        if (hookInfo.name === hookName && hookInfo.currentIndex >= i) {
-          hookInfo.currentIndex++;
-        }
-      });
-    } else {
-      // This is the first hook of its type.
-      hooksStore[hookName] = {
-        handlers: [handler],
-        runs: 0
-      };
-    }
-    if (hookName !== 'hookAdded') {
-      hooks.doAction('hookAdded', hookName, namespace, callback, priority);
-    }
-  };
-}
-/* harmony default export */ __webpack_exports__["default"] = (createAddHook);
-//# sourceMappingURL=createAddHook.js.map
-
-/***/ }),
-
-/***/ "./node_modules/@wordpress/hooks/build-module/createCurrentHook.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/@wordpress/hooks/build-module/createCurrentHook.js ***!
-  \*************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/**
- * Internal dependencies
- */
-
-/**
- * Returns a function which, when invoked, will return the name of the
- * currently running hook, or `null` if no hook of the given type is currently
- * running.
- *
- * @param hooks    Hooks instance.
- * @param storeKey
- *
- * @return Function that returns the current hook name or null.
- */
-function createCurrentHook(hooks, storeKey) {
-  return function currentHook() {
-    var _currentArray$at$name;
-    const hooksStore = hooks[storeKey];
-    const currentArray = Array.from(hooksStore.__current);
-    return (_currentArray$at$name = currentArray.at(-1)?.name) !== null && _currentArray$at$name !== void 0 ? _currentArray$at$name : null;
-  };
-}
-/* harmony default export */ __webpack_exports__["default"] = (createCurrentHook);
-//# sourceMappingURL=createCurrentHook.js.map
-
-/***/ }),
-
-/***/ "./node_modules/@wordpress/hooks/build-module/createDidHook.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/@wordpress/hooks/build-module/createDidHook.js ***!
-  \*********************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _validateHookName__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./validateHookName */ "./node_modules/@wordpress/hooks/build-module/validateHookName.js");
-/**
- * Internal dependencies
- */
-
-
-/**
- *
- * Returns the number of times an action has been fired.
- *
- */
-
-/**
- * Returns a function which, when invoked, will return the number of times a
- * hook has been called.
- *
- * @param hooks    Hooks instance.
- * @param storeKey
- *
- * @return  Function that returns a hook's call count.
- */
-function createDidHook(hooks, storeKey) {
-  return function didHook(hookName) {
-    const hooksStore = hooks[storeKey];
-    if (!(0,_validateHookName__WEBPACK_IMPORTED_MODULE_0__["default"])(hookName)) {
-      return;
-    }
-    return hooksStore[hookName] && hooksStore[hookName].runs ? hooksStore[hookName].runs : 0;
-  };
-}
-/* harmony default export */ __webpack_exports__["default"] = (createDidHook);
-//# sourceMappingURL=createDidHook.js.map
-
-/***/ }),
-
-/***/ "./node_modules/@wordpress/hooks/build-module/createDoingHook.js":
-/*!***********************************************************************!*\
-  !*** ./node_modules/@wordpress/hooks/build-module/createDoingHook.js ***!
-  \***********************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/**
- * Internal dependencies
- */
-
-/**
- * Returns whether a hook is currently being executed.
- *
- */
-
-/**
- * Returns a function which, when invoked, will return whether a hook is
- * currently being executed.
- *
- * @param hooks    Hooks instance.
- * @param storeKey
- *
- * @return Function that returns whether a hook is currently
- *                     being executed.
- */
-function createDoingHook(hooks, storeKey) {
-  return function doingHook(hookName) {
-    const hooksStore = hooks[storeKey];
-
-    // If the hookName was not passed, check for any current hook.
-    if ('undefined' === typeof hookName) {
-      return hooksStore.__current.size > 0;
-    }
-
-    // Find if the `hookName` hook is in `__current`.
-    return Array.from(hooksStore.__current).some(hook => hook.name === hookName);
-  };
-}
-/* harmony default export */ __webpack_exports__["default"] = (createDoingHook);
-//# sourceMappingURL=createDoingHook.js.map
-
-/***/ }),
-
-/***/ "./node_modules/@wordpress/hooks/build-module/createHasHook.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/@wordpress/hooks/build-module/createHasHook.js ***!
-  \*********************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/**
- * Internal dependencies
- */
-
-/**
- *
- * Returns whether any handlers are attached for the given hookName and optional namespace.
- */
-
-/**
- * Returns a function which, when invoked, will return whether any handlers are
- * attached to a particular hook.
- *
- * @param hooks    Hooks instance.
- * @param storeKey
- *
- * @return  Function that returns whether any handlers are
- *                   attached to a particular hook and optional namespace.
- */
-function createHasHook(hooks, storeKey) {
-  return function hasHook(hookName, namespace) {
-    const hooksStore = hooks[storeKey];
-
-    // Use the namespace if provided.
-    if ('undefined' !== typeof namespace) {
-      return hookName in hooksStore && hooksStore[hookName].handlers.some(hook => hook.namespace === namespace);
-    }
-    return hookName in hooksStore;
-  };
-}
-/* harmony default export */ __webpack_exports__["default"] = (createHasHook);
-//# sourceMappingURL=createHasHook.js.map
-
-/***/ }),
-
-/***/ "./node_modules/@wordpress/hooks/build-module/createHooks.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/@wordpress/hooks/build-module/createHooks.js ***!
-  \*******************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   _Hooks: function() { return /* binding */ _Hooks; }
-/* harmony export */ });
-/* harmony import */ var _createAddHook__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./createAddHook */ "./node_modules/@wordpress/hooks/build-module/createAddHook.js");
-/* harmony import */ var _createRemoveHook__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./createRemoveHook */ "./node_modules/@wordpress/hooks/build-module/createRemoveHook.js");
-/* harmony import */ var _createHasHook__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./createHasHook */ "./node_modules/@wordpress/hooks/build-module/createHasHook.js");
-/* harmony import */ var _createRunHook__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./createRunHook */ "./node_modules/@wordpress/hooks/build-module/createRunHook.js");
-/* harmony import */ var _createCurrentHook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./createCurrentHook */ "./node_modules/@wordpress/hooks/build-module/createCurrentHook.js");
-/* harmony import */ var _createDoingHook__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./createDoingHook */ "./node_modules/@wordpress/hooks/build-module/createDoingHook.js");
-/* harmony import */ var _createDidHook__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./createDidHook */ "./node_modules/@wordpress/hooks/build-module/createDidHook.js");
-/**
- * Internal dependencies
- */
-
-
-
-
-
-
-
-/**
- * Internal class for constructing hooks. Use `createHooks()` function
- *
- * Note, it is necessary to expose this class to make its type public.
- *
- * @private
- */
-class _Hooks {
-  constructor() {
-    this.actions = Object.create(null);
-    this.actions.__current = new Set();
-    this.filters = Object.create(null);
-    this.filters.__current = new Set();
-    this.addAction = (0,_createAddHook__WEBPACK_IMPORTED_MODULE_0__["default"])(this, 'actions');
-    this.addFilter = (0,_createAddHook__WEBPACK_IMPORTED_MODULE_0__["default"])(this, 'filters');
-    this.removeAction = (0,_createRemoveHook__WEBPACK_IMPORTED_MODULE_1__["default"])(this, 'actions');
-    this.removeFilter = (0,_createRemoveHook__WEBPACK_IMPORTED_MODULE_1__["default"])(this, 'filters');
-    this.hasAction = (0,_createHasHook__WEBPACK_IMPORTED_MODULE_2__["default"])(this, 'actions');
-    this.hasFilter = (0,_createHasHook__WEBPACK_IMPORTED_MODULE_2__["default"])(this, 'filters');
-    this.removeAllActions = (0,_createRemoveHook__WEBPACK_IMPORTED_MODULE_1__["default"])(this, 'actions', true);
-    this.removeAllFilters = (0,_createRemoveHook__WEBPACK_IMPORTED_MODULE_1__["default"])(this, 'filters', true);
-    this.doAction = (0,_createRunHook__WEBPACK_IMPORTED_MODULE_3__["default"])(this, 'actions', false, false);
-    this.doActionAsync = (0,_createRunHook__WEBPACK_IMPORTED_MODULE_3__["default"])(this, 'actions', false, true);
-    this.applyFilters = (0,_createRunHook__WEBPACK_IMPORTED_MODULE_3__["default"])(this, 'filters', true, false);
-    this.applyFiltersAsync = (0,_createRunHook__WEBPACK_IMPORTED_MODULE_3__["default"])(this, 'filters', true, true);
-    this.currentAction = (0,_createCurrentHook__WEBPACK_IMPORTED_MODULE_4__["default"])(this, 'actions');
-    this.currentFilter = (0,_createCurrentHook__WEBPACK_IMPORTED_MODULE_4__["default"])(this, 'filters');
-    this.doingAction = (0,_createDoingHook__WEBPACK_IMPORTED_MODULE_5__["default"])(this, 'actions');
-    this.doingFilter = (0,_createDoingHook__WEBPACK_IMPORTED_MODULE_5__["default"])(this, 'filters');
-    this.didAction = (0,_createDidHook__WEBPACK_IMPORTED_MODULE_6__["default"])(this, 'actions');
-    this.didFilter = (0,_createDidHook__WEBPACK_IMPORTED_MODULE_6__["default"])(this, 'filters');
-  }
-}
-/**
- * Returns an instance of the hooks object.
- *
- * @return A Hooks instance.
- */
-function createHooks() {
-  return new _Hooks();
-}
-/* harmony default export */ __webpack_exports__["default"] = (createHooks);
-//# sourceMappingURL=createHooks.js.map
-
-/***/ }),
-
-/***/ "./node_modules/@wordpress/hooks/build-module/createRemoveHook.js":
-/*!************************************************************************!*\
-  !*** ./node_modules/@wordpress/hooks/build-module/createRemoveHook.js ***!
-  \************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _validateNamespace__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./validateNamespace */ "./node_modules/@wordpress/hooks/build-module/validateNamespace.js");
-/* harmony import */ var _validateHookName__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./validateHookName */ "./node_modules/@wordpress/hooks/build-module/validateHookName.js");
-/**
- * Internal dependencies
- */
-
-
-
-/**
- * Removes the specified callback (or all callbacks) from the hook with a given hookName
- * and namespace.
- */
-
-/**
- * Returns a function which, when invoked, will remove a specified hook or all
- * hooks by the given name.
- *
- * @param hooks             Hooks instance.
- * @param storeKey
- * @param [removeAll=false] Whether to remove all callbacks for a hookName,
- *                          without regard to namespace. Used to create
- *                          `removeAll*` functions.
- *
- * @return Function that removes hooks.
- */
-function createRemoveHook(hooks, storeKey, removeAll = false) {
-  return function removeHook(hookName, namespace) {
-    const hooksStore = hooks[storeKey];
-    if (!(0,_validateHookName__WEBPACK_IMPORTED_MODULE_1__["default"])(hookName)) {
-      return;
-    }
-    if (!removeAll && !(0,_validateNamespace__WEBPACK_IMPORTED_MODULE_0__["default"])(namespace)) {
-      return;
-    }
-
-    // Bail if no hooks exist by this name.
-    if (!hooksStore[hookName]) {
-      return 0;
-    }
-    let handlersRemoved = 0;
-    if (removeAll) {
-      handlersRemoved = hooksStore[hookName].handlers.length;
-      hooksStore[hookName] = {
-        runs: hooksStore[hookName].runs,
-        handlers: []
-      };
-    } else {
-      // Try to find the specified callback to remove.
-      const handlers = hooksStore[hookName].handlers;
-      for (let i = handlers.length - 1; i >= 0; i--) {
-        if (handlers[i].namespace === namespace) {
-          handlers.splice(i, 1);
-          handlersRemoved++;
-          // This callback may also be part of a hook that is
-          // currently executing.  If the callback we're removing
-          // comes after the current callback, there's no problem;
-          // otherwise we need to decrease the execution index of any
-          // other runs by 1 to account for the removed element.
-          hooksStore.__current.forEach(hookInfo => {
-            if (hookInfo.name === hookName && hookInfo.currentIndex >= i) {
-              hookInfo.currentIndex--;
-            }
-          });
-        }
-      }
-    }
-    if (hookName !== 'hookRemoved') {
-      hooks.doAction('hookRemoved', hookName, namespace);
-    }
-    return handlersRemoved;
-  };
-}
-/* harmony default export */ __webpack_exports__["default"] = (createRemoveHook);
-//# sourceMappingURL=createRemoveHook.js.map
-
-/***/ }),
-
-/***/ "./node_modules/@wordpress/hooks/build-module/createRunHook.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/@wordpress/hooks/build-module/createRunHook.js ***!
-  \*********************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/**
- * Internal dependencies
- */
-
-/**
- * Returns a function which, when invoked, will execute all callbacks
- * registered to a hook of the specified type, optionally returning the final
- * value of the call chain.
- *
- * @param hooks          Hooks instance.
- * @param storeKey
- * @param returnFirstArg Whether each hook callback is expected to return its first argument.
- * @param async          Whether the hook callback should be run asynchronously
- *
- * @return Function that runs hook callbacks.
- */
-function createRunHook(hooks, storeKey, returnFirstArg, async) {
-  return function runHook(hookName, ...args) {
-    const hooksStore = hooks[storeKey];
-    if (!hooksStore[hookName]) {
-      hooksStore[hookName] = {
-        handlers: [],
-        runs: 0
-      };
-    }
-    hooksStore[hookName].runs++;
-    const handlers = hooksStore[hookName].handlers;
-
-    // The following code is stripped from production builds.
-    if (true) {
-      // Handle any 'all' hooks registered.
-      if ('hookAdded' !== hookName && hooksStore.all) {
-        handlers.push(...hooksStore.all.handlers);
-      }
-    }
-    if (!handlers || !handlers.length) {
-      return returnFirstArg ? args[0] : undefined;
-    }
-    const hookInfo = {
-      name: hookName,
-      currentIndex: 0
-    };
-    async function asyncRunner() {
-      try {
-        hooksStore.__current.add(hookInfo);
-        let result = returnFirstArg ? args[0] : undefined;
-        while (hookInfo.currentIndex < handlers.length) {
-          const handler = handlers[hookInfo.currentIndex];
-          result = await handler.callback.apply(null, args);
-          if (returnFirstArg) {
-            args[0] = result;
-          }
-          hookInfo.currentIndex++;
-        }
-        return returnFirstArg ? result : undefined;
-      } finally {
-        hooksStore.__current.delete(hookInfo);
-      }
-    }
-    function syncRunner() {
-      try {
-        hooksStore.__current.add(hookInfo);
-        let result = returnFirstArg ? args[0] : undefined;
-        while (hookInfo.currentIndex < handlers.length) {
-          const handler = handlers[hookInfo.currentIndex];
-          result = handler.callback.apply(null, args);
-          if (returnFirstArg) {
-            args[0] = result;
-          }
-          hookInfo.currentIndex++;
-        }
-        return returnFirstArg ? result : undefined;
-      } finally {
-        hooksStore.__current.delete(hookInfo);
-      }
-    }
-    return (async ? asyncRunner : syncRunner)();
-  };
-}
-/* harmony default export */ __webpack_exports__["default"] = (createRunHook);
-//# sourceMappingURL=createRunHook.js.map
-
-/***/ }),
-
-/***/ "./node_modules/@wordpress/hooks/build-module/index.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/@wordpress/hooks/build-module/index.js ***!
-  \*************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   actions: function() { return /* binding */ actions; },
-/* harmony export */   addAction: function() { return /* binding */ addAction; },
-/* harmony export */   addFilter: function() { return /* binding */ addFilter; },
-/* harmony export */   applyFilters: function() { return /* binding */ applyFilters; },
-/* harmony export */   applyFiltersAsync: function() { return /* binding */ applyFiltersAsync; },
-/* harmony export */   createHooks: function() { return /* reexport safe */ _createHooks__WEBPACK_IMPORTED_MODULE_0__["default"]; },
-/* harmony export */   currentAction: function() { return /* binding */ currentAction; },
-/* harmony export */   currentFilter: function() { return /* binding */ currentFilter; },
-/* harmony export */   defaultHooks: function() { return /* binding */ defaultHooks; },
-/* harmony export */   didAction: function() { return /* binding */ didAction; },
-/* harmony export */   didFilter: function() { return /* binding */ didFilter; },
-/* harmony export */   doAction: function() { return /* binding */ doAction; },
-/* harmony export */   doActionAsync: function() { return /* binding */ doActionAsync; },
-/* harmony export */   doingAction: function() { return /* binding */ doingAction; },
-/* harmony export */   doingFilter: function() { return /* binding */ doingFilter; },
-/* harmony export */   filters: function() { return /* binding */ filters; },
-/* harmony export */   hasAction: function() { return /* binding */ hasAction; },
-/* harmony export */   hasFilter: function() { return /* binding */ hasFilter; },
-/* harmony export */   removeAction: function() { return /* binding */ removeAction; },
-/* harmony export */   removeAllActions: function() { return /* binding */ removeAllActions; },
-/* harmony export */   removeAllFilters: function() { return /* binding */ removeAllFilters; },
-/* harmony export */   removeFilter: function() { return /* binding */ removeFilter; }
-/* harmony export */ });
-/* harmony import */ var _createHooks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./createHooks */ "./node_modules/@wordpress/hooks/build-module/createHooks.js");
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./types */ "./node_modules/@wordpress/hooks/build-module/types.js");
-/**
- * Internal dependencies
- */
-
-
-const defaultHooks = (0,_createHooks__WEBPACK_IMPORTED_MODULE_0__["default"])();
-const {
-  addAction,
-  addFilter,
-  removeAction,
-  removeFilter,
-  hasAction,
-  hasFilter,
-  removeAllActions,
-  removeAllFilters,
-  doAction,
-  doActionAsync,
-  applyFilters,
-  applyFiltersAsync,
-  currentAction,
-  currentFilter,
-  doingAction,
-  doingFilter,
-  didAction,
-  didFilter,
-  actions,
-  filters
-} = defaultHooks;
-
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ "./node_modules/@wordpress/hooks/build-module/types.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/@wordpress/hooks/build-module/types.js ***!
-  \*************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-
-//# sourceMappingURL=types.js.map
-
-/***/ }),
-
-/***/ "./node_modules/@wordpress/hooks/build-module/validateHookName.js":
-/*!************************************************************************!*\
-  !*** ./node_modules/@wordpress/hooks/build-module/validateHookName.js ***!
-  \************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/**
- * Validate a hookName string.
- *
- * @param hookName The hook name to validate. Should be a non empty string containing
- *                 only numbers, letters, dashes, periods and underscores. Also,
- *                 the hook name cannot begin with `__`.
- *
- * @return Whether the hook name is valid.
- */
-function validateHookName(hookName) {
-  if ('string' !== typeof hookName || '' === hookName) {
-    // eslint-disable-next-line no-console
-    console.error('The hook name must be a non-empty string.');
-    return false;
-  }
-  if (/^__/.test(hookName)) {
-    // eslint-disable-next-line no-console
-    console.error('The hook name cannot begin with `__`.');
-    return false;
-  }
-  if (!/^[a-zA-Z][a-zA-Z0-9_.-]*$/.test(hookName)) {
-    // eslint-disable-next-line no-console
-    console.error('The hook name can only contain numbers, letters, dashes, periods and underscores.');
-    return false;
-  }
-  return true;
-}
-/* harmony default export */ __webpack_exports__["default"] = (validateHookName);
-//# sourceMappingURL=validateHookName.js.map
-
-/***/ }),
-
-/***/ "./node_modules/@wordpress/hooks/build-module/validateNamespace.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/@wordpress/hooks/build-module/validateNamespace.js ***!
-  \*************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/**
- * Validate a namespace string.
- *
- * @param namespace The namespace to validate - should take the form
- *                  `vendor/plugin/function`.
- *
- * @return Whether the namespace is valid.
- */
-function validateNamespace(namespace) {
-  if ('string' !== typeof namespace || '' === namespace) {
-    // eslint-disable-next-line no-console
-    console.error('The namespace must be a non-empty string.');
-    return false;
-  }
-  if (!/^[a-zA-Z][a-zA-Z0-9_.\-\/]*$/.test(namespace)) {
-    // eslint-disable-next-line no-console
-    console.error('The namespace can only contain numbers, letters, dashes, periods, underscores and slashes.');
-    return false;
-  }
-  return true;
-}
-/* harmony default export */ __webpack_exports__["default"] = (validateNamespace);
-//# sourceMappingURL=validateNamespace.js.map
-
-/***/ }),
-
 /***/ "./node_modules/@wordpress/i18n/build-module/create-i18n.js":
 /*!******************************************************************!*\
   !*** ./node_modules/@wordpress/i18n/build-module/create-i18n.js ***!
@@ -1509,7 +781,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   subscribe: function() { return /* binding */ subscribe; }
 /* harmony export */ });
 /* harmony import */ var _create_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./create-i18n */ "./node_modules/@wordpress/i18n/build-module/create-i18n.js");
-/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/hooks */ "./node_modules/@wordpress/hooks/build-module/index.js");
+/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/hooks */ "./node_modules/@wordpress/hooks/build-module/index.mjs");
 /**
  * Internal dependencies
  */
@@ -1747,178 +1019,880 @@ function sprintf(format, ...args) {
 
 /***/ }),
 
-/***/ "./node_modules/memize/dist/index.js":
-/*!*******************************************!*\
-  !*** ./node_modules/memize/dist/index.js ***!
-  \*******************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+/***/ "./src/js/react-components/about.js":
+/*!******************************************!*\
+  !*** ./src/js/react-components/about.js ***!
+  \******************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ memize; }
-/* harmony export */ });
-/**
- * Memize options object.
- *
- * @typedef MemizeOptions
- *
- * @property {number} [maxSize] Maximum size of the cache.
- */
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "./node_modules/@wordpress/i18n/build-module/index.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "./node_modules/react/index.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./hooks/scroll-animation */ "./src/js/react-components/hooks/scroll-animation.js");
+/* harmony import */ var _badge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./badge */ "./src/js/react-components/badge.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+const About = ({
+  specialTag,
+  portfolio
+}) => {
+  const description = specialTag(portfolio.description);
+
+  // animate on scroll
+  const thisDivs = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useRef)([]);
+  (0,_hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_2__["default"])(thisDivs);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("section", {
+      className: "about-me min-h-screen min-h-max cp-my2 flex justify-center charming-portfolio-container-w",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "flex flex-col",
+        tabIndex: "0",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "section-title simrev-up-delay",
+          style: {
+            "--delay": "20ms"
+          },
+          ref: el => el && thisDivs.current.push(el),
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_badge__WEBPACK_IMPORTED_MODULE_3__["default"], {
+            badgeTitle: "About Me"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "aboutme hero-content sm:flex-col md:flex-row lg:flex-row  sm:justify-between md:justify-between lg:justify-between",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+            src: portfolio.user_image2,
+            className: "w-full rounded-lg simrev-up-delay",
+            style: {
+              "--delay": "50ms"
+            },
+            alt: portfolio.name,
+            ref: el => el && thisDivs.current.push(el)
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            className: "simrev-up-delay",
+            style: {
+              "--delay": "80ms"
+            },
+            ref: el => el && thisDivs.current.push(el),
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Curious about me? Here you have it:", "charming-portfolio")
+            }), description && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+              className: "py-3",
+              dangerouslySetInnerHTML: {
+                __html: description
+              }
+            })]
+          })]
+        })]
+      })
+    })
+  });
+};
+/* harmony default export */ __webpack_exports__["default"] = (About);
+
+/***/ }),
+
+/***/ "./src/js/react-components/badge.js":
+/*!******************************************!*\
+  !*** ./src/js/react-components/badge.js ***!
+  \******************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "./node_modules/@wordpress/i18n/build-module/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+const Badge = ({
+  badgeTitle
+}) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+  className: "badge badge-neutral cp-py3 cp-px4",
+  children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)(badgeTitle, "charming-portfolio")
+});
+/* harmony default export */ __webpack_exports__["default"] = (Badge);
+
+/***/ }),
+
+/***/ "./src/js/react-components/copy-btn.js":
+/*!*********************************************!*\
+  !*** ./src/js/react-components/copy-btn.js ***!
+  \*********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+const copyText = copyText => {
+  try {
+    navigator.clipboard.writeText(copyText).then(() => {
+      bottomAlert("Copied!", "#204ecf", 1000);
+    });
+    return;
+  } catch (e) {
+    bottomAlert("Can't Copy! Try Again.", "#f00", 3000);
+  }
+};
+const bottomAlert = (alertText, bgColor, timing) => {
+  const bottomAlert = document.createElement("div");
+  bottomAlert.id = "simplecharm-portfolio-bottom-alert";
+  document.body.appendChild(bottomAlert);
+  bottomAlert.textContent = alertText;
+  bottomAlert.style.background = bgColor;
+  bottomAlert.style.opacity = "1";
+  bottomAlert.style.transform = "translate(-50%,0)";
+  setTimeout(function () {
+    bottomAlert.style.transform = "translate(-50%,50px)";
+    bottomAlert.style.opacity = "0";
+    document.body.removeChild(bottomAlert);
+  }, timing);
+};
+const CopyBtn = ({
+  content,
+  className
+}) => {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+    className: className,
+    onClick: () => copyText(content),
+    "aria-label": "Copy Button",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+      className: "dashicons dashicons-clipboard cursor-pointer"
+    })
+  });
+};
+/* harmony default export */ __webpack_exports__["default"] = (CopyBtn);
+
+/***/ }),
+
+/***/ "./src/js/react-components/experience.js":
+/*!***********************************************!*\
+  !*** ./src/js/react-components/experience.js ***!
+  \***********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "./node_modules/react/index.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hooks/scroll-animation */ "./src/js/react-components/hooks/scroll-animation.js");
+/* harmony import */ var _badge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./badge */ "./src/js/react-components/badge.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+const Experience = ({
+  specialTag,
+  experiences
+}) => {
+  const thisDivs = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)([]);
+  (0,_hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_1__["default"])(thisDivs);
+  /**
+   * Make the array to easy to use
+   */
+  const flattenArray = arr => {
+    if (!Array.isArray(arr) || arr.length === 0) return {};
+    if (Array.isArray(arr[0])) {
+      return Object.assign({}, ...arr);
+    } else if (typeof arr[0] === "object") {
+      return Object.assign({}, ...arr);
+    }
+    return arr;
+  };
+
+  // Check if experiences exist and are not empty
+  const hasExperiences = experiences && Array.isArray(experiences) && experiences.length > 0;
+  console.log(experiences);
+  window.xxx = experiences;
+  const formatDate = dateString => {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    const month = date.toLocaleString("en-US", {
+      month: "short"
+    });
+    const year = date.getFullYear();
+    return `${month} ${year}`;
+  };
+  if (!hasExperiences) {
+    return null;
+  }
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("section", {
+    className: "experience min-h-max p-6 my-2 flex flex-col charming-portfolio-container-w",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      className: "section-title simrev-up",
+      ref: el => el && thisDivs.current.push(el),
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_badge__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        badgeTitle: "Experience"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+        children: "Here is a quick summary of my most recent experiences:"
+      })]
+    }), experiences.map((singleExperience, index) => {
+      //const flattenedExperience = flattenArray(singleExperience);
+      const flattenedExperience = singleExperience;
+
+      // Skip if empty after flattening
+      if (!flattenedExperience || Object.keys(flattenedExperience).length === 0) {
+        return null;
+      }
+      const startDate = flattenedExperience.start_date ? formatDate(flattenedExperience.start_date) : "";
+      const workingNow = flattenedExperience.working || "off";
+      const endDate = flattenedExperience.end_date ? formatDate(flattenedExperience.end_date) : "";
+      const endDateStatus = workingNow.toLowerCase() === "on" ? "Present" : endDate;
+
+      // Process the responsibility field with special tags
+      const responsibility = flattenedExperience.responsibility ? specialTag(flattenedExperience.responsibility) : "";
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: "experience-content charming_portfolio_shadow_thin gap-y-3 simrev-up",
+        tabIndex: "0",
+        ref: el => el && thisDivs.current.push(el),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          className: "experience-name flex justify-center items-center",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
+            className: "text-3xl",
+            children: flattenedExperience.institution
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "experience-info experience-name flex flex-col justify-center gap-y-1",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
+            className: "text-xl text-left",
+            children: flattenedExperience["post-title"]
+          }), responsibility && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+            dangerouslySetInnerHTML: {
+              __html: responsibility
+            }
+          }), startDate && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h4", {
+            className: "experience-time",
+            children: `${startDate} - ${endDateStatus}`
+          })]
+        })]
+      }, index);
+    })]
+  });
+};
+/* harmony default export */ __webpack_exports__["default"] = (Experience);
+
+/***/ }),
+
+/***/ "./src/js/react-components/footer.js":
+/*!*******************************************!*\
+  !*** ./src/js/react-components/footer.js ***!
+  \*******************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "./node_modules/@wordpress/i18n/build-module/index.js");
+/* harmony import */ var _social_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./social_icons */ "./src/js/react-components/social_icons.js");
+/* harmony import */ var _copy_btn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./copy-btn */ "./src/js/react-components/copy-btn.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "./node_modules/react/index.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./hooks/scroll-animation */ "./src/js/react-components/hooks/scroll-animation.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+const Footer = ({
+  portfolio
+}) => {
+  const thisDivs = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useRef)([]);
+  (0,_hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_4__["default"])(thisDivs);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("section", {
+    className: "home-footer cp-py3 cp-mt2",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("footer", {
+      role: "contentinfo",
+      className: "charming-portfolio-footer footer-inner cp-gap3",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "badge badge-neutral m-auto py-3 px-4 mb-6 simrev-up-delay",
+        ref: el => el && thisDivs.current.push(el),
+        style: {
+          "--delay": "20ms"
+        },
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Get in Touch", "charming-portfolio")
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "footer-text simrev-up-delay",
+        ref: el => el && thisDivs.current.push(el),
+        style: {
+          "--delay": "40ms"
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("What’s next? Feel free to reach out to me if you're looking for a developer, have a query, or simply want to connect.", "charming-portfolio")
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "footer-mail cp-gapx3 simrev-up-delay",
+        ref: el => el && thisDivs.current.push(el),
+        style: {
+          "--delay": "60ms"
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+          className: "dashicons dashicons-email"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+          className: "text-lg md:text-xl lg:text-xl line-break-anywhere",
+          children: portfolio.email
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_copy_btn__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          className: "simplecharm-portfolio-copy-mail simplecharm-portfolio-button-hover",
+          content: portfolio.email
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "footer-phone cp-gapx3 simrev-up-delay",
+        ref: el => el && thisDivs.current.push(el),
+        style: {
+          "--delay": "80ms"
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+          className: "dashicons dashicons-smartphone"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+          className: "text-lg md:text-xl lg:text-xl line-break-anywhere",
+          children: portfolio.phone
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_copy_btn__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          className: "simplecharm-portfolio-copy-phone simplecharm-portfolio-button-hover",
+          content: portfolio.phone
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "footer-social-links simrev-up-delay",
+        ref: el => el && thisDivs.current.push(el),
+        style: {
+          "--delay": "100ms"
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("You may also find me on these platforms!", "charming-portfolio")
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          className: "social-link justify-center cp-gap3 cp-my2",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_social_icons__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            icons: portfolio.social_links,
+            thisDivs: thisDivs
+          })
+        })]
+      })]
+    })
+  });
+};
+/* harmony default export */ __webpack_exports__["default"] = (Footer);
+
+/***/ }),
+
+/***/ "./src/js/react-components/hooks/scroll-animation.js":
+/*!***********************************************************!*\
+  !*** ./src/js/react-components/hooks/scroll-animation.js ***!
+  \***********************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const ScrollAnimate = elements => {
+  let scrollingBottom = true;
+  let prevY = 0;
+  window.addEventListener('scroll', () => {
+    let currentY = window.scrollY;
+    scrollingBottom = prevY < currentY;
+    prevY = currentY;
+  });
+  const simrevObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('simrev-visible');
+      } else {
+        if (!scrollingBottom) {
+          entry.target.classList.remove('simrev-visible');
+        }
+      }
+    });
+  });
+  window.addEventListener("load", e => {
+    elements?.current?.forEach(el => {
+      if (el) {
+        simrevObserver.observe(el);
+      }
+    });
+  });
+
+  /**
+   * slide from bottom to up
+   */
+  const slideUpElements = document.querySelectorAll('.simrev-up');
+  /**
+   * slide from up to bottm
+   */
+  const slideDownElements = document.querySelectorAll('.simrev-down');
+  /**
+   * slide from right
+   */
+  const slideRightElements = document.querySelectorAll('.simrev-right');
+  /**
+   * slide from left
+   */
+  const slideLeftElements = document.querySelectorAll('.simrev-left');
+  /**
+   * slide from right with delays
+   */
+  const slideRightDelaysElements = document.querySelectorAll('.simrev-right-delay');
+  /**
+   * slide from bottom to up with delays
+   */
+  //    const slideUpDelaysElements = document.querySelectorAll('.simrev-up-delay');
+
+  //    slideUpElements.forEach((el) => {
+  //        simrevObserver.observe(el);
+  //    });
+  //    slideDownElements.forEach((el) => {
+  //        simrevObserver.observe(el);
+  //    });
+  //    slideRightElements.forEach((el) => {
+  //        simrevObserver.observe(el);
+  //    });
+  //    slideLeftElements.forEach((el) => {
+  //        simrevObserver.observe(el);
+  //    });
+  //    slideRightDelaysElements.forEach((el) => {
+  //        simrevObserver.observe(el);
+  //    });
+  //    slideUpDelaysElements.forEach((el) => {
+  //        simrevObserver.observe(el);
+  //    });
+};
+/* harmony default export */ __webpack_exports__["default"] = (ScrollAnimate);
+
+/***/ }),
+
+/***/ "./src/js/react-components/icons/github.js":
+/*!*************************************************!*\
+  !*** ./src/js/react-components/icons/github.js ***!
+  \*************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 /**
- * Internal cache entry.
- *
- * @typedef MemizeCacheNode
- *
- * @property {?MemizeCacheNode|undefined} [prev] Previous node.
- * @property {?MemizeCacheNode|undefined} [next] Next node.
- * @property {Array<*>}                   args   Function arguments for cache
- *                                               entry.
- * @property {*}                          val    Function result.
+ * SVG Icon For Github
+ * @package Charming Portfolio
+ * @since 1.3.9
  */
+
+const GithubIcon = ({
+  url
+}) => {
+  //    Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+    className: "simplecharm-portfolio-button-hover",
+    "aria-label": `Open Social Link ${url}`,
+    href: url,
+    target: "_blank",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      width: "20px",
+      viewBox: "0 0 496 512",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+        d: "M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
+      })
+    })
+  });
+};
+/* harmony default export */ __webpack_exports__["default"] = (GithubIcon);
+
+/***/ }),
+
+/***/ "./src/js/react-components/icons/leetcode.js":
+/*!***************************************************!*\
+  !*** ./src/js/react-components/icons/leetcode.js ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 /**
- * Properties of the enhanced function for controlling cache.
- *
- * @typedef MemizeMemoizedFunction
- *
- * @property {()=>void} clear Clear the cache.
+ * SVG Icon For LeetCode
+ * @package Charming Portfolio
+ * @since 1.3.9
  */
 
-/**
- * Accepts a function to be memoized, and returns a new memoized function, with
- * optional options.
- *
- * @template {(...args: any[]) => any} F
- *
- * @param {F}             fn        Function to memoize.
- * @param {MemizeOptions} [options] Options object.
- *
- * @return {((...args: Parameters<F>) => ReturnType<F>) & MemizeMemoizedFunction} Memoized function.
- */
-function memize(fn, options) {
-	var size = 0;
+// Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools
+const LeetCodeIcon = ({
+  url
+}) => {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+    className: "simplecharm-portfolio-button-hover",
+    "aria-label": `Open Social Link ${url}`,
+    href: url,
+    target: "_blank",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      fill: "#000000",
+      width: "20px",
+      height: "20px",
+      viewBox: "0 0 32 32",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+        d: "M21.469 23.907l-3.595 3.473c-0.624 0.625-1.484 0.885-2.432 0.885s-1.807-0.26-2.432-0.885l-5.776-5.812c-0.62-0.625-0.937-1.537-0.937-2.485 0-0.952 0.317-1.812 0.937-2.432l5.76-5.844c0.62-0.619 1.5-0.859 2.448-0.859s1.808 0.26 2.432 0.885l3.595 3.473c0.687 0.688 1.823 0.663 2.536-0.052 0.708-0.713 0.735-1.848 0.047-2.536l-3.473-3.511c-0.901-0.891-2.032-1.505-3.261-1.787l3.287-3.333c0.688-0.687 0.667-1.823-0.047-2.536s-1.849-0.735-2.536-0.052l-13.469 13.469c-1.307 1.312-1.989 3.113-1.989 5.113 0 1.996 0.683 3.86 1.989 5.168l5.797 5.812c1.307 1.307 3.115 1.937 5.115 1.937 1.995 0 3.801-0.683 5.109-1.989l3.479-3.521c0.688-0.683 0.661-1.817-0.052-2.531s-1.849-0.74-2.531-0.052zM27.749 17.349h-13.531c-0.932 0-1.692 0.801-1.692 1.791 0 0.991 0.76 1.797 1.692 1.797h13.531c0.933 0 1.693-0.807 1.693-1.797 0-0.989-0.76-1.791-1.693-1.791z"
+      })
+    })
+  });
+};
+/* harmony default export */ __webpack_exports__["default"] = (LeetCodeIcon);
 
-	/** @type {?MemizeCacheNode|undefined} */
-	var head;
+/***/ }),
 
-	/** @type {?MemizeCacheNode|undefined} */
-	var tail;
+/***/ "./src/js/react-components/intro.js":
+/*!******************************************!*\
+  !*** ./src/js/react-components/intro.js ***!
+  \******************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-	options = options || {};
-
-	function memoized(/* ...args */) {
-		var node = head,
-			len = arguments.length,
-			args,
-			i;
-
-		searchCache: while (node) {
-			// Perform a shallow equality test to confirm that whether the node
-			// under test is a candidate for the arguments passed. Two arrays
-			// are shallowly equal if their length matches and each entry is
-			// strictly equal between the two sets. Avoid abstracting to a
-			// function which could incur an arguments leaking deoptimization.
-
-			// Check whether node arguments match arguments length
-			if (node.args.length !== arguments.length) {
-				node = node.next;
-				continue;
-			}
-
-			// Check whether node arguments match arguments values
-			for (i = 0; i < len; i++) {
-				if (node.args[i] !== arguments[i]) {
-					node = node.next;
-					continue searchCache;
-				}
-			}
-
-			// At this point we can assume we've found a match
-
-			// Surface matched node to head if not already
-			if (node !== head) {
-				// As tail, shift to previous. Must only shift if not also
-				// head, since if both head and tail, there is no previous.
-				if (node === tail) {
-					tail = node.prev;
-				}
-
-				// Adjust siblings to point to each other. If node was tail,
-				// this also handles new tail's empty `next` assignment.
-				/** @type {MemizeCacheNode} */ (node.prev).next = node.next;
-				if (node.next) {
-					node.next.prev = node.prev;
-				}
-
-				node.next = head;
-				node.prev = null;
-				/** @type {MemizeCacheNode} */ (head).prev = node;
-				head = node;
-			}
-
-			// Return immediately
-			return node.val;
-		}
-
-		// No cached value found. Continue to insertion phase:
-
-		// Create a copy of arguments (avoid leaking deoptimization)
-		args = new Array(len);
-		for (i = 0; i < len; i++) {
-			args[i] = arguments[i];
-		}
-
-		node = {
-			args: args,
-
-			// Generate the result from original function
-			val: fn.apply(null, args),
-		};
-
-		// Don't need to check whether node is already head, since it would
-		// have been returned above already if it was
-
-		// Shift existing head down list
-		if (head) {
-			head.prev = node;
-			node.next = head;
-		} else {
-			// If no head, follows that there's no tail (at initial or reset)
-			tail = node;
-		}
-
-		// Trim tail if we're reached max size and are pending cache insertion
-		if (size === /** @type {MemizeOptions} */ (options).maxSize) {
-			tail = /** @type {MemizeCacheNode} */ (tail).prev;
-			/** @type {MemizeCacheNode} */ (tail).next = null;
-		} else {
-			size++;
-		}
-
-		head = node;
-
-		return node.val;
-	}
-
-	memoized.clear = function () {
-		head = null;
-		tail = null;
-		size = 0;
-	};
-
-	// Ignore reason: There's not a clear solution to create an intersection of
-	// the function with additional properties, where the goal is to retain the
-	// function signature of the incoming argument and add control properties
-	// on the return value.
-
-	// @ts-ignore
-	return memoized;
-}
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _social_icons__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./social_icons */ "./src/js/react-components/social_icons.js");
+/* harmony import */ var _hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hooks/scroll-animation */ "./src/js/react-components/hooks/scroll-animation.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/element */ "./node_modules/react/index.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
+
+const Intro = ({
+  portfolio,
+  specialTag
+}) => {
+  const thisDivs = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useRef)([]);
+  (0,_hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_1__["default"])(thisDivs);
+  const short_description = specialTag(portfolio.short_description);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("section", {
+      className: "min-h-screen min-h-lvh grid items-center mb-2 charming-portfolio-container-w",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: "grid grid-cols-1 lg:grid-cols-2 lg:grid-flow-col-reverse cp-p4 intro cp-mt5",
+        tabIndex: "0",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          className: "CHARMING_PORTFOLIO_primary-image-container",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+            src: portfolio.user_image,
+            className: "lg:max-w-sm rounded-lg shadow-2xl block cp-m-auto sm:w-4/5 simrev-up",
+            alt: portfolio.name,
+            ref: el => el && thisDivs.current.push(el)
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "intro-primary-info flex justify-center flex-col",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("h3", {
+            className: "text-3xl font-bold mt-6 lg:mt-0 simrev-up-delay",
+            ref: el => el && thisDivs.current.push(el),
+            style: {
+              "--delay": "20ms"
+            },
+            children: ["Hi, I'm ", portfolio.name, " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+              className: "d-contents CHARMING_PORTFOLIO-welcome-emoji",
+              children: "\uD83D\uDC4B"
+            })]
+          }), short_description && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+            className: "py-4 simrev-up-delay",
+            dangerouslySetInnerHTML: {
+              __html: short_description
+            },
+            ref: el => el && thisDivs.current.push(el),
+            style: {
+              "--delay": "50ms"
+            }
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
+              className: "simrev-up-delay",
+              ref: el => el && thisDivs.current.push(el),
+              style: {
+                "--delay": "80ms"
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+                className: "dashicons dashicons-location-alt mr-3"
+              }), portfolio.address]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
+              className: "simrev-up-delay",
+              ref: el => el && thisDivs.current.push(el),
+              style: {
+                "--delay": "110ms"
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+                className: "mr-3",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
+                  className: parseInt(portfolio.available) === 1 ? "simplecharm-portfolio-available" : "simplecharm-portfolio-available-false"
+                })
+              }), parseInt(portfolio.available) === 1 ? "Available for New Projects" : "Currently Not Available for New Projects"]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "social-link justify-center-sm justify-start cp-gap3 cp-my2",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_social_icons__WEBPACK_IMPORTED_MODULE_0__["default"], {
+              icons: portfolio.social_links,
+              thisDivs: thisDivs
+            })
+          })]
+        })]
+      })
+    })
+  });
+};
+/* harmony default export */ __webpack_exports__["default"] = (Intro);
+
+/***/ }),
+
+/***/ "./src/js/react-components/projects.js":
+/*!*********************************************!*\
+  !*** ./src/js/react-components/projects.js ***!
+  \*********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "./node_modules/@wordpress/i18n/build-module/index.js");
+/* harmony import */ var _hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hooks/scroll-animation */ "./src/js/react-components/hooks/scroll-animation.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/element */ "./node_modules/react/index.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _badge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./badge */ "./src/js/react-components/badge.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+const Projects = ({
+  projects,
+  specialTag,
+  splitTags
+}) => {
+  const hasProjects = projects && Object.keys(projects).length;
+  if (!hasProjects) {
+    return null;
+  }
+  const thisDivs = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useRef)([]);
+  (0,_hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_1__["default"])(thisDivs);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("section", {
+    className: "projects min-h-max p-6 my-2 flex flex-col charming-portfolio-container-w",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "section-title simrev-up",
+      ref: el => el && thisDivs.current.push(el),
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_badge__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        badgeTitle: "Works"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Some of the noteworthy projects I have built:", "charming-portfolio")
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "single-work-info grid lg:grid-cols-2 md:grid-cols-2 gap-x-4 my-3",
+      children: Object.keys(projects).map(id => projects[id].title && projects[id].description && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "line-break-anywhere simrev-up-delay",
+        tabIndex: "0",
+        ref: el => el && thisDivs.current.push(el),
+        style: {
+          "--delay": `${id * 20}ms`
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "flex flex-col my-4 gap-y-3 p-6 pb-3 charming_portfolio_shadow_thin portfolio-project-bg",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
+            className: "text-2xl",
+            children: projects[id].title
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+            className: "overflow-y-auto",
+            children: specialTag(projects[id].description)
+          }), projects[id].tags && splitTags(projects[id].tags), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            className: "work-live-link",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+              href: projects[id].link,
+              target: "_blank",
+              className: "charming_portfolio_shadow_thin",
+              "aria-label": `Open ${projects[id].link}`,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                className: "dashicons dashicons-external"
+              })
+            })
+          })]
+        })
+      }, id))
+    })]
+  });
+};
+/* harmony default export */ __webpack_exports__["default"] = (Projects);
+
+/***/ }),
+
+/***/ "./src/js/react-components/skills.js":
+/*!*******************************************!*\
+  !*** ./src/js/react-components/skills.js ***!
+  \*******************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "./node_modules/@wordpress/i18n/build-module/index.js");
+/* harmony import */ var _hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hooks/scroll-animation */ "./src/js/react-components/hooks/scroll-animation.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/element */ "./node_modules/react/index.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _badge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./badge */ "./src/js/react-components/badge.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+const Skill = ({
+  skill,
+  id,
+  refDivs
+}) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+  className: "charming-portfolio-skill-card charming_portfolio_shadow_thin cursor-pointer simrev-up-delay",
+  tabIndex: "0",
+  ref: el => el && refDivs.current.push(el),
+  style: {
+    "--delay": `${id * 30}ms`
+  },
+  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+    src: skill.image,
+    alt: skill.name,
+    className: "charming-portfolio-single-skill",
+    width: "70"
+  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+    className: "skill-name",
+    children: skill.name
+  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    className: "simplecharm-skill-card-blank"
+  })]
+});
+const Skills = ({
+  skills
+}) => {
+  const thisDivs = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useRef)([]);
+  (0,_hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_1__["default"])(thisDivs);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("section", {
+    className: "skills min-h-max p-6 my-2 flex flex-col charming-portfolio-container-w",
+    children: skills && Object.keys(skills).length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "section-title simrev-up-delay",
+        ref: el => el && thisDivs.current.push(el),
+        style: {
+          "--delay": "20ms"
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_badge__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          badgeTitle: "Skills"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("The skills, tools and technologies I am really good at:", "charming-portfolio")
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "skills-container charming-portfolio-skills-grid simrev-up-delay",
+        ref: el => el && thisDivs.current.push(el),
+        style: {
+          "--delay": "70ms"
+        },
+        children: Object.keys(skills).map((skillKey, index) => {
+          const skill = skills[skillKey];
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Skill, {
+            skill: skill,
+            id: index,
+            refDivs: thisDivs
+          }, index);
+        })
+      })]
+    }) : null
+  });
+};
+/* harmony default export */ __webpack_exports__["default"] = (Skills);
+
+/***/ }),
+
+/***/ "./src/js/react-components/social_icons.js":
+/*!*************************************************!*\
+  !*** ./src/js/react-components/social_icons.js ***!
+  \*************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _icons_github__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./icons/github */ "./src/js/react-components/icons/github.js");
+/* harmony import */ var _icons_leetcode__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./icons/leetcode */ "./src/js/react-components/icons/leetcode.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+const SocialIcon = ({
+  iconName,
+  url
+}) => {
+  /**
+   * All Icons Available in Dashicons
+   */
+  const dashIconsIcons = ["twitter", "facebook", "instagram", "youtube", "linkedin", "pinterest", "podio", "google", "reddit", "wordpress", "rss", "whatsapp", "xing", "twitch"];
+  /**
+   * All Svg Icon Hosted in Icons/ Directory
+   */
+  const DashIconsIcon = ({
+    name,
+    url
+  }) => {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+      className: "simplecharm-portfolio-button-hover",
+      href: url,
+      target: "_blank",
+      rel: "noopener noreferrer",
+      "aria-label": `Open ${name} link`,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+        className: `dashicons dashicons-${name}`
+      })
+    });
+  };
+  const DefaultIcon = ({
+    url
+  }) => {
+    /**
+     * Default Svg Icon if None(dashicons or icons from svgs) Available
+     */
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+      className: "simplecharm-portfolio-button-hover",
+      href: url,
+      target: "_blank",
+      rel: "noopener noreferrer",
+      "aria-label": `Open Link ${url}`,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+        className: "dashicons dashicons-admin-links"
+      })
+    });
+  };
+  const svgIcons = {
+    github: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_icons_github__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      url: url
+    }),
+    leetcode: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_icons_leetcode__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      url: url
+    })
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: dashIconsIcons.includes(iconName) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(DashIconsIcon, {
+      name: iconName,
+      url: url
+    }) : svgIcons[iconName] || /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(DefaultIcon, {
+      url: url
+    })
+  });
+};
+const SocialIcons = ({
+  icons,
+  thisDivs
+}) => {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: Object.keys(icons).map((id, i) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "simrev-up-delay",
+      ref: el => el && thisDivs.current.push(el),
+      style: {
+        "--delay": `${i * 30}ms`
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(SocialIcon, {
+        iconName: icons[id].name.toLowerCase(),
+        url: icons[id].url
+      }, id)
+    }, id))
+  });
+};
+/* harmony default export */ __webpack_exports__["default"] = (SocialIcons);
 
 /***/ }),
 
@@ -20633,7 +20607,8 @@ function logCapturedError(boundary, errorInfo) {
       // displayed by the browser thanks to the DEV-only fake event trick in ReactErrorUtils.
 
       console['error'](combinedMessage); // Don't transform to our wrapper
-    } else {}
+    } else // removed by dead control flow
+{}
   } catch (e) {
     // This method must not throw, or React internal state will get messed up.
     // If console.error is overridden, or logCapturedError() shows a dialog that throws,
@@ -31861,7 +31836,8 @@ if (
 
 
 var m = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-if (false) {} else {
+if (false) // removed by dead control flow
+{} else {
   var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
   exports.createRoot = function(c, o) {
     i.usingClientEntryPoint = true;
@@ -31911,17 +31887,12 @@ function checkDCE() {
     // a false positive.
     throw new Error('^_^');
   }
-  try {
-    // Verify that the code above has been dead code eliminated (DCE'd).
-    __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
-  } catch (err) {
-    // DevTools shouldn't crash React, no matter what.
-    // We should still report in case we break this code.
-    console.error(err);
-  }
+  // removed by dead control flow
+
 }
 
-if (false) {} else {
+if (false) // removed by dead control flow
+{} else {
   module.exports = __webpack_require__(/*! ./cjs/react-dom.development.js */ "./node_modules/react-dom/cjs/react-dom.development.js");
 }
 
@@ -36033,7 +36004,8 @@ if (
 "use strict";
 
 
-if (false) {} else {
+if (false) // removed by dead control flow
+{} else {
   module.exports = __webpack_require__(/*! ./cjs/react.development.js */ "./node_modules/react/cjs/react.development.js");
 }
 
@@ -36049,7 +36021,8 @@ if (false) {} else {
 "use strict";
 
 
-if (false) {} else {
+if (false) // removed by dead control flow
+{} else {
   module.exports = __webpack_require__(/*! ./cjs/react-jsx-runtime.development.js */ "./node_modules/react/cjs/react-jsx-runtime.development.js");
 }
 
@@ -36710,7 +36683,8 @@ if (
 "use strict";
 
 
-if (false) {} else {
+if (false) // removed by dead control flow
+{} else {
   module.exports = __webpack_require__(/*! ./cjs/scheduler.development.js */ "./node_modules/scheduler/cjs/scheduler.development.js");
 }
 
@@ -37188,880 +37162,756 @@ Tannin.prototype.dcnpgettext = function( domain, context, singular, plural, n ) 
 
 /***/ }),
 
-/***/ "./src/js/react-components/about.js":
-/*!******************************************!*\
-  !*** ./src/js/react-components/about.js ***!
-  \******************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ "./node_modules/@wordpress/dom-ready/build-module/index.mjs":
+/*!******************************************************************!*\
+  !*** ./node_modules/@wordpress/dom-ready/build-module/index.mjs ***!
+  \******************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "./node_modules/@wordpress/i18n/build-module/index.js");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/element */ "./node_modules/react/index.js");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hooks/scroll-animation */ "./src/js/react-components/hooks/scroll-animation.js");
-/* harmony import */ var _badge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./badge */ "./src/js/react-components/badge.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-const About = ({
-  specialTag,
-  portfolio
-}) => {
-  const description = specialTag(portfolio.description);
-
-  // animate on scroll
-  const thisDivs = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useRef)([]);
-  (0,_hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_1__["default"])(thisDivs);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("section", {
-      className: "about-me min-h-screen min-h-max cp-my2 flex justify-center charming-portfolio-container-w",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "flex flex-col",
-        tabIndex: "0",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: "section-title simrev-up-delay",
-          style: {
-            "--delay": "20ms"
-          },
-          ref: el => el && thisDivs.current.push(el),
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_badge__WEBPACK_IMPORTED_MODULE_2__["default"], {
-            badgeTitle: "About Me"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          className: "aboutme hero-content sm:flex-col md:flex-row lg:flex-row  sm:justify-between md:justify-between lg:justify-between",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-            src: portfolio.user_image2,
-            className: "w-full rounded-lg simrev-up-delay",
-            style: {
-              "--delay": "50ms"
-            },
-            alt: portfolio.name,
-            ref: el => el && thisDivs.current.push(el)
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "simrev-up-delay",
-            style: {
-              "--delay": "80ms"
-            },
-            ref: el => el && thisDivs.current.push(el),
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Curious about me? Here you have it:", "charming-portfolio")
-            }), description && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-              className: "py-3",
-              dangerouslySetInnerHTML: {
-                __html: description
-              }
-            })]
-          })]
-        })]
-      })
-    })
-  });
-};
-/* harmony default export */ __webpack_exports__["default"] = (About);
-
-/***/ }),
-
-/***/ "./src/js/react-components/badge.js":
-/*!******************************************!*\
-  !*** ./src/js/react-components/badge.js ***!
-  \******************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "./node_modules/@wordpress/i18n/build-module/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-const Badge = ({
-  badgeTitle
-}) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-  className: "badge badge-neutral cp-py3 cp-px4",
-  children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)(badgeTitle, "charming-portfolio")
-});
-/* harmony default export */ __webpack_exports__["default"] = (Badge);
-
-/***/ }),
-
-/***/ "./src/js/react-components/copy-btn.js":
-/*!*********************************************!*\
-  !*** ./src/js/react-components/copy-btn.js ***!
-  \*********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-const copyText = copyText => {
-  try {
-    navigator.clipboard.writeText(copyText).then(() => {
-      bottomAlert("Copied!", "#204ecf", 1000);
-    });
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ domReady; }
+/* harmony export */ });
+// packages/dom-ready/src/index.ts
+function domReady(callback) {
+  if (typeof document === "undefined") {
     return;
-  } catch (e) {
-    bottomAlert("Can't Copy! Try Again.", "#f00", 3000);
   }
-};
-const bottomAlert = (alertText, bgColor, timing) => {
-  const bottomAlert = document.createElement("div");
-  bottomAlert.id = "simplecharm-portfolio-bottom-alert";
-  document.body.appendChild(bottomAlert);
-  bottomAlert.textContent = alertText;
-  bottomAlert.style.background = bgColor;
-  bottomAlert.style.opacity = "1";
-  bottomAlert.style.transform = "translate(-50%,0)";
-  setTimeout(function () {
-    bottomAlert.style.transform = "translate(-50%,50px)";
-    bottomAlert.style.opacity = "0";
-    document.body.removeChild(bottomAlert);
-  }, timing);
-};
-const CopyBtn = ({
-  content,
-  className
-}) => {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
-    className: className,
-    onClick: () => copyText(content),
-    "aria-label": "Copy Button",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-      className: "dashicons dashicons-clipboard cursor-pointer"
-    })
-  });
-};
-/* harmony default export */ __webpack_exports__["default"] = (CopyBtn);
+  if (document.readyState === "complete" || // DOMContentLoaded + Images/Styles/etc loaded, so we call directly.
+  document.readyState === "interactive") {
+    return void callback();
+  }
+  document.addEventListener("DOMContentLoaded", callback);
+}
+
+//# sourceMappingURL=index.mjs.map
+
 
 /***/ }),
 
-/***/ "./src/js/react-components/experience.js":
-/*!***********************************************!*\
-  !*** ./src/js/react-components/experience.js ***!
-  \***********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ "./node_modules/@wordpress/hooks/build-module/createAddHook.mjs":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@wordpress/hooks/build-module/createAddHook.mjs ***!
+  \**********************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "./node_modules/react/index.js");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./hooks/scroll-animation */ "./src/js/react-components/hooks/scroll-animation.js");
-/* harmony import */ var _badge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./badge */ "./src/js/react-components/badge.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ createAddHook_default; }
+/* harmony export */ });
+/* harmony import */ var _validateNamespace_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./validateNamespace.mjs */ "./node_modules/@wordpress/hooks/build-module/validateNamespace.mjs");
+/* harmony import */ var _validateHookName_mjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./validateHookName.mjs */ "./node_modules/@wordpress/hooks/build-module/validateHookName.mjs");
+// packages/hooks/src/createAddHook.ts
 
 
-
-
-const Experience = ({
-  specialTag,
-  experiences
-}) => {
-  const thisDivs = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useRef)([]);
-  (0,_hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_0__["default"])(thisDivs);
-  /**
-   * Make the array to easy to use
-   */
-  const flattenArray = arr => {
-    if (!Array.isArray(arr) || arr.length === 0) return {};
-    if (Array.isArray(arr[0])) {
-      return Object.assign({}, ...arr);
-    } else if (typeof arr[0] === "object") {
-      return Object.assign({}, ...arr);
+function createAddHook(hooks, storeKey) {
+  return function addHook(hookName, namespace, callback, priority = 10) {
+    const hooksStore = hooks[storeKey];
+    if (!(0,_validateHookName_mjs__WEBPACK_IMPORTED_MODULE_1__["default"])(hookName)) {
+      return;
     }
-    return arr;
-  };
-
-  // Check if experiences exist and are not empty
-  const hasExperiences = experiences && Array.isArray(experiences) && experiences.length > 0;
-  console.log(experiences);
-  window.xxx = experiences;
-  const formatDate = dateString => {
-    if (!dateString) return "";
-    const date = new Date(dateString);
-    const month = date.toLocaleString("en-US", {
-      month: "short"
-    });
-    const year = date.getFullYear();
-    return `${month} ${year}`;
-  };
-  if (!hasExperiences) {
-    return null;
-  }
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("section", {
-    className: "experience min-h-max p-6 my-2 flex flex-col charming-portfolio-container-w",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      className: "section-title simrev-up",
-      ref: el => el && thisDivs.current.push(el),
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_badge__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        badgeTitle: "Experience"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-        children: "Here is a quick summary of my most recent experiences:"
-      })]
-    }), experiences.map((singleExperience, index) => {
-      //const flattenedExperience = flattenArray(singleExperience);
-      const flattenedExperience = singleExperience;
-
-      // Skip if empty after flattening
-      if (!flattenedExperience || Object.keys(flattenedExperience).length === 0) {
-        return null;
-      }
-      const startDate = flattenedExperience.start_date ? formatDate(flattenedExperience.start_date) : "";
-      const workingNow = flattenedExperience.working || "off";
-      const endDate = flattenedExperience.end_date ? formatDate(flattenedExperience.end_date) : "";
-      const endDateStatus = workingNow.toLowerCase() === "on" ? "Present" : endDate;
-
-      // Process the responsibility field with special tags
-      const responsibility = flattenedExperience.responsibility ? specialTag(flattenedExperience.responsibility) : "";
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "experience-content charming_portfolio_shadow_thin gap-y-3 simrev-up",
-        tabIndex: "0",
-        ref: el => el && thisDivs.current.push(el),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          className: "experience-name flex justify-center items-center",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-            className: "text-3xl",
-            children: flattenedExperience.institution
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          className: "experience-info experience-name flex flex-col justify-center gap-y-1",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
-            className: "text-xl text-left",
-            children: flattenedExperience["post-title"]
-          }), responsibility && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-            dangerouslySetInnerHTML: {
-              __html: responsibility
-            }
-          }), startDate && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h4", {
-            className: "experience-time",
-            children: `${startDate} - ${endDateStatus}`
-          })]
-        })]
-      }, index);
-    })]
-  });
-};
-/* harmony default export */ __webpack_exports__["default"] = (Experience);
-
-/***/ }),
-
-/***/ "./src/js/react-components/footer.js":
-/*!*******************************************!*\
-  !*** ./src/js/react-components/footer.js ***!
-  \*******************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "./node_modules/@wordpress/i18n/build-module/index.js");
-/* harmony import */ var _social_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./social_icons */ "./src/js/react-components/social_icons.js");
-/* harmony import */ var _copy_btn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./copy-btn */ "./src/js/react-components/copy-btn.js");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/element */ "./node_modules/react/index.js");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./hooks/scroll-animation */ "./src/js/react-components/hooks/scroll-animation.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-const Footer = ({
-  portfolio
-}) => {
-  const thisDivs = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useRef)([]);
-  (0,_hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_3__["default"])(thisDivs);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("section", {
-    className: "home-footer cp-py3 cp-mt2",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("footer", {
-      role: "contentinfo",
-      className: "charming-portfolio-footer footer-inner cp-gap3",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "badge badge-neutral m-auto py-3 px-4 mb-6 simrev-up-delay",
-        ref: el => el && thisDivs.current.push(el),
-        style: {
-          "--delay": "20ms"
-        },
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Get in Touch", "charming-portfolio")
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "footer-text simrev-up-delay",
-        ref: el => el && thisDivs.current.push(el),
-        style: {
-          "--delay": "40ms"
-        },
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("What’s next? Feel free to reach out to me if you're looking for a developer, have a query, or simply want to connect.", "charming-portfolio")
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        className: "footer-mail cp-gapx3 simrev-up-delay",
-        ref: el => el && thisDivs.current.push(el),
-        style: {
-          "--delay": "60ms"
-        },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-          className: "dashicons dashicons-email"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-          className: "text-lg md:text-xl lg:text-xl line-break-anywhere",
-          children: portfolio.email
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_copy_btn__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          className: "simplecharm-portfolio-copy-mail simplecharm-portfolio-button-hover",
-          content: portfolio.email
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        className: "footer-phone cp-gapx3 simrev-up-delay",
-        ref: el => el && thisDivs.current.push(el),
-        style: {
-          "--delay": "80ms"
-        },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-          className: "dashicons dashicons-smartphone"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-          className: "text-lg md:text-xl lg:text-xl line-break-anywhere",
-          children: portfolio.phone
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_copy_btn__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          className: "simplecharm-portfolio-copy-phone simplecharm-portfolio-button-hover",
-          content: portfolio.phone
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        className: "footer-social-links simrev-up-delay",
-        ref: el => el && thisDivs.current.push(el),
-        style: {
-          "--delay": "100ms"
-        },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("You may also find me on these platforms!", "charming-portfolio")
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "social-link justify-center cp-gap3 cp-my2",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_social_icons__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            icons: portfolio.social_links,
-            thisDivs: thisDivs
-          })
-        })]
-      })]
-    })
-  });
-};
-/* harmony default export */ __webpack_exports__["default"] = (Footer);
-
-/***/ }),
-
-/***/ "./src/js/react-components/hooks/scroll-animation.js":
-/*!***********************************************************!*\
-  !*** ./src/js/react-components/hooks/scroll-animation.js ***!
-  \***********************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-const ScrollAnimate = elements => {
-  let scrollingBottom = true;
-  let prevY = 0;
-  window.addEventListener('scroll', () => {
-    let currentY = window.scrollY;
-    scrollingBottom = prevY < currentY;
-    prevY = currentY;
-  });
-  const simrevObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('simrev-visible');
-      } else {
-        if (!scrollingBottom) {
-          entry.target.classList.remove('simrev-visible');
+    if (!(0,_validateNamespace_mjs__WEBPACK_IMPORTED_MODULE_0__["default"])(namespace)) {
+      return;
+    }
+    if ("function" !== typeof callback) {
+      console.error("The hook callback must be a function.");
+      return;
+    }
+    if ("number" !== typeof priority) {
+      console.error(
+        "If specified, the hook priority must be a number."
+      );
+      return;
+    }
+    const handler = { callback, priority, namespace };
+    if (hooksStore[hookName]) {
+      const handlers = hooksStore[hookName].handlers;
+      let i;
+      for (i = handlers.length; i > 0; i--) {
+        if (priority >= handlers[i - 1].priority) {
+          break;
         }
       }
-    });
-  });
-  window.addEventListener("load", e => {
-    elements?.current?.forEach(el => {
-      if (el) {
-        simrevObserver.observe(el);
+      if (i === handlers.length) {
+        handlers[i] = handler;
+      } else {
+        handlers.splice(i, 0, handler);
       }
-    });
-  });
+      hooksStore.__current.forEach((hookInfo) => {
+        if (hookInfo.name === hookName && hookInfo.currentIndex >= i) {
+          hookInfo.currentIndex++;
+        }
+      });
+    } else {
+      hooksStore[hookName] = {
+        handlers: [handler],
+        runs: 0
+      };
+    }
+    if (hookName !== "hookAdded") {
+      hooks.doAction(
+        "hookAdded",
+        hookName,
+        namespace,
+        callback,
+        priority
+      );
+    }
+  };
+}
+var createAddHook_default = createAddHook;
 
-  /**
-   * slide from bottom to up
-   */
-  const slideUpElements = document.querySelectorAll('.simrev-up');
-  /**
-   * slide from up to bottm
-   */
-  const slideDownElements = document.querySelectorAll('.simrev-down');
-  /**
-   * slide from right
-   */
-  const slideRightElements = document.querySelectorAll('.simrev-right');
-  /**
-   * slide from left
-   */
-  const slideLeftElements = document.querySelectorAll('.simrev-left');
-  /**
-   * slide from right with delays
-   */
-  const slideRightDelaysElements = document.querySelectorAll('.simrev-right-delay');
-  /**
-   * slide from bottom to up with delays
-   */
-  //    const slideUpDelaysElements = document.querySelectorAll('.simrev-up-delay');
+//# sourceMappingURL=createAddHook.mjs.map
 
-  //    slideUpElements.forEach((el) => {
-  //        simrevObserver.observe(el);
-  //    });
-  //    slideDownElements.forEach((el) => {
-  //        simrevObserver.observe(el);
-  //    });
-  //    slideRightElements.forEach((el) => {
-  //        simrevObserver.observe(el);
-  //    });
-  //    slideLeftElements.forEach((el) => {
-  //        simrevObserver.observe(el);
-  //    });
-  //    slideRightDelaysElements.forEach((el) => {
-  //        simrevObserver.observe(el);
-  //    });
-  //    slideUpDelaysElements.forEach((el) => {
-  //        simrevObserver.observe(el);
-  //    });
-};
-/* harmony default export */ __webpack_exports__["default"] = (ScrollAnimate);
 
 /***/ }),
 
-/***/ "./src/js/react-components/icons/github.js":
-/*!*************************************************!*\
-  !*** ./src/js/react-components/icons/github.js ***!
-  \*************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ "./node_modules/@wordpress/hooks/build-module/createCurrentHook.mjs":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@wordpress/hooks/build-module/createCurrentHook.mjs ***!
+  \**************************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ createCurrentHook_default; }
+/* harmony export */ });
+// packages/hooks/src/createCurrentHook.ts
+function createCurrentHook(hooks, storeKey) {
+  return function currentHook() {
+    const hooksStore = hooks[storeKey];
+    const currentArray = Array.from(hooksStore.__current);
+    return currentArray.at(-1)?.name ?? null;
+  };
+}
+var createCurrentHook_default = createCurrentHook;
 
-/**
- * SVG Icon For Github
- * @package Charming Portfolio
- * @since 1.3.9
- */
+//# sourceMappingURL=createCurrentHook.mjs.map
 
-const GithubIcon = ({
-  url
-}) => {
-  //    Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-    className: "simplecharm-portfolio-button-hover",
-    "aria-label": `Open Social Link ${url}`,
-    href: url,
-    target: "_blank",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      width: "20px",
-      viewBox: "0 0 496 512",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
-        d: "M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
-      })
-    })
-  });
-};
-/* harmony default export */ __webpack_exports__["default"] = (GithubIcon);
 
 /***/ }),
 
-/***/ "./src/js/react-components/icons/leetcode.js":
-/*!***************************************************!*\
-  !*** ./src/js/react-components/icons/leetcode.js ***!
-  \***************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ "./node_modules/@wordpress/hooks/build-module/createDidHook.mjs":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@wordpress/hooks/build-module/createDidHook.mjs ***!
+  \**********************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ createDidHook_default; }
+/* harmony export */ });
+/* harmony import */ var _validateHookName_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./validateHookName.mjs */ "./node_modules/@wordpress/hooks/build-module/validateHookName.mjs");
+// packages/hooks/src/createDidHook.ts
 
-/**
- * SVG Icon For LeetCode
- * @package Charming Portfolio
- * @since 1.3.9
- */
+function createDidHook(hooks, storeKey) {
+  return function didHook(hookName) {
+    const hooksStore = hooks[storeKey];
+    if (!(0,_validateHookName_mjs__WEBPACK_IMPORTED_MODULE_0__["default"])(hookName)) {
+      return;
+    }
+    return hooksStore[hookName] && hooksStore[hookName].runs ? hooksStore[hookName].runs : 0;
+  };
+}
+var createDidHook_default = createDidHook;
 
-// Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools
-const LeetCodeIcon = ({
-  url
-}) => {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-    className: "simplecharm-portfolio-button-hover",
-    "aria-label": `Open Social Link ${url}`,
-    href: url,
-    target: "_blank",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      fill: "#000000",
-      width: "20px",
-      height: "20px",
-      viewBox: "0 0 32 32",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
-        d: "M21.469 23.907l-3.595 3.473c-0.624 0.625-1.484 0.885-2.432 0.885s-1.807-0.26-2.432-0.885l-5.776-5.812c-0.62-0.625-0.937-1.537-0.937-2.485 0-0.952 0.317-1.812 0.937-2.432l5.76-5.844c0.62-0.619 1.5-0.859 2.448-0.859s1.808 0.26 2.432 0.885l3.595 3.473c0.687 0.688 1.823 0.663 2.536-0.052 0.708-0.713 0.735-1.848 0.047-2.536l-3.473-3.511c-0.901-0.891-2.032-1.505-3.261-1.787l3.287-3.333c0.688-0.687 0.667-1.823-0.047-2.536s-1.849-0.735-2.536-0.052l-13.469 13.469c-1.307 1.312-1.989 3.113-1.989 5.113 0 1.996 0.683 3.86 1.989 5.168l5.797 5.812c1.307 1.307 3.115 1.937 5.115 1.937 1.995 0 3.801-0.683 5.109-1.989l3.479-3.521c0.688-0.683 0.661-1.817-0.052-2.531s-1.849-0.74-2.531-0.052zM27.749 17.349h-13.531c-0.932 0-1.692 0.801-1.692 1.791 0 0.991 0.76 1.797 1.692 1.797h13.531c0.933 0 1.693-0.807 1.693-1.797 0-0.989-0.76-1.791-1.693-1.791z"
-      })
-    })
-  });
-};
-/* harmony default export */ __webpack_exports__["default"] = (LeetCodeIcon);
+//# sourceMappingURL=createDidHook.mjs.map
+
 
 /***/ }),
 
-/***/ "./src/js/react-components/intro.js":
-/*!******************************************!*\
-  !*** ./src/js/react-components/intro.js ***!
-  \******************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ "./node_modules/@wordpress/hooks/build-module/createDoingHook.mjs":
+/*!************************************************************************!*\
+  !*** ./node_modules/@wordpress/hooks/build-module/createDoingHook.mjs ***!
+  \************************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _social_icons__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./social_icons */ "./src/js/react-components/social_icons.js");
-/* harmony import */ var _hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hooks/scroll-animation */ "./src/js/react-components/hooks/scroll-animation.js");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "./node_modules/react/index.js");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ createDoingHook_default; }
+/* harmony export */ });
+// packages/hooks/src/createDoingHook.ts
+function createDoingHook(hooks, storeKey) {
+  return function doingHook(hookName) {
+    const hooksStore = hooks[storeKey];
+    if ("undefined" === typeof hookName) {
+      return hooksStore.__current.size > 0;
+    }
+    return Array.from(hooksStore.__current).some(
+      (hook) => hook.name === hookName
+    );
+  };
+}
+var createDoingHook_default = createDoingHook;
 
+//# sourceMappingURL=createDoingHook.mjs.map
 
-
-
-const Intro = ({
-  portfolio,
-  specialTag
-}) => {
-  const thisDivs = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useRef)([]);
-  (0,_hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_1__["default"])(thisDivs);
-  const short_description = specialTag(portfolio.short_description);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("section", {
-      className: "min-h-screen min-h-lvh grid items-center mb-2 charming-portfolio-container-w",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "grid grid-cols-1 lg:grid-cols-2 lg:grid-flow-col-reverse cp-p4 intro cp-mt5",
-        tabIndex: "0",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          className: "CHARMING_PORTFOLIO_primary-image-container",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-            src: portfolio.user_image,
-            className: "lg:max-w-sm rounded-lg shadow-2xl block cp-m-auto sm:w-4/5 simrev-up",
-            alt: portfolio.name,
-            ref: el => el && thisDivs.current.push(el)
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          className: "intro-primary-info flex justify-center flex-col",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("h3", {
-            className: "text-3xl font-bold mt-6 lg:mt-0 simrev-up-delay",
-            ref: el => el && thisDivs.current.push(el),
-            style: {
-              "--delay": "20ms"
-            },
-            children: ["Hi, I'm ", portfolio.name, " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-              className: "d-contents CHARMING_PORTFOLIO-welcome-emoji",
-              children: "\uD83D\uDC4B"
-            })]
-          }), short_description && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-            className: "py-4 simrev-up-delay",
-            dangerouslySetInnerHTML: {
-              __html: short_description
-            },
-            ref: el => el && thisDivs.current.push(el),
-            style: {
-              "--delay": "50ms"
-            }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
-              className: "simrev-up-delay",
-              ref: el => el && thisDivs.current.push(el),
-              style: {
-                "--delay": "80ms"
-              },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                className: "dashicons dashicons-location-alt mr-3"
-              }), portfolio.address]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
-              className: "simrev-up-delay",
-              ref: el => el && thisDivs.current.push(el),
-              style: {
-                "--delay": "110ms"
-              },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                className: "mr-3",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-                  className: parseInt(portfolio.available) === 1 ? "simplecharm-portfolio-available" : "simplecharm-portfolio-available-false"
-                })
-              }), parseInt(portfolio.available) === 1 ? "Available for New Projects" : "Currently Not Available for New Projects"]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-            className: "social-link justify-center-sm justify-start cp-gap3 cp-my2",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_social_icons__WEBPACK_IMPORTED_MODULE_0__["default"], {
-              icons: portfolio.social_links,
-              thisDivs: thisDivs
-            })
-          })]
-        })]
-      })
-    })
-  });
-};
-/* harmony default export */ __webpack_exports__["default"] = (Intro);
 
 /***/ }),
 
-/***/ "./src/js/react-components/projects.js":
-/*!*********************************************!*\
-  !*** ./src/js/react-components/projects.js ***!
-  \*********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ "./node_modules/@wordpress/hooks/build-module/createHasHook.mjs":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@wordpress/hooks/build-module/createHasHook.mjs ***!
+  \**********************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "./node_modules/@wordpress/i18n/build-module/index.js");
-/* harmony import */ var _hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hooks/scroll-animation */ "./src/js/react-components/hooks/scroll-animation.js");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/element */ "./node_modules/react/index.js");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _badge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./badge */ "./src/js/react-components/badge.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ createHasHook_default; }
+/* harmony export */ });
+// packages/hooks/src/createHasHook.ts
+function createHasHook(hooks, storeKey) {
+  return function hasHook(hookName, namespace) {
+    const hooksStore = hooks[storeKey];
+    if ("undefined" !== typeof namespace) {
+      return hookName in hooksStore && hooksStore[hookName].handlers.some(
+        (hook) => hook.namespace === namespace
+      );
+    }
+    return hookName in hooksStore;
+  };
+}
+var createHasHook_default = createHasHook;
+
+//# sourceMappingURL=createHasHook.mjs.map
+
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/hooks/build-module/createHooks.mjs":
+/*!********************************************************************!*\
+  !*** ./node_modules/@wordpress/hooks/build-module/createHooks.mjs ***!
+  \********************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   _Hooks: function() { return /* binding */ _Hooks; },
+/* harmony export */   "default": function() { return /* binding */ createHooks_default; }
+/* harmony export */ });
+/* harmony import */ var _createAddHook_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./createAddHook.mjs */ "./node_modules/@wordpress/hooks/build-module/createAddHook.mjs");
+/* harmony import */ var _createRemoveHook_mjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./createRemoveHook.mjs */ "./node_modules/@wordpress/hooks/build-module/createRemoveHook.mjs");
+/* harmony import */ var _createHasHook_mjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./createHasHook.mjs */ "./node_modules/@wordpress/hooks/build-module/createHasHook.mjs");
+/* harmony import */ var _createRunHook_mjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./createRunHook.mjs */ "./node_modules/@wordpress/hooks/build-module/createRunHook.mjs");
+/* harmony import */ var _createCurrentHook_mjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./createCurrentHook.mjs */ "./node_modules/@wordpress/hooks/build-module/createCurrentHook.mjs");
+/* harmony import */ var _createDoingHook_mjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./createDoingHook.mjs */ "./node_modules/@wordpress/hooks/build-module/createDoingHook.mjs");
+/* harmony import */ var _createDidHook_mjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./createDidHook.mjs */ "./node_modules/@wordpress/hooks/build-module/createDidHook.mjs");
+// packages/hooks/src/createHooks.ts
 
 
 
 
 
-const Projects = ({
-  projects,
-  specialTag,
-  splitTags
-}) => {
-  const hasProjects = projects && Object.keys(projects).length;
-  if (!hasProjects) {
-    return null;
+
+
+var _Hooks = class {
+  actions;
+  filters;
+  addAction;
+  addFilter;
+  removeAction;
+  removeFilter;
+  hasAction;
+  hasFilter;
+  removeAllActions;
+  removeAllFilters;
+  doAction;
+  doActionAsync;
+  applyFilters;
+  applyFiltersAsync;
+  currentAction;
+  currentFilter;
+  doingAction;
+  doingFilter;
+  didAction;
+  didFilter;
+  constructor() {
+    this.actions = /* @__PURE__ */ Object.create(null);
+    this.actions.__current = /* @__PURE__ */ new Set();
+    this.filters = /* @__PURE__ */ Object.create(null);
+    this.filters.__current = /* @__PURE__ */ new Set();
+    this.addAction = (0,_createAddHook_mjs__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "actions");
+    this.addFilter = (0,_createAddHook_mjs__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "filters");
+    this.removeAction = (0,_createRemoveHook_mjs__WEBPACK_IMPORTED_MODULE_1__["default"])(this, "actions");
+    this.removeFilter = (0,_createRemoveHook_mjs__WEBPACK_IMPORTED_MODULE_1__["default"])(this, "filters");
+    this.hasAction = (0,_createHasHook_mjs__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "actions");
+    this.hasFilter = (0,_createHasHook_mjs__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "filters");
+    this.removeAllActions = (0,_createRemoveHook_mjs__WEBPACK_IMPORTED_MODULE_1__["default"])(this, "actions", true);
+    this.removeAllFilters = (0,_createRemoveHook_mjs__WEBPACK_IMPORTED_MODULE_1__["default"])(this, "filters", true);
+    this.doAction = (0,_createRunHook_mjs__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "actions", false, false);
+    this.doActionAsync = (0,_createRunHook_mjs__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "actions", false, true);
+    this.applyFilters = (0,_createRunHook_mjs__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "filters", true, false);
+    this.applyFiltersAsync = (0,_createRunHook_mjs__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "filters", true, true);
+    this.currentAction = (0,_createCurrentHook_mjs__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "actions");
+    this.currentFilter = (0,_createCurrentHook_mjs__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "filters");
+    this.doingAction = (0,_createDoingHook_mjs__WEBPACK_IMPORTED_MODULE_5__["default"])(this, "actions");
+    this.doingFilter = (0,_createDoingHook_mjs__WEBPACK_IMPORTED_MODULE_5__["default"])(this, "filters");
+    this.didAction = (0,_createDidHook_mjs__WEBPACK_IMPORTED_MODULE_6__["default"])(this, "actions");
+    this.didFilter = (0,_createDidHook_mjs__WEBPACK_IMPORTED_MODULE_6__["default"])(this, "filters");
   }
-  const thisDivs = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useRef)([]);
-  (0,_hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_1__["default"])(thisDivs);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("section", {
-    className: "projects min-h-max p-6 my-2 flex flex-col charming-portfolio-container-w",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      className: "section-title simrev-up",
-      ref: el => el && thisDivs.current.push(el),
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_badge__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        badgeTitle: "Works"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Some of the noteworthy projects I have built:", "charming-portfolio")
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      className: "single-work-info grid lg:grid-cols-2 md:grid-cols-2 gap-x-4 my-3",
-      children: Object.keys(projects).map(id => projects[id].title && projects[id].description && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: "line-break-anywhere simrev-up-delay",
-        tabIndex: "0",
-        ref: el => el && thisDivs.current.push(el),
-        style: {
-          "--delay": `${id * 20}ms`
-        },
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          className: "flex flex-col my-4 gap-y-3 p-6 pb-3 charming_portfolio_shadow_thin portfolio-project-bg",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
-            className: "text-2xl",
-            children: projects[id].title
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-            className: "overflow-y-auto",
-            children: specialTag(projects[id].description)
-          }), projects[id].tags && splitTags(projects[id].tags), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            className: "work-live-link",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
-              href: projects[id].link,
-              target: "_blank",
-              className: "charming_portfolio_shadow_thin",
-              "aria-label": `Open ${projects[id].link}`,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-                className: "dashicons dashicons-external"
-              })
-            })
-          })]
-        })
-      }, id))
-    })]
-  });
 };
-/* harmony default export */ __webpack_exports__["default"] = (Projects);
+function createHooks() {
+  return new _Hooks();
+}
+var createHooks_default = createHooks;
+
+//# sourceMappingURL=createHooks.mjs.map
+
 
 /***/ }),
 
-/***/ "./src/js/react-components/skills.js":
+/***/ "./node_modules/@wordpress/hooks/build-module/createRemoveHook.mjs":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@wordpress/hooks/build-module/createRemoveHook.mjs ***!
+  \*************************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ createRemoveHook_default; }
+/* harmony export */ });
+/* harmony import */ var _validateNamespace_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./validateNamespace.mjs */ "./node_modules/@wordpress/hooks/build-module/validateNamespace.mjs");
+/* harmony import */ var _validateHookName_mjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./validateHookName.mjs */ "./node_modules/@wordpress/hooks/build-module/validateHookName.mjs");
+// packages/hooks/src/createRemoveHook.ts
+
+
+function createRemoveHook(hooks, storeKey, removeAll = false) {
+  return function removeHook(hookName, namespace) {
+    const hooksStore = hooks[storeKey];
+    if (!(0,_validateHookName_mjs__WEBPACK_IMPORTED_MODULE_1__["default"])(hookName)) {
+      return;
+    }
+    if (!removeAll && !(0,_validateNamespace_mjs__WEBPACK_IMPORTED_MODULE_0__["default"])(namespace)) {
+      return;
+    }
+    if (!hooksStore[hookName]) {
+      return 0;
+    }
+    let handlersRemoved = 0;
+    if (removeAll) {
+      handlersRemoved = hooksStore[hookName].handlers.length;
+      hooksStore[hookName] = {
+        runs: hooksStore[hookName].runs,
+        handlers: []
+      };
+    } else {
+      const handlers = hooksStore[hookName].handlers;
+      for (let i = handlers.length - 1; i >= 0; i--) {
+        if (handlers[i].namespace === namespace) {
+          handlers.splice(i, 1);
+          handlersRemoved++;
+          hooksStore.__current.forEach((hookInfo) => {
+            if (hookInfo.name === hookName && hookInfo.currentIndex >= i) {
+              hookInfo.currentIndex--;
+            }
+          });
+        }
+      }
+    }
+    if (hookName !== "hookRemoved") {
+      hooks.doAction("hookRemoved", hookName, namespace);
+    }
+    return handlersRemoved;
+  };
+}
+var createRemoveHook_default = createRemoveHook;
+
+//# sourceMappingURL=createRemoveHook.mjs.map
+
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/hooks/build-module/createRunHook.mjs":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@wordpress/hooks/build-module/createRunHook.mjs ***!
+  \**********************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ createRunHook_default; }
+/* harmony export */ });
+// packages/hooks/src/createRunHook.ts
+function createRunHook(hooks, storeKey, returnFirstArg, async) {
+  return function runHook(hookName, ...args) {
+    const hooksStore = hooks[storeKey];
+    if (!hooksStore[hookName]) {
+      hooksStore[hookName] = {
+        handlers: [],
+        runs: 0
+      };
+    }
+    hooksStore[hookName].runs++;
+    const handlers = hooksStore[hookName].handlers;
+    if (true) {
+      if ("hookAdded" !== hookName && hooksStore.all) {
+        handlers.push(...hooksStore.all.handlers);
+      }
+    }
+    if (!handlers || !handlers.length) {
+      return returnFirstArg ? args[0] : void 0;
+    }
+    const hookInfo = {
+      name: hookName,
+      currentIndex: 0
+    };
+    async function asyncRunner() {
+      try {
+        hooksStore.__current.add(hookInfo);
+        let result = returnFirstArg ? args[0] : void 0;
+        while (hookInfo.currentIndex < handlers.length) {
+          const handler = handlers[hookInfo.currentIndex];
+          result = await handler.callback.apply(null, args);
+          if (returnFirstArg) {
+            args[0] = result;
+          }
+          hookInfo.currentIndex++;
+        }
+        return returnFirstArg ? result : void 0;
+      } finally {
+        hooksStore.__current.delete(hookInfo);
+      }
+    }
+    function syncRunner() {
+      try {
+        hooksStore.__current.add(hookInfo);
+        let result = returnFirstArg ? args[0] : void 0;
+        while (hookInfo.currentIndex < handlers.length) {
+          const handler = handlers[hookInfo.currentIndex];
+          result = handler.callback.apply(null, args);
+          if (returnFirstArg) {
+            args[0] = result;
+          }
+          hookInfo.currentIndex++;
+        }
+        return returnFirstArg ? result : void 0;
+      } finally {
+        hooksStore.__current.delete(hookInfo);
+      }
+    }
+    return (async ? asyncRunner : syncRunner)();
+  };
+}
+var createRunHook_default = createRunHook;
+
+//# sourceMappingURL=createRunHook.mjs.map
+
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/hooks/build-module/index.mjs":
+/*!**************************************************************!*\
+  !*** ./node_modules/@wordpress/hooks/build-module/index.mjs ***!
+  \**************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   actions: function() { return /* binding */ actions; },
+/* harmony export */   addAction: function() { return /* binding */ addAction; },
+/* harmony export */   addFilter: function() { return /* binding */ addFilter; },
+/* harmony export */   applyFilters: function() { return /* binding */ applyFilters; },
+/* harmony export */   applyFiltersAsync: function() { return /* binding */ applyFiltersAsync; },
+/* harmony export */   createHooks: function() { return /* reexport safe */ _createHooks_mjs__WEBPACK_IMPORTED_MODULE_0__["default"]; },
+/* harmony export */   currentAction: function() { return /* binding */ currentAction; },
+/* harmony export */   currentFilter: function() { return /* binding */ currentFilter; },
+/* harmony export */   defaultHooks: function() { return /* binding */ defaultHooks; },
+/* harmony export */   didAction: function() { return /* binding */ didAction; },
+/* harmony export */   didFilter: function() { return /* binding */ didFilter; },
+/* harmony export */   doAction: function() { return /* binding */ doAction; },
+/* harmony export */   doActionAsync: function() { return /* binding */ doActionAsync; },
+/* harmony export */   doingAction: function() { return /* binding */ doingAction; },
+/* harmony export */   doingFilter: function() { return /* binding */ doingFilter; },
+/* harmony export */   filters: function() { return /* binding */ filters; },
+/* harmony export */   hasAction: function() { return /* binding */ hasAction; },
+/* harmony export */   hasFilter: function() { return /* binding */ hasFilter; },
+/* harmony export */   removeAction: function() { return /* binding */ removeAction; },
+/* harmony export */   removeAllActions: function() { return /* binding */ removeAllActions; },
+/* harmony export */   removeAllFilters: function() { return /* binding */ removeAllFilters; },
+/* harmony export */   removeFilter: function() { return /* binding */ removeFilter; }
+/* harmony export */ });
+/* harmony import */ var _createHooks_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./createHooks.mjs */ "./node_modules/@wordpress/hooks/build-module/createHooks.mjs");
+// packages/hooks/src/index.ts
+
+var defaultHooks = (0,_createHooks_mjs__WEBPACK_IMPORTED_MODULE_0__["default"])();
+var {
+  addAction,
+  addFilter,
+  removeAction,
+  removeFilter,
+  hasAction,
+  hasFilter,
+  removeAllActions,
+  removeAllFilters,
+  doAction,
+  doActionAsync,
+  applyFilters,
+  applyFiltersAsync,
+  currentAction,
+  currentFilter,
+  doingAction,
+  doingFilter,
+  didAction,
+  didFilter,
+  actions,
+  filters
+} = defaultHooks;
+
+//# sourceMappingURL=index.mjs.map
+
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/hooks/build-module/validateHookName.mjs":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@wordpress/hooks/build-module/validateHookName.mjs ***!
+  \*************************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ validateHookName_default; }
+/* harmony export */ });
+// packages/hooks/src/validateHookName.ts
+function validateHookName(hookName) {
+  if ("string" !== typeof hookName || "" === hookName) {
+    console.error("The hook name must be a non-empty string.");
+    return false;
+  }
+  if (/^__/.test(hookName)) {
+    console.error("The hook name cannot begin with `__`.");
+    return false;
+  }
+  if (!/^[a-zA-Z][a-zA-Z0-9_.-]*$/.test(hookName)) {
+    console.error(
+      "The hook name can only contain numbers, letters, dashes, periods and underscores."
+    );
+    return false;
+  }
+  return true;
+}
+var validateHookName_default = validateHookName;
+
+//# sourceMappingURL=validateHookName.mjs.map
+
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/hooks/build-module/validateNamespace.mjs":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@wordpress/hooks/build-module/validateNamespace.mjs ***!
+  \**************************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ validateNamespace_default; }
+/* harmony export */ });
+// packages/hooks/src/validateNamespace.ts
+function validateNamespace(namespace) {
+  if ("string" !== typeof namespace || "" === namespace) {
+    console.error("The namespace must be a non-empty string.");
+    return false;
+  }
+  if (!/^[a-zA-Z][a-zA-Z0-9_.\-\/]*$/.test(namespace)) {
+    console.error(
+      "The namespace can only contain numbers, letters, dashes, periods, underscores and slashes."
+    );
+    return false;
+  }
+  return true;
+}
+var validateNamespace_default = validateNamespace;
+
+//# sourceMappingURL=validateNamespace.mjs.map
+
+
+/***/ }),
+
+/***/ "./node_modules/memize/dist/index.js":
 /*!*******************************************!*\
-  !*** ./src/js/react-components/skills.js ***!
+  !*** ./node_modules/memize/dist/index.js ***!
   \*******************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "./node_modules/@wordpress/i18n/build-module/index.js");
-/* harmony import */ var _hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hooks/scroll-animation */ "./src/js/react-components/hooks/scroll-animation.js");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/element */ "./node_modules/react/index.js");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _badge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./badge */ "./src/js/react-components/badge.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ memize; }
+/* harmony export */ });
+/**
+ * Memize options object.
+ *
+ * @typedef MemizeOptions
+ *
+ * @property {number} [maxSize] Maximum size of the cache.
+ */
+
+/**
+ * Internal cache entry.
+ *
+ * @typedef MemizeCacheNode
+ *
+ * @property {?MemizeCacheNode|undefined} [prev] Previous node.
+ * @property {?MemizeCacheNode|undefined} [next] Next node.
+ * @property {Array<*>}                   args   Function arguments for cache
+ *                                               entry.
+ * @property {*}                          val    Function result.
+ */
+
+/**
+ * Properties of the enhanced function for controlling cache.
+ *
+ * @typedef MemizeMemoizedFunction
+ *
+ * @property {()=>void} clear Clear the cache.
+ */
+
+/**
+ * Accepts a function to be memoized, and returns a new memoized function, with
+ * optional options.
+ *
+ * @template {(...args: any[]) => any} F
+ *
+ * @param {F}             fn        Function to memoize.
+ * @param {MemizeOptions} [options] Options object.
+ *
+ * @return {((...args: Parameters<F>) => ReturnType<F>) & MemizeMemoizedFunction} Memoized function.
+ */
+function memize(fn, options) {
+	var size = 0;
+
+	/** @type {?MemizeCacheNode|undefined} */
+	var head;
+
+	/** @type {?MemizeCacheNode|undefined} */
+	var tail;
+
+	options = options || {};
+
+	function memoized(/* ...args */) {
+		var node = head,
+			len = arguments.length,
+			args,
+			i;
+
+		searchCache: while (node) {
+			// Perform a shallow equality test to confirm that whether the node
+			// under test is a candidate for the arguments passed. Two arrays
+			// are shallowly equal if their length matches and each entry is
+			// strictly equal between the two sets. Avoid abstracting to a
+			// function which could incur an arguments leaking deoptimization.
+
+			// Check whether node arguments match arguments length
+			if (node.args.length !== arguments.length) {
+				node = node.next;
+				continue;
+			}
+
+			// Check whether node arguments match arguments values
+			for (i = 0; i < len; i++) {
+				if (node.args[i] !== arguments[i]) {
+					node = node.next;
+					continue searchCache;
+				}
+			}
+
+			// At this point we can assume we've found a match
+
+			// Surface matched node to head if not already
+			if (node !== head) {
+				// As tail, shift to previous. Must only shift if not also
+				// head, since if both head and tail, there is no previous.
+				if (node === tail) {
+					tail = node.prev;
+				}
+
+				// Adjust siblings to point to each other. If node was tail,
+				// this also handles new tail's empty `next` assignment.
+				/** @type {MemizeCacheNode} */ (node.prev).next = node.next;
+				if (node.next) {
+					node.next.prev = node.prev;
+				}
+
+				node.next = head;
+				node.prev = null;
+				/** @type {MemizeCacheNode} */ (head).prev = node;
+				head = node;
+			}
+
+			// Return immediately
+			return node.val;
+		}
+
+		// No cached value found. Continue to insertion phase:
+
+		// Create a copy of arguments (avoid leaking deoptimization)
+		args = new Array(len);
+		for (i = 0; i < len; i++) {
+			args[i] = arguments[i];
+		}
+
+		node = {
+			args: args,
+
+			// Generate the result from original function
+			val: fn.apply(null, args),
+		};
+
+		// Don't need to check whether node is already head, since it would
+		// have been returned above already if it was
+
+		// Shift existing head down list
+		if (head) {
+			head.prev = node;
+			node.next = head;
+		} else {
+			// If no head, follows that there's no tail (at initial or reset)
+			tail = node;
+		}
+
+		// Trim tail if we're reached max size and are pending cache insertion
+		if (size === /** @type {MemizeOptions} */ (options).maxSize) {
+			tail = /** @type {MemizeCacheNode} */ (tail).prev;
+			/** @type {MemizeCacheNode} */ (tail).next = null;
+		} else {
+			size++;
+		}
+
+		head = node;
+
+		return node.val;
+	}
+
+	memoized.clear = function () {
+		head = null;
+		tail = null;
+		size = 0;
+	};
+
+	// Ignore reason: There's not a clear solution to create an intersection of
+	// the function with additional properties, where the goal is to retain the
+	// function signature of the incoming argument and add control properties
+	// on the return value.
+
+	// @ts-ignore
+	return memoized;
+}
 
 
 
-
-
-const Skill = ({
-  skill,
-  id,
-  refDivs
-}) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-  className: "charming-portfolio-skill-card charming_portfolio_shadow_thin cursor-pointer simrev-up-delay",
-  tabIndex: "0",
-  ref: el => el && refDivs.current.push(el),
-  style: {
-    "--delay": `${id * 30}ms`
-  },
-  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-    src: skill.image,
-    alt: skill.name,
-    className: "charming-portfolio-single-skill",
-    width: "70"
-  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-    className: "skill-name",
-    children: skill.name
-  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-    className: "simplecharm-skill-card-blank"
-  })]
-});
-const Skills = ({
-  skills
-}) => {
-  const thisDivs = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useRef)([]);
-  (0,_hooks_scroll_animation__WEBPACK_IMPORTED_MODULE_1__["default"])(thisDivs);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("section", {
-    className: "skills min-h-max p-6 my-2 flex flex-col charming-portfolio-container-w",
-    children: skills && Object.keys(skills).length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "section-title simrev-up-delay",
-        ref: el => el && thisDivs.current.push(el),
-        style: {
-          "--delay": "20ms"
-        },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_badge__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          badgeTitle: "Skills"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("The skills, tools and technologies I am really good at:", "charming-portfolio")
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: "skills-container charming-portfolio-skills-grid simrev-up-delay",
-        ref: el => el && thisDivs.current.push(el),
-        style: {
-          "--delay": "70ms"
-        },
-        children: Object.keys(skills).map((skillKey, index) => {
-          const skill = skills[skillKey];
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Skill, {
-            skill: skill,
-            id: index,
-            refDivs: thisDivs
-          }, index);
-        })
-      })]
-    }) : null
-  });
-};
-/* harmony default export */ __webpack_exports__["default"] = (Skills);
-
-/***/ }),
-
-/***/ "./src/js/react-components/social_icons.js":
-/*!*************************************************!*\
-  !*** ./src/js/react-components/social_icons.js ***!
-  \*************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _icons_github__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./icons/github */ "./src/js/react-components/icons/github.js");
-/* harmony import */ var _icons_leetcode__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./icons/leetcode */ "./src/js/react-components/icons/leetcode.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-const SocialIcon = ({
-  iconName,
-  url
-}) => {
-  /**
-   * All Icons Available in Dashicons
-   */
-  const dashIconsIcons = ["twitter", "facebook", "instagram", "youtube", "linkedin", "pinterest", "podio", "google", "reddit", "wordpress", "rss", "whatsapp", "xing", "twitch"];
-  /**
-   * All Svg Icon Hosted in Icons/ Directory
-   */
-  const DashIconsIcon = ({
-    name,
-    url
-  }) => {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
-      className: "simplecharm-portfolio-button-hover",
-      href: url,
-      target: "_blank",
-      rel: "noopener noreferrer",
-      "aria-label": `Open ${name} link`,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-        className: `dashicons dashicons-${name}`
-      })
-    });
-  };
-  const DefaultIcon = ({
-    url
-  }) => {
-    /**
-     * Default Svg Icon if None(dashicons or icons from svgs) Available
-     */
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
-      className: "simplecharm-portfolio-button-hover",
-      href: url,
-      target: "_blank",
-      rel: "noopener noreferrer",
-      "aria-label": `Open Link ${url}`,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-        className: "dashicons dashicons-admin-links"
-      })
-    });
-  };
-  const svgIcons = {
-    github: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_icons_github__WEBPACK_IMPORTED_MODULE_0__["default"], {
-      url: url
-    }),
-    leetcode: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_icons_leetcode__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      url: url
-    })
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: dashIconsIcons.includes(iconName) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(DashIconsIcon, {
-      name: iconName,
-      url: url
-    }) : svgIcons[iconName] || /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(DefaultIcon, {
-      url: url
-    })
-  });
-};
-const SocialIcons = ({
-  icons,
-  thisDivs
-}) => {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: Object.keys(icons).map((id, i) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      className: "simrev-up-delay",
-      ref: el => el && thisDivs.current.push(el),
-      style: {
-        "--delay": `${i * 30}ms`
-      },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(SocialIcon, {
-        iconName: icons[id].name.toLowerCase(),
-        url: icons[id].url
-      }, id)
-    }, id))
-  });
-};
-/* harmony default export */ __webpack_exports__["default"] = (SocialIcons);
 
 /***/ })
 
@@ -38085,6 +37935,12 @@ const SocialIcons = ({
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
+/******/ 		if (!(moduleId in __webpack_modules__)) {
+/******/ 			delete __webpack_module_cache__[moduleId];
+/******/ 			var e = new Error("Cannot find module '" + moduleId + "'");
+/******/ 			e.code = 'MODULE_NOT_FOUND';
+/******/ 			throw e;
+/******/ 		}
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Flag the module as loaded
@@ -38153,18 +38009,18 @@ var __webpack_exports__ = {};
   !*** ./src/js/portfolio-react.js ***!
   \***********************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @wordpress/element */ "./node_modules/react-dom/client.js");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @wordpress/element */ "./node_modules/react/index.js");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/dom-ready */ "./node_modules/@wordpress/dom-ready/build-module/index.js");
-/* harmony import */ var _react_components_intro_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./react-components/intro.js */ "./src/js/react-components/intro.js");
-/* harmony import */ var _react_components_about_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./react-components/about.js */ "./src/js/react-components/about.js");
-/* harmony import */ var _react_components_skills_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./react-components/skills.js */ "./src/js/react-components/skills.js");
-/* harmony import */ var _react_components_experience_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./react-components/experience.js */ "./src/js/react-components/experience.js");
-/* harmony import */ var _react_components_projects_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./react-components/projects.js */ "./src/js/react-components/projects.js");
-/* harmony import */ var _react_components_footer_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./react-components/footer.js */ "./src/js/react-components/footer.js");
-/* harmony import */ var _react_components_hooks_scroll_animation_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./react-components/hooks/scroll-animation.js */ "./src/js/react-components/hooks/scroll-animation.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "./node_modules/react/index.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "./node_modules/react-dom/client.js");
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/dom-ready */ "./node_modules/@wordpress/dom-ready/build-module/index.mjs");
+/* harmony import */ var _react_components_intro_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./react-components/intro.js */ "./src/js/react-components/intro.js");
+/* harmony import */ var _react_components_about_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./react-components/about.js */ "./src/js/react-components/about.js");
+/* harmony import */ var _react_components_skills_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./react-components/skills.js */ "./src/js/react-components/skills.js");
+/* harmony import */ var _react_components_experience_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./react-components/experience.js */ "./src/js/react-components/experience.js");
+/* harmony import */ var _react_components_projects_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./react-components/projects.js */ "./src/js/react-components/projects.js");
+/* harmony import */ var _react_components_footer_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./react-components/footer.js */ "./src/js/react-components/footer.js");
+/* harmony import */ var _react_components_hooks_scroll_animation_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./react-components/hooks/scroll-animation.js */ "./src/js/react-components/hooks/scroll-animation.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -38201,11 +38057,11 @@ const Portfolio = () => {
    */
   const splitTags = tags => {
     const tags_array = tags.length > 0 ? tags.split(", ") : [];
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
       className: "work-tags",
       children: tags_array.map(single_tag => {
         if (!single_tag) return;
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
           className: "min-w-max badge badge-neutral p-4 mx-2 my-2",
           tabIndex: "0",
           children: single_tag
@@ -38213,31 +38069,31 @@ const Portfolio = () => {
       })
     });
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_react_components_intro_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_react_components_intro_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
       specialTag: specialTag,
       portfolio: portfolio_data
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_react_components_about_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_react_components_about_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
       specialTag: specialTag,
       portfolio: portfolio_data
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_react_components_skills_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_react_components_skills_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
       skills: portfolio_data.skills
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_react_components_experience_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_react_components_experience_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
       specialTag: specialTag,
       experiences: portfolio_data.experiences
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_react_components_projects_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_react_components_projects_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
       specialTag: specialTag,
       projects: portfolio_data.works,
       splitTags: splitTags
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_react_components_footer_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_react_components_footer_js__WEBPACK_IMPORTED_MODULE_8__["default"], {
       portfolio: portfolio_data
     })]
   });
 };
-(0,_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_8__["default"])(() => {
-  const root = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_9__.createRoot)(document.getElementById("charming-portfolio-react-root"));
-  root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_element__WEBPACK_IMPORTED_MODULE_10__.StrictMode, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(Portfolio, {})
+(0,_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_2__["default"])(() => {
+  const root = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createRoot)(document.getElementById("charming-portfolio-react-root"));
+  root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.StrictMode, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(Portfolio, {})
   }));
 });
 }();

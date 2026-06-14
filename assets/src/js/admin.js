@@ -19,3 +19,7 @@ import "./components/media/experience-images.js";
 
 // danger zone
 import "./components/danger-zone.js";
+
+
+// quill setup
+import './components/quill-setup.js';

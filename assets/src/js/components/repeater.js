@@ -35,10 +35,13 @@
                     $(this).siblings('label').attr("for",`${LabelFor}-${queue}`);
                 });
                 row.insertBefore(`${insertBefore}:last-child`);
+                $(document).trigger('charming-portfolio-repeater-add', [dataName, queue]);
                 return false;
             });
+
             $(`.${removeBtn}`).on('click', function() {
                 $(this).parents('tr').remove();
+                $(document).trigger('charming-portfolio-repeater-remove', [dataName, queue]);
                 return false;
             });
         }
