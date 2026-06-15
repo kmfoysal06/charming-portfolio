@@ -160,13 +160,16 @@ class Actions
             unset($_POST['nonce']);
 
             $modified_data = PORTFOLIO::get_instance()->sanitize_array(wp_unslash($_POST));
-            $skills = $modified_data['skills'] ?? "[]";
+
+            $skills = $_POST['skills'] ?? "[]";
+            $skills = wp_unslash($skills);
             $skills = json_decode(($skills), true);
+            
             $projects = $modified_data['works'] ?? "[]";
             $projects = json_decode($projects, true);
+
             $experiences = $_POST['experiences'] ?? "[]";
             $experiences = wp_unslash($experiences);
-
             $experiences = json_decode($experiences, true);
 
 
@@ -174,7 +177,7 @@ class Actions
             $skills = array_map(function($skill){
                 // sanitize skill name
                 $skill['name'] = sanitize_text_field(wp_unslash($skill['name']));
-                $skill['desecription'] = sanitize_textarea_field(wp_unslash($skill['description']));
+                $skill['desecription'] = wp_kses_post($skill['description']);
                 $skill['tags'] = sanitize_text_field(wp_unslash($skill['tags']));
                 return $skill;
             }, $skills);

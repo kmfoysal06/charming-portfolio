@@ -24,7 +24,7 @@ $charming_portfolio_skills = $args['skills'] ?? false;
       <img src="<?php echo esc_url($skill['image']); ?>" width="44" height=44" alt="<?php echo esc_html($skill['name']); ?>" />
       </div>
       <div class="skill-name"><?php echo esc_html($skill['name']); ?></div>
-      <div class="skill-desc"><?php echo esc_html($skill['description']); ?></div>
+      <div class="skill-desc"><?php echo wp_kses_post($skill['description']); ?></div>
         <?php if(isset($skill['tags']) && !empty($skill['tags'])): ?>
             <?php
                 $tags = explode("," ,$skill['tags']);

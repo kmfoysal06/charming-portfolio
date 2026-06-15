@@ -63,7 +63,7 @@ endforeach;
 						<img width="50px" src="<?php echo esc_url(CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/code.png") ?>" class="image" />
 
 			</td>
-<td cass="skill-description noquill">
+<td class="skill-description noquill">
 <label for="skill-info"><?php esc_html_e("Description (highly recommended to fill in to use if you are using v3 theme)","charming-portfolio"); ?></label>
         <div class="quill-container-slot">
             <div class="quill-editor-slot"></div>

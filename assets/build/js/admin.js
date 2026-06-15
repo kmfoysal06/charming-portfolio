@@ -597,8 +597,6 @@ jQuery(document).ready(function ($) {
     if (dataName === 'skills') {
       const skills = row.find('.skill-description');
       skills.removeClass('noquill');
-      console.log('editke hatle', row);
-      console.log('raw', row);
       nthRow = $(`.charming-portfolio-skills .skill-description`)[queue - 1];
     }
     if (nthRow) {

@@ -420,6 +420,16 @@
     color: var(--gray-400);
     font-weight: 300;
   }
+.skill-desc strong,
+.skill-desc strong
+{
+    font-weight: 500;
+    color: var(--white);
+}
+.skill-desc li[data-list="bullet"] {
+  list-style-type: disc;
+}
+
 
   .skill-tags {
     display: flex; flex-wrap: wrap; gap: 8px;
