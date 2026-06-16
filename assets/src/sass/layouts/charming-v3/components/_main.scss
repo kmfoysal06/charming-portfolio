@@ -432,6 +432,15 @@
   .skill-desc li[data-list="bullet"] {
     list-style-type: disc;
   }
+  .skill-desc ol,
+  .skill-desc ul,
+  .project-desc ol,
+  .project-desc ul,
+  .timeline-desc ol,
+  .timeline-desc ul {
+    padding-left: 1.5rem;
+    margin-left: 0;
+  }
   .project-desc strong,
   .project-desc b
   {
