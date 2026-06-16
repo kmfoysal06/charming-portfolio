@@ -78,10 +78,10 @@ class Assets
         global $post; 
         $is_shortcode = (is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'charming_portfolio_render_portfolio' ));
 
-        wp_register_style('CHARMING_PORTFOLIO_tailwindcss', CHARMING_PORTFOLIO_DIR_URI . '/assets/build/css/main.css', filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/css/main.css'), 'all');
-        wp_register_style('CHARMING_PORTFOLIO_charming_v2', CHARMING_PORTFOLIO_DIR_URI . '/assets/build/css/charming_v2.css', filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/css/charming_v2.css'), 'all');
+        wp_register_style('CHARMING_PORTFOLIO_tailwindcss', CHARMING_PORTFOLIO_DIR_URI . '/assets/build/css/main.css', [], filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/css/main.css'), 'all');
+        wp_register_style('CHARMING_PORTFOLIO_charming_v2', CHARMING_PORTFOLIO_DIR_URI . '/assets/build/css/charming_v2.css',[],  filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/css/charming_v2.css'), 'all');
 
-        wp_register_style('CHARMING_PORTFOLIO_charming_v3', CHARMING_PORTFOLIO_DIR_URI . '/assets/build/css/charming_v3.css', filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/css/charming_v3.css'), 'all');
+        wp_register_style('CHARMING_PORTFOLIO_charming_v3', CHARMING_PORTFOLIO_DIR_URI . '/assets/build/css/charming_v3.css',[],  filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/css/charming_v3.css'), 'all');
 
         // enqueue styles if its frontpage
 		if(is_front_page() || $is_shortcode){
