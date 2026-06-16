@@ -14,7 +14,7 @@ $charming_portfolio_statbox_content = isset($args['primary_statbox_content']) ? 
   <div class="hero-left">
     <p class="hero-eyebrow"><?php echo esc_html($args['designation']) ?></p>
     <h1 class="hero-name"><?php echo esc_html($args['name']) ?></h1>
-    <p class="hero-bio"><?php echo wp_kses_post($args['description']) ?></p>
+    <div class="hero-bio"><?php echo wp_kses_post($args['description']) ?></div>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">
         Hire Me
