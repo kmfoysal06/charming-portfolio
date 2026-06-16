@@ -159,13 +159,14 @@ class Actions
             unset($_POST['action']);
             unset($_POST['nonce']);
 
-            $modified_data = PORTFOLIO::get_instance()->sanitize_array(wp_unslash($_POST));
+            $modified_data = [];
 
             $skills = $_POST['skills'] ?? "[]";
             $skills = wp_unslash($skills);
             $skills = json_decode(($skills), true);
             
-            $projects = $modified_data['works'] ?? "[]";
+            $projects = $_POST['works'] ?? "[]";
+            $projects = wp_unslash($projects);
             $projects = json_decode($projects, true);
 
             $experiences = $_POST['experiences'] ?? "[]";
@@ -217,7 +218,7 @@ class Actions
                 // sanitize project title
                 $project['title'] = sanitize_text_field(wp_unslash($project['title']));
                 // sanitize project description
-                $project['description'] = sanitize_textarea_field(wp_unslash($project['description']));
+                $project['description'] = wp_kses_post($project['description']);
                 // sanitize project tags
                 $project['tags'] = sanitize_text_field(wp_unslash($project['tags']));
                 $project['link'] = esc_url_raw(wp_unslash($project['link']));

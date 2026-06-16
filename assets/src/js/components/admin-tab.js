@@ -9,12 +9,10 @@
             let currTargetID = 'basic-settings';
             if(currTarget && currTarget.querySelector("a")) {
 
-                console.log('cur target', currTarget.querySelector("a").getAttribute("data-target"));
                 if(currTarget.querySelector("a").getAttribute("data-target")) {
                     currTargetID = currTarget.querySelector("a").getAttribute("data-target");
                 }
             }
-            console.log("currTarget ID" , currTargetID);
 
             allTabs.forEach(function(tab) {
                 if(tab.classList.contains("active")) {

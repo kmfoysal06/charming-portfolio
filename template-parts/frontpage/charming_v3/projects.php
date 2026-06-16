@@ -29,7 +29,7 @@ $project_link = isset($project['link']) ? $project['link'] : '#';
     <div class="project-card">
       <div class="project-type"><?php echo esc_html($project_category); ?></div>
       <div class="project-title"><?php echo esc_html($project_name); ?></div>
-      <div class="project-desc"><?php echo esc_html($project_desc); ?></div>
+      <div class="project-desc"><?php echo wp_kses_post($project_desc); ?></div>
       <a href="<?php echo esc_attr($project_link); ?>" class="project-link">
         View Project
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

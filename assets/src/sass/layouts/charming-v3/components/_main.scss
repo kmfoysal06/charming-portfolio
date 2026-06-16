@@ -414,22 +414,44 @@
     margin-bottom: 12px;
   }
 
+  /**
+   Support Markups from Quill Editor (WYSIWYG)
+  **/
   .skill-desc {
     font-size: 13px;
     line-height: 1.7;
     color: var(--gray-400);
     font-weight: 300;
   }
-.skill-desc strong,
-.skill-desc strong
-{
+  .skill-desc strong,
+  .skill-desc b
+  {
+      font-weight: 600;
+      color: var(--white);
+  }
+  .skill-desc li[data-list="bullet"] {
+    list-style-type: disc;
+  }
+  .project-desc strong,
+  .project-desc b
+  {
+      font-weight: 600;
+      color: #000;
+  }
+  .project-desc li[data-list="bullet"] {
+    list-style-type: disc;
+  }
+.timeline-desc strong, 
+.timeline-desc b {
     font-weight: 500;
-    color: var(--white);
+    color: var(--black);
 }
-.skill-desc li[data-list="bullet"] {
+.timeline-desc li[data-list="bullet"] {
   list-style-type: disc;
 }
-
+/**
+   Support Markups from Quill Editor (WYSIWYG) (end)
+  **/
 
   .skill-tags {
     display: flex; flex-wrap: wrap; gap: 8px;
@@ -561,14 +583,6 @@
     max-width: 640px;
     font-weight: 300;
   }
-.timeline-desc strong, 
-.timeline-desc b {
-    font-weight: 500;
-    color: var(--black);
-}
-.timeline-desc li[data-list="bullet"] {
-  list-style-type: disc;
-}
 
 
   /* ── ANIMATIONS ── */

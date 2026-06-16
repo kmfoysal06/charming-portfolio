@@ -4,7 +4,6 @@
             this.init();
         }
         init() {
-            console.log("Initializing Save_Data", window.is_cp_input_updated);
 
             const saveButton = $(".charming-portfolio-save-data");
             const additionalSaveButton = $(".charming-portfolio-save-additional-data");
@@ -123,7 +122,6 @@
                                 updateBtnWrapper.find(".charming-portfolio-save-data").prop("disabled", false);
                                 updateBtnWrapper.find(".charming-portfolio-save-data").text(charming_portfolio_admin.save);
                                 charming_portfolio_input_update(false);
-                                console.log("is input updated?", window.is_cp_input_updated);
                                 CharmAlert.showAlert("Updated New Informations!", 'success');
                             } else {
                                 updateBtnWrapper.removeClass("loading");
@@ -154,11 +152,9 @@
                         const skillsData = [];
                         skills.each(function(index) {
                             if($(this).hasClass("empty_blueprint")) {
-                                console.log("skipping empty blueprint");
                                 return;
                             }
                             if(!$(this).hasClass("empty_blueprint")) {
-                                console.log("not empty blueprint");
                                 const skillName = $(this).find(".name").val();
                                 const skillImageUrl = $(this).find(".image-url").val();
                                 const skillDescription = $(this).find(".description").val();
@@ -188,7 +184,6 @@
                             const stillWorking = $(this).find(".working").is(':checked') ? '1' : '0';
 
                             if($(this).hasClass("empty_blueprint")) {
-                                console.log("skipping empty blueprint");
                                 return;
                             }
     
@@ -203,14 +198,12 @@
                                     working: stillWorking
                                 });
                             }else{
-                                console.log("Experience data missing", { institution, postTitle, responsibility, startDate });
                                 throw new Error(`Experience ${institution || postTitle || startDate}: Please fill all required fields (Institution, Post Title, Responsibility, Start Date)`);
                             }
                         });
                         const projectsData = [];
                         projects.each(function() {
                             if($(this).hasClass("empty_blueprint")){
-                                console.log("skipping empty blueprint");
                                 return;
                             }
                             const projectName = $(this).find(".title").val();
@@ -231,7 +224,7 @@
                                     category: projectCategory
                                 });
                             }else{
-                                throw new Error(`Project ${projectName || projectDescription || projectLink}: Please fill all required fields (Name, Description, Link)`);
+                                throw new Error(`Project ${projectName || projectLink}: Please fill all required fields (Name, Description, Link)`);
                             }
                         });
                         const data = new FormData();

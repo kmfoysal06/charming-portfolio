@@ -21,7 +21,6 @@
                 queue = isNaN(queue) ? 1 : queue ;
                 let row = $(`.${hiddenFields.join(".")}`).clone(true).removeClass(hiddenFields.join(" "));
                 if(row.hasClass("empty_blueprint")){
-                    console.log("empty-blueprint removed");
                     row.removeClass("empty_blueprint");
                 }
                 let newInputs = row.find('input, textarea');
@@ -40,6 +39,7 @@
             });
 
             $(`.${removeBtn}`).on('click', function() {
+                $(document).trigger('charming-portfolio-before-repeater-remove', [dataName, queue]);
                 $(this).parents('tr').remove();
                 $(document).trigger('charming-portfolio-repeater-remove', [dataName, queue]);
                 return false;
