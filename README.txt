@@ -3,7 +3,7 @@ Contributors: kmfoysal06
 Tags: charming-portfolio, simplecharm-portfolio, portfolio-plugin, simple-portfolio
 Requires at least: 6.0
 Tested up to: 7.0
-Stable tag: 3.0.2
+Stable tag: 3.0.3
 Requires PHP: 8.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -66,17 +66,20 @@ TailwindCSS
 The Uncompiled Assetes and The Configuration Files Will Be Found [Here](https://github.com/kmfoysal06/charming-portfolio/tree/master/assets)
 
 == Screenshots ==
-1. Basic Information Setting
-2. About Me Setting
-3. Contact and Social Media Setting
-4. Skill Customization
-5. Experience Customization
-6. Projects Customization
-7. Information Preview
-8. Portfolio Settings In Admin
-9. Portfolio Frontpage Basic Information
-10. Portfolio Frontpage About Me
-11. Portfolio Frontpage Skills Section
-12. Exoerience Section
-13. Project Section
-14. Porfolio Footer
+1. Portfolio Hero Section
+2. Portfolio Skills Section
+3. Portfolio Projects Section
+4. Portfolio Experience Section
+5. Portfolio Footer and Contact Form
+6. List of Enquiries in Admin
+7. Portfolio Overview in Admin
+8. Portfolio Basic Settings in Admin
+9. Portfolio Hero Section Settings in Admin
+10. Portfolio State Boxes Settings in Admin
+11. Portfolio Contact Information Settings in Admin
+12. Portfolio Header, Footer, and Social Links Settings in Admin
+13. Portfolio Theme Settings in Admin
+14. Portfolio Skills Section Settings in Admin
+15. Portfolio Experience Section Settings in Admin
+16. Portfolio Projects Section Settings in Admin
+17. Portfolio Erase Data in Admin

@@ -70,3 +70,6 @@
 -Organized Admin UI
 ==v3.0.2==
 - Added WSYIWYG Support with quill.js
+==v3.0.3==
+- Hotfix: Assets register version issue
+- UI: ul indent issue and style in p tag in hero description issue

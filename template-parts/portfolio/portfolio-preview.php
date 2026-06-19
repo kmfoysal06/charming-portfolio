@@ -51,7 +51,7 @@ if( ! defined( 'ABSPATH' ) ) {
             <div class="section-title">Short Description</div>
             <p><?php echo esc_html($args['short_description'] ?? ""); ?></p>
             <div class="section-title">Description</div>
-            <p><?php echo esc_html($args['description'] ?? "") ?></p>
+            <p><?php echo wp_kses_post($args['description'] ?? "") ?></p>
             <div class="social-links">
                 <?php
                     $charming_portfolio_social_links = isset($args['social_links']) ? $args['social_links'] : [];
