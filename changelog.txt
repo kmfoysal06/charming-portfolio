@@ -73,3 +73,5 @@
 ==v3.0.3==
 - Hotfix: Assets register version issue
 - UI: ul indent issue and style in p tag in hero description issue
+==v3.0.4==
+- Patch: Experience Section Date Format Modified for v3

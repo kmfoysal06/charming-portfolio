@@ -23,9 +23,12 @@ $charming_portfolio_experiences = $args['experiences'] ?? false;
       <div class="timeline-item">
         <div class="timeline-year">
             <?php
-                $end_date = $exp['working'] ? __("Present", "charming-portfolio") : $exp['end_date'];
+                $end_date = $exp['working'] ? __("Present", "charming-portfolio") : date_i18n( 'M Y', strtotime( $exp['end_date'] ) );
+
+
+                $exp['start_date'] = date_i18n( 'M Y', strtotime( $exp['start_date'] ) );
             ?>
-          <?php echo esc_html($exp['start_date']); ?>-<?php echo esc_html($end_date); ?>
+          <?php echo esc_html($exp['start_date']); ?> - <?php echo esc_html($end_date); ?>
         </div>
 
         <div class="timeline-role">
