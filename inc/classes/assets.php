@@ -21,6 +21,16 @@ class Assets
     public function __construct()
     {
         $this->setup_hook();
+        $this->get_menifest("src/main.js");
+    }
+    public function get_menifest($path = "") {
+        $manifest_file = CHARMING_PORTFOLIO_DIR_PATH . "/mrvite/build/.vite/manifest.json";
+        $manifest_arr = json_decode(file_get_contents($manifest_file));
+        $script_data = $manifest_arr->$path;
+        var_dump($script_data);
+        echo "<br>";
+        die;
+
     }
     public function setup_hook()
     {
