@@ -1,0 +1,50 @@
+/**
+ * Repeater Controll
+ */
+(function($) {
+    class Repeater {
+        constructor() {
+            this.init();
+        }
+        init() {
+            this.handleRepeater("charming_portfolio_social_link_add", ['charming_portfolio_empty-row__social_link', 'screen-reader-text'], '#repeatable-fieldset-one tbody>tr', 'charming_portfolio_social_link_remove','social_link');
+            this.handleRepeater("charming_portfolio_skill_link_add", ['charming_portfolio_empty-row__skills_link', 'screen-reader-text'], '#repeatable-fieldset-one tbody>tr', 'charming_portfolio_skills_remove','skills');
+            this.handleRepeater("charming_portfolio_experience_add", ['charming_portfolio_empty-row__experience', 'screen-reader-text'], '#repeatable-fieldset-two tbody>tr', 'charming_portfolio_experience_remove','experiences');
+            this.handleRepeater("charming_portfolio_work_add", ['charming_portfolio_empty-row__works', 'screen-reader-text'], '#repeatable-fieldset-three tbody>tr', 'charming_portfolio_project_remove','works');
+            this.handleRepeater("charming_portfolio_header_link_add", ['charming_portfolio_empty-row__header_link', 'screen-reader-text'], '#repeatable-fieldset-header-links tbody>tr', 'charming_portfolio_header_link_remove','header_link');
+            this.handleRepeater("charming_portfolio_footer_link_add", ['charming_portfolio_empty-row__footer_link', 'screen-reader-text'], '#repeatable-fieldset-footer-links tbody>tr', 'charming_portfolio_footer_link_remove','footer_link');
+        }
+        handleRepeater(addBtn, hiddenFields, insertBefore, removeBtn, dataName) {
+            let queue = $(`${ insertBefore }:nth-last-child(2) input`).data("queue");
+            $(`#${addBtn}`).on('click', function() {
+                queue++;
+                queue = isNaN(queue) ? 1 : queue ;
+                let row = $(`.${hiddenFields.join(".")}`).clone(true).removeClass(hiddenFields.join(" "));
+                if(row.hasClass("empty_blueprint")){
+                    row.removeClass("empty_blueprint");
+                }
+                let newInputs = row.find('input, textarea');
+                newInputs.each(function() {
+                    $(this).attr('data-queue', queue);
+                    let inputType = $(this)[0].className;                    
+                    $(this).attr('name', `CHARMING_PORTFOLIO[${dataName}][${queue}][][${inputType}]`);
+                    let inputId = $(this).attr("id");
+                    let LabelFor = $(this).siblings('label').attr('for');
+                    $(this).attr("id",`${inputId}-${queue}`);
+                    $(this).siblings('label').attr("for",`${LabelFor}-${queue}`);
+                });
+                row.insertBefore(`${insertBefore}:last-child`);
+                $(document).trigger('charming-portfolio-repeater-add', [dataName, queue, row]);
+                return false;
+            });
+
+            $(`.${removeBtn}`).on('click', function() {
+                $(document).trigger('charming-portfolio-before-repeater-remove', [dataName, queue]);
+                $(this).parents('tr').remove();
+                $(document).trigger('charming-portfolio-repeater-remove', [dataName, queue]);
+                return false;
+            });
+        }
+    }
+    new Repeater();
+})(jQuery)

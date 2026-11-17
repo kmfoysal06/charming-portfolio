@@ -75,3 +75,5 @@
 - UI: ul indent issue and style in p tag in hero description issue
 ==v3.0.4==
 - Patch: Experience Section Date Format Modified for v3
+==v3.1.0==
+- Goal: To replace webpack with vite to make development flow fast

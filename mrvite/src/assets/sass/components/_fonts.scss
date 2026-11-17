@@ -1,0 +1,53 @@
+@font-face {
+  font-display: swap; 
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: local('Inter'), url(@/assets/fonts/inter-v13-latin-regular.woff2) format('woff2'); 
+  src: local('Inter'), url(@/assets/fonts/inter-v13-latin-regular.woff) format('woff'); 
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 400;
+  src: local('Jost'), url(@/assets/fonts/Jost-Regular.woff) format('woff2'); 
+  src: local('Jost'), url(@/assets/fonts/Jost-Regular.woff2) format('woff'); 
+}
+font-face {
+  font-display: swap; 
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Outfit'), url(@/assets/fonts/outfit-v15-latin-regular.woff2) format('woff2'); 
+  src: local('Outfit'), url(@/assets/fonts/outfit-v15-latin-regular.woff2) format('woff'); 
+
+}
+
+@font-face {
+  font-display: swap; 
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Poppins'), url(@/assets/fonts/poppins-v24-latin-regular.woff2) format('woff2'); 
+  src: local('Poppins'), url(@/assets/fonts/poppins-v24-latin-regular.ttf) format('truetype'); 
+}
+
+@font-face {
+  font-display: swap; 
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: local('dm mono'), url(@/assets/fonts/dm-mono-v16-latin-regular.woff2) format('woff2'); 
+  src: local('dm mono'), url(@/assets/fonts/dm-mono-v16-latin-regular.ttf) format('truetypewoff'); 
+}
+
+@font-face {
+  font-display: swap; 
+  font-family: 'Bebas Neue';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Bebas Neue'), url(@/assets/fonts/bebas-neue-v16-latin-regular.ttf) format('truetype'); 
+  src: local('Bebas Neue'), url(@/assets/fonts/bebas-neue-v16-latin-regular.woff2) format('woff2'); 
+}

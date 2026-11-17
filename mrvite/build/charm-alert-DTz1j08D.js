@@ -1,0 +1,20 @@
+window.CharmAlert = class e {
+	constructor() {
+		this.timeout = null;
+	}
+	static getInstance() {
+		return this.instance ||= new e(), this.instance;
+	}
+	showAlert(e, t = "info") {
+		let n = document.createElement("div");
+		n.className = `charm-alert charm-alert-${t}`, n.style.position = "fixed", n.style.top = "50px", n.style.zIndex = "1111", n.style.left = "50%", n.style.transform = "translateX(-50%)", n.style.padding = "10px 20px", n.style.borderRadius = "5px", n.style.color = "#fff", n.style.fontSize = "16px", n.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)", n.style.backgroundColor = t === "success" ? "#4CAF50" : t === "error" ? "#F44336" : t === "warning" ? "#FF9800" : "#2196F3", n.style.transition = "opacity 0.3s ease-in-out", n.style.opacity = "0.9", n.style.cursor = "pointer", n.innerText = e, n.addEventListener("mouseenter", () => {
+			this.timeout !== void 0 && clearTimeout(this.timeout);
+		}), n.addEventListener("mouseleave", () => {
+			this.timeout = setTimeout(() => {
+				n.remove();
+			}, 3e3);
+		}), document.body.appendChild(n), this.timeout = setTimeout(() => {
+			n.remove();
+		}, 3e3);
+	}
+}.getInstance();

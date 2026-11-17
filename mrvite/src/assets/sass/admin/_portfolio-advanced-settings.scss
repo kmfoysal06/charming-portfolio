@@ -1,0 +1,110 @@
+//@use "variables.scss" as * ;
+//@use "sass:color";
+
+/* Inline | http://localhost/wp-admin/admin.php?page=charming_portfolio_additional_menu */
+
+@use "variables.scss" as *;
+
+.portfolio_page_charming_portfolio_additional_menu {
+  .charming-portfolio-skills {
+//    background: $input-bg-darker;
+//    padding: 10px;
+
+    .button {
+      min-height: revert;
+      line-height: 1.5;
+      padding-block: 4px;
+    }
+
+    tbody {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .skill {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 16px;
+        background: #fff;
+        border-radius: 4px;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset; 
+
+        td {
+          width: 100%;
+
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          &:last-child {
+            display: flex;
+            justify-content: end;
+            align-items: end;
+            flex-direction: column;
+          }
+
+          input {
+            //width: 100%;
+            width: min(100%, 300px);
+          }
+
+          img {
+            width: 50px;
+            display: block;
+            height: auto;
+            object-fit: contain;
+          }
+
+          .button {
+            display: block;
+            width: fit-content;
+            margin-left: auto;
+          }
+          label {
+            max-width: 50%;
+          }
+        }
+      }
+    }
+
+    .cp__add-another-btn-wrapper {
+      text-align: right;
+    }
+
+    .charming-portfolio-projects,
+    .charming-portfolio-experience {
+      a.button {
+        min-height: revert;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  .single-experience,
+  .single-project {
+    display: flex;
+    flex-direction: column;
+    box-shadow:
+      rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+      rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    padding: 16px;
+    border-radius: 6px;
+    margin-block: 8px;
+
+    td {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      font-size: 16px;
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .portfolio_page_charming_portfolio_additional_menu {
+    textarea {
+      width: 100%;
+    }
+
+  }
+}

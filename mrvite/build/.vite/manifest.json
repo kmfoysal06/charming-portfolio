@@ -1,0 +1,57 @@
+{
+  "_charm-alert-CnubiMGy.cjs": {
+    "file": "charm-alert-CnubiMGy.cjs",
+    "name": "charm-alert"
+  },
+  "_contact_form-CyfKn-qa.cjs": {
+    "file": "contact_form-CyfKn-qa.cjs",
+    "name": "contact_form"
+  },
+  "src/assets/js/admin.js": {
+    "file": "admin.cjs.js",
+    "name": "admin",
+    "src": "src/assets/js/admin.js",
+    "isEntry": true,
+    "imports": [
+      "_charm-alert-CnubiMGy.cjs"
+    ],
+    "css": [
+      "admin.css"
+    ]
+  },
+  "src/assets/js/charming-v2.js": {
+    "file": "charming_v2.cjs.js",
+    "name": "charming_v2",
+    "src": "src/assets/js/charming-v2.js",
+    "isEntry": true,
+    "imports": [
+      "_charm-alert-CnubiMGy.cjs",
+      "_contact_form-CyfKn-qa.cjs"
+    ],
+    "css": [
+      "charming_v2.css"
+    ]
+  },
+  "src/assets/js/charming-v3.js": {
+    "file": "charming_v3.cjs.js",
+    "name": "charming_v3",
+    "src": "src/assets/js/charming-v3.js",
+    "isEntry": true,
+    "imports": [
+      "_charm-alert-CnubiMGy.cjs",
+      "_contact_form-CyfKn-qa.cjs"
+    ],
+    "css": [
+      "charming_v3.css"
+    ]
+  },
+  "src/main.js": {
+    "file": "main.cjs.js",
+    "name": "main",
+    "src": "src/main.js",
+    "isEntry": true,
+    "css": [
+      "main.css"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+.CHARMING_PORTFOLIO_primary-image-container{
+    position: relative;
+	img:nth-child(1){
+	    position:relative;
+	    z-index:1;
+	}
+	img:nth-child(2){
+	    position: absolute;
+	    top: -10px;
+	    left: 35px;
+	    filter: blur(5px);
+	    display: block;
+	    @media (max-width: 768px){
+			display: none;
+		}
+	}
+
+}
