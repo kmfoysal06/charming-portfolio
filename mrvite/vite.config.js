@@ -8,8 +8,8 @@ export default {
         lib: {
             entry: {
                 main: 'src/main.js',
-                charming_v2: 'src/assets/js/charming-v2.js',
-                charming_v3: 'src/assets/js/charming-v3.js',
+                charming_v2: 'src/charming-v2.js',
+                charming_v3: 'src/charming-v3.js',
                 admin: 'src/assets/js/admin.js',
             },
 

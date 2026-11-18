@@ -43,7 +43,7 @@ class Assets
         wp_register_script("CHARMING_PORTFOLIO_portofolio_react", CHARMING_PORTFOLIO_DIR_URI . '/assets/build/js/portfolio_react.js', [], filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/js/portfolio_react.js'), true);
         wp_register_script("CHARMING_PORTFOLIO_portofolio_layout_v2", CHARMING_PORTFOLIO_DIR_URI . '/assets/build/js/charming_v2.js', [], filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/js/charming_v2.js'), true);
 
-        wp_register_script("CHARMING_PORTFOLIO_portofolio_layout_v3", CHARMING_PORTFOLIO_DIR_URI . '/' . $this->viteloc . '/build/js/charming_v3.js', [], filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/js/charming_v3.js'), true);
+        wp_register_script("CHARMING_PORTFOLIO_portofolio_layout_v3", CHARMING_PORTFOLIO_DIR_URI . '/' . $this->viteloc . '/build/charming_v3.js', [], filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/charming_v3.js'), true);
 
         wp_localize_script("CHARMING_PORTFOLIO_portofolio_react", "portfolio_data", $portfolio_saved_value);
 
@@ -81,7 +81,7 @@ class Assets
         global $post;
         $is_shortcode = (is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'charming_portfolio_render_portfolio'));
 
-        wp_register_style('CHARMING_PORTFOLIO_tailwindcss', CHARMING_PORTFOLIO_DIR_URI . '/assets/build/css/main.css', [], filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/css/main.css'), 'all');
+        wp_register_style('CHARMING_PORTFOLIO_tailwindcss', CHARMING_PORTFOLIO_DIR_URI . '/mrvite/build/main.css', [], filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/mrvite/build/main.css'), 'all');
         wp_register_style('CHARMING_PORTFOLIO_charming_v2', CHARMING_PORTFOLIO_DIR_URI . '/assets/build/css/charming_v2.css', [],  filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/assets/build/css/charming_v2.css'), 'all');
 
         wp_register_style('CHARMING_PORTFOLIO_charming_v3', CHARMING_PORTFOLIO_DIR_URI . '/' . $this->viteloc . '/build/charming_v3.css', [],  filemtime(CHARMING_PORTFOLIO_DIR_PATH . '/' . $this->viteloc . '/build/charming_v3.css'), 'all');

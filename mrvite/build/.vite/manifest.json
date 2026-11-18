@@ -19,10 +19,10 @@
       "admin.css"
     ]
   },
-  "src/assets/js/charming-v2.js": {
+  "src/charming-v2.js": {
     "file": "charming_v2.cjs.js",
     "name": "charming_v2",
-    "src": "src/assets/js/charming-v2.js",
+    "src": "src/charming-v2.js",
     "isEntry": true,
     "imports": [
       "_charm-alert-CnubiMGy.cjs",
@@ -32,10 +32,10 @@
       "charming_v2.css"
     ]
   },
-  "src/assets/js/charming-v3.js": {
+  "src/charming-v3.js": {
     "file": "charming_v3.cjs.js",
     "name": "charming_v3",
-    "src": "src/assets/js/charming-v3.js",
+    "src": "src/charming-v3.js",
     "isEntry": true,
     "imports": [
       "_charm-alert-CnubiMGy.cjs",
