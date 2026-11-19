@@ -1,41 +1,52 @@
-const path = require('node:path');
-export default {
-    build: {
-        outDir: 'build',
-        emptyOutDir: false,
-        manifest: true,
-        cssCodeSplit: true,
-        // rolllupOptions: {
-        //     input: {
-        //         main: 'src/main.js',
-        //         charming_v2: 'src/charming-v2.js',
-        //         charming_v3: 'src/charming-v3.js',
-        //         admin: 'src/assets/js/admin.js',
-        //     },
-        //     output: {
-        //         format: "umd",
-        //         strict: false,
-        //         chunkFileNames: `[name].[hash].js`,
-        //         entryFileNames: "[name].bundle.umd.js",
-        //         dir: "dist"
-        //     },
-        // },
-        lib: {
-            entry: {
-                main: 'src/main.js',
-                charming_v2: 'src/charming-v2.js',
-                charming_v3: 'src/charming-v3.js',
-                admin: 'src/assets/js/admin.js',
-            },
+import path from "node:path";
+import { defineConfig } from "vite";
 
-            fileName: (format, entryName) => `${entryName}.${format}.js`,
-        },
-
-
-    },
+// https://vitejs.dev/config/
+export default defineConfig({
     resolve: {
         alias: {
-            '@': path.resolve(import.meta.dirname, 'src'),
-        }
-    }
-}
+            "@": path.resolve(import.meta.dirname, "src"),
+        },
+    },
+
+    build: {
+        chunkSizeWarningLimit: 1600,
+        rollupOptions: {
+            input: {
+                main: "@/main.js",
+                admin: "@/assets/js/admin.js",
+                charming_v2: "@/charming-v2.js",
+                charming_v3: "@/charming-v3.js",
+            },
+            output: {
+                entryFileNames: `js/[name].js`,
+                chunkFileNames: `js/chunks/[name].js`,
+                assetFileNames: (file) => {
+                    const names = file['names'];
+                    if (names.length) {
+                        const name = names[0];
+                        const file_name_sep = name.split(".");
+
+                        const fontFiles = ['ttf', 'woff', 'woff2'];
+                        const imageFiles = ['jpg', 'png', 'jpeg', 'webp', 'avif'];
+
+                        const extension = file_name_sep[file_name_sep.length - 1];
+                        if (fontFiles.includes(extension)) {
+                            return `fonts/[name].[ext]`;
+                        }
+                        if (imageFiles.includes(extension)) {
+                            return `images/[name].[ext]`;
+                        }
+                        if (extension == 'css') {
+                            return `css/[name].[ext]`;
+                        }
+                    }
+
+
+                    return `assets/[name].[ext]`;
+                },
+            },
+        },
+    },
+});
+
