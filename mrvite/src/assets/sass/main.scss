@@ -1,7 +1,7 @@
 /**
  * Import TailwindCss (not need as i am gonna remove the first theme and all react codes, as it was not a good decision to introduce react for only a page)
  */
-// @forward "@/assets/sass/tailwindcss/tailwindcss";
+ @forward "@/assets/sass/tailwindcss/tailwindcss";
 
 @forward "@/assets/sass/components/skills";
 @forward "@/assets/sass/components/bottom-alert";

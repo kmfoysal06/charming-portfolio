@@ -1,8 +1,22 @@
 import path from "node:path";
 import { defineConfig } from "vite";
+import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    plugins: [
+        viteStaticCopy({
+            targets: [
+                {
+                    src: "src/assets/fonts/",
+                    dest: "./",
+                    rename: {
+                        stripBase: 2
+                    }
+                }
+            ]
+        })
+    ],
     resolve: {
         alias: {
             "@": path.resolve(import.meta.dirname, "src"),
@@ -35,7 +49,7 @@ export default defineConfig({
                             return `fonts/[name].[ext]`;
                         }
                         if (imageFiles.includes(extension)) {
-                            return `images/[name].[ext]`;
+                            return `img/[name].[ext]`;
                         }
                         if (extension == 'css') {
                             return `css/[name].[ext]`;
