@@ -1,137 +1,138 @@
 <?php
+
 /**
  * Customize  Experience For Portfolio Customization Option
  * @package Charming Portfolio
  */
-if( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
     exit;
 }
 ?>
 <!-- experience setting -->
 <div class="portfolio-section-wrapper">
-  <h3 class="portfolio-section-toggle"><?php esc_html_e("Experience Customization","charming-portfolio"); ?></h3>
+    <h3 class="portfolio-section-toggle"><?php esc_html_e("Experience Customization", "charming-portfolio"); ?></h3>
 
-<div class="portfolio-section-content charming-portfolio-experience admin">
-    <table id="repeatable-fieldset-two" width="100%">
-      <tbody>
-  <?php
-if (is_array($args) && array_key_exists("experiences", $args)):
-    foreach ($args['experiences'] as $key => $experience):
-        $key = $key + 1;
-    //   $experience = CHARMING_PORTFOLIO_flattern_array($experience);
-        if(!is_array($experience) || empty($experience)) continue;
-        $working_now = (array_key_exists('working',$experience)) ? $experience['working'] : '0';
-        $logo = isset($experience['logo']) ? $experience['logo'] : CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/code.png";
-                
+    <div class="portfolio-section-content charming-portfolio-experience admin">
+        <table id="repeatable-fieldset-two" width="100%">
+            <tbody>
+                <?php
+                if (is_array($args) && array_key_exists("experiences", $args)):
+                    foreach ($args['experiences'] as $key => $experience):
+                        $key = $key + 1;
+                        //   $experience = CHARMING_PORTFOLIO_flattern_array($experience);
+                        if (!is_array($experience) || empty($experience)) continue;
+                        $working_now = (array_key_exists('working', $experience)) ? $experience['working'] : '0';
+                        $logo = isset($experience['logo']) ? $experience['logo'] : CHARMING_PORTFOLIO_DIR_URI . "/mrvite/dist/img/code.png";
 
-    ?>
- <tr class="single-experience">
-    <td>
 
-                        <label for="<?php echo esc_attr("experience-image-" . $key); ?>"><?php esc_html_e("Experience Image","charming-portfolio"); ?>
+                ?>
+                        <tr class="single-experience">
+                            <td>
 
-                            <span class="dashicons dashicons-editor-help charming-portfolio-help-icon" data-title="<?php esc_attr_e("Click the image next to change it.", "charming-portfolio"); ?>"></span>
-                        </label>
-            <img width="200px" height="auto" src="<?php echo esc_url($logo) ?>" class="image" />
-                        <input type="hidden" name="" value="<?php echo esc_url($logo) ?>" class="image-url" data-queue="<?php echo esc_attr($key); ?>" id="<?php echo esc_attr("experience-image-" . $key); ?>"/>
-		</td>
-    <td>
-        <label for="<?php echo esc_attr("experience-institution-" . $key,'charming-portfolio'); ?>"><?php esc_html_e("Institution",'charming-portfolio'); ?></label>
-        <input type="text" class="institution" placeholder="Experience Institution" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][institution]" value="<?php echo (array_key_exists("institution",$experience)) ? esc_attr($experience['institution']) : "" ;?>" id="experience-institution-<?php echo esc_attr($key); ?>"  data-queue="<?php echo esc_attr($key); ?>" maxlength="30">
-    </td>
-    <td>
-        <label for="<?php echo esc_attr("experience-post-title-" . $key); ?>" title="<?php esc_attr_e("enter your job post title eg:- Sr. Laravel Developer etc.","charming-portfolio"); ?>"><?php esc_html_e("Post Title","charming-portfolio"); ?></label>
-        <input type="text" class="post-title" placeholder="<?php esc_html_e('Post Title','charming-portfolio'); ?>" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][post-title]" value="<?php echo (array_key_exists("post-title",$experience)) ? esc_attr($experience['post-title']) : '' ;?>" id="<?php echo esc_attr("experience-post-title-" . $key,'charming-portfolio'); ?>" data-queue="<?php echo esc_attr($key); ?>" maxlength="30">
-    </td>
-    <td class="responsibilities" id="repeatable-fieldset-three">
-        <label for="<?php echo esc_attr("responsibilities-" . $key); ?>" title="<?php esc_attr_e('What was your responsibilities here?.','charming-portfolio'); ?>"><?php esc_html_e('Responsibilities','charming-portfolio'); ?></label>
-        <div class="quill-container-slot">
-            <div class="quill-editor-slot"></div>
-        </div>
-        <textarea name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key,'charming-portfolio'); ?>][][responsibility]" id="<?php echo esc_attr("responsibilities-" . $key); ?>" cols="50" rows="5" class="responsibility quill-textarea-slot" data-queue="<?php echo esc_attr($key); ?>" maxlength="800"><?php echo wp_kses_post((array_key_exists("responsibility",$experience)) ? $experience['responsibility'] : '') ;?></textarea>
-    </td>
-    <td>
-        <label for="<?php echo esc_attr("start-date-" . $key); ?>"><?php esc_html_e("Start Date",'charming-portfolio'); ?></label>
-        <input type="date" class="start_date" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][start_date]" placeholder="<?php esc_attr_e("Start Date",'charming-portfolio'); ?>" id="<?php echo esc_attr("start-date-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" value="<?php echo (array_key_exists("start_date",$experience)) ? esc_attr($experience['start_date']) : '' ;?>">
-    </td>
-    <td>
-        <label for="<?php echo esc_attr("end-date-" . $key); ?>"><?php esc_html_e("End Date",'charming-portfolio'); ?></label>
-        <input type="date" class="end_date" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][end_date]" placeholder="<?php esc_attr_e("End Date",'charming-portfolio'); ?>" id="<?php echo esc_attr("end-date-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" value="<?php echo (array_key_exists("end_date",$experience)) ? esc_attr($experience['end_date']) : '' ;?>" <?php disabled($working_now,'on');?>>
-    </td>
-    <td>
-        <label for="<?php echo esc_attr("working-now-" . $key,'charming-portfolio'); ?>" title="<?php esc_attr_e("Are You Still Working Here?",'charming-portfolio'); ?>"><?php esc_html_e("Still Working?",'charming-portfolio'); ?></label>
-       <div class="still-working-wrapper checkbox-wrapper">
+                                <label for="<?php echo esc_attr("experience-image-" . $key); ?>"><?php esc_html_e("Experience Image", "charming-portfolio"); ?>
+
+                                    <span class="dashicons dashicons-editor-help charming-portfolio-help-icon" data-title="<?php esc_attr_e("Click the image next to change it.", "charming-portfolio"); ?>"></span>
+                                </label>
+                                <img width="200px" height="auto" src="<?php echo esc_url($logo) ?>" class="image" />
+                                <input type="hidden" name="" value="<?php echo esc_url($logo) ?>" class="image-url" data-queue="<?php echo esc_attr($key); ?>" id="<?php echo esc_attr("experience-image-" . $key); ?>" />
+                            </td>
+                            <td>
+                                <label for="<?php echo esc_attr("experience-institution-" . $key, 'charming-portfolio'); ?>"><?php esc_html_e("Institution", 'charming-portfolio'); ?></label>
+                                <input type="text" class="institution" placeholder="Experience Institution" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][institution]" value="<?php echo (array_key_exists("institution", $experience)) ? esc_attr($experience['institution']) : ""; ?>" id="experience-institution-<?php echo esc_attr($key); ?>" data-queue="<?php echo esc_attr($key); ?>" maxlength="30">
+                            </td>
+                            <td>
+                                <label for="<?php echo esc_attr("experience-post-title-" . $key); ?>" title="<?php esc_attr_e("enter your job post title eg:- Sr. Laravel Developer etc.", "charming-portfolio"); ?>"><?php esc_html_e("Post Title", "charming-portfolio"); ?></label>
+                                <input type="text" class="post-title" placeholder="<?php esc_html_e('Post Title', 'charming-portfolio'); ?>" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][post-title]" value="<?php echo (array_key_exists("post-title", $experience)) ? esc_attr($experience['post-title']) : ''; ?>" id="<?php echo esc_attr("experience-post-title-" . $key, 'charming-portfolio'); ?>" data-queue="<?php echo esc_attr($key); ?>" maxlength="30">
+                            </td>
+                            <td class="responsibilities" id="repeatable-fieldset-three">
+                                <label for="<?php echo esc_attr("responsibilities-" . $key); ?>" title="<?php esc_attr_e('What was your responsibilities here?.', 'charming-portfolio'); ?>"><?php esc_html_e('Responsibilities', 'charming-portfolio'); ?></label>
+                                <div class="quill-container-slot">
+                                    <div class="quill-editor-slot"></div>
+                                </div>
+                                <textarea name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key, 'charming-portfolio'); ?>][][responsibility]" id="<?php echo esc_attr("responsibilities-" . $key); ?>" cols="50" rows="5" class="responsibility quill-textarea-slot" data-queue="<?php echo esc_attr($key); ?>" maxlength="800"><?php echo wp_kses_post((array_key_exists("responsibility", $experience)) ? $experience['responsibility'] : ''); ?></textarea>
+                            </td>
+                            <td>
+                                <label for="<?php echo esc_attr("start-date-" . $key); ?>"><?php esc_html_e("Start Date", 'charming-portfolio'); ?></label>
+                                <input type="date" class="start_date" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][start_date]" placeholder="<?php esc_attr_e("Start Date", 'charming-portfolio'); ?>" id="<?php echo esc_attr("start-date-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" value="<?php echo (array_key_exists("start_date", $experience)) ? esc_attr($experience['start_date']) : ''; ?>">
+                            </td>
+                            <td>
+                                <label for="<?php echo esc_attr("end-date-" . $key); ?>"><?php esc_html_e("End Date", 'charming-portfolio'); ?></label>
+                                <input type="date" class="end_date" name="CHARMING_PORTFOLIO[experiences][<?php echo esc_attr($key); ?>][][end_date]" placeholder="<?php esc_attr_e("End Date", 'charming-portfolio'); ?>" id="<?php echo esc_attr("end-date-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" value="<?php echo (array_key_exists("end_date", $experience)) ? esc_attr($experience['end_date']) : ''; ?>" <?php disabled($working_now, 'on'); ?>>
+                            </td>
+                            <td>
+                                <label for="<?php echo esc_attr("working-now-" . $key, 'charming-portfolio'); ?>" title="<?php esc_attr_e("Are You Still Working Here?", 'charming-portfolio'); ?>"><?php esc_html_e("Still Working?", 'charming-portfolio'); ?></label>
+                                <div class="still-working-wrapper checkbox-wrapper">
+                                    <div class="switch-btn-wrapper">
+                                        <input type="checkbox" id="<?php echo esc_attr("working-now-" . $key); ?>" class="working" data-queue="<?php echo esc_attr($key); ?>" <?php checked($working_now, '1'); ?>>
+
+                                        <div class="switch-btn">
+                                            <span></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <a class="button charming_portfolio_experience_remove" href="#1"><?php esc_html_e('Remove', 'charming-portfolio'); ?></a>
+                            </td>
+                        </tr>
+
+                <?php
+                    endforeach;
+                endif;
+                ?>
+
+                <!-- empty hidden one for jQuery -->
+                <tr class="charming_portfolio_empty-row__experience screen-reader-text single-experience empty_blueprint">
+                    <td>
+
+                        <label for="<?php echo esc_attr("experience-image-" . $key); ?>"><?php esc_html_e("Brand Logo", "charming-portfolio"); ?></label>
+                        <img width="200px" height="auto" src="<?php echo esc_url(CHARMING_PORTFOLIO_DIR_URI . "/mrvite/dist/img/code.png") ?>" class="image" />
+                        <input type="hidden" name="" value="<?php echo esc_url(CHARMING_PORTFOLIO_DIR_URI . "/mrvite/dist/img/code.png") ?>" class="image-url" data-queue="0" id="0" />
+                    </td>
+
+                    <td>
+                        <label for="experience-institution"><?php esc_html_e("institution", 'charming-portfolio'); ?></label>
+                        <input type="text" class="institution" placeholder="<?php esc_attr_e("Experience institution", 'charming-portfolio'); ?>" name="charming_portfolio[experiences][0][institution]" value="" id="experience-institution" data-queue="0">
+                    </td>
+                    <td>
+                        <label for="experience-post-title" title="<?php esc_attr_e('enter your job post title eg:- Sr. Laravel Developer etc.', 'charming-portfolio'); ?>"><?php esc_html_e("Post Title", 'charming-portfolio'); ?></label>
+                        <input type="text" class="post-title" placeholder="<?php esc_attr_e("Post Title", 'charming-portfolio'); ?>" name="charming_portfolio[experiences][0][post-title]" value="" id="experience-post-title" data-queue="0">
+                    </td>
+                    <td class="responsibilities noquill" id="repeatable-fieldset-three">
+
+                        <label for="responsibilities" title="<?php esc_attr_e('enter list separated by three dash (---) eg:- ---first responsibility --- second responsibility ---third responsibility etc.', 'charming-portfolio'); ?>"><?php esc_html_e("Responsibilities", 'charming-portfolio'); ?></label>
+                        <div class="quill-container-slot">
+                            <div class="quill-editor-slot"></div>
+                        </div>
+
+                        <textarea name="charming_portfolio[experiences][0][responsibility]" id="responsibilities" cols="50" rows="5" class="responsibility quill-textarea-slot" data-queue="0"></textarea>
+                    </td>
+                    <td>
+                        <label for="start-date"><?php esc_html_e('Start Date', 'charming-portfolio'); ?></label>
+                        <input type="date" class="start_date" name="charming_portfolio[experiences][0][start_date]" placeholder="<?php esc_attr_e('Start Date', 'charming-portfolio'); ?>" id="start-date" data-queue="0">
+                    </td>
+                    <td>
+                        <label for="end-date"><?php esc_html_e('End Date', 'charming-portfolio'); ?></label>
+                        <input type="date" class="end_date" name="charming_portfolio[experiences][0][end_date]" placeholder="<?php esc_attr_e('End Date', 'charming-portfolio'); ?>" id="end-date" data-queue="0">
+                    </td>
+                    <td>
+                        <label for="working-now" title="<?php esc_attr_e('Are You Still Working Here', 'charming-portfolio'); ?>"><?php esc_html_e('Still Working?', 'charming-portfolio'); ?></label>
+                        <div class="still-working-wrapper checkbox-wrapper">
                             <div class="switch-btn-wrapper">
-            <input type="checkbox" id="<?php echo esc_attr("working-now-" . $key); ?>" class="working" data-queue="<?php echo esc_attr($key); ?>" <?php checked($working_now,'1'); ?>>
-
+                                <input type="checkbox" id="working-now" name="charming_portfolio[experiences][0][working]" class="working" data-queue="0">
                                 <div class="switch-btn">
-            <span></span>
-                                    </div>
-
-                                    </div>
-       </div>
-    </td>
-    <td>
-        <a class="button charming_portfolio_experience_remove" href="#1"><?php esc_html_e('Remove','charming-portfolio'); ?></a>
-    </td>
-</tr>
-
-      <?php
-endforeach;
-endif;
-?>
-
-    <!-- empty hidden one for jQuery -->
-    <tr class="charming_portfolio_empty-row__experience screen-reader-text single-experience empty_blueprint">
-        <td>
-
-            <label for="<?php echo esc_attr("experience-image-" . $key); ?>"><?php esc_html_e("Brand Logo","charming-portfolio"); ?></label>
-            <img width="200px" height="auto" src="<?php echo esc_url(CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/code.png") ?>" class="image" />
-                        <input type="hidden" name="" value="<?php echo esc_url(CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/code.png") ?>" class="image-url" data-queue="0" id="0"/>
-		</td>
-
-    <td>
-        <label for="experience-institution"><?php esc_html_e("institution",'charming-portfolio'); ?></label>
-        <input type="text" class="institution" placeholder="<?php esc_attr_e("Experience institution",'charming-portfolio'); ?>" name="charming_portfolio[experiences][0][institution]" value="" id="experience-institution" data-queue="0">
-    </td>
-    <td>
-        <label for="experience-post-title" title="<?php esc_attr_e('enter your job post title eg:- Sr. Laravel Developer etc.','charming-portfolio'); ?>"><?php esc_html_e("Post Title",'charming-portfolio'); ?></label>
-        <input type="text" class="post-title" placeholder="<?php esc_attr_e("Post Title",'charming-portfolio'); ?>" name="charming_portfolio[experiences][0][post-title]" value="" id="experience-post-title" data-queue="0">
-    </td>
-    <td class="responsibilities noquill" id="repeatable-fieldset-three">
-
-        <label for="responsibilities" title="<?php esc_attr_e('enter list separated by three dash (---) eg:- ---first responsibility --- second responsibility ---third responsibility etc.','charming-portfolio'); ?>"><?php esc_html_e("Responsibilities",'charming-portfolio'); ?></label>
-        <div class="quill-container-slot">
-            <div class="quill-editor-slot"></div>
-        </div>
-
-        <textarea name="charming_portfolio[experiences][0][responsibility]" id="responsibilities" cols="50" rows="5" class="responsibility quill-textarea-slot" data-queue="0"></textarea>
-    </td>
-    <td>
-        <label for="start-date"><?php esc_html_e('Start Date','charming-portfolio'); ?></label>
-        <input type="date" class="start_date" name="charming_portfolio[experiences][0][start_date]" placeholder="<?php esc_attr_e('Start Date','charming-portfolio'); ?>" id="start-date" data-queue="0">
-    </td>
-    <td>
-        <label for="end-date"><?php esc_html_e('End Date','charming-portfolio'); ?></label>
-        <input type="date" class="end_date" name="charming_portfolio[experiences][0][end_date]" placeholder="<?php esc_attr_e('End Date','charming-portfolio'); ?>" id="end-date" data-queue="0">
-    </td>
-    <td>
-        <label for="working-now" title="<?php esc_attr_e('Are You Still Working Here','charming-portfolio'); ?>"><?php esc_html_e('Still Working?','charming-portfolio'); ?></label>
-        <div class="still-working-wrapper checkbox-wrapper">
-            <div class="switch-btn-wrapper">
-                <input type="checkbox" id="working-now" name="charming_portfolio[experiences][0][working]" class="working" data-queue="0">
-                <div class="switch-btn">
-                    <span></span>
-                </div>
-            </div>
-       </div>
-    </td>
-    <td>
-        <a class="button charming_portfolio_experience_remove" href="#1"><?php esc_html_e('Remove','charming-portfolio'); ?></a>
-    </td>
-    </tr>
-  </tbody>
-</table>
-<p><a id="charming_portfolio_experience_add" class="button" href="#"><?php esc_html_e('Add Another','charming-portfolio'); ?></a></p>
-</div>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <a class="button charming_portfolio_experience_remove" href="#1"><?php esc_html_e('Remove', 'charming-portfolio'); ?></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p><a id="charming_portfolio_experience_add" class="button" href="#"><?php esc_html_e('Add Another', 'charming-portfolio'); ?></a></p>
+    </div>
 </div>
