@@ -1,26 +1,29 @@
 <?php
+
 /**
  * Class File Autoloader
  * This is Autoloader File That Will Load require_once The Mentioned Classes Automatically With Namespace and Class Name
  * @package Charming Portfolio
  */
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (! defined('ABSPATH')) exit;
 spl_autoload_register('CHARMING_PORTFOLIO_autoloader');
-function CHARMING_PORTFOLIO_autoloader($class) {
-	$namespace = 'CHARMING_PORTFOLIO';
- 
-	if (strpos($class, $namespace) !== 0) {
-		return;
-	}
- 
-	$class = str_replace($namespace, '', $class);
-	$class = str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
- 
-	$directory = CHARMING_PORTFOLIO_DIR_PATH;
-	$path = strtolower($directory . $class);
+function CHARMING_PORTFOLIO_autoloader($class)
+{
+    $namespace = 'CHARMING_PORTFOLIO';
 
- 
-	if (file_exists($path)) {
-		require_once($path);
-	}
+    if (strpos($class, $namespace) !== 0) {
+        return;
+    }
+
+    $class = str_replace($namespace, '', $class);
+    $class = str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
+
+    $directory = CHARMING_PORTFOLIO_DIR_PATH;
+    $path = $directory . strtolower($class);
+
+
+    if (file_exists($path)) {
+        require_once($path);
+    }
 }
+

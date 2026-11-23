@@ -1,25 +1,25 @@
-on: push
-name: Deploy website on push
-jobs:
-  web-deploy:
-  
-    name: 🎉 Deploy
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Install dependencies and build assets
-      run: |
-        cd assets
-        npm install
-        npm run build
-
-    - name: Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.6
-      with:
-        server: 198.23.142.86
-        server-dir: /wp-content/plugins/charming-portfolio/
-        local-dir: ./
-        username: portfolio@portfolio.kmfoysal06.com
-        password: ${{ secrets.dev_password }}
+#on: push
+#name: Deploy website on push
+#jobs:
+#  web-deploy:
+#  
+#    name: 🎉 Deploy
+#    runs-on: ubuntu-latest
+#    steps:
+#    - name: Checkout code
+#      uses: actions/checkout@v4
+#
+#    - name: Install dependencies and build assets
+#      run: |
+#        cd assets
+#        npm install
+#        npm run build
+#
+#    - name: Sync files
+#      uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+#      with:
+#        server: 198.23.142.86
+#        server-dir: /wp-content/plugins/charming-portfolio/
+#        local-dir: ./
+#        username: portfolio@portfolio.kmfoysal06.com
+#        password: ${{ secrets.dev_password }}

@@ -1,116 +1,117 @@
 <?php
+
 /**
  * Customize  Project Showcase For Portfolio Customization Option
  * @package Charming Portfolio
  */
-if( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
     exit;
 }
 ?>
 <!-- project list setting -->
 <div class="portfolio-section-wrapper">
-  <h3 class="portfolio-section-toggle"><?php esc_html_e("Project Customization",'charming-portfolio'); ?></h3>
-<div class="portfolio-section-content charming-portfolio-projects admin">
-    <p><?php
-    esc_html_e("You Can Not Use Quotation (\"\" and '') so You Can Use [quote], [squote] and [bold][/bold] for Adding Double and Single Quotation and Make Any Text Bold.","charming-portfolio") ?>
-    </p>
-    <table id="repeatable-fieldset-three" width="100%">
-      <tbody>
-        <?php if(is_array($args) && array_key_exists('works', $args)): 
-        $charming_portfolio_works = $args['works']; ?>
-        <?php foreach( $charming_portfolio_works as $key => $work ):
-            $key = $key + 1;
-            if(empty($work['title'])) continue; 
-            $category = isset($work['category']) ? $work['category'] : '';
-            $thumbnail = isset($work['thumbnail']) ? $work['thumbnail'] : CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/code.png";
-                
-                ?>
-    <tr class="flex simplecharm-basic-border simplecharm-basic-padding flex flex-col single-project">
-        <td>
+    <h3 class="portfolio-section-toggle"><?php esc_html_e("Project Customization", 'charming-portfolio'); ?></h3>
+    <div class="portfolio-section-content charming-portfolio-projects admin">
+        <p><?php
+            esc_html_e("You Can Not Use Quotation (\"\" and '') so You Can Use [quote], [squote] and [bold][/bold] for Adding Double and Single Quotation and Make Any Text Bold.", "charming-portfolio") ?>
+        </p>
+        <table id="repeatable-fieldset-three" width="100%">
+            <tbody>
+                <?php if (is_array($args) && array_key_exists('works', $args)):
+                    $charming_portfolio_works = $args['works']; ?>
+                    <?php foreach ($charming_portfolio_works as $key => $work):
+                        $key = $key + 1;
+                        if (empty($work['title'])) continue;
+                        $category = isset($work['category']) ? $work['category'] : '';
+                        $thumbnail = isset($work['thumbnail']) ? $work['thumbnail'] : CHARMING_PORTFOLIO_DIR_URI . "/mrvite/dist/img/code.png";
 
-            <label for="<?php echo esc_attr("project-image-" . $key); ?>"><?php esc_html_e("Project Image","charming-portfolio"); ?></label>
-            <img width="200px" height="auto" src="<?php echo esc_url($thumbnail) ?>" class="image" />
-                        <input type="hidden" name="" value="<?php echo esc_url($thumbnail) ?>" class="image-url" data-queue="<?php echo esc_attr($key); ?>" id="<?php echo esc_attr("project-image-" . $key); ?>"/>
-		</td>
-        <td>
-            <label for="<?php echo esc_attr("project-title-" . $key); ?>"><?php esc_html_e("Title","charming-portfolio"); ?></label>
-            <input type="text" class="title" placeholder="<?php esc_attr_e("Project Title","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][title]" value="<?php echo esc_attr($work['title']); ?>" id="<?php echo esc_attr("project-title-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" maxlength="40">
-        </td>
-        <td class="charming-portfolio-project-description">
-                        <label for="<?php echo esc_attr("project-description-" . $key); ?>"><?php esc_html_e("Description","charming-portfolio"); ?>
+                    ?>
+                        <tr class="flex simplecharm-basic-border simplecharm-basic-padding flex flex-col single-project">
+                            <td>
 
-                            <span class="dashicons dashicons-editor-help charming-portfolio-help-icon" data-title="<?php esc_attr_e("You Can Not Use Quotation (\"\" and '') so You Can Use [quote], [squote] and [bold][/bold] for Adding Double and Single Quotation and Make Any Text Bold.", "charming-portfolio"); ?>"></span>
+                                <label for="<?php echo esc_attr("project-image-" . $key); ?>"><?php esc_html_e("Project Image", "charming-portfolio"); ?></label>
+                                <img width="200px" height="auto" src="<?php echo esc_url($thumbnail) ?>" class="image" />
+                                <input type="hidden" name="" value="<?php echo esc_url($thumbnail) ?>" class="image-url" data-queue="<?php echo esc_attr($key); ?>" id="<?php echo esc_attr("project-image-" . $key); ?>" />
+                            </td>
+                            <td>
+                                <label for="<?php echo esc_attr("project-title-" . $key); ?>"><?php esc_html_e("Title", "charming-portfolio"); ?></label>
+                                <input type="text" class="title" placeholder="<?php esc_attr_e("Project Title", "charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][title]" value="<?php echo esc_attr($work['title']); ?>" id="<?php echo esc_attr("project-title-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" maxlength="40">
+                            </td>
+                            <td class="charming-portfolio-project-description">
+                                <label for="<?php echo esc_attr("project-description-" . $key); ?>"><?php esc_html_e("Description", "charming-portfolio"); ?>
+
+                                    <span class="dashicons dashicons-editor-help charming-portfolio-help-icon" data-title="<?php esc_attr_e("You Can Not Use Quotation (\"\" and '') so You Can Use [quote], [squote] and [bold][/bold] for Adding Double and Single Quotation and Make Any Text Bold.", "charming-portfolio"); ?>"></span>
+                                </label>
+                                <div class="quill-container-slot">
+                                    <div class="quill-editor-slot"></div>
+                                </div>
+
+                                <textarea class="description quill-textarea-slot" placeholder="<?php esc_attr_e("Project Description", "charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][description]" id="<?php echo esc_attr("project-description-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" cols="50" rows="5" maxlength='800'><?php echo esc_textarea($work['description']); ?></textarea>
+                            </td>
+                            <td>
+                                <label for="<?php echo esc_attr("project-category-" . $key); ?>"><?php esc_html_e("Project Category", "charming-portfolio"); ?>
+
+                                    <span class="dashicons dashicons-editor-help charming-portfolio-help-icon" data-title="<?php esc_attr_e("eg: 'Plugin Development', 'UI/UX Design', 'SEO Consultation', etc. This field is necessary for v3 and upper.", "charming-portfolio"); ?>"></span>
+                                </label>
+
+                                <input type="text" class="category" placeholder="<?php esc_attr_e("Project Category", "charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][category]" value="<?php echo esc_attr($category); ?>" id="<?php echo esc_attr("project-category-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" maxlength="40">
+                            </td>
+                            <td>
+                                <label for="<?php echo esc_attr("project-tags-" . $key); ?>"><?php esc_html_e("Tags", "charming-portfolio"); ?></label>
+                                <textarea class="tags" placeholder="<?php esc_attr_e("Project Tags", "charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][tags]" id="<?php echo esc_attr("project-tags-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" cols="50" rows="5" maxlength="200"><?php echo esc_textarea($work['tags']); ?></textarea>
+                            </td>
+                            <td>
+                                <label for="<?php echo esc_attr("project-link-" . $key); ?>"><?php esc_html_e("Live Link", "charming-portfolio"); ?></label>
+                                <input type="text" class="link" placeholder="<?php esc_attr_e("Project Live Link", "charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][link]" value="<?php echo esc_url($work['link']); ?>" id="<?php echo esc_attr("project-link-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>">
+                            </td>
+                            <td>
+                                <a class="button charming_portfolio_project_remove" href="#1"><?php esc_html_e("Remove", "charming-portfolio"); ?></a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif ?>
+                <!-- empty hidden one for jQuery -->
+                <tr class="charming_portfolio_empty-row__works screen-reader-text flex simplecharm-basic-border simplecharm-basic-padding flex flex-col single-project empty_blueprint">
+                    <td>
+
+                        <label for="<?php echo esc_attr("project-image-" . $key); ?>"><?php esc_html_e("Project Image", "charming-portfolio"); ?></label>
+                        <img width="200px" height="auto" src="<?php echo esc_url(CHARMING_PORTFOLIO_DIR_URI . "/mrvite/dist/img/code.png") ?>" class="image" />
+                        <input type="hidden" name="" value="<?php echo esc_url(CHARMING_PORTFOLIO_DIR_URI . "/mrvite/dist/img/code.png") ?>" class="image-url" data-queue="0" id="0" />
+                    </td>
+                    <td>
+                        <label for="project-title"><?php esc_html_e("Title", "charming-portfolio"); ?></label>
+                        <input type="text" class="title" placeholder="<?php esc_attr_e("Project Title", "charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][0][title]" value="" id="project-title" data-queue="0">
+                    </td>
+                    <td class="charming-portfolio-project-description noquill">
+                        <label for="project-description"><?php esc_html_e("Description", "charming-portfolio"); ?></label>
+                        <div class="quill-container-slot">
+                            <div class="quill-editor-slot"></div>
+                        </div>
+
+                        <textarea class="description quill-textarea-slot" placeholder="<?php esc_attr_e("Project Description", "charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][0][description]" value="" id="project-description" data-queue="0" cols="50" rows="5"></textarea>
+                    </td>
+                    <td>
+                        <label for="project-category-0"><?php esc_html_e("Project Category", "charming-portfolio"); ?>
+
+                            <span class="dashicons dashicons-editor-help charming-portfolio-help-icon" data-title="<?php esc_attr_e("eg: 'Plugin Development', 'UI/UX Design', 'SEO Consultation', etc. This field is necessary for v3 and upper.", "charming-portfolio"); ?>"></span>
                         </label>
-        <div class="quill-container-slot">
-            <div class="quill-editor-slot"></div>
-        </div>
 
-            <textarea class="description quill-textarea-slot" placeholder="<?php esc_attr_e("Project Description","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][description]" id="<?php echo esc_attr("project-description-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" cols="50" rows="5" maxlength='800'><?php echo esc_textarea($work['description']); ?></textarea>
-        </td>
-        <td>
-            <label for="<?php echo esc_attr("project-category-" . $key); ?>"><?php esc_html_e("Project Category","charming-portfolio"); ?>
-
-                <span class="dashicons dashicons-editor-help charming-portfolio-help-icon" data-title="<?php esc_attr_e("eg: 'Plugin Development', 'UI/UX Design', 'SEO Consultation', etc. This field is necessary for v3 and upper.", "charming-portfolio"); ?>"></span>
-            </label>
-
-            <input type="text" class="category" placeholder="<?php esc_attr_e("Project Category","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][category]" value="<?php echo esc_attr($category); ?>" id="<?php echo esc_attr("project-category-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" maxlength="40">
-        </td>
-        <td>
-            <label for="<?php echo esc_attr("project-tags-" . $key); ?>"><?php esc_html_e("Tags","charming-portfolio"); ?></label>
-            <textarea class="tags" placeholder="<?php esc_attr_e("Project Tags","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][tags]" id="<?php echo esc_attr("project-tags-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>" cols="50" rows="5" maxlength="200"><?php echo esc_textarea($work['tags']); ?></textarea>
-        </td>
-         <td>
-            <label for="<?php echo esc_attr("project-link-" . $key); ?>"><?php esc_html_e("Live Link","charming-portfolio"); ?></label>
-            <input type="text" class="link" placeholder="<?php esc_attr_e("Project Live Link","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][<?php echo esc_attr($key); ?>][link]" value="<?php echo esc_url($work['link']); ?>" id="<?php echo esc_attr("project-link-" . $key); ?>" data-queue="<?php echo esc_attr($key); ?>">
-        </td>
-        <td>
-            <a class="button charming_portfolio_project_remove" href="#1"><?php esc_html_e("Remove","charming-portfolio"); ?></a>
-        </td>
-        </tr>
-        <?php endforeach; ?>
-        <?php endif?>
-    <!-- empty hidden one for jQuery -->
-    <tr class="charming_portfolio_empty-row__works screen-reader-text flex simplecharm-basic-border simplecharm-basic-padding flex flex-col single-project empty_blueprint">
-        <td>
-
-            <label for="<?php echo esc_attr("project-image-" . $key); ?>"><?php esc_html_e("Project Image","charming-portfolio"); ?></label>
-            <img width="200px" height="auto" src="<?php echo esc_url(CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/code.png") ?>" class="image" />
-                        <input type="hidden" name="" value="<?php echo esc_url(CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/code.png") ?>" class="image-url" data-queue="0" id="0"/>
-		</td>
-    <td>
-        <label for="project-title"><?php esc_html_e("Title","charming-portfolio"); ?></label>
-        <input type="text" class="title" placeholder="<?php esc_attr_e("Project Title","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][0][title]" value="" id="project-title" data-queue="0">
-    </td>
-    <td class="charming-portfolio-project-description noquill">
-        <label for="project-description"><?php esc_html_e("Description","charming-portfolio"); ?></label>
-        <div class="quill-container-slot">
-            <div class="quill-editor-slot"></div>
-        </div>
-
-        <textarea class="description quill-textarea-slot" placeholder="<?php esc_attr_e("Project Description","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][0][description]" value="" id="project-description" data-queue="0" cols="50" rows="5"></textarea>
-    </td>
-    <td>
-        <label for="project-category-0"><?php esc_html_e("Project Category","charming-portfolio"); ?>
-
-            <span class="dashicons dashicons-editor-help charming-portfolio-help-icon" data-title="<?php esc_attr_e("eg: 'Plugin Development', 'UI/UX Design', 'SEO Consultation', etc. This field is necessary for v3 and upper.", "charming-portfolio"); ?>"></span>
-        </label>
-
-        <input type="text" class="category" placeholder="<?php esc_attr_e("Project Category","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][0][category]" value="" id="project-category-0" data-queue="0" maxlength="40">
-    </td>
-    <td>
-        <label for="project-tags"><?php esc_html_e("Tags","charming-portfolio"); ?></label>
-        <textarea class="tags" placeholder="<?php esc_attr_e("Project Tags","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][0][tags]" value="" id="project-tags" data-queue="0" cols="50" rows="5"></textarea>
-    </td>
-     <td>
-        <label for="project-link"><?php esc_html_e("Live Link","charming-portfolio"); ?></label>
-        <input type="text" class="link" placeholder="<?php esc_attr_e("Project Live Link","charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][0][link]" value="" id="project-link" data-queue="0">
-    </td>
-    <td>
-        <a class="button charming_portfolio_project_remove" href="#1"><?php esc_html_e("Remove","charming-portfolio"); ?></a>
-    </td>
-    </tr>
-  </tbody>
-</table>
-<p><a id="charming_portfolio_work_add" class="button" href="#"><?php esc_html_e("Add Another","charming-portfolio"); ?></a></p>
-</div>
+                        <input type="text" class="category" placeholder="<?php esc_attr_e("Project Category", "charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][0][category]" value="" id="project-category-0" data-queue="0" maxlength="40">
+                    </td>
+                    <td>
+                        <label for="project-tags"><?php esc_html_e("Tags", "charming-portfolio"); ?></label>
+                        <textarea class="tags" placeholder="<?php esc_attr_e("Project Tags", "charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][0][tags]" value="" id="project-tags" data-queue="0" cols="50" rows="5"></textarea>
+                    </td>
+                    <td>
+                        <label for="project-link"><?php esc_html_e("Live Link", "charming-portfolio"); ?></label>
+                        <input type="text" class="link" placeholder="<?php esc_attr_e("Project Live Link", "charming-portfolio"); ?>" name="CHARMING_PORTFOLIO[works][0][link]" value="" id="project-link" data-queue="0">
+                    </td>
+                    <td>
+                        <a class="button charming_portfolio_project_remove" href="#1"><?php esc_html_e("Remove", "charming-portfolio"); ?></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p><a id="charming_portfolio_work_add" class="button" href="#"><?php esc_html_e("Add Another", "charming-portfolio"); ?></a></p>
+    </div>
 </div>

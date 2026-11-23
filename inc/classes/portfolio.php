@@ -1,11 +1,13 @@
 <?php
+
 /**
  * Customizing Front Page Functionality
  * @package Charming Portfolio
  */
+
 namespace CHARMING_PORTFOLIO\Inc\Classes;
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (! defined('ABSPATH')) exit;
 
 //using singleton for all of the classes so they only instantiate once
 use CHARMING_PORTFOLIO\Inc\Traits\Singleton;
@@ -21,18 +23,19 @@ class Portfolio
     public function setup_hook()
     {
         add_action("admin_menu", [$this, "add_menus"]);
-        add_action('admin_bar_menu', [$this,'add_admin_bar_menu'], 100);
+        add_action('admin_bar_menu', [$this, 'add_admin_bar_menu'], 100);
         add_action('admin_enqueue_scripts', [$this, "load_media"]);
         add_action('init', [$this, 'enquiries']);
         add_action('add_meta_boxes', [$this, 'mail_meta_box']);
         add_action('admin_head', [$this, 'change_submenu_color']);
 
-        add_filter( 'manage_charming_portfolio_e_posts_columns', [$this, 'charming_portfolio_e_columns'] );
+        add_filter('manage_charming_portfolio_e_posts_columns', [$this, 'charming_portfolio_e_columns']);
 
-        add_action( 'manage_charming_portfolio_e_posts_custom_column',[$this,  'charming_portfolio_e_column_value'], 10, 2 );
-        add_shortcode( 'charming_portfolio_render_portfolio', [$this, 'render_portfolio']);
+        add_action('manage_charming_portfolio_e_posts_custom_column', [$this,  'charming_portfolio_e_column_value'], 10, 2);
+        add_shortcode('charming_portfolio_render_portfolio', [$this, 'render_portfolio']);
     }
-    public function enquiries() {
+    public function enquiries()
+    {
         register_post_type(
             "charming_portfolio_e",
             [
@@ -55,7 +58,8 @@ class Portfolio
             ]
         );
     }
-    public function mail_meta_box() {
+    public function mail_meta_box()
+    {
         add_meta_box(
             'charming_portfolio_e_details',
             __('Enquiry Details', 'charming-portfolio'),
@@ -65,16 +69,17 @@ class Portfolio
             'high'
         );
     }
-    public function render_mail_meta_box() {
+    public function render_mail_meta_box()
+    {
         global $post;
-        if(!$post?->ID) {
+        if (!$post?->ID) {
             return;
         }
-        $outline = '<label for="mail" style="width:150px; display:inline-block;">'. esc_html__('Email', 'charming-portfolio') .'</label>';
+        $outline = '<label for="mail" style="width:150px; display:inline-block;">' . esc_html__('Email', 'charming-portfolio') . '</label>';
 
-	    $mail = get_post_meta( $post->ID, 'enquiry_email', true ) ?? '';
+        $mail = get_post_meta($post->ID, 'enquiry_email', true) ?? '';
 
-	    $outline .= '<input type="text" name="mail" id="mail" class="mail" value="'. esc_attr($mail) .'" style="width:300px;"/>';
+        $outline .= '<input type="text" name="mail" id="mail" class="mail" value="' . esc_attr($mail) . '" style="width:300px;"/>';
 
         echo wp_kses(
             $outline,
@@ -94,31 +99,34 @@ class Portfolio
             ]
         );
     }
-public function charming_portfolio_e_columns( $columns ) {
-    // Add your new column after the 'title' column, for example
-    $new_columns = array();
-    foreach ( $columns as $key => $value ) {
-        $new_columns[ $key ] = $value;
-        if ( 'title' === $key ) {
-            $new_columns['mail'] = __( 'Email', 'charming-portfolio' );
-            $new_columns['message'] = __( 'Message', 'charming-portfolio' );
+    public function charming_portfolio_e_columns($columns)
+    {
+        // Add your new column after the 'title' column, for example
+        $new_columns = array();
+        foreach ($columns as $key => $value) {
+            $new_columns[$key] = $value;
+            if ('title' === $key) {
+                $new_columns['mail'] = __('Email', 'charming-portfolio');
+                $new_columns['message'] = __('Message', 'charming-portfolio');
+            }
+        }
+        return $new_columns;
+    }
+    public function charming_portfolio_e_column_value($column, $post_id)
+    {
+        if ('mail' === $column) {
+            $mail = get_post_meta($post_id, 'enquiry_email', true) ?? '';
+            echo esc_html($mail);
+        }
+        if ('message' === $column) {
+            //        $msg = the content 
+            $msg = get_post_field('post_content', $post_id);
+            echo esc_html(wp_trim_words($msg, 20, '...'));
         }
     }
-    return $new_columns;
-}
-public function charming_portfolio_e_column_value( $column, $post_id ) {
-    if ( 'mail' === $column ) {
-        $mail = get_post_meta($post_id, 'enquiry_email', true) ?? '';
-        echo esc_html( $mail );
-    }
-    if ( 'message' === $column ) {
-//        $msg = the content 
-        $msg = get_post_field( 'post_content', $post_id );
-        echo esc_html( wp_trim_words( $msg, 20, '...' ) );
-    }
-}
 
-    public function add_menus() {
+    public function add_menus()
+    {
         add_menu_page(
             'Portfolio Page',
             "Portfolio",
@@ -127,14 +135,16 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
             [$this, "portfolio_html"],
             "dashicons-portfolio"
         );
-        add_submenu_page( "CHARMING_PORTFOLIO_page",
+        add_submenu_page(
+            "CHARMING_PORTFOLIO_page",
             "Portfolio Page",
             "Portfolio",
             "manage_options",
             "CHARMING_PORTFOLIO_page",
             [$this, "portfolio_html"],
         );
-        add_submenu_page( "CHARMING_PORTFOLIO_page",
+        add_submenu_page(
+            "CHARMING_PORTFOLIO_page",
             "Customize Portfolio",
             "Customize Portfolio",
             "manage_options",
@@ -164,7 +174,8 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
     /**
      * Make The Option Available in With site-title Menu in Admin Bar
      */
-    public function add_admin_bar_menu($wp_admin_bar) {
+    public function add_admin_bar_menu($wp_admin_bar)
+    {
         // Check if the user has the capability to manage options
         if (!current_user_can('manage_options')) {
             return;
@@ -179,13 +190,9 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
             'meta'   => array('class' => 'charming-portfolio') // Additional properties (optional)
         ));
     }
-    public function add_submenu()
-    {
-    }
+    public function add_submenu() {}
 
-    public function add_additional_submenu()
-    {
-    }
+    public function add_additional_submenu() {}
 
     /**
      * Main Option Page For Portfolio Page
@@ -193,14 +200,14 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
     public function portfolio_html()
     {
         $saved_values = $this->display_saved_value();
-        ?>
+?>
         <div class="admin-portfolio-page__container">
             <div class="admin-portfolio-page">
-                <?php CHARMING_PORTFOLIO_get_template_part('template-parts/portfolio/portfolio','preview', $saved_values); ?>
+                <?php CHARMING_PORTFOLIO_get_template_part('template-parts/portfolio/portfolio', 'preview', $saved_values); ?>
             </div>
         </div>
-        <?php
-}
+    <?php
+    }
     /**
      * Submenu Option Page For Portfolio Page
      */
@@ -208,72 +215,73 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
     {
         $portfolio_saved_data = $this->display_saved_value();
         $field                = get_option('CHARMING_PORTFOLIO_data');
-        ?>
+    ?>
         <div class="admin-portfolio-modify__container">
             <div class="admin-portfolio-modify">
                 <div class="page-title">
-                    <h2><?php esc_html__("Modify Your Informations Here:-","charming-portfolio"); ?></h2>
+                    <h2><?php esc_html__("Modify Your Informations Here:-", "charming-portfolio"); ?></h2>
                 </div>
                 <form class="page-contents" method="POST">
-                        <!-- tabs -->
-                        <?php CHARMING_PORTFOLIO_get_template_part('template-parts/portfolio/portfolio','index', $portfolio_saved_data); ?>
+                    <!-- tabs -->
+                    <?php CHARMING_PORTFOLIO_get_template_part('template-parts/portfolio/portfolio', 'index', $portfolio_saved_data); ?>
 
 
-                        <input type="hidden" name="charming-portfolio__nonce" value="<?php echo esc_attr(wp_create_nonce("CHARMING_PORTFOLIO_modify_page__nonce")) ?>">
-                        <div class="btn-wrapper">
-                            <input type="submit" name="update_portfolio_data" value="UPDATE" class="charming-portfolio-save-data btn btn-fullwidth">
-                            <span></span>
-                        </div>
+                    <input type="hidden" name="charming-portfolio__nonce" value="<?php echo esc_attr(wp_create_nonce("CHARMING_PORTFOLIO_modify_page__nonce")) ?>">
+                    <div class="btn-wrapper">
+                        <input type="submit" name="update_portfolio_data" value="UPDATE" class="charming-portfolio-save-data btn btn-fullwidth">
+                        <span></span>
+                    </div>
 
                 </form>
             </div>
         </div>
-        <?php
-}
+    <?php
+    }
     /**
      * Additional Informations. Eg: Skills, Experience, Projects etc.
      */
     public function portfolio_additional_submenu_html()
     {
-        ?>
-    <div class="admin-portfolio-additionals__container">
-        <div class="admin-portfolio-additionals">
-            <div class="page-title">
-                <h2><?php esc_html__("Customize Your Additional Informations Here:","charming-portfolio"); ?></h2>
+    ?>
+        <div class="admin-portfolio-additionals__container">
+            <div class="admin-portfolio-additionals">
+                <div class="page-title">
+                    <h2><?php esc_html__("Customize Your Additional Informations Here:", "charming-portfolio"); ?></h2>
+                </div>
+                <form class="page-contents" method="POST">
+                    <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio-additional", 'index', $this->display_saved_value()); ?>
+                </form>
             </div>
-            <form class="page-contents" method="POST">
-                <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio-additional", 'index', $this->display_saved_value()); ?>
-            </form>
         </div>
-    </div>
-        <?php
+    <?php
     }
 
     public function portfolio_danger_zone_submenu_html()
     {
-        ?>
-    <div class="admin-portfolio-dangerzone__container">
-        <div class="admin-portfolio-dangerzone">
-            <div class="page-title">
-                <h2><?php esc_html__("Danger Zone","charming-portfolio"); ?></h2>
+    ?>
+        <div class="admin-portfolio-dangerzone__container">
+            <div class="admin-portfolio-dangerzone">
+                <div class="page-title">
+                    <h2><?php esc_html__("Danger Zone", "charming-portfolio"); ?></h2>
+                </div>
+                <form method="POST" class="page-contents">
+                    <?php CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'danger-zone', $this->display_saved_value()); ?>
+                    <input type="hidden" name="charming-portfolio__nonce" value="<?php echo esc_attr(wp_create_nonce("CHARMING_PORTFOLIO_danger_zone__nonce")) ?>">
             </div>
-            <form method="POST" class="page-contents">
-                <?php  CHARMING_PORTFOLIO_get_template_part("template-parts/portfolio/portfolio", 'danger-zone', $this->display_saved_value());?>
-                <input type="hidden" name="charming-portfolio__nonce" value="<?php echo esc_attr(wp_create_nonce("CHARMING_PORTFOLIO_danger_zone__nonce")) ?>">
         </div>
-    </div>
-        <?php
+    <?php
     }
 
-    public function change_submenu_color() {
-        ?>
+    public function change_submenu_color()
+    {
+    ?>
         <style>
             #toplevel_page_CHARMING_PORTFOLIO_page .wp-submenu li a[href="admin.php?page=charming_portfolio_danger_zone"] {
-                color: #ff0000 !important; 
+                color: #ff0000 !important;
                 font-weight: 500;
             }
         </style>
-        <?php
+<?php
     }
 
     /**
@@ -283,12 +291,12 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
     {
         $option_value            = get_option("CHARMING_PORTFOLIO_data");
         $additional_option_value = get_option("CHARMING_PORTFOLIO_additional_data");
-		$saved_values            = [
-            'enabled'  		=> false,
+        $saved_values            = [
+            'enabled'          => false,
             'client_render'     => true,
             'name'              => 'Charm',
-            'user_image'        => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg",
-            'user_image2'       => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg",
+            'user_image'        => CHARMING_PORTFOLIO_DIR_URI . "/mrvite/dist/img/charming_portfolio-default-avater.jpg",
+            'user_image2'       => CHARMING_PORTFOLIO_DIR_URI . "/mrvite/dist/img/charming_portfolio-default-avater.jpg",
             'email'             => 'abc@gmail.com',
             'phone'             => '12345678902',
             'short_description' => "Hi, This Is Default Lorem Ipsum Description For You Lorem ipsum dolor sit amet, consectetur adipisicing elit!",
@@ -298,14 +306,14 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
             'social_links'      => [],
             'skills'            => [],
         ];
-		if (is_array($option_value)) {
-	    $enabled 	       = array_key_exists("enabled", $option_value) ? $option_value["enabled"] : false;
+        if (is_array($option_value)) {
+            $enabled            = array_key_exists("enabled", $option_value) ? $option_value["enabled"] : false;
 
 
             $client_render     = true;
             $name              = array_key_exists("name", $option_value) ? $option_value["name"] : "";
-            $image             = (array_key_exists("image", $option_value) && !empty($option_value['image'])) ? $option_value["image"] : CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg";
-            $image2            = (array_key_exists("image_2", $option_value) && !empty($option_value['image_2'])) ? $option_value["image_2"] : CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg";
+            $image             = (array_key_exists("image", $option_value) && !empty($option_value['image'])) ? $option_value["image"] : CHARMING_PORTFOLIO_DIR_URI . "/mrvite/dist/img/charming_portfolio-default-avater.jpg";
+            $image2            = (array_key_exists("image_2", $option_value) && !empty($option_value['image_2'])) ? $option_value["image_2"] : CHARMING_PORTFOLIO_DIR_URI . "/mrvite/dist/img/charming_portfolio-default-avater.jpg";
             $email             = array_key_exists("email", $option_value) ? $option_value["email"] : "abc@gmail.com";
             $phone             = array_key_exists("phone", $option_value) ? $option_value["phone"] : "1234567890";
             $short_description = array_key_exists("short_description", $option_value) ? $option_value["short_description"] : "";
@@ -313,7 +321,7 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
             $address           = array_key_exists("address", $option_value) ? $option_value["address"] : "";
             $available         = (array_key_exists("available", $option_value) && $option_value['available'] === 'on') ? 'True' : "False";
             $social_links      = array_key_exists("social_link", $option_value) ? CHARMING_PORTFOLIO_load_social($option_value['social_link']) : [];
-	$saved_values      = [
+            $saved_values      = [
                 'enabled' => $enabled,
                 'client_render' => $client_render,
                 'name'              => $name,
@@ -354,32 +362,32 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
         $option_value            = get_option("CHARMING_PORTFOLIO_v2");
         $additional_option_value = get_option("CHARMING_PORTFOLIO_additional_v2");
 
-            $saved_values      = [
-                'enabled'           => false,
-                'name'              => "Mr Charm",
-                'designation'       => "Unemployed",
-                'user_image'        => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg",
-                'user_image2'       => CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg",
-                'email'             => "abc@def.com",
-                'phone'             => "01345678910",
-                'short_description' => "Hello, I am rare skilled !genius and introvert person",
-                'description'       => "Hello, I am rare skilled !genius and introvert person and this is not a copy of short description.",
-                'address'           => "Earth",
-                'available'         => false,
-                'layout'            => 'charming_v3',
-            ];
+        $saved_values      = [
+            'enabled'           => false,
+            'name'              => "Mr Charm",
+            'designation'       => "Unemployed",
+            'user_image'        => CHARMING_PORTFOLIO_DIR_URI . "/mrvite/dist/img/charming_portfolio-default-avater.jpg",
+            'user_image2'       => CHARMING_PORTFOLIO_DIR_URI . "/mrvite/dist/img/charming_portfolio-default-avater.jpg",
+            'email'             => "abc@def.com",
+            'phone'             => "01345678910",
+            'short_description' => "Hello, I am rare skilled !genius and introvert person",
+            'description'       => "Hello, I am rare skilled !genius and introvert person and this is not a copy of short description.",
+            'address'           => "Earth",
+            'available'         => false,
+            'layout'            => 'charming_v3',
+        ];
         // return $additional_option_value;
 
-		if (is_array($option_value)) {
-	        $enabled 	       = array_key_exists("enabled", $option_value) ? $option_value["enabled"] : false;
+        if (is_array($option_value)) {
+            $enabled            = array_key_exists("enabled", $option_value) ? $option_value["enabled"] : false;
 
 
-	        $contact_mailing_enabled 	       = array_key_exists("enabled_contact_mailing", $option_value) ? $option_value["enabled_contact_mailing"] : false;
+            $contact_mailing_enabled            = array_key_exists("enabled_contact_mailing", $option_value) ? $option_value["enabled_contact_mailing"] : false;
             $client_render     = true;
             $name              = array_key_exists("name", $option_value) ? $option_value["name"] : "";
             $desig              = array_key_exists("designation", $option_value) ? $option_value["designation"] : "";
-            $image             = (array_key_exists("image", $option_value) && !empty($option_value['image'])) ? $option_value["image"] : CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg";
-            $image2            = (array_key_exists("image_2", $option_value) && !empty($option_value['image_2'])) ? $option_value["image_2"] : CHARMING_PORTFOLIO_DIR_URI . "/assets/build/img/charming_portfolio-default-avater.jpg";
+            $image             = (array_key_exists("image", $option_value) && !empty($option_value['image'])) ? $option_value["image"] : CHARMING_PORTFOLIO_DIR_URI . "/mrvite/dist/img/charming_portfolio-default-avater.jpg";
+            $image2            = (array_key_exists("image_2", $option_value) && !empty($option_value['image_2'])) ? $option_value["image_2"] : CHARMING_PORTFOLIO_DIR_URI . "/mrvite/dist/img/charming_portfolio-default-avater.jpg";
             $email             = array_key_exists("email", $option_value) ? $option_value["email"] : "abc@gmail.com";
             $phone             = array_key_exists("phone", $option_value) ? $option_value["phone"] : "1234567890";
             $short_description = array_key_exists("short_description", $option_value) ? $option_value["short_description"] : "";
@@ -390,7 +398,7 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
             $header_links      = array_key_exists("header_links", $option_value) ? $option_value['header_links'] : [];
             $footer_links      = array_key_exists("footer_links", $option_value) ? $option_value['footer_links'] : [];
             $layout            = array_key_exists("layout", $option_value) ? $option_value['layout'] : 'charming_v3';
-        	$saved_values      = [
+            $saved_values      = [
                 'enabled'           => $enabled,
                 'contact_mailing_enabled' => $contact_mailing_enabled,
                 'client_render'     => $client_render,
@@ -416,7 +424,7 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
                 'works'             => [],
             ];
         }
-        
+
         if (is_array($additional_option_value)) {
             $skills      = array_key_exists("skills", $additional_option_value) ? $additional_option_value["skills"] : [];
             $experiences = array_key_exists("experiences", $additional_option_value) ? $additional_option_value["experiences"] : [];
@@ -442,7 +450,7 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
             return is_scalar($input_array) ? sanitize_text_field($input_array) : $input_array;
         }
     }
-    
+
     /**
      * Load Media To Make Image Upload Possible
      */
@@ -457,16 +465,16 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
     public function get_social_icon_classes($name)
     {
         $name = strtolower($name);
-//        $mapping = [
-//            'facebook'  => 'fab fa-facebook-f',
-//            'twitter'   => 'fab fa-twitter',
-//            'instagram' => 'fab fa-instagram',
-//            'linkedin'  => 'fab fa-linkedin-in',
-//            'github'    => 'fab fa-github',
-//            'youtube'   => 'fab fa-youtube',
-//            'pinterest' => 'fab fa-pinterest',
-//            'tiktok'    => 'fab fa-tiktok'
-//        ];
+        //        $mapping = [
+        //            'facebook'  => 'fab fa-facebook-f',
+        //            'twitter'   => 'fab fa-twitter',
+        //            'instagram' => 'fab fa-instagram',
+        //            'linkedin'  => 'fab fa-linkedin-in',
+        //            'github'    => 'fab fa-github',
+        //            'youtube'   => 'fab fa-youtube',
+        //            'pinterest' => 'fab fa-pinterest',
+        //            'tiktok'    => 'fab fa-tiktok'
+        //        ];
         $mapping = [
             'facebook'  => 'dashicons dashicons-facebook-alt',
             'twitter'   => 'dashicons dashicons-twitter',
@@ -481,14 +489,15 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
     /**
      * Get Experience Timerange
      */
-    public function get_experience_timerange($experience) {
+    public function get_experience_timerange($experience)
+    {
         $start_date = $experience['start_date'] ?? '';
         $end_date = $experience['end_date'] ?? '';
         $is_working = $experience['working'] ?? "0";
-        if(!empty($start_date)) {
+        if (!empty($start_date)) {
             $start_date = gmdate("M Y", strtotime($start_date));
         }
-        if(!empty($end_date)) {
+        if (!empty($end_date)) {
             $end_date = gmdate("M Y", strtotime($end_date));
         }
 
@@ -505,7 +514,8 @@ public function charming_portfolio_e_column_value( $column, $post_id ) {
     /**
      * Render the portfolio as shortcode
      */
-    public function render_portfolio() {
+    public function render_portfolio()
+    {
         ob_start();
         CHARMING_PORTFOLIO_get_template_part("front-page");
         return ob_get_clean();
